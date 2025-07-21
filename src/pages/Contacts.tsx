@@ -1,7 +1,16 @@
-const Contacts = () => {
+const ts = () => {
   return (
-    <div>Contacts</div>
+    <div>
+      <h1>Контакты</h1>
+      <div>
+        <div>
+            <canvas width="1117" height="489"></canvas>
+
+        </div>
+        <div></div>
+      </div>
+    </div>
   )
 }
 
-export default Contacts
+export default ts
