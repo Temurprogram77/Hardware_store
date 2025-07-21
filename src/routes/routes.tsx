@@ -5,7 +5,7 @@ import {
   Blog,
   ChangePassword,
   Comparison,
-  ts,
+  Contacts,
   Delivery,
   Editing,
   FeaturedProducts,
@@ -24,6 +24,7 @@ import {
   Return,
   Reviews,
   SearchResults,
+  Stati,
   Stock,
 } from "../pages";
 
@@ -35,7 +36,8 @@ export const routes = [
   { path: "/blog", element: <Blog /> },
   { path: "/change-password", element: <ChangePassword /> },
   { path: "/comparison", element: <Comparison /> },
-  { path: "/ts", element: <ts /> },
+  { path: "/Contacts", element: <Contacts /> },
+  { path: "/Stati", element: <Stati /> },
   { path: "/delivery", element: <Delivery /> },
   { path: "/editing", element: <Editing /> },
   { path: "/featured-products", element: <FeaturedProducts /> },
