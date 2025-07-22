@@ -7,6 +7,7 @@ export { default as Blog } from "./Blog";
 export { default as ChangePassword } from "./ChangePassword";
 export { default as Comparison } from "./Comparison";
 export { default as Contacts } from "./Contacts";
+export { default as Article } from "./Article";
 export { default as Delivery } from "./Delivery";
 export { default as Editing } from "./Editing";
 export { default as FeaturedProducts } from "./FeaturedProducts";
