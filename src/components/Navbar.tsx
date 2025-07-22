@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { images } from "../assets/images";
 
-const { Logo, burger } = images;
+const { Logo, burger, search, user, compare, basket, heart, gift } = images;
 const Navbar = () => {
   return (
     <div className="flex flex-col max-w-[1460px] xl:mx-auto mx-3">
@@ -75,12 +75,37 @@ const Navbar = () => {
           <img src={burger} alt="" />
           Каталог
         </div>
-        <div className="flex p-0.5 bg-[#186fd4]">
+        <div className="flex p-[3px] rounded-md bg-[#186fd4]">
           <input
-            className="bg-white"
+            className="bg-white w-[600px] px-3 rounded-sm outline-none text-[13px] placeholder:text-[13px]"
             type="text"
             placeholder="Найти среди 50000 товаров. Например: Дрель Bosch"
           />
+          <div className="flex items-center px-4">
+            <img src={search} alt="" />
+          </div>
+        </div>
+        <div className="flex items-center gap-8">
+          <div className="flex flex-col items-center gap-1 hover:text-[#186fd4]">
+            <img src={gift} alt="gift" />
+            <p className="!m-0 text-[12px] font-medium">Все акции</p>
+          </div>
+          <div className="flex flex-col items-center gap-1 hover:text-[#186fd4]">
+            <img src={user} alt="user" />
+            <p className="!m-0 text-[12px] font-medium">Войти</p>
+          </div>
+          <div className="flex flex-col items-center gap-1 hover:text-[#186fd4]">
+            <img src={compare} alt="compare" />
+            <p className="!m-0 text-[12px] font-medium">Сравнение</p>
+          </div>
+          <div className="flex flex-col items-center gap-1 hover:text-[#186fd4]">
+            <img src={heart} alt="heart" />
+            <p className="!m-0 text-[12px] font-medium">Избранное</p>
+          </div>
+          <div className="flex flex-col items-center gap-1 hover:text-[#186fd4]">
+            <img src={basket} alt="basket" />
+            <p className="!m-0 text-[12px] font-medium">Корзина</p>
+          </div>
         </div>
       </div>
     </div>
