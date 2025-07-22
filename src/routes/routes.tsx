@@ -1,5 +1,6 @@
 import {
   AboutTheCompany,
+  Article,
   Auth,
   Basket,
   Blog,
@@ -24,7 +25,6 @@ import {
   Return,
   Reviews,
   SearchResults,
-  Stati,
   Stock,
 } from "../pages";
 
@@ -38,6 +38,8 @@ export const routes = [
   { path: "/comparison", element: <Comparison /> },
   { path: "/contacts", element: <Contacts /> },
   { path: "/Stati", element: <Stati /> },
+  { path: "/Contacts", element: <Contacts /> },
+  { path: "/Article", element: <Article /> },
   { path: "/delivery", element: <Delivery /> },
   { path: "/editing", element: <Editing /> },
   { path: "/featured-products", element: <FeaturedProducts /> },
