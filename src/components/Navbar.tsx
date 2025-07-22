@@ -4,7 +4,7 @@ import { images } from "../assets/images";
 const { Logo, burger } = images;
 const Navbar = () => {
   return (
-    <div className="flex flex-col max-w-[1460px] mx-auto">
+    <div className="flex flex-col max-w-[1460px] xl:mx-auto mx-3">
       <div className="flex justify-between py-2">
         <div className="flex items-center gap-5">
           <Link
@@ -57,7 +57,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center gap-3">
-          <p className="text-[12px] font-medium">Ежедневно, с 8:00 до 18:00</p>
+          <p className="!m-0 text-[12px] font-medium">Ежедневно, с 8:00 до 18:00</p>
           <a
             href="#"
             className="text-[14px] font-semibold hover:text-[#186fd4]"
