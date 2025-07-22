@@ -9,7 +9,6 @@ const Comparison: React.FC = () => {
 
   return (
     <div className="p-4 sm:p-6 md:p-10 lg:p-10 mt-4">
-      {/* Breadcrumb */}
       <Breadcrumb className="mb-6">
         <Breadcrumb.Item>
           <span className="text-black">Стройоптторг</span>
@@ -19,12 +18,10 @@ const Comparison: React.FC = () => {
         </Breadcrumb.Item>
       </Breadcrumb>
 
-      {/* Title */}
       <h2 className="text-3xl font-bold text-black sm:text-4xl mb-6">
         Сравнение
       </h2>
 
-      {/* Select + Radio filter */}
       <div className="w-full max-w-xs">
         <Select
           value={selectedOption}
