@@ -8,6 +8,7 @@ import user from "./user.svg";
 import compare from "./compare.svg";
 import heart from "./favourite.svg";
 import basket from "./cart.svg";
+import menu from "./burger-menu.svg";
 
 export const images = {
   Logo,
@@ -19,5 +20,6 @@ export const images = {
   user,
   heart,
   compare,
-  basket
+  basket,
+  menu
 };
