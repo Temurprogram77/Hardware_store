@@ -61,19 +61,19 @@ const Navbar = () => {
             </div>
             <div className="md:hidden flex items-center gap-3">
               <img src={menu} alt="menu" className="w-[20px]" />
-              Меню
+              <p className="!m-0 sm:flex hidden">Меню</p>
             </div>
             <div className="flex items-center gap-3">
-              <p className="!m-0 text-[12px] font-medium">
+              <p className="!m-0 sm:flex hidden text-[12px] font-medium">
                 Ежедневно, с 8:00 до 18:00
               </p>
               <a
                 href="#"
-                className="text-[14px] font-semibold hover:text-[#186fd4]"
+                className="sm:text-[14px] text-[16px] font-semibold hover:text-[#186fd4]"
               >
                 8 800 444 00 65
               </a>
-              <div className="bg-[#f2f6fc] text-[#2a5e8d] duration-150 hover:bg-black hover:text-white rounded-sm cursor-pointer py-2.5 px-3 text-[11px] uppercase font-bold">
+              <div className="bg-[#f2f6fc] text-[#2a5e8d] duration-150 hover:bg-black hover:text-white rounded-sm cursor-pointer py-2.5 px-3 sm:text-[11px] text-[12px] uppercase font-bold">
                 Заказать звонок
               </div>
             </div>
@@ -98,41 +98,41 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center lg:gap-8 md:gap-4">
-          <div className="flex flex-col items-center gap-1 duration-200 cursor-pointer hover:text-[#186fd4]">
+        <div className="flex items-center lg:gap-8 md:gap-4 gap-3">
+          <div className="sm:flex hidden flex-col items-center gap-1 duration-200 cursor-pointer hover:text-[#186fd4]">
             <img src={gift} alt="gift" />
             <p className="!m-0 text-[12px] font-medium">Все акции</p>
           </div>
           <div className="flex flex-col items-center gap-1 duration-200 cursor-pointer hover:text-[#186fd4]">
             <img src={user} alt="user" />
-            <p className="!m-0 text-[12px] font-medium">Войти</p>
+            <p className="sm:flex hidden !m-0 text-[12px] font-medium">Войти</p>
           </div>
           <div className="flex flex-col items-center gap-1 duration-200 cursor-pointer hover:text-[#186fd4]">
             <img src={compare} alt="compare" />
-            <p className="!m-0 text-[12px] font-medium">Сравнение</p>
+            <p className="sm:flex hidden !m-0 text-[12px] font-medium">Сравнение</p>
           </div>
           <div className="flex flex-col items-center gap-1 duration-200 cursor-pointer hover:text-[#186fd4]">
             <img src={heart} alt="heart" />
-            <p className="!m-0 text-[12px] font-medium">Избранное</p>
+            <p className="sm:flex hidden !m-0 text-[12px] font-medium">Избранное</p>
           </div>
           <div className="flex flex-col items-center gap-1 duration-200 cursor-pointer hover:text-[#186fd4]">
             <img src={basket} alt="basket" />
-            <p className="!m-0 text-[12px] font-medium">Корзина</p>
+            <p className="sm:flex hidden !m-0 text-[12px] font-medium">Корзина</p>
           </div>
         </div>
       </div>
-      <div className="flex md:hidden items-center gap-2">
+      <div className="flex md:hidden items-center gap-2 xl:mx-auto mx-3">
         <div className="bg-[#186fd4] hover:bg-black duration-200 cursor-pointer rounded-md px-4 py-3.5 text-white flex items-center gap-3 uppercase text-[12px] font-semibold">
           <img src={burger} alt="" />
           Каталог
         </div>
         <div className="flex p-[3px] rounded-md bg-[#186fd4]">
           <input
-            className="bg-white w-[400px] px-3 py-2 rounded-sm outline-none text-[13px] placeholder:text-[13px]"
+            className="bg-white max-w-[200px] px-3 py-2 rounded-sm outline-none text-[13px] placeholder:text-[13px]"
             type="text"
-            placeholder="Найти среди 50000 товаров. Например: Дрель Bosch"
+            placeholder="Поиск..."
           />
-          <div className="flex items-center px-4">
+          <div className="flex items-center md:px-4 px-3">
             <img src={search} alt="search" />
           </div>
         </div>
