@@ -1,36 +1,49 @@
 import React from 'react';
 import { Button } from 'antd';
 import {images} from "../assets/images";
-
+import { UserOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-100 text-gray-700 pt-10 px-4 sm:px-8 md:px-16">
-   <div className="flex items-center justify-between w-full py-6 border-b border-gray-200">
+   <div className="flex flex-col md:flex-row items-center justify-between w-full py-4 md:py-6 border-b border-gray-200 gap-4 md:gap-0">
+  {/* Logo and Company Name - Left Side */}
   <div className="flex items-center gap-3">
-    <img src="/logo.png" alt="Стройоптторг Logo" className="w-14 h-14 object-contain" />
-    <span className="text-base font-semibold">ООО «Стройоптторг»</span>
+    <img 
+      src={images.logo2} 
+      alt="Стройоптторг Logo" 
+      className="w-12 h-12 md:w-14 md:h-14 object-contain" 
+    />
+    <span className="text-base font-semibold whitespace-nowrap">
+      ООО «Стройоптторг»
+    </span>
   </div>
 
-  <div className="text-sm text-gray-600 text-center leading-relaxed">
-    <p>ИНН: 0901051787</p>
-    <p>КПП: 090101001</p>
-    <p>
+  {/* Middle Section - Company Info */}
+  <div className="order-last md:order-none flex flex-col sm:flex-row gap-3 md:gap-4 text-sm text-gray-600 text-center md:text-left">
+    <p className="whitespace-nowrap">ИНН: 0901051787</p>
+    <p className="whitespace-nowrap">КПП: 090101001</p>
+    <p className="whitespace-nowrap">
       Email:{" "}
-      <a href="mailto:info@stroitoptorg.ru" className="text-blue-600 hover:underline">
+      <a 
+        href="mailto:info@stroitoptorg.ru" 
+        className="text-blue-600 hover:underline"
+      >
         info@stroitoptorg.ru
       </a>
     </p>
   </div>
 
-  <div className="text-right">
-    <p className="text-lg font-semibold text-black">8 800 444 00 65</p>
-    <p className="text-sm text-gray-500">Ежедневно, с 8:00 до 18:00</p>
-    <button className="mt-2 px-4 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition">
-      ЗАКАЗАТЬ ЗВОНОК
-    </button>
+  {/* Right Side - Phone Number (vertical layout) */}
+  <div className="flex flex-col items-end">
+    <p className="text-lg font-semibold text-black whitespace-nowrap">
+      8 800 444 00 65
+    </p>
+    <p className="text-xs md:text-sm text-gray-500 whitespace-nowrap">
+      Ежедневно, с 8:00 до 18:00
+    </p>
   </div>
 </div>
-
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 py-10 border-b border-gray-300 text-sm">
         <div>
@@ -77,20 +90,22 @@ const Footer: React.FC = () => {
 
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center py-8 gap-8">
         <div className="flex flex-wrap items-center gap-4">
-          <span className="text-sm">Мы принимаем к оплате:</span>
-          <img src="/visa.png" alt="Visa" className="h-6" />
-          <img src="/mastercard.png" alt="MasterCard" className="h-6" />
-          <img src="/mir.png" alt="MIR" className="h-6" />
-          <img src="/halva.png" alt="Halva" className="h-6" />
-          <img src="/tinkoff.png" alt="Tinkoff" className="h-6" />
+          <span className="text-sm grayscale contrast-0 ">Мы принимаем <br /> к оплате:</span>
+          <div className='flex items-center gap-7 relative left-20'>
+          <img src={images.visa} alt="Visa" className="w-15 grayscale contrast-0 cursor-pointer hover: transition duration-300" />
+          <img src={images.v} alt="MasterCard" className="w-15 grayscale contrast-0" />
+          <img src={images.mir} alt="MIR" className="w-15 grayscale contrast-0" />
+          <img src={images.xalva} alt="Halva" className="w-15 grayscale contrast-0" />
+          <img src={images.tinkoff} alt="Tinkoff" className="w-15 grayscale contrast-0" />
+          </div>
         </div>
 
         <div className="w-full max-w-md flex items-center gap-2">
-          <p className="text-sm font-medium">Подпишитесь на рассылку и будьте в курсе!</p>
+          <p className=" text-[15px] ">Подпишитесь на рассылкуи будьте в курсе!</p>
           <input
             type="email"
             placeholder="Ваш email"
-            className="flex-1 px-4 py-2 border border-gray-300 rounded focus:outline-none"
+            className="flex-1 px-4  py-2 border border-gray-300 rounded focus:outline-none"
           />
           <button className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">→</button>
         </div>
