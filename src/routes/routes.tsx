@@ -26,6 +26,7 @@ import {
   Reviews,
   SearchResults,
   Stock,
+  Register
 } from "../pages";
 
 export const routes = [
@@ -57,5 +58,6 @@ export const routes = [
   { path: "/reviews", element: <Reviews /> },
   { path: "/search-results", element: <SearchResults /> },
   { path: "/stock", element: <Stock /> },
+  { path: "/register", element: <Register /> },
   { path: "*", element: <NotFound /> },
 ];
