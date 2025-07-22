@@ -1,8 +1,6 @@
 import Logo from "./Logo.svg";
 import ErrorImage from "./ErrorImage.svg";
-const images = {
+export const images = {
   Logo,
-  ErrorImage,
+  ErrorImage
 };
-
-export default images;

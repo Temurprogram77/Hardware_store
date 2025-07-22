@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { images } from '../assets/images';
 
+const { Logo } = images;
 const Navbar = () => {
   return (
     <div className="flex justify-between items-center">
@@ -56,10 +58,19 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-3">
           <p className="text-[12px] font-medium">Ежедневно, с 8:00 до 18:00</p>
-          <a href="#" className="text-[14px] font-semibold hover:text-[#186fd4]">8 800 444 00 65</a>
-          <div className="bg-[#f2f6fc] text-[#2a5e8d] duration-150 hover:bg-black hover:text-white rounded-sm cursor-pointer py-2.5 px-3 text-[11px] uppercase font-bold">Заказать звонок</div>
+          <a
+            href="#"
+            className="text-[14px] font-semibold hover:text-[#186fd4]"
+          >
+            8 800 444 00 65
+          </a>
+          <div className="bg-[#f2f6fc] text-[#2a5e8d] duration-150 hover:bg-black hover:text-white rounded-sm cursor-pointer py-2.5 px-3 text-[11px] uppercase font-bold">
+            Заказать звонок
+          </div>
         </div>
       </div>
+      <img src={Logo} alt="Logo" className="h-10" />
+      <div className="flex justify-between"></div>
     </div>
   );
 };
