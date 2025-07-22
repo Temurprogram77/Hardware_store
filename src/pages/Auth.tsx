@@ -1,23 +1,24 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Breadcrumb, Typography, Input, Button, Space, Checkbox } from 'antd';
 import type { CheckboxProps } from 'antd';
+import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import { Link } from 'react-router-dom';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
 
-const AuthPage = () => {
-  const [emailOrLogin, setEmailOrLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
+const AuthPage: React.FC = () => {
+  const [emailOrLogin, setEmailOrLogin] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
 
   const handleLogin = () => {
     console.log('Email yoki Login:', emailOrLogin);
     console.log('Parol:', password);
-    console.log('Eslab qolish:', rememberMe);
+    console.log('Eslab qolish (remember me):', rememberMe);
   };
 
-  const onChange: CheckboxProps['onChange'] = (e) => {
+  const handleCheckboxChange: CheckboxProps['onChange'] = (e: CheckboxChangeEvent) => {
     setRememberMe(e.target.checked);
   };
 
@@ -52,7 +53,7 @@ const AuthPage = () => {
                     className='!w-[450px] !h-[55px] !text-lg !mb-2.5 !-mt-2'
                     placeholder="Введите данные для авторизации"
                     value={emailOrLogin}
-                    onChange={(e) => setEmailOrLogin(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmailOrLogin(e.target.value)}
                   />
                   <Typography.Title className='!text-lg'>
                     Пароль <span className='text-red-700'>*</span>:
@@ -61,8 +62,8 @@ const AuthPage = () => {
                     className='!w-[450px] !h-[55px] !text-lg !-mt-2'
                     placeholder="Введите пароль"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    iconRender={(visible) =>
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    iconRender={(visible: boolean) =>
                       visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                     }
                   />
@@ -86,8 +87,8 @@ const AuthPage = () => {
 
                 <Checkbox
                   className='!mt-2.5 !items-center !text-sm'
-                  onChange={onChange}
                   checked={rememberMe}
+                  onChange={handleCheckboxChange}
                 >
                   Запомнить меня
                 </Checkbox>
