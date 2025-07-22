@@ -1,5 +1,7 @@
 import { Breadcrumb } from 'antd';
 import { MdLocationPin } from "react-icons/md";
+import { BsTelephone } from "react-icons/bs";
+import { MdOutlineMailOutline } from "react-icons/md";
 
 
 const Contacts = () => {
@@ -24,8 +26,22 @@ const Contacts = () => {
               <div className='flex gap-2 mt-3'>
                 <MdLocationPin className=' text-2xl' />
                 <div className=''>
-                  <h6 className='!font-bold'>Адрес:</h6>
+                  <h6 className='!font-bold text-[#2f3134]'>Адрес:</h6>
                   <p className='text-[#494d52] text-sm w-[220px]'>369012 , Карачаево-Черкесская Республика , г. Черкесск , ул Октябрьская, дом 301</p>
+                </div>
+              </div>
+              <div className='flex gap-2 mt-3'>
+                <BsTelephone className='text-[20px]' />
+                <div>
+                  <h6 className='!font-bold text-[#2f3134] w-[215px]'>Телефон:</h6>
+                  <h6 className='hover:text-[#186fd4]'>8 (8782) 28-42-72</h6>
+                </div>
+              </div>
+              <div className='flex gap-2 mt-3'>
+                <MdOutlineMailOutline className='text-[20px]'/>
+                <div>
+                  <h6 className='!font-bold text-[#2f3134] w-[215px]'>Email адрес:</h6>
+                  <p className='underline decoration-solid hover:no-underline text-[#186fd4]'>info@stroiopttorg.ru</p>
                 </div>
               </div>
           </div>
