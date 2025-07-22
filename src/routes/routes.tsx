@@ -36,7 +36,7 @@ export const routes = [
   { path: "/blog", element: <Blog /> },
   { path: "/change-password", element: <ChangePassword /> },
   { path: "/comparison", element: <Comparison /> },
-  { path: "/Contacts", element: <Contacts /> },
+  { path: "/contacts", element: <Contacts /> },
   { path: "/Stati", element: <Stati /> },
   { path: "/delivery", element: <Delivery /> },
   { path: "/editing", element: <Editing /> },
