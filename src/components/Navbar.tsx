@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { images } from "../assets/images";
 
-const { Logo } = images;
+const { Logo, burger } = images;
 const Navbar = () => {
   return (
-    <div className="flex flex-col">
-      <div className="flex justify-between py-2 w-[1460px] mx-auto">
+    <div className="flex flex-col max-w-[1460px] mx-auto">
+      <div className="flex justify-between py-2">
         <div className="flex items-center gap-5">
           <Link
             className="hover:text-[#186fd4] w-fit h-fit text-[12px]"
@@ -71,6 +71,17 @@ const Navbar = () => {
       </div>
       <div className="flex justify-between">
         <img src={Logo} alt="Logo" className="h-10" />
+        <div className="bg-[#186fd4] rounded-md px-5 py-4 text-white flex items-center gap-3 uppercase text-[12px] font-semibold">
+          <img src={burger} alt="" />
+          Каталог
+        </div>
+        <div className="flex p-0.5 bg-[#186fd4]">
+          <input
+            className="bg-white"
+            type="text"
+            placeholder="Найти среди 50000 товаров. Например: Дрель Bosch"
+          />
+        </div>
       </div>
     </div>
   );
