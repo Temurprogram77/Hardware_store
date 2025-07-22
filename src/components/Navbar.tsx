@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { images } from '../assets/images';
+import { images } from "../assets/images";
 
 const { Logo } = images;
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex flex-col">
       <div className="flex justify-between py-2 w-[1460px] mx-auto">
         <div className="flex items-center gap-5">
           <Link
@@ -69,8 +69,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <img src={Logo} alt="Logo" className="h-10" />
-      <div className="flex justify-between"></div>
+      <div className="flex justify-between">
+        <img src={Logo} alt="Logo" className="h-10" />
+      </div>
     </div>
   );
 };
