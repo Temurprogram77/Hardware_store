@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from 'antd';
-import images from "../assets/images";
+import {images} from "../assets/images";
 import { Breadcrumb } from 'antd';
 
 const NotFoundPage = () => {

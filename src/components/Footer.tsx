@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import images from "../assets/images";
+import {images} from "../assets/images";
 
 const Footer: React.FC = () => {
   return (
