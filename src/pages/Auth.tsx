@@ -5,6 +5,7 @@ import { Button, Input, Space } from 'antd';
 import { Checkbox } from 'antd';
 import type { CheckboxProps } from 'antd';
 import { FiUserPlus } from 'react-icons/fi';
+import { MdOutlineChevronRight } from 'react-icons/md';
 
 const onChange: CheckboxProps['onChange'] = (e) => {
   console.log(`checked = ${e.target.checked}`);
@@ -65,7 +66,7 @@ const AuthPage = () => {
                 <div className='ml-18 w-lg mt-7'>
                   <p className='flex-wrap leading-7 text-gray-600'><span className='font-bold '>Регистрация на сайте</span> позволяет получить доступ к статусу и истории вашего заказа. Просто заполните поля ниже, и вы получите учетную запись.</p>
                   <p className='!mt-5 flex-wrap leading-7 text-gray-500'>Мы запрашиваем у вас только информацию, необходимую для того, чтобы сделать процесс покупки более быстрым и легким.</p>
-                  <Button className=''>Зарегистрироваться</Button>
+                  <Button type='primary' className='!px-10 !py-8 !bg-black !text-sm !uppercase !flex !items-center hover:!bg-orange-700'>Зарегистрироваться <MdOutlineChevronRight size={30} /></Button>
                 </div>
               </div>
             </div>
