@@ -121,7 +121,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex md:hidden items-center gap-2">
         <div className="bg-[#186fd4] hover:bg-black duration-200 cursor-pointer rounded-md px-4 py-3.5 text-white flex items-center gap-3 uppercase text-[12px] font-semibold">
           <img src={burger} alt="" />
           Каталог
