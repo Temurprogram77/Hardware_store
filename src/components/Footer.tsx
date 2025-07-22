@@ -91,12 +91,12 @@ const Footer: React.FC = () => {
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center py-8 gap-8">
         <div className="flex flex-wrap items-center gap-4">
           <span className="text-sm grayscale contrast-0 ">Мы принимаем <br /> к оплате:</span>
-          <div className='flex items-center gap-7 relative left-20'>
-          <img src={images.visa} alt="Visa" className="w-15 grayscale contrast-0 cursor-pointer hover: transition duration-300" />
-          <img src={images.v} alt="MasterCard" className="w-15 grayscale contrast-0" />
-          <img src={images.mir} alt="MIR" className="w-15 grayscale contrast-0" />
-          <img src={images.xalva} alt="Halva" className="w-15 grayscale contrast-0" />
-          <img src={images.tinkoff} alt="Tinkoff" className="w-15 grayscale contrast-0" />
+          <div className='flex items-center gap-7 relative left-'>
+          <img src={images.visa} alt="Visa" className="w-13 grayscale contrast-0 cursor-pointer hover: transition duration-300" />
+          <img src={images.v} alt="MasterCard" className="w-13 grayscale contrast-0" />
+          <img src={images.mir} alt="MIR" className="w-13 grayscale contrast-0" />
+          <img src={images.xalva} alt="Halva" className="w-13 grayscale contrast-0" />
+          <img src={images.tinkoff} alt="Tinkoff" className="w-13 grayscale contrast-0" />
           </div>
         </div>
 
