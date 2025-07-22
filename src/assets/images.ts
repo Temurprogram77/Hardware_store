@@ -6,6 +6,14 @@ import tinkoff from "./tinkoff.png";
 import visa from "./visa.png";
 import xalva from "./xalva.png";
 import v from "./v.png";
+import burger from "./burger2.svg";
+import search from "./search.svg";
+import gift from "./gift2.svg";
+import user from "./user.svg";
+import compare from "./compare.svg";
+import heart from "./favourite.svg";
+import basket from "./cart.svg";
+import menu from "./burger-menu.svg";
 
 export const images = {
   Logo,
@@ -16,4 +24,12 @@ export const images = {
   visa,
   xalva,
   v,
+  burger,
+  search,
+  gift,
+  user,
+  heart,
+  compare,
+  basket,
+  menu
 };

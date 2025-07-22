@@ -26,12 +26,13 @@ import {
   Reviews,
   SearchResults,
   Stock,
+  Register
 } from "../pages";
 
 export const routes = [
   { path: "/", element: <Home /> },
   { path: "/about", element: <AboutTheCompany /> },
-  { path: "/auth", element: <Auth /> },
+  { path: "/my-account", element: <Auth /> },
   { path: "/basket", element: <Basket /> },
   { path: "/blog", element: <Blog /> },
   { path: "/change-password", element: <ChangePassword /> },
@@ -57,5 +58,6 @@ export const routes = [
   { path: "/reviews", element: <Reviews /> },
   { path: "/search-results", element: <SearchResults /> },
   { path: "/stock", element: <Stock /> },
+  { path: "/register", element: <Register /> },
   { path: "*", element: <NotFound /> },
 ];
