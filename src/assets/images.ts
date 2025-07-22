@@ -14,8 +14,12 @@ import compare from "./compare.svg";
 import heart from "./favourite.svg";
 import basket from "./cart.svg";
 import menu from "./burger-menu.svg";
+import slider1 from "./slider1.webp";
+import slider2 from "./slider11.webp";
 
 export const images = {
+  slider1,
+  slider2,
   Logo,
   ErrorImage,
   logo2,
