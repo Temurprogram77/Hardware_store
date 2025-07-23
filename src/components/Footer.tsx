@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { Button } from 'antd';
 import {images} from "../assets/images";
