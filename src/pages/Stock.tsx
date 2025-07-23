@@ -169,10 +169,10 @@ const Stock:React.FC= () => {
           {
             Stocks.map((item)=>{
             return <div key={item.description}>
-              <div classname='relative'>
+              <div className='relative'>
                 <img src={item.img} alt={item.description} />
-                <p classname='absolute'>{item.title}</p>
-                <Button classname='absolute' type="primary">{item.discount}</Button>
+                <p className='absolute'>{item.title}</p>
+                <Button className='absolute' type="primary">{item.discount}</Button>
               </div>
               <h3>{item.description}</h3>
               <Button type="link">{item.link}</Button>
