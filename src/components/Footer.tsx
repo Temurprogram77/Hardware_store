@@ -1,34 +1,31 @@
-
 import React from "react";
-import { Button, Input } from "antd";
-import { images } from "../assets/images";
+import { Input } from "antd";
 import { IoSend } from "react-icons/io5";
+import { images } from "../assets/images";
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-100 text-gray-700 pt-10 px-4 sm:px-8 md:px-16">
-      {/* Top section */}
+      {/* Top Section */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full py-4 md:py-6 border-b border-gray-200 gap-4 md:gap-0">
-        {/* Logo and company name */}
+        {/* Left: Logo */}
         <div className="flex items-center gap-3">
           <img
             src={images.logo2}
             alt="Стройоптторг Logo"
-            className="md:w-[200px] md:h-[40px] object-contain max-w-none"
+            className="w-12 h-12 md:w-14 md:h-14 object-contain"
           />
-          <span className="text-sm font-semibold whitespace-nowrap">
+          <span className="text-base font-semibold whitespace-nowrap">
             ООО «Стройоптторг»
           </span>
         </div>
 
-        {/* Company info */}
+        {/* Center: Info */}
         <div className="order-last md:order-none flex flex-col sm:flex-row gap-3 md:gap-4 text-sm text-gray-600 text-center md:text-left">
-          <p className="whitespace-nowrap sm:flex hidden relative -left-10">
-            ИНН: 0901051787 <br />
-            ОГРН: 117090000000
-          </p>
-          <p className="relative -right-27">
-            Email: <br />
+          <p className="whitespace-nowrap">ИНН: 0901051787</p>
+          <p className="whitespace-nowrap">КПП: 090101001</p>
+          <p className="whitespace-nowrap">
+            Email:{" "}
             <a
               href="mailto:info@stroitoptorg.ru"
               className="text-blue-600 hover:underline"
@@ -38,28 +35,19 @@ const Footer: React.FC = () => {
           </p>
         </div>
 
-        {/* Phone */}
+        {/* Right: Phone */}
         <div className="flex flex-col items-end">
-          <p className="text-sm font-semibold text-black whitespace-nowrap relative -right-20">
+          <p className="text-lg font-semibold text-black whitespace-nowrap">
             8 800 444 00 65
-            <br />
-            <span className="text-xs md:text-sm text-gray-500 whitespace-nowrap">
-              Ежедневно, с 8:00 до 18:00
-            </span>
           </p>
-        </div>
-
-        {/* Button */}
-        <div>
-          <Button type="default" className="hover:bg-red-600" danger>
-            ЗАКАЗАТЬ ЗВОНОК
-          </Button>
+          <p className="text-xs md:text-sm text-gray-500 whitespace-nowrap">
+            Ежедневно, с 8:00 до 18:00
+          </p>
         </div>
       </div>
 
-      {/* Grid sections */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 py-10 border-b border-gray-300 text-sm text-gray-800">
-        {/* Информация - 1 */}
+      {/* Grid Links */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 py-10 border-b border-gray-300 text-sm">
         <div>
           <h4 className="font-semibold mb-3">Информация</h4>
           <ul className="space-y-1">
@@ -72,8 +60,6 @@ const Footer: React.FC = () => {
             <li><a href="#">Юридическим лицам</a></li>
           </ul>
         </div>
-
-        {/* Информация - 2 */}
         <div>
           <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
           <ul className="space-y-1">
@@ -85,8 +71,6 @@ const Footer: React.FC = () => {
             <li><a href="#">Все акции</a></li>
           </ul>
         </div>
-
-        {/* Каталог - 1 */}
         <div>
           <h4 className="font-semibold mb-3">Каталог</h4>
           <ul className="space-y-1">
@@ -96,18 +80,14 @@ const Footer: React.FC = () => {
             <li><a href="#">Сантехника</a></li>
           </ul>
         </div>
-
-        {/* Каталог - 2 */}
         <div>
           <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
           <ul className="space-y-1">
-            <li><a href="#">Спецодежда и средства защиты</a></li>
+            <li><a href="#">Спецодежда и средства индивидуальной и пожарной защиты</a></li>
             <li><a href="#">Столярные изделия</a></li>
             <li><a href="#">Всё для сауны и бани</a></li>
           </ul>
         </div>
-
-        {/* Каталог - 3 */}
         <div>
           <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
           <ul className="space-y-1">
@@ -118,25 +98,27 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Payment & Newsletter */}
+      {/* Payment + Newsletter */}
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center py-8 gap-8">
-        {/* Payment methods */}
+        {/* Payment Icons */}
         <div className="flex flex-wrap items-center gap-4">
           <span className="text-sm grayscale contrast-0">
             Мы принимаем <br /> к оплате:
           </span>
-          <div className="flex items-center gap-7">
-            <img src={images.visa} alt="Visa" className="w-13 grayscale contrast-0" />
-            <img src={images.v} alt="MasterCard" className="w-13 grayscale contrast-0" />
-            <img src={images.mir} alt="MIR" className="w-13 grayscale contrast-0" />
-            <img src={images.xalva} alt="Halva" className="w-13 grayscale contrast-0" />
-            <img src={images.tinkoff} alt="Tinkoff" className="w-13 grayscale contrast-0" />
+          <div className="flex items-center gap-6">
+            <img src={images.visa} alt="Visa" className="w-12 grayscale contrast-0" />
+            <img src={images.v} alt="MasterCard" className="w-12 grayscale contrast-0" />
+            <img src={images.mir} alt="MIR" className="w-12 grayscale contrast-0" />
+            <img src={images.xalva} alt="Halva" className="w-12 grayscale contrast-0" />
+            <img src={images.tinkoff} alt="Tinkoff" className="w-12 grayscale contrast-0" />
           </div>
         </div>
 
         {/* Newsletter */}
         <div className="w-full max-w-xl flex items-center justify-center gap-2">
-          <p className="w-[350px] text-[15px]">Подпишитесь на рассылку и будьте в курсе!</p>
+          <p className="w-[250px] text-[15px]">
+            Подпишитесь на рассылку и будьте в курсе!
+          </p>
           <div className="relative w-full max-w-md">
             <Input
               className="w-full h-12 pr-12 pl-4 py-2 border border-gray-300 rounded-lg hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
@@ -152,9 +134,12 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Footer Bottom */}
+      {/* Bottom Note */}
       <div className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 pb-10">
-        <p>© 2003–2023 Интернет-магазин ООО «Стройоптторг» — р/с 40702810360000102415</p>
+        <p>
+          © 2003–2023 Интернет-магазин ООО «Стройоптторг» — р/с
+          40702810360000102415
+        </p>
         <p>в Ставропольское отделение №5230 ПАО Сбербанк, БИК 040702615</p>
         <p className="mt-2">
           <a href="#" className="text-gray-600 hover:text-blue-600">
