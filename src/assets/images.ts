@@ -44,8 +44,12 @@ import brandImage4 from "./image 20.svg";
 import brandImage5 from "./image 21.svg";
 import brandImage6 from "./image 22.svg";
 import brandImage7 from "./image 23.svg";
+import aboutImage1 from "./about.webp";
+import aboutImage2 from "./about2.webp";
 
 export const images = {
+  aboutImage1,
+  aboutImage2,
   brandImage1,
   brandImage2,
   brandImage3,
