@@ -16,7 +16,7 @@ const {
   cardImage6,
   cardImage7,
   cardImage8,
-} = images;
+} = images;   
 
 const data = [
   {
@@ -55,8 +55,8 @@ const data = [
 
 const SwipperWrapper = () => {
   return (
-    <div className="w-full mb-6">
-      <div className="grid grid-cols-2 gap-3 sm:hidden p-4">
+    <div className="max-w-[1460px] mx-auto mb-6">
+      <div className="grid grid-cols-2 gap-3 sm:hidden ">
         {data.map((item, index) => (
           <div
             key={index}
@@ -68,7 +68,7 @@ const SwipperWrapper = () => {
         ))}
       </div>
 
-      <div className="hidden sm:block px-4">
+      <div className="hidden sm:block">
         <Swiper
           modules={[FreeMode]}
           freeMode={true}

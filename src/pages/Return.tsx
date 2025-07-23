@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import Questions from "../components/Questions"
+import Advantages from "../components/Advantages"
+import Advertisement from "../components/Advertisement"
 interface Review {
   key: number,
   quiz: string,
@@ -27,7 +29,7 @@ const quizs:Review[]=[
     answer: "Был не раз, рекомендую",
   }
 ]
-const Return = () => {
+const Return:React.FC = () => {
   return (
     <section className="mt-8 max-w-[1270px] mx-auto px-4">
       <ul className="flex text-[15px] gap-4 flex-wrap">
@@ -43,7 +45,8 @@ const Return = () => {
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Возврат</h1>
 
-        <div className="flex flex-col w-full md:w-[76%]">
+        <div className="flex w-full justify-between">
+          <div className="flex flex-col w-full md:w-[76%]">
           <div className="w-full mt-8 leading-7 text-gray-700">
             <p className="text-[14px] md:text-[16px]">
               Возврат или обмен товара надлежащего качества, возможен в течение 14 дней с момента покупки в соответствие со ст.26.1 Закона «О защите прав потребителей», сохранивший товарный вид и потребительские свойства при наличии документов:
@@ -74,6 +77,8 @@ const Return = () => {
 
             </div>
           </div>
+        </div>
+              <Advertisement/>
         </div>
       </div>
     </section>

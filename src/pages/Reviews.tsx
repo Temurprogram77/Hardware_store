@@ -7,6 +7,7 @@ import img3 from '../assets/ivan1.png'
 import img4 from '../assets/ivan2.png'
 import img5 from '../assets/ivan3.png'
 import ReviewForm from "../components/ReviewForm";
+import Advertisement from "../components/Advertisement";
 interface Review {
   name: string,
   date: string,
@@ -68,7 +69,7 @@ const reviews: Review[]=[
 ];
 
 
-const Reviews = () => {
+const Reviews:React.FC = () => {
   return (
     <section className="mt-8 max-w-[1270px] mx-auto px-4">
       <ul className="flex text-[15px] gap-4 flex-wrap">
@@ -84,7 +85,8 @@ const Reviews = () => {
       <div className="w-full mt-8">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Отзывы</h1>
 
-        <div className="flex flex-col w-full md:w-[76%] mt-4">
+        <div className="flex justify-between">
+          <div className="flex flex-col w-full md:w-[76%] mt-4">
           <div className="w-[290px] h-[45px] flex justify-between items-center">
             <Button type="primary">Сначала новые</Button>
             <Button type="dashed">Сначала старые</Button>
@@ -98,6 +100,8 @@ const Reviews = () => {
             <h3 className="font-medium text-[18px] md:text-[20px] leading-[26px] text-[#2C333D]">Оставить отзыв</h3>
             <ReviewForm/>
           </div>
+        </div>
+        <Advertisement/>
         </div>
       </div>
     </section>
