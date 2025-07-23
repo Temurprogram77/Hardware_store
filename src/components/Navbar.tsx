@@ -110,7 +110,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           <div className="hidden sm:flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
             <img src={gift} alt="gift" className="w-5 h-4" />
-            <p className="text-[12px] !m-0 font-medium">Все акции</p>
+           <Link to={'/stock'}> <p className="text-[12px] !m-0 font-medium">Все акции</p></Link>
           </div>
 
           <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">

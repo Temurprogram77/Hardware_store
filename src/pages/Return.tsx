@@ -29,7 +29,7 @@ const quizs:Review[]=[
     answer: "Был не раз, рекомендую",
   }
 ]
-const Return = () => {
+const Return:React.FC = () => {
   return (
     <section className="mt-8 max-w-[1270px] mx-auto px-4">
       <ul className="flex text-[15px] gap-4 flex-wrap">

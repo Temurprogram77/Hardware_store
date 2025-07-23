@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 import Questions from "../components/Questions"
+import Advertisement from "../components/Advertisement";
 
-const QuestionAndAnswer = () => {
+const QuestionAndAnswer:React.FC = () => {
   interface Review {
   key: number,
   quiz: string,
@@ -66,7 +67,8 @@ const quizs: Review[] = [
           <Link to={'/return'}>Вопрос-ответ</Link>
         </li>
       </ul>
-      <div className="w-full mt-8 items-center">
+      <div className="flex justify-between">
+        <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Вопрос-ответ</h1>
         <div className="flex flex-col w-full md:w-[76%]">
           <div>
@@ -78,6 +80,8 @@ const quizs: Review[] = [
 
             </div>
         </div>
+      </div>
+      <Advertisement/>
       </div>
     </section>
   )
