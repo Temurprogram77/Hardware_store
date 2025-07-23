@@ -169,13 +169,15 @@ const Stock:React.FC= () => {
           {
             Stocks.map((item)=>{
             return <div key={item.description}>
-              <div className='relative'>
-                <img src={item.img} alt={item.description} />
-                <p className='absolute'>{item.title}</p>
-                <Button className='absolute' type="primary">{item.discount}</Button>
+              <div className='relative h-[180px]'>
+                <img className="absolute w-full h-full object-cover" src={item.img} alt={item.description} />
+                <p className='absolute bottom-[2.3rem] left-3 w-[178px] font-medium text-[22px]'>{item.title}</p>
+                <Button className='absolute bottom-[-8rem] left-2.5' type="primary">{item.discount}</Button>
               </div>
-              <h3>{item.description}</h3>
-              <Button type="link">{item.link}</Button>
+              <div className="flex flex-col leading-6 relative w-full h-[83px]">
+                <h3 className="font-medium absolute top-[0.5rem] h-[52px]">{item.description}</h3>
+              <Button type="link" className='absolute top-[3.3rem] left-[-4.9rem]'>{item.link}</Button>
+              </div>
             </div>
             })
           }
