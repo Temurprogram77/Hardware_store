@@ -37,8 +37,22 @@ import cardBgImage1 from "./CardBgImage1.png";
 import cardBgImage2 from "./CardBgImage2.png";
 import cardBgImage3 from "./CardBgImage3.png";
 import cardBgImage4 from "./CardBgImage4.png";
+import brandImage1 from "./image 17.svg";
+import brandImage2 from "./image 18.svg";
+import brandImage3 from "./image 19.svg";
+import brandImage4 from "./image 20.svg";
+import brandImage5 from "./image 21.svg";
+import brandImage6 from "./image 22.svg";
+import brandImage7 from "./image 23.svg";
 
 export const images = {
+  brandImage1,
+  brandImage2,
+  brandImage3,
+  brandImage4,
+  brandImage5,
+  brandImage6,
+  brandImage7,
   cardBgImage1,
   cardBgImage2,
   cardBgImage3,
