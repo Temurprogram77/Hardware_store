@@ -1,7 +1,51 @@
-const PrivacyPolicy = () => {
-  return (
-    <div>PrivacyPolicy</div>
-  )
-}
+import React from 'react';
 
-export default PrivacyPolicy
+const PrivacyPolicy: React.FC = () => {
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-8 text-justify text-gray-800 space-y-4">
+      <h1 className="text-3xl font-bold mb-6 text-center">Политика конфиденциальности</h1>
+
+      <p>
+        Настоящая Политика конфиденциальности и обработки персональных данных (далее – Политика конфиденциальности)
+        регулирует порядок обработки и использования персональных и иных данных, собранных Товариществом с ограниченной
+        ответственностью «https://Stroiopttorg.ru» (далее – Товарищество) с помощью интернет-ресурса https://Stroiopttorg.ru
+        (далее – Сайт), мобильного приложения https://Stroiopttorg.ru и связанных с ними услуг.
+      </p>
+
+      <h2 className="text-2xl font-semibold mt-6">1. ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ</h2>
+      <ul className="list-disc list-inside space-y-2">
+        <li><strong>Сайт</strong> – интернет-ресурс по адресу: https://Stroiopttorg.ru.</li>
+        <li><strong>Персональные данные</strong> – данные Пользователя, предоставленные при регистрации или использовании сайта.</li>
+        <li><strong>Пользователь</strong> – лицо, использующее Сайт.</li>
+        <li><strong>Обработка персональных данных</strong> – действия по сбору, хранению, передаче и удалению данных.</li>
+        <li><strong>Конфиденциальность</strong> – обязательство не разглашать персональные данные без согласия Пользователя.</li>
+        <li><strong>Cookies</strong> – текстовые файлы с информацией, хранящейся на устройстве Пользователя.</li>
+        <li><strong>IP-адрес</strong> – уникальный сетевой адрес устройства в Интернете.</li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold mt-6">2. ОБЩИЕ ПОЛОЖЕНИЯ</h2>
+      <p>
+        Использование Сайта означает согласие Пользователя с Политикой. При несогласии с условиями – прекращается использование.
+      </p>
+
+    
+      <h2 className="text-2xl font-semibold mt-6">3. ПРЕДМЕТ ПОЛИТИКИ КОНФИДЕНЦИАЛЬНОСТИ</h2>
+      <p>
+        Товарищество обязуется не раскрывать и защищать персональные данные Пользователя, включая ФИО, телефон, email и адрес доставки.
+      </p>
+
+      <h2 className="text-2xl font-semibold mt-6">4–9. Цели, Обработка, Права, Ответственность</h2>
+      <p>
+        Политика описывает цели обработки, способы защиты, права сторон, ответственность и порядок разрешения споров в соответствии с
+        законодательством Республики Казахстан.
+      </p>
+
+      <h2 className="text-2xl font-semibold mt-6">Контакты</h2>
+      <p>
+        Вопросы по Политике можно направлять на email: <a href="mailto:info@Stroiopttorg.ru" className="text-blue-600 underline">info@Stroiopttorg.ru</a>
+      </p>
+    </div>
+  );
+};
+
+export default PrivacyPolicy;
