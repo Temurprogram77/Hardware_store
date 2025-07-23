@@ -8,10 +8,10 @@ import img4 from '../assets/ivan2.png'
 import img5 from '../assets/ivan3.png'
 import ReviewForm from "../components/ReviewForm";
 interface Review {
-  name: string;
-  date: string;
-  text: string;
-  images: string[];
+  name: string,
+  date: string,
+  text: string,
+  images: string[],
 }
 
 const reviews: Review[]=[

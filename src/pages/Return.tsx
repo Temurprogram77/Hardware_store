@@ -1,6 +1,32 @@
 import { Link } from "react-router-dom"
 import Questions from "../components/Questions"
-
+interface Review {
+  key: number,
+  quiz: string,
+  answer: string,
+}
+const quizs:Review[]=[
+    {
+    key: 1,
+    quiz: "Куда обращаться в случае поломки в течении гарантийного срока?",
+    answer: "Был не раз, рекомендую",
+  },
+  {
+    key: 2,
+    quiz: "Куда обращаться в случае поломки в течении гарантийного срока?",
+    answer: "Проводится платная диагностика и ремонт товара",
+  },
+  {
+    key: 3,
+    quiz: "Есть ли гарантийный ремонт?",
+    answer: "Был не раз, рекомендую",
+  },
+  {
+    key: 4,
+    quiz: "Какой срок действия гарантии?",
+    answer: "Был не раз, рекомендую",
+  }
+]
 const Return = () => {
   return (
     <section className="mt-8 max-w-[1270px] mx-auto px-4">
@@ -39,7 +65,14 @@ const Return = () => {
 
           <div className="w-full mt-12">
             <h3 className="font-medium text-[18px] md:text-[20px] leading-[26px] text-[#2C333D]">Обращение по гарантии</h3>
-            <Questions />
+            <div>
+             {
+  quizs.map(item => (
+    <Questions key={item.key} quiz={item} />
+  ))
+}
+
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { Breadcrumb } from 'antd';
-import { MdLocationPin } from "react-icons/md";
+import { SlLocationPin } from "react-icons/sl";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
 
@@ -24,7 +24,7 @@ const Contacts = () => {
           <div className=' flex flex-col items-center w-[315px] h-[475px] pt-6  absolute left-[1150px] mt-9 rounded-[10px] !z-10 shadow-lg bg-white'>
               <h2 className='!font-bold'>ООО «Стройоптторг»</h2>
               <div className='flex gap-2 mt-3'>
-                <MdLocationPin className=' text-2xl' />
+                <SlLocationPin className=' text-[20px]' />
                 <div className=''>
                   <h6 className='!font-bold text-[#2f3134]'>Адрес:</h6>
                   <p className='text-[#494d52] text-sm w-[220px]'>369012 , Карачаево-Черкесская Республика , г. Черкесск , ул Октябрьская, дом 301</p>
@@ -55,6 +55,17 @@ const Contacts = () => {
         </div>
         <div></div>
       </div>
+      <section className='flex justify-center mt-10'>
+        <div className='w-[750px] flex justify-center'>
+          <h1 className='text-[#2c333d] !font-bold text-3xl'>У вас есть вопросы? С радостью ответим на них!</h1>
+          <form>
+            <div>
+              <label>Ваше имя <span className='text-[#e52b0e]'>*</span>:</label>
+              <input type="text" placeholder='Введите ваше имя'/>
+            </div>
+          </form>
+        </div>
+      </section>
     </div>
   )
 }
