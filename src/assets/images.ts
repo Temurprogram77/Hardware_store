@@ -25,8 +25,32 @@ import advantage1 from "./advantage-icon1.svg";
 import advantage2 from "./advantage-icon2.svg";
 import advantage3 from "./advantage-icon3.svg";
 import advantage4 from "./advantage-icon4.svg";
+import cardImage1 from "./Ellipse 3.png";
+import cardImage2 from "./image 2.png";
+import cardImage3 from "./image 3.png";
+import cardImage4 from "./image 12.png";
+import cardImage5 from "./image 13.png";
+import cardImage6 from "./klipartz 1.png";
+import cardImage7 from "./image 2.png";
+import cardImage8 from "./pngegg 1.png";
+import cardBgImage1 from "./CardBgImage1.png";
+import cardBgImage2 from "./CardBgImage2.png";
+import cardBgImage3 from "./CardBgImage3.png";
+import cardBgImage4 from "./CardBgImage4.png";
 
 export const images = {
+  cardBgImage1,
+  cardBgImage2,
+  cardBgImage3,
+  cardBgImage4,
+  cardImage1,
+  cardImage2,
+  cardImage3,
+  cardImage4,
+  cardImage5,
+  cardImage6,
+  cardImage7,
+  cardImage8,
   slider1Mobile,
   slider2Mobile,
   slider1Tablet,
@@ -53,5 +77,5 @@ export const images = {
   heart,
   compare,
   basket,
-  menu
+  menu,
 };
