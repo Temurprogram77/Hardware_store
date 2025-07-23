@@ -16,7 +16,7 @@ const {
   cardImage6,
   cardImage7,
   cardImage8,
-} = images;
+} = images;   
 
 const data = [
   {
