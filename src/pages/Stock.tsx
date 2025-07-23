@@ -165,14 +165,14 @@ const Stock:React.FC= () => {
       </ul>
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Акции</h1>
-        <div className="grid grid-cols-4">
+        <div className="grid gap-[1.5rem] grid-cols-4">
           {
             Stocks.map((item)=>{
             return <div key={item.description}>
-              <div>
+              <div classname='relative'>
                 <img src={item.img} alt={item.description} />
-                <p>{item.title}</p>
-                <Button type="primary">{item.discount}</Button>
+                <p classname='absolute'>{item.title}</p>
+                <Button classname='absolute' type="primary">{item.discount}</Button>
               </div>
               <h3>{item.description}</h3>
               <Button type="link">{item.link}</Button>
