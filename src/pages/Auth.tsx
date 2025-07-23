@@ -1,29 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Breadcrumb, Typography, Input, Button, Space, Checkbox } from 'antd';
-import type { CheckboxProps } from 'antd';
-import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import { Link } from 'react-router-dom';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
 
 const AuthPage: React.FC = () => {
-  const [emailOrLogin, setEmailOrLogin] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [rememberMe, setRememberMe] = useState<boolean>(false);
-
-  const handleLogin = () => {
-    console.log('Email yoki Login:', emailOrLogin);
-    console.log('Parol:', password);
-    console.log('Eslab qolish (remember me):', rememberMe);
-  };
-
-  const handleCheckboxChange: CheckboxProps['onChange'] = (e: CheckboxChangeEvent) => {
-    setRememberMe(e.target.checked);
-  };
 
   return (
-    <main className='mb-10'>
+    <main className='mb-10 mt-5 px-3'>
       <hr className='text-gray-200' />
       <div className="max-w-[1460px] mx-auto mt-2.5">
         <Breadcrumb
@@ -42,8 +27,8 @@ const AuthPage: React.FC = () => {
         />
         <section>
           <div className="mt-4">
-            <h2 className="!font-bold text-4xl">Авторизация</h2>
-            <div className='mt-20 ml-20 border w-[88%] rounded-lg p-8 px-10 border-gray-200 flex justify-between'>
+            <h2 className="!font-bold text-4xl sm:text-3xl">Авторизация</h2>
+            <div className='mt-20 ml-20 border w-[88%] rounded-lg p-8 px-10 border-gray-200 flex justify-between sm:flex sm:flex-col'>
               <div className='flex items-center flex-col'>
                 <Space direction="vertical">
                   <Typography.Title className='!text-lg'>
@@ -52,8 +37,6 @@ const AuthPage: React.FC = () => {
                   <Input
                     className='!w-[450px] !h-[55px] !text-lg !mb-2.5 !-mt-2'
                     placeholder="Введите данные для авторизации"
-                    value={emailOrLogin}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmailOrLogin(e.target.value)}
                   />
                   <Typography.Title className='!text-lg'>
                     Пароль <span className='text-red-700'>*</span>:
@@ -61,8 +44,6 @@ const AuthPage: React.FC = () => {
                   <Input.Password
                     className='!w-[450px] !h-[55px] !text-lg !-mt-2'
                     placeholder="Введите пароль"
-                    value={password}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     iconRender={(visible: boolean) =>
                       visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                     }
@@ -79,7 +60,6 @@ const AuthPage: React.FC = () => {
                   <Button
                     type='primary'
                     className='!mt-4 !w-full !h-[55px] !text-sm !font-bold !uppercase'
-                    onClick={handleLogin}
                   >
                     Авторизоваться
                   </Button>
@@ -87,8 +67,6 @@ const AuthPage: React.FC = () => {
 
                 <Checkbox
                   className='!mt-2.5 !items-center !text-sm'
-                  checked={rememberMe}
-                  onChange={handleCheckboxChange}
                 >
                   Запомнить меня
                 </Checkbox>
@@ -110,9 +88,9 @@ const AuthPage: React.FC = () => {
                   </p>
                   <Button
                     type='primary'
-                    className='!h-[60px] !bg-black !text-sm !uppercase !flex !items-center hover:!bg-orange-700'
+                    className='!h-[60px] !bg-black !text-sm !uppercase hover:!bg-orange-700'
                   >
-                    Зарегистрироваться <MdOutlineChevronRight size={30} />
+                    <Link className='!flex !items-center' to={"/register"}>Зарегистрироваться <MdOutlineChevronRight size={30} /></Link>
                   </Button>
                 </div>
               </div>
