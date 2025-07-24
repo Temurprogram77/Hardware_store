@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
-import type { ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface ModalContextType {
   isOpen: boolean;
@@ -17,7 +16,11 @@ export const useModal = () => {
   return context;
 };
 
-export const ModalProvider = ({ children }: { children: ReactNode }) => {
+interface Props {
+  children: ReactNode;
+}
+
+export const ModalProvider: React.FC<Props> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);

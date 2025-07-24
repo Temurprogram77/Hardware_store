@@ -50,8 +50,10 @@ import newsImage1 from "./newsImage1.png";
 import newsImage2 from "./newsImage2.png";
 import newsImage3 from "./newsImage3.png";
 import newsImage4 from "./newsImage4.png";
+import close from "./close.svg";
 
 export const images = {
+  close,
   newsImage1,
   newsImage2,
   newsImage3,
