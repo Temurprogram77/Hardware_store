@@ -46,7 +46,9 @@ import brandImage6 from "./image 22.svg";
 import brandImage7 from "./image 23.svg";
 import aboutImage1 from "./about.webp";
 import aboutImage2 from "./about2.webp";
-
+import Сравнение1 from "./Сравнение1.png";
+import Сравнение2 from "./Сравнение2.png";
+import Сравнение3 from "./Сравнение3.png";
 export const images = {
   aboutImage1,
   aboutImage2,
@@ -96,4 +98,7 @@ export const images = {
   compare,
   basket,
   menu,
+  Сравнение1,
+  Сравнение2,
+  Сравнение3
 };
