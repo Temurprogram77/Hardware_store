@@ -25,7 +25,7 @@ import advantage1 from "./advantage-icon1.svg";
 import advantage2 from "./advantage-icon2.svg";
 import advantage3 from "./advantage-icon3.svg";
 import advantage4 from "./advantage-icon4.svg";
-import cardImage1 from "./Ellipse 3.png";
+import cardImage1 from "./arrow-right.svg";
 import cardImage2 from "./image 2.png";
 import cardImage3 from "./image 3.png";
 import cardImage4 from "./image 12.png";
@@ -45,11 +45,26 @@ import brandImage5 from "./image 21.svg";
 import brandImage6 from "./image 22.svg";
 import brandImage7 from "./image 23.svg";
 import aboutImage1 from "./about.webp";
+<<<<<<< HEAD
 import aboutImage2 from "./about2.webp";
 import Сравнение1 from "./Сравнение1.png";
 import Сравнение2 from "./Сравнение2.png";
 import Сравнение3 from "./Сравнение3.png";
+=======
+import aboutImage2 from "./main.png";
+import newsImage1 from "./newsImage1.png";
+import newsImage2 from "./newsImage2.png";
+import newsImage3 from "./newsImage3.png";
+import newsImage4 from "./newsImage4.png";
+import close from "./close.svg";
+
+>>>>>>> 6933ba6133a4feaf00f13e488f4ef90190964f56
 export const images = {
+  close,
+  newsImage1,
+  newsImage2,
+  newsImage3,
+  newsImage4,
   aboutImage1,
   aboutImage2,
   brandImage1,

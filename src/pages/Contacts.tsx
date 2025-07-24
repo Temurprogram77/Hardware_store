@@ -1,10 +1,71 @@
+import { useState } from "react";
 import { Breadcrumb } from 'antd';
 import { SlLocationPin } from "react-icons/sl";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
 
+type Region = {
+  city: string;
+  address: string;
+  phone: string;
+  email: string;
+};
+
+const regions: Region[] = [
+  {
+    city: "Москва",
+    address: "127015, Бумажный пр., 19, стр. 2",
+    phone: "+7 (800) 444-00-65",
+    email: "info@stroiopttorg.ru",
+  },
+  {
+    city: "Ставрополь",
+    address: "355037, ул. Доваторцев, 38Д",
+    phone: "+7 (800) 444-00-65",
+    email: "info@stroiopttorg.ru",
+  },
+  {
+    city: "Краснодар",
+    address: "350002, Северная ул., 490",
+    phone: "+7 (800) 444-00-65",
+    email: "info@stroiopttorg.ru",
+  },
+  {
+    city: "Грозный",
+    address: "364024, ул. Шейха Али Митаева, 17",
+    phone: "+7 (800) 444-00-65",
+    email: "info@stroiopttorg.ru",
+  },
+  {
+    city: "Ростов-на-Дону",
+    address: "344006, Нижнебульварная ул., 6",
+    phone: "+7 (800) 444-00-65",
+    email: "info@stroiopttorg.ru",
+  },
+  {
+    city: "Самара",
+    address: "443080, Московское ш., 41",
+    phone: "+7 (800) 444-00-65",
+    email: "info@stroiopttorg.ru",
+  },
+];
+
+
+const contacts = [
+  { title: "Генеральный директор", phone: "8 (8782) 28-42-67 (приемная)" },
+  { title: "Отдел снабжения", phone: "8 (8782) 28-42-67" },
+  { title: "Отдел сбыта", phone: "8 (8782) 28-45-81" },
+  { title: "Юридический отдел", phone: "8 (8782) 28-42-69" },
+  { title: "Бухгалтерия", phone: "8 (8782) 28-42-71" },
+  { title: "Отдел доставки", phone: "8 (8782) 28-45-83" },
+  { title: "Кредитный отдел", phone: "8 (8782) 28-45-82" },
+  { title: "Отдел кадров", phone: "8 (8782) 28-42-73" }
+];
+
 
 const Contacts = () => {
+const [agree, setAgree] = useState(false);
+
   return (
     <div className="pr-4 pl-4 mt-4 max-w-[1500px]">
       {/* Breadcrumb */}
@@ -50,22 +111,125 @@ const Contacts = () => {
                   <p className='text-[#494d52] text-sm w-[200px]'>Ежедневно, с 8:00 до 18:00 Без перерыва и выходных</p>
                 </div>
               </div>
-              <button className='mt-1 bg-[#186fd4] font-bold !text-white rounded-[10px] w-[250px] h-[50px]'>Заказать звонок</button>
+              <button className='mt-1 bg-[#186fd4] cursor-pointer font-bold !text-white rounded-[10px] w-[250px] h-[50px]'>Заказать звонок</button>
           </div>
         </div>
-        <div></div>
-      </div>
-      <section className='flex justify-center mt-10'>
-        <div className='w-[750px] flex justify-center'>
-          <h1 className='text-[#2c333d] !font-bold text-3xl'>У вас есть вопросы? С радостью ответим на них!</h1>
-          <form>
-            <div>
-              <label>Ваше имя <span className='text-[#e52b0e]'>*</span>:</label>
-              <input type="text" placeholder='Введите ваше имя'/>
+        <div>
+          <div>
+            <div className='mt-11 flex gap-3 justify-center items-center'>
+               <div className="w-[1200px] flex flex-wrap gap-4">
+                {/* birxil cardlar */}
+                  {contacts.map((item, index) => (
+                  <div key={index} className="w-[265px] h-[105px] border border-[#f2f4f6] rounded-lg p-4 shadow">
+                    <p>{item.title}:</p>
+                    <p className="text-md font-bold hover:text-[#007aff]">{item.phone}</p>
+                  </div>
+                  ))}
+                </div>
+
+              <div className='bg-[#f7f9fc] p-5 h-[230px] font-sans'>
+                <h1 className='font-semibold'>Реквизиты:</h1>
+                <p className='text-xs w-[300px] leading-6'>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "СТРОЙОПТТОРГ"ИНН 0901051787КПП 090101001369000, <span>Карачаево-Черкесская республика, город Черкесск, Октябрьская улица, 301р/с 40702810360000102415 в Ставропольское отделение №5230 ПАО Сбербанк, БИК 040702615</span></p>
+              </div>
             </div>
-          </form>
+          </div>
+          <section className="py-8 flex flex-col gap-5 mt-4">
+            <h2 className="!font-bold text-[18px] mb-6">Работаем по регионам:</h2>
+            <div className="flex justify-between gap-x-6 overflow-x-auto">
+              {regions.map((region, index) => (
+                <div
+                  key={index}
+                  className="min-w-[200px] max-w-[250px] border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
+                  <p className="font-semibold">{region.city}</p>
+                  <p>{region.address}</p>
+                  <p className="font-bold">{region.phone}</p>
+                  <a href={`mailto:${region.email}`} className="text-blue-600 hover:underline">
+                    {region.email}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
+      <section className="bg-[#f8f9fb] py-12 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-2xl md:text-3xl !font-bold mb-10 text-gray-800">
+          У вас есть вопросы? С радостью ответим на них!
+        </h2>
+
+        <form className="text-left space-y-6">
+          {/* 2 ustunli inputlar */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block mb-1 text-[14px] font-medium text-gray-700">
+                Ваше имя <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Введите ваше имя"
+                className="w-full border border-[#e3e5e7] rounded-md px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1 text-[14px] font-medium text-gray-700">
+                Номер телефона <span className="text-red-500">*</span>
+              </label>
+              <input
+              data-name='tel'
+                type="tel"
+                name="tel"
+                aria-required='true'
+                aria-invalid='false'
+                placeholder="+7 (___) ___-__-__"
+                className="w-full border border-[#e3e5e7] rounded-md px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              />
+            </div>
+          </div>
+
+          {/* Textarea */}
+          <div>
+            <label className="block mb-1 text-[14px] font-medium text-gray-700">
+              Текст сообщения <span className="text-red-500">*</span>
+            </label>
+            <textarea
+              placeholder="Введите ваш вопрос"
+              rows={4}
+              className="w-full border border-[#e3e5e7] rounded-md px-4 pt-4 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            ></textarea>
+          </div>
+
+          {/* Submit + Checkbox */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <button
+              type="submit"
+              className="bg-blue-600 hover:bg-blue-700 !text-white !text-[14px] font-semibold w-[190px] h-[60px] px-6 py-3 rounded-md"
+            >
+              ОТПРАВИТЬ
+            </button>
+
+            <label className="flex gap-6 items-center text-sm text-gray-700 space-x-2">
+              <input
+                type="checkbox"
+                checked={agree}
+                onChange={(e) => setAgree(e.target.checked)}
+                className="scale-200 !mt-[-8px] border border-gray-400 rounded "
+              />
+              <span className="text-[16px] w-[500px]">
+                Согласен с обработкой персональных данных в соответствии с{" "}
+                <a
+                  href="#"
+                  className="text-blue-600 hover:underline"
+                >
+                  политикой конфиденциальности
+                </a>
+              </span>
+            </label>
+          </div>
+        </form>
+      </div>
+    </section>
     </div>
   )
 }

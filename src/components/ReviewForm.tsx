@@ -3,7 +3,7 @@ import { UploadOutlined } from "@ant-design/icons";
 
 const { TextArea } = Input;
 
-const ReviewForm = () => {
+const ReviewForm:React.FC = () => {
   const [form] = Form.useForm();
   
   const onFinish = (values: any) => {

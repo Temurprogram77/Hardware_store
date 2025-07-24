@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { images } from "../assets/images";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const {
   slider1,
@@ -19,6 +19,7 @@ const {
 
 const Slider = () => {
   const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">("desktop");
+  const swiperRef = useRef<any>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,14 +42,29 @@ const Slider = () => {
 
   return (
     <div className="2xl:mx-auto mx-3">
-      <div className="relative max-w-[1460px] mx-auto">
+      <div className="relative max-w-[1460px] mx-auto overflow-hidden">
+        {/* Custom Arrows */}
+        <button
+          onClick={() => swiperRef.current?.slidePrev()}
+          className="absolute z-50 top-1/2 -translate-y-1/2 -left-12 w-10 h-10 bg-white text-black rounded-full shadow-md hover:bg-black hover:text-white transition"
+        >
+          ‹
+        </button>
+        <button
+          onClick={() => swiperRef.current?.slideNext()}
+          className="absolute z-50 top-1/2 -translate-y-1/2 -right-12 w-10 h-10 bg-white text-black rounded-full shadow-md hover:bg-black hover:text-white transition"
+        >
+          ›
+        </button>
+
+        {/* Swiper */}
         <Swiper
-          modules={[Navigation, Pagination]}
-          navigation
+          modules={[Pagination]}
           pagination={{ clickable: true }}
           loop={true}
           spaceBetween={30}
           slidesPerView={1}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
         >
           <SwiperSlide>
             <div
@@ -57,7 +73,7 @@ const Slider = () => {
                 backgroundImage: `url(${getImage("slider1")})`,
               }}
             >
-              <h2 className="lg:text-5xl !mt-40 md:text-4xl sm:text-3xl text-2xl md:text-start text-center !font-bold mb-4">
+              <h2 className="lg:text-5xl md:!mt-0 !mt-40 md:text-4xl sm:text-3xl text-2xl md:text-start text-center !font-bold mb-4">
                 Электроинструмент <br /> для любых нужд
               </h2>
               <p className="mb-6 text-[16px] md:block hidden">
@@ -77,7 +93,7 @@ const Slider = () => {
                 backgroundImage: `url(${getImage("slider2")})`,
               }}
             >
-              <h2 className="lg:text-5xl !mt-40 md:text-4xl sm:text-3xl text-2xl md:text-start text-center !font-bold mb-4">
+              <h2 className="lg:text-5xl md:!mt-0 !mt-40 md:text-4xl sm:text-3xl text-2xl md:text-start text-center !font-bold mb-4">
                 Хватит мечтать, <br /> пора покупать
               </h2>
               <p className="mb-6 text-[16px] md:block hidden">

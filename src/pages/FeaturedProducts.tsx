@@ -42,7 +42,7 @@ const products: Product[] = [
     discount: 12,
     image: "/images/unitaz.png",
   },
-  // Add more as needed...
+  
 ];
 
 const FavoriteProducts: React.FC = () => {
