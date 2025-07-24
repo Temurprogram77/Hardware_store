@@ -111,7 +111,7 @@ const [agree, setAgree] = useState(false);
                   <p className='text-[#494d52] text-sm w-[200px]'>Ежедневно, с 8:00 до 18:00 Без перерыва и выходных</p>
                 </div>
               </div>
-              <button className='mt-1 bg-[#186fd4] font-bold !text-white rounded-[10px] w-[250px] h-[50px]'>Заказать звонок</button>
+              <button className='mt-1 bg-[#186fd4] cursor-pointer font-bold !text-white rounded-[10px] w-[250px] h-[50px]'>Заказать звонок</button>
           </div>
         </div>
         <div>
