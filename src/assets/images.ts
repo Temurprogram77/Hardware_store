@@ -46,8 +46,16 @@ import brandImage6 from "./image 22.svg";
 import brandImage7 from "./image 23.svg";
 import aboutImage1 from "./about.webp";
 import aboutImage2 from "./about2.webp";
+import newsImage1 from "./newsImage1.png";
+import newsImage2 from "./newsImage2.png";
+import newsImage3 from "./newsImage3.png";
+import newsImage4 from "./newsImage4.png";
 
 export const images = {
+  newsImage1,
+  newsImage2,
+  newsImage3,
+  newsImage4,
   aboutImage1,
   aboutImage2,
   brandImage1,
