@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Шлифмашина угловая Dnipro-M GL-125SE",
+    "price": "589 000",
+    "rating": 5,
+    "image_url": "product1.png"
+  },
+  {
+    "title": "Мойка высокого давления Dnipro-M PW-150",
+    "price": "2 182 000",
+    "rating": 5,
+    "image_url": "product2.png"
+  },
+  {
+    "title": "Дрель-шуруповерт аккумуляторная Dnipro-M CD-123Q",
+    "price": "839 000",
+    "rating": 4,
+    "image_url": "product3.png"
+  },
+  {
+    "title": "Уровень лазерный Dnipro-M ML-360",
+    "price": "1 049 000",
+    "rating": 5,
+    "image_url": "product4.png"
+  },
+  {
+    "title": "Болгарка (УШМ) Dnipro-M GL-190S",
+    "price": "725 000",
+    "rating": 4,
+    "image_url": "product5.png"
+  },
+  {
+    "title": "Шуруповерт аккумуляторный Start Pro SCB-18/2",
+    "price": "695 000",
+    "rating": 4,
+    "image_url": "product6.png"
+  },
+  {
+    "title": "Лазерный дальномер Dnipro-M DL-80",
+    "price": "759 000",
+    "rating": 4,
+    "image_url": "product7.png"
+  },
+  {
+    "title": "Сварочный аппарат инверторный Dnipro-M SAB-258N",
+    "price": "1 199 000",
+    "rating": 5,
+    "image_url": "product8.png"
+  }
+]
