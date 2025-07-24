@@ -51,3 +51,6 @@
 button{
   cursor: pointer;
 }
+ul li:hover{
+color: #186fd4;
+}

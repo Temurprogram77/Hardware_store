@@ -1,11 +1,12 @@
 import Logo from "./Logo.svg";
 import ErrorImage from "./ErrorImage.svg";
 import logo2 from "./logo.png";
-import mir from "./mir.png";
-import tinkoff from "./tinkoff.png";
-import visa from "./visa.png";
-import xalva from "./xalva.png";
-import v from "./v.png";
+import mir from "./mir.svg";
+import tinkoff from "./tinkoff.svg";
+import visa from "./visa.svg";
+import halva from "./halva.svg";
+import v from "./v.svg";
+import check from "./ptichka.svg";
 import burger from "./burger2.svg";
 import search from "./search.svg";
 import gift from "./gift2.svg";
@@ -45,20 +46,17 @@ import brandImage5 from "./image 21.svg";
 import brandImage6 from "./image 22.svg";
 import brandImage7 from "./image 23.svg";
 import aboutImage1 from "./about.webp";
-<<<<<<< HEAD
 import aboutImage2 from "./about2.webp";
-import Сравнение1 from "./Сравнение1.png";
-import Сравнение2 from "./Сравнение2.png";
-import Сравнение3 from "./Сравнение3.png";
-=======
-import aboutImage2 from "./main.png";
+// import Сравнение1 from "./Сравнение1.png";
+// import Сравнение2 from "./Сравнение2.png";
+// import Сравнение3 from "./Сравнение3.png";
+// import aboutImage2 from "./main.png";
 import newsImage1 from "./newsImage1.png";
 import newsImage2 from "./newsImage2.png";
 import newsImage3 from "./newsImage3.png";
 import newsImage4 from "./newsImage4.png";
 import close from "./close.svg";
 
->>>>>>> 6933ba6133a4feaf00f13e488f4ef90190964f56
 export const images = {
   close,
   newsImage1,
@@ -103,7 +101,7 @@ export const images = {
   mir,
   tinkoff,
   visa,
-  xalva,
+  halva,
   v,
   burger,
   search,
@@ -113,7 +111,7 @@ export const images = {
   compare,
   basket,
   menu,
-  Сравнение1,
-  Сравнение2,
-  Сравнение3
+  // Сравнение1,
+  // Сравнение2,
+  // Сравнение3
 };
