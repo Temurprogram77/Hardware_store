@@ -14,14 +14,14 @@ export const regex = {
 }
 
 const Register: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [region, setRegion] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [agreeService, setAgreeService] = useState(false);
-  const [agreePolicy, setAgreePolicy] = useState(false);
+  const [email, setEmail] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
+  const [fullName, setFullName] = useState<string>('');
+  const [region, setRegion] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [agreeService, setAgreeService] = useState<boolean>(false);
+  const [agreePolicy, setAgreePolicy] = useState<boolean>(false);
 
   const [errors, setErrors] = useState({
     email: '',
@@ -30,12 +30,12 @@ const Register: React.FC = () => {
     region: '',
     password: '',
     confirmPassword: '',
-    agreement: '',
-    policy: '',
+    agreement: false,
+    policy: false,
   });
 
   const handleRegister = () => {
-    const newErrors = { email: '', phone: '', fullName: '', region: '', password: '', confirmPassword: '', agreement: '', policy: '' };
+    const newErrors = { email: '', phone: '', fullName: '', region: '', password: '', confirmPassword: '', agreement: false, policy: false };
 
     if (!regex.email.test(email)) newErrors.email = "Пожалуйста, введите действительную почту!";
     if (!regex.phone.test(phone)) newErrors.phone = "Поле телефон не заполнено!";
@@ -43,10 +43,10 @@ const Register: React.FC = () => {
     if (!regex.region.test(region)) newErrors.region = "Поле регион не заполнено!";
     if (!regex.password.test(password)) newErrors.password = "Пароль должен состоять не менее, чем из 8 символов";
     if (password !== confirmPassword) newErrors.confirmPassword = "Parollar mos emas";
-    if (!agreeService) newErrors.agreement = "Вы должны согласиться с условиями обслуживания";
-    if (!agreePolicy) newErrors.policy = "Вы должны согласиться с политикой конфиденциальности";
+    if (!agreeService) newErrors.agreement = false;
+    if (!agreePolicy) newErrors.policy = false;
 
-    setErrors(newErrors);
+    setErrors(newErrors)
 
     const isValid = Object.values(newErrors).every(val => val === "");
     if (!isValid) return;
