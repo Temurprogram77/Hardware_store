@@ -28,6 +28,7 @@ const icons = [
 const SmsIconSwitcher: React.FC = () => {
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
+  const [pingVisible, setPingVisible] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,6 +37,11 @@ const SmsIconSwitcher: React.FC = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  const handleClick = () => {
+    setOpen(!open);
+    setPingVisible(!pingVisible);
+  };
 
   return (
     <>
@@ -65,9 +71,13 @@ const SmsIconSwitcher: React.FC = () => {
       ></div>
 
       <div className="relative">
-        <div className="fixed bottom-10 right-10 z-100">
+        {pingVisible && (
+          <div className="fixed bottom-10 right-10 rounded-full border-3 border-[#00aeef] w-[70px] h-[70px] animate-ping z-100"></div>
+        )}
+
+        <div className="fixed bottom-10 right-10 z-100 p-1 rounded-full bg-[#00afef64] outline-1 outline-[#00aeef]">
           <motion.div
-            onClick={() => setOpen(!open)}
+            onClick={handleClick}
             className="rounded-full bg-[#0070bf] w-[60px] h-[60px] flex items-center justify-center cursor-pointer shadow-lg relative overflow-hidden"
             whileTap={{ scale: 0.95 }}
             initial={false}
