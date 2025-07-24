@@ -231,7 +231,7 @@ const Navbar: React.FC = () => {
 
         <div className="flex-1 min-w-[300px] md:min-w-[500px] lg:flex lg:gap-6 hidden">
           <div className="bg-[#186fd4] hover:bg-black duration-200 cursor-pointer rounded-md px-4 py-3 text-white flex items-center gap-2 uppercase text-[12px] font-semibold">
-            <img src={burger} alt="menu" className="w-4 h-4" />
+            <img src={burger} alt="menu" className="w-4 h-2" />
             Каталог
           </div>
 
