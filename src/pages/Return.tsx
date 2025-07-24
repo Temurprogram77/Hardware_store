@@ -45,7 +45,7 @@ const Return:React.FC = () => {
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Возврат</h1>
 
-        <div className="flex w-full justify-between">
+        <div className="flex w-full flex-col gap-[2rem] md:justify-between">
           <div className="flex flex-col w-full md:w-[76%]">
           <div className="w-full mt-8 leading-7 text-gray-700">
             <p className="text-[14px] md:text-[16px]">
