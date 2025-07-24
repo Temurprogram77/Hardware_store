@@ -55,8 +55,12 @@ import newsImage2 from "./newsImage2.png";
 import newsImage3 from "./newsImage3.png";
 import newsImage4 from "./newsImage4.png";
 import close from "./close.svg";
+import SmsSvg from "./SmsSvg.svg";
+import SmsSvg2 from "./SmsSvg2.svg";
 
 export const images = {
+  SmsSvg,
+  SmsSvg2,
   close,
   newsImage1,
   newsImage2,
