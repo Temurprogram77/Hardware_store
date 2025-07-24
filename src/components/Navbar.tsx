@@ -16,7 +16,14 @@ const {
 } = images;
 
 const Navbar: React.FC = () => {
-  const { openModal, closeModal, isOpen } = useModal();
+  const {
+    modalIsOpen,
+    modalOpenModal,
+    modalCloseModal,
+    openModal,
+    closeModal,
+    isOpen,
+  } = useModal();
   return (
     <div className="xl:m-0 mb-5">
       <div className="border-b border-[#ebeef0]">
@@ -89,7 +96,10 @@ const Navbar: React.FC = () => {
               >
                 8 800 444 00 65
               </a>
-              <div className="bg-[#f2f6fc] text-[#2a5e8d] duration-150 hover:bg-black hover:text-white rounded-sm cursor-pointer py-2.5 px-3 sm:text-[11px] text-[12px] uppercase font-bold">
+              <div
+                onClick={modalOpenModal}
+                className="bg-[#f2f6fc] text-[#2a5e8d] duration-150 hover:bg-black hover:text-white rounded-sm cursor-pointer py-2.5 px-3 sm:text-[11px] text-[12px] uppercase font-bold"
+              >
                 Заказать звонок
               </div>
             </div>
@@ -97,14 +107,39 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
+      {modalIsOpen ? (
+        <>
+          <div
+            onClick={modalCloseModal}
+            className="w-full h-full bg-[#011120cc] fixed z-2 top-0 left-0"
+          ></div>
+          <img src={close} alt="close" className="fixed z-20 top-6 right-6" />
+          <div className="flex flex-col w-[600px] bg-[#fff] p-8 rounded-xl z-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <h2 className="text-[30px] !font-semibold text-center">Заказать обратный звонок</h2>
+            <label htmlFor="inp1">Ваше имя *:</label>
+            <input id="inp1" type="text" className="px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full" placeholder="Как к вам обращаться?" />
+            <label htmlFor="inp2">Номер телефона </label>
+            <input id="inp2" type="text" className="px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full" placeholder="+7 (___) ___-__-__" />
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+
       {isOpen ? (
         <>
-          <div onClick={closeModal} className="w-full h-full bg-[#000000be] fixed z-2 top-0 left-0"></div>
+          <div
+            onClick={closeModal}
+            className="w-full h-full bg-[#000000be] fixed z-2 top-0 left-0"
+          ></div>
           <div className="w-[90%] h-full p-4 bg-[#fff] fixed z-2 top-0 left-0">
             <h2 className="text-[18px] !font-semibold">Меню</h2>
-            <div onClick={closeModal} className="absolute right-4 top-4 rounded-md bg-[#F2F6FC] p-2">
+            <div
+              onClick={closeModal}
+              className="absolute right-4 top-4 rounded-md bg-[#F2F6FC] p-2"
+            >
               <img src={close} alt="close" />
-            </div>  
+            </div>
             <Link to={"/stock"}>
               <div className="py-4 border-t border-[#EBEEF0]">
                 <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
@@ -169,14 +204,14 @@ const Navbar: React.FC = () => {
               </div>
             </Link>
             <div className="flex justify-between items-center my-6">
-              <p className="!m-0">
-                8 800 444 00 65
-              </p>
+              <p className="!m-0">8 800 444 00 65</p>
               <div className="py-2 px-4 rounded-sm font-semibold text-[#2A5E8D] bg-[#F2F6FC]">
                 Заказать звонок
               </div>
             </div>
-            <div className="text-center my-2 text-[#4E5760]">Ежедневно, с 8:00 до 18:00</div>
+            <div className="text-center my-2 text-[#4E5760]">
+              Ежедневно, с 8:00 до 18:00
+            </div>
           </div>
         </>
       ) : (
@@ -212,7 +247,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 hover:text-[#186fd4] sm:gap-4 md:gap-5 lg:gap-6">
+        <div className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           <Link to="/stock">
             <div className="hidden sm:flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
               <img src={gift} alt="gift" className="w-5 h-4" />
