@@ -6,10 +6,7 @@ import {
   FaTelegramPlane,
   FaTimes,
 } from "react-icons/fa";
-import {
-  MdOutlineSms,
-  MdOutlineQuestionAnswer,
-} from "react-icons/md";
+import { MdOutlineSms, MdOutlineQuestionAnswer } from "react-icons/md";
 import { PiInstagramLogo } from "react-icons/pi";
 
 import { images } from "../assets/images";
@@ -22,7 +19,10 @@ const icons = [
   { icon: <FaFacebookF size={30} color="white" />, color: "bg-blue-700" },
   { icon: <FaTelegramPlane size={30} color="white" />, color: "bg-cyan-400" },
   { icon: <MdOutlineSms size={30} color="white" />, color: "bg-blue-600" },
-  { icon: <MdOutlineQuestionAnswer size={30} color="white" />, color: "bg-blue-700" },
+  {
+    icon: <MdOutlineQuestionAnswer size={30} color="white" />,
+    color: "bg-blue-700",
+  },
 ];
 
 const SmsIconSwitcher: React.FC = () => {
@@ -57,7 +57,12 @@ const SmsIconSwitcher: React.FC = () => {
         </AnimatePresence>
       </div>
 
-     <div onClick={() => setOpen(!open)} className={`fixed z-2 top-0 left-0 w-full ${open && "visible opacity-100"} invisible opacity-0 duration-300 h-full bg-[#00000069] z-90`}></div>
+      <div
+        onClick={() => setOpen(!open)}
+        className={`fixed z-2 top-0 left-0 w-full ${
+          open && "visible opacity-100"
+        } invisible opacity-0 duration-300 h-full bg-[#00000069] z-90`}
+      ></div>
 
       <div className="relative">
         <div className="fixed bottom-10 right-10 z-100">
