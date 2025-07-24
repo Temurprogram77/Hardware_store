@@ -18,7 +18,9 @@ const {
 } = images;
 
 const Slider = () => {
-  const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">("desktop");
+  const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">(
+    "desktop"
+  );
   const swiperRef = useRef<any>(null);
 
   useEffect(() => {
@@ -59,12 +61,10 @@ const Slider = () => {
 
         {/* Swiper */}
         <Swiper
-          modules={[Pagination]}
-          pagination={{ clickable: true }}
-          loop={true}
-          spaceBetween={30}
+          modules={[Navigation]}
+          navigation={true}
+          spaceBetween={50}
           slidesPerView={1}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
         >
           <SwiperSlide>
             <div
@@ -97,7 +97,8 @@ const Slider = () => {
                 Хватит мечтать, <br /> пора покупать
               </h2>
               <p className="mb-6 text-[16px] md:block hidden">
-                Плати частями, когда удобно. Рассрочка на покупку товаров <br /> от Тинькофф
+                Плати частями, когда удобно. Рассрочка на покупку товаров <br />{" "}
+                от Тинькофф
               </p>
               <div className="bg-black hover:bg-[#e52b0e] py-4 px-7 md:mx-0 mx-auto rounded-md w-fit h-fit text-white flex items-center gap-7 cursor-pointer duration-200">
                 <p className="!m-0">подробнее</p>

@@ -49,7 +49,7 @@ const data = [
   },
   {
     img: cardImage1,
-    title: "Перейти в каталог",
+    title: "Гипсокартон",
   },
 ];
 
@@ -60,7 +60,7 @@ const SwipperWrapper = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="bg-[#F3F4F5] cursor-pointer flex flex-col items-center gap-2 rounded-md shadow p-4 text-center text-sm font-medium"
+            className="bg-[#F3F4F5] flex flex-col items-center gap-2 rounded-md shadow p-4 text-center text-sm font-medium"
           >
             <img className="h-[60px]" src={item.img} alt={item.title} />
             <p className="!m-0">{item.title}</p>
@@ -87,7 +87,7 @@ const SwipperWrapper = () => {
         >
           {data.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="!bg-[#F3F4F5] cursor-pointer hover:text-[#186FD4] duration-300 flex flex-col items-center gap-3 rounded-2xl shadow p-7 text-center text-sm font-medium">
+              <div className="!bg-[#F3F4F5] flex flex-col items-center gap-3 rounded-2xl shadow p-7 text-center text-sm font-medium">
                 <img className="h-[70px]" src={item.img} alt={item.title} />
                 <p className="!m-0">{item.title}</p>
               </div>

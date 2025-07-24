@@ -26,12 +26,12 @@
 }
 
 .swiper-button-next {
-  right: -60px !important;
+  right: 0px !important;
   transform: translateY(-50%) !important;
 }
 
 .swiper-button-prev {
-  left: -60px !important;
+  left: 0px !important;
   transform: translateY(-50%) !important;
 }
 .swiper-pagination-bullet {
