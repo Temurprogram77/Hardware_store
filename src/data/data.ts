@@ -1,6 +1,7 @@
 import { images } from "../assets/images";
 
 const {
+  dataImage,
   dataImage1,
   dataImage2,
   dataImage3,
@@ -27,7 +28,15 @@ const {
   dataImage24,
 } = images;
 
-export let data = [
+let data = [
+  {
+    image: dataImage,
+    item: "Артикул: XJ89YHGO",
+    title: "Перфоратор универсальный Wander X645-46 GF 1450W",
+    oldMoney: "15 999 ₽",
+    newMoney: "12 789 ₽",
+    sale: "-15%"
+  },
   {
     image: dataImage1,
     item: "Артикул: XJ89YHGO",
@@ -181,6 +190,14 @@ export let data = [
     sale: "-15%"
   },
   {
+    image: dataImage20,
+    item: "Артикул: XJ89YHGO",
+    title: "Перфоратор универсальный Wander X645-46 GF 1450W",
+    oldMoney: "15 999 ₽",
+    newMoney: "12 789 ₽",
+    sale: "-15%"
+  },
+  {
     image: dataImage21,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -212,4 +229,6 @@ export let data = [
     newMoney: "12 789 ₽",
     sale: "-15%"
   },
-];
+];  
+
+export default data;
