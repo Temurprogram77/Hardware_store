@@ -85,24 +85,26 @@ const Reviews:React.FC = () => {
       <div className="w-full mt-8">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Отзывы</h1>
 
-        <div className="flex justify-between">
-          <div className="flex flex-col w-full md:w-[76%] mt-4">
-          <div className="w-[290px] h-[45px] flex justify-between items-center">
-            <Button type="primary">Сначала новые</Button>
-            <Button type="dashed">Сначала старые</Button>
-          </div>
+        <div className="flex flex-col md:flex-row w-full justify-between mt-4 gap-8">
+  <div className="flex flex-col w-full md:w-[76%]">
+    <div className="w-[290px] h-[45px] flex justify-between items-center">
+      <Button type="primary">Сначала новые</Button>
+      <Button type="dashed">Сначала старые</Button>
+    </div>
 
-          <div>
-            <NewList item={reviews} />
-          </div>
+    <div>
+      <NewList item={reviews} />
+    </div>
 
-          <div className="w-full mt-12">
-            <h3 className="font-medium text-[18px] md:text-[20px] leading-[26px] text-[#2C333D]">Оставить отзыв</h3>
-            <ReviewForm/>
-          </div>
-        </div>
-        <Advertisement/>
-        </div>
+    <div className="w-full mt-12">
+      <h3 className="font-medium text-[18px] md:text-[20px] leading-[26px] text-[#2C333D]">Оставить отзыв</h3>
+      <ReviewForm/>
+    </div>
+  </div>
+
+  <Advertisement/>
+</div>
+
       </div>
     </section>
   );

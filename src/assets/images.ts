@@ -47,17 +47,20 @@ import brandImage6 from "./image 22.svg";
 import brandImage7 from "./image 23.svg";
 import aboutImage1 from "./about.webp";
 import aboutImage2 from "./about2.webp";
-// import Сравнение1 from "./Сравнение1.png";
-// import Сравнение2 from "./Сравнение2.png";
-// import Сравнение3 from "./Сравнение3.png";
-// import aboutImage2 from "./main.png";
+import Comparison1 from "./Comparison1.png";
+import Comparison2 from "./Comparison2.png";
+import Comparison3 from "./Comparison3.png";
 import newsImage1 from "./newsImage1.png";
 import newsImage2 from "./newsImage2.png";
 import newsImage3 from "./newsImage3.png";
 import newsImage4 from "./newsImage4.png";
 import close from "./close.svg";
+import SmsSvg from "./SmsSvg.svg";
+import SmsSvg2 from "./SmsSvg2.svg";
 
 export const images = {
+  SmsSvg,
+  SmsSvg2,
   close,
   newsImage1,
   newsImage2,
@@ -111,7 +114,7 @@ export const images = {
   compare,
   basket,
   menu,
-  // Сравнение1,
-  // Сравнение2,
-  // Сравнение3
+  Comparison1,
+  Comparison2,
+  Comparison3
 };

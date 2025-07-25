@@ -58,32 +58,32 @@ const quizs: Review[] = [
 
   return (
     <section className="mt-8 max-w-[1270px] mx-auto px-4">
-      <ul className="flex text-[15px] gap-4 flex-wrap">
-        <li>
-          <Link to={'/'}>Стройоптторг</Link>
-        </li>
-        /
-        <li className="text-gray-500">
-          <Link to={'/return'}>Вопрос-ответ</Link>
-        </li>
-      </ul>
-      <div className="flex justify-between">
-        <div className="w-full mt-8 items-center">
-        <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Вопрос-ответ</h1>
-        <div className="flex flex-col w-full md:w-[76%]">
-          <div>
-             {
-  quizs.map(item => (
-    <Questions key={item.key} quiz={item} />
-  ))
-}
+  <ul className="flex text-[15px] gap-4 flex-wrap">
+    <li>
+      <Link to={'/'}>Стройоптторг</Link>
+    </li>
+    /
+    <li className="text-gray-500">
+      <Link to={'/return'}>Вопрос-ответ</Link>
+    </li>
+  </ul>
 
-            </div>
-        </div>
+  <div className="flex flex-col md:flex-row justify-between gap-8 mt-8">
+    <div className="flex flex-col w-full md:w-[76%]">
+      <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px] mb-8">Вопрос-ответ</h1>
+      <div>
+        {
+          quizs.map(item => (
+            <Questions key={item.key} quiz={item} />
+          ))
+        }
       </div>
-      <Advertisement/>
-      </div>
-    </section>
+    </div>
+
+    <Advertisement/>
+  </div>
+</section>
+
   )
 }
 
