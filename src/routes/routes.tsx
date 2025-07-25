@@ -26,13 +26,15 @@ import {
   Reviews,
   SearchResults,
   Stock,
-  Register
+  Register,
+  Lichniykabinet
 } from "../pages";
 
 export const routes = [
   { path: "/", element: <Home /> },
   { path: "/about", element: <AboutTheCompany /> },
   { path: "/my-account", element: <Auth /> },
+  { path: "/my-accounts", element: <Lichniykabinet /> },
   { path: "/basket", element: <Basket /> },
   { path: "/blog", element: <Blog /> },
   { path: "/change-password", element: <ChangePassword /> },

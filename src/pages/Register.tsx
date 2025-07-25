@@ -35,29 +35,41 @@ const Register: React.FC = () => {
   });
 
   const handleRegister = () => {
-    const newErrors = { email: '', phone: '', fullName: '', region: '', password: '', confirmPassword: '', agreement: false, policy: false };
+    const newErrors = {
+      email: '',
+      phone: '',
+      fullName: '',
+      region: '',
+      password: '',
+      confirmPassword: '',
+      agreement: false,
+      policy: false,
+    };
 
-    if (!regex.email.test(email)) newErrors.email = "Пожалуйста, введите действительную почту!";
-    if (!regex.phone.test(phone)) newErrors.phone = "Поле телефон не заполнено!";
-    if (!regex.fullName.test(fullName)) newErrors.fullName = "Пожалуйста, введите ФИО!";
-    if (!regex.region.test(region)) newErrors.region = "Поле регион не заполнено!";
-    if (!regex.password.test(password)) newErrors.password = "Пароль должен состоять не менее, чем из 8 символов";
-    if (password !== confirmPassword) newErrors.confirmPassword = "Parollar mos emas";
-    if (!agreeService) newErrors.agreement = false;
-    if (!agreePolicy) newErrors.policy = false;
+    if (!regex.email.test(email)) newErrors.email = 'Пожалуйста, введите действительную почту!';
+    if (!regex.phone.test(phone)) newErrors.phone = 'Поле телефон не заполнено!';
+    if (!regex.fullName.test(fullName)) newErrors.fullName = 'Пожалуйста, введите ФИО!';
+    if (!regex.region.test(region)) newErrors.region = 'Поле регион не заполнено!';
+    if (!regex.password.test(password)) newErrors.password = 'Пароль должен состоять не менее, чем из 8 символов';
+    if (password !== confirmPassword) newErrors.confirmPassword = 'Parollar mos emas';
+    if (!agreeService) newErrors.agreement = true;
+    if (!agreePolicy) newErrors.policy = true;
 
-    setErrors(newErrors)
+    setErrors(newErrors);
 
-    const isValid = Object.values(newErrors).every(val => val === "");
+    const isValid = Object.values(newErrors).every(val => val === '' || val === false);
     if (!isValid) return;
 
-    console.log("Formani yuborayapmiz:", {
+    const newAccount = {
       email,
       phone,
       fullName,
       region,
       password,
-    });
+    };
+
+    localStorage.setItem('registeredAccount', JSON.stringify(newAccount));
+    alert('Аккаунт успешно создан и сохранён в localStorage!');
   };
 
   return (
