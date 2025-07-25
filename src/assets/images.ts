@@ -57,8 +57,58 @@ import newsImage4 from "./newsImage4.png";
 import close from "./close.svg";
 import SmsSvg from "./SmsSvg.svg";
 import SmsSvg2 from "./SmsSvg2.svg";
+import dataImage1 from "./Rectangle 22 (1).png";
+import dataImage2 from "./Rectangle 22 (2).png";
+import dataImage3 from "./Rectangle 22 (3).png";
+import dataImage4 from "./Rectangle 22 (4).png";
+import dataImage5 from "./Rectangle 22 (5).png";
+import dataImage6 from "./Rectangle 22 (6).png";
+import dataImage7 from "./Rectangle 22 (7).png";
+import dataImage8 from "./Rectangle 22 (8).png";
+import dataImage9 from "./Rectangle 22 (9).png";
+import dataImage10 from "./Rectangle 22 (10).png";
+import dataImage11 from "./Rectangle 22 (11).png";
+import dataImage12 from "./Rectangle 22 (12).png";
+import dataImage13 from "./Rectangle 22 (13).png";
+import dataImage14 from "./Rectangle 22 (14).png";
+import dataImage15 from "./Rectangle 22 (15).png";
+import dataImage16 from "./Rectangle 22 (16).png";
+import dataImage17 from "./Rectangle 22 (17).png";
+import dataImage18 from "./Rectangle 22 (18).png";
+import dataImage19 from "./Rectangle 22 (19).png";
+import dataImage20 from "./Rectangle 22 (20).png";
+import dataImage21 from "./Rectangle 22 (21).png";
+import dataImage22 from "./Rectangle 22 (22).png";
+import dataImage23 from "./Rectangle 22 (23).png";
+import dataImage24 from "./Rectangle 22 (24).png";
+import closeSidebar from "./closeSidebar.svg";
 
 export const images = {
+  closeSidebar,
+  dataImage1,
+  dataImage2,
+  dataImage3,
+  dataImage4,
+  dataImage5,
+  dataImage6,
+  dataImage7,
+  dataImage8,
+  dataImage9,
+  dataImage10,
+  dataImage11,
+  dataImage12,
+  dataImage13,
+  dataImage14,
+  dataImage15,
+  dataImage16,
+  dataImage17,
+  dataImage18,
+  dataImage19,
+  dataImage20,
+  dataImage21,
+  dataImage22,
+  dataImage23,
+  dataImage24,
   SmsSvg,
   SmsSvg2,
   close,
@@ -116,5 +166,5 @@ export const images = {
   menu,
   Comparison1,
   Comparison2,
-  Comparison3
+  Comparison3,
 };

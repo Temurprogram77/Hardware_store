@@ -56,3 +56,6 @@ button {
 ul li:hover {
   color: #186fd4;
 }
+.arrow-svg:hover .arrow-svg svg {
+  fill: white;
+}
