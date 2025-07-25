@@ -1,6 +1,8 @@
 const ProductCatalog = () => {
   return (
-    <div>ProductCatalog</div>
+    <div className="max-w-[1460px] mx-auto">
+      
+    </div>
   )
 }
 
