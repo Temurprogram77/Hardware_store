@@ -84,14 +84,11 @@ import dataImage23 from "./Rectangle 22 (23).png";
 import dataImage24 from "./Rectangle 22 (24).png";
 import closeSidebar from "./closeSidebar.svg";
 import cartt from "./cartt.svg";
-<<<<<<< HEAD
 import arrow from "./Arrow 5.svg";
-=======
 import Rectangle from "./Rectangle 48.png"
 import Rectangle2 from "./Rectangle 49.png"
 import Rectangle3 from "./Rectangle 50.png"
 import Rectangle4 from "./Rectangle 51.png"
->>>>>>> f5cb7251b9062aeff246ead57b9589b0da689e74
 
 export const images = {
   arrow,
