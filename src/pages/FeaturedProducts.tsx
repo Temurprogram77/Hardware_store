@@ -86,9 +86,6 @@ const FavoriteProducts: React.FC = () => {
             <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded">
               Купить
             </button>
-            <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded">
-              Купить
-            </button>
           </div>
         ))}
       </div>
