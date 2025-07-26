@@ -1,4 +1,4 @@
-import { Breadcrumb, Image } from 'antd';
+import { Breadcrumb } from 'antd';
 import Advertisement from "../components/Advertisement"
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,13 +6,13 @@ import 'swiper/swiper-bundle.css';
 import { Navigation } from 'swiper/modules';
 import right from '../assets/right-arrow.svg'
 import left from '../assets/left-arrow.svg'
-// import Rectangle from '../assets/Rectangle 48.png';
-// import Rectangle2 from '../assets/Rectangle 49.png';
-// import Rectangle3 from '../assets/Rectangle 50.png';
-// import Rectangle4 from '../assets/Rectangle 51.png';
+import Rectangle from '../assets/Rectangle 48.png';
+import Rectangle2 from '../assets/Rectangle 49.png';
+import Rectangle3 from '../assets/Rectangle 50.png';
+import Rectangle4 from '../assets/Rectangle 51.png';
 
 
-// const images = [Rectangle, Rectangle2, Rectangle3, Rectangle4, Rectangle, Rectangle2, Rectangle3, Rectangle4];
+const images = [Rectangle, Rectangle2, Rectangle3, Rectangle4, Rectangle, Rectangle2, Rectangle3, Rectangle4];
 
 
 
