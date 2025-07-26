@@ -84,8 +84,10 @@ import dataImage23 from "./Rectangle 22 (23).png";
 import dataImage24 from "./Rectangle 22 (24).png";
 import closeSidebar from "./closeSidebar.svg";
 import cartt from "./cartt.svg";
+import arrow from "./Arrow 5.svg";
 
 export const images = {
+  arrow,
   closeSidebar,
   cartt,
   dataImage,
