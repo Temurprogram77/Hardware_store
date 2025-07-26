@@ -5,8 +5,10 @@ import { images } from "../assets/images";
 
 const Footer: React.FC = () => {
   return (
+   
     <footer className="bg-gray-100 text-gray-700 pt-10 px-4 sm:px-8 md:px-16">
-      <div className="flex flex-wrap flex-col md:flex-row items-center justify-between w-full py-4 md:py-6 border-b border-gray-200 gap-4 md:gap-0">
+       <div className="max-w-[1460px] mx-auto ">
+          <div className="flex flex-wrap flex-col md:flex-row items-center justify-between max-w-[1460px] mx-auto py-4 md:py-6 border-b border-gray-200 gap-4 md:gap-0">
         <div className="flex items-center gap-8">
           <img
             src={images.logo2}
@@ -117,8 +119,7 @@ const Footer: React.FC = () => {
           <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
           <ul className="space-y-1 flex flex-col gap-2">
             <li>
-              <a href="#">
-                Спецодежда и средства индивидуальной и пожарной защиты
+              <a href="#">Спецодежда и средства индивидуальной и пожарной защиты
               </a>
             </li>
             <li>
@@ -154,7 +155,7 @@ const Footer: React.FC = () => {
             <img
               src={images.visa}
               alt="Visa"
-              className="w-12 opacity-50 hover:opacity-100 transition duration-300"
+              className="w-12 sm:w-10  opacity-50 hover:opacity-100 transition duration-300"
             />
 
             <img
@@ -168,7 +169,7 @@ const Footer: React.FC = () => {
               className="w-12 opacity-50 hover:opacity-100 transition duration-300"
             />
             <img
-              src={images.xalva}
+              src={images.halva}
               alt="Halva"
               className="w-12 opacity-50 hover:opacity-100 transition duration-300"
             />
@@ -211,6 +212,8 @@ const Footer: React.FC = () => {
           </a>
         </p>
       </div>
+       </div>
+    
     </footer>
   );
 };
