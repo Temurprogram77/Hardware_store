@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
             Ежедневно, с 8:00 до 18:00
           </p>
         </div>
-        <div className=" px-10 py-2.5 text-[12px] uppercase font-semibold rounded-md border-2 border-[#EE0906]">
+        <div className=" px-10 hover:bg-[#ee0906] cursor-pointer hover:text-white py-2.5 text-[12px] uppercase font-semibold rounded-md border-2 border-[#EE0906]">
           Заказать звонок
         </div>
       </div>
