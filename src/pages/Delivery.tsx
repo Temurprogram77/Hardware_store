@@ -1,8 +1,25 @@
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Image } from 'antd';
 import Advertisement from "../components/Advertisement"
+import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/swiper-bundle.css';
+import { Navigation } from 'swiper/modules';
+import right from '../assets/right-arrow.svg'
+import left from '../assets/left-arrow.svg'
+// import Rectangle from '../assets/Rectangle 48.png';
+// import Rectangle2 from '../assets/Rectangle 49.png';
+// import Rectangle3 from '../assets/Rectangle 50.png';
+// import Rectangle4 from '../assets/Rectangle 51.png';
+
+
+// const images = [Rectangle, Rectangle2, Rectangle3, Rectangle4, Rectangle, Rectangle2, Rectangle3, Rectangle4];
+
 
 
 const Delivery = () => {
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+
   return (
     <div className="pr-4 pl-4 mt-4 max-w-[1500px]">
       {/* Breadcrumb */}
@@ -57,6 +74,55 @@ const Delivery = () => {
           </div>
               <Advertisement/>
         </div>
+
+            <div className="relative w-full max-w-[1423px] mt-10 mx-auto px-4">
+              <Swiper
+              modules={[Navigation]}
+              navigation={{
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+              }}
+              onBeforeInit={(swiper) => {
+                //@ts-ignore
+                swiper.params.navigation.prevEl = prevRef.current;
+                //@ts-ignore
+                swiper.params.navigation.nextEl = nextRef.current;
+              }}
+              spaceBetween={20}
+              slidesPerView={4}
+              slidesPerGroup={1}
+               breakpoints={{
+                320: { slidesPerView: 1 },
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+                1280: { slidesPerView: 4 },
+              }}
+              className="rounded-md overflow-hidden">
+              {images.map((src, index) => (
+                <SwiperSlide key={index}>
+                  <img
+                    src={src}
+                    alt={`Image ${index + 1}`}
+                    className="w-full h-[180px] md:h-[200px] object-cover rounded"/>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* chap tugma */}
+              <button
+                ref={prevRef}
+                className="absolute top-1/2 -left-4 md:-left-6 transform -translate-y-1/2 bg-white px-2 py-2 rounded-full shadow z-10">
+                  <img src={left} alt="left" className="w-4 h-4 md:w-5 md:h-5" />
+              </button>
+
+              {/* ung tugma */}
+              <button
+                ref={nextRef}
+                className="absolute top-1/2 -right-4 md:-right-6 transform -translate-y-1/2 bg-white px-2 py-2 rounded-full shadow z-10">
+                  <img src={right} alt="right" className="w-4 h-4 md:w-5 md:h-5" />
+              </button>
+
+            </div>
               
     </div>
   )

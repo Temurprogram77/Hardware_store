@@ -56,7 +56,7 @@ const data: NewsItem[] = [
 
 const NewsCards: React.FC = () => {
   return (
-    <div className="max-w-[1460px] mx-auto px-4 py-6">
+    <div className="max-w-[1460px] 2xl:mx-auto mx-3 py-6">
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={20}
