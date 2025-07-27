@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { images } from "../assets/images";
+import NewsCards from "../components/NewsCards";
 
 const { aboutImage1, Vector10, Vector9, Vector8, Vector7 } = images;
 
@@ -115,6 +116,7 @@ const AboutTheCompany = () => {
       <div className="max-w-[1460px] mx-auto mt-12">
         <h2 className="text-2xl !font-bold mb-8">История ООО “Стройоптторг”</h2>
       </div>
+      <NewsCards/>
     </>
   );
 };
