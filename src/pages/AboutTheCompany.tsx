@@ -3,7 +3,62 @@ import { images } from "../assets/images";
 
 const { aboutImage1, Vector10, Vector9, Vector8, Vector7 } = images;
 
+const data = [
+  {
+    img: Vector7,
+    title: "Оплата любым удобным способом",
+    description:
+      "Выбирайте любой способ оплаты для максимального комфорта при покупках у нас.",
+  },
+  {
+    img: Vector8,
+    title: "Большой выбор товаров в каталоге",
+    description:
+      "Наш каталог насыщен разнообразными товарами, чтобы удовлетворить ваши потребности.",
+  },
+  {
+    img: Vector9,
+    title: "Осуществляем быструю доставку",
+    description:
+      "Мы оперативно доставим ваш заказ, чтобы вы могли насладиться покупкой как можно скорее.",
+  },
+  {
+    img: Vector10,
+    title: "Делаем скидки на крупные покупки",
+    description:
+      "Наша система скидок работает для вашей выгоды, чем больше купили - больше сэкономили.",
+  },
+];
+
 const AboutTheCompany = () => {
+  const renderedBlocks = (() => {
+    const rows = [4, 3, 2, 1];
+    const result = [];
+    let index = 0;
+
+    for (let count of rows) {
+      const group = data.slice(index, index + count);
+      index += count;
+      if (group.length > 0) {
+        result.push(
+          <div key={index} className={`grid grid-cols-${group.length} gap-6`}>
+            {group.map((item, idx) => (
+              <div key={idx} className="flex gap-4 items-start">
+                <img src={item.img} alt="vector" className="w-10 h-10" />
+                <div>
+                  <h2 className="leading-6 !font-medium text-[19px]">{item.title}</h2>
+                  <p className="leading-6 text-[14px] text-[#6B6C72]">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+      }
+    }
+
+    return result;
+  })();
+
   return (
     <>
       <div className="bg-[#F9FAFB] relative">
@@ -52,9 +107,13 @@ const AboutTheCompany = () => {
           <img src={aboutImage1} className="h-full" alt="" />
         </div>
       </div>
-      <div className="">
-        <h2>Почему именно мы</h2>
 
+      <div className="max-w-[1460px] mx-auto mt-12">
+        <h2 className="text-2xl !font-bold mb-8">Почему именно мы</h2>
+        <div className="flex flex-col gap-6">{renderedBlocks}</div>
+      </div>
+      <div className="max-w-[1460px] mx-auto mt-12">
+        <h2 className="text-2xl !font-bold mb-8">История ООО “Стройоптторг”</h2>
       </div>
     </>
   );
