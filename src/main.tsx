@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ModalProvider>
       <SidebarProvider>
-        <App />
+          <App />
       </SidebarProvider>
     </ModalProvider>
   </StrictMode>

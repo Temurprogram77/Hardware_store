@@ -603,7 +603,7 @@ const Navbar: React.FC = () => {
               <div className="">
                 {sideBar.map((item, inx) => {
                   return (
-                    <Link to="/product-catalog">
+                    <Link to="/product-catalog" key={inx}>
                       <div
                       onClick={toggleSidebar}
                         key={inx}
