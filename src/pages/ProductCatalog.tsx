@@ -855,32 +855,32 @@ const ProductCatalog = () => {
             ))}
           </div>
           <div className="flex sm:gap-4 gap-2 items-center w-fit md:mx-auto mx-3 my-10">
-            <div className="py-3.5 px-4 flex items-center gap-3 rounded-md border border-[#DFDFDF]">
+            <div className="cursor-pointer py-3.5 px-4 flex items-center gap-3 rounded-md border border-[#DFDFDF]">
               <img className="md:w-[20px] w-[15px]" src={arrow} alt="arrow" />
               <p className="!m-0 text-[12px] font-semibold">Назад</p>
             </div>
             <div className="flex gap-4">
-              <div className="bg-black text-white px-4 py-3 rounded-md">1</div>
-              <div className="border border-[#DFDFDF] px-4 py-3 rounded-md">
+              <div className="bg-black cursor-pointer text-white px-4 py-3 rounded-md">1</div>
+              <div className="border cursor-pointer duration-200 hover:bg-black hover:text-white border-[#DFDFDF] px-4 py-3 rounded-md">
                 2
               </div>
-              <div className="border border-[#DFDFDF] px-4 py-3 rounded-md">
+              <div className="border cursor-pointer duration-200 hover:bg-black hover:text-white border-[#DFDFDF] px-4 py-3 rounded-md">
                 3
               </div>
-              <div className="md:block hidden border border-[#DFDFDF] px-4 py-3 rounded-md">
+              <div className="md:block hidden border cursor-pointer duration-200 hover:bg-black hover:text-white border-[#DFDFDF] px-4 py-3 rounded-md">
                 4
               </div>
-              <div className="md:block hidden border border-[#DFDFDF] px-4 py-3 rounded-md">
+              <div className="md:block hidden border cursor-pointer duration-200 hover:bg-black hover:text-white border-[#DFDFDF] px-4 py-3 rounded-md">
                 5
               </div>
-              <div className="md:block hidden border border-[#DFDFDF] px-4 py-3 rounded-md">
+              <div className="md:block hidden border cursor-pointer duration-200 hover:bg-black hover:text-white border-[#DFDFDF] px-4 py-3 rounded-md">
                 ...
               </div>
-              <div className="md:block hidden border border-[#DFDFDF] px-4 py-3 rounded-md">
+              <div className="md:block hidden border cursor-pointer duration-200 hover:bg-black hover:text-white border-[#DFDFDF] px-4 py-3 rounded-md">
                 231
               </div>
             </div>
-            <div className="py-3.5 px-4 flex items-center gap-3 rounded-md border border-[#DFDFDF]">
+            <div className="cursor-pointer py-3.5 px-4 flex items-center gap-3 rounded-md border border-[#DFDFDF]">
               <p className="!m-0 text-[12px] font-semibold">Далее</p>
               <img className="md:w-[20px] w-[15px] rotate-[180deg]" src={arrow} alt="" />
             </div>
