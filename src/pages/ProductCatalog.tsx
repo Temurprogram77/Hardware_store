@@ -1,14 +1,14 @@
 import data from "../data/data";
 import { images } from "../assets/images";
 import { Link } from "react-router-dom";
-// import { Range } from "react-range";
+import { Range } from "react-range";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi"
 
 const { cartt, heart, compare, arrow } = images;
 
 const ProductCatalog = () => {
-  const [values, setValues] = useState([3000, 52500]);
+  const [values, setValues] = useState<number[]>([3000, 52500]);
   const [checked, setChecked] = useState(false);
   return (
     <div className="max-w-[1460px] mx-auto my-5">
