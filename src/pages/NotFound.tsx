@@ -9,7 +9,7 @@ const NotFoundPage = () => {
   return (
    
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4 text-center sm:p-12">
-<div className="absolute top-0 left-0 p-4 sm:p-6 md:p-10 lg:p-10 mt-24 sm:mt-40 md:mt-24 lg:mt-24">
+<div className="absolute top-0 left-0 p-4 sm:p-10 mt-40 sm:mt-60 md:mt-40 lg:mt-24">
   <Breadcrumb className="text-md mb-8">
     <Breadcrumb.Item className="text-black">Стройоптторг</Breadcrumb.Item>
     <Breadcrumb.Item className="text-gray-400">
@@ -21,6 +21,7 @@ const NotFoundPage = () => {
     Страница не найдена
   </h2>
 </div>
+
       <div className="max-w-md w-full space-y-6">
 
      
