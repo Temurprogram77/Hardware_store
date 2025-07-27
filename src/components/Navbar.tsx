@@ -330,18 +330,18 @@ const Navbar: React.FC = () => {
       </div>
 
       {modalIsOpen ? (
-        <>
+        <div className="overflow-y-scroll">
           <div
             onClick={modalCloseModal}
-            className="w-full h-full bg-[#011120cc] fixed z-2 top-0 left-0"
+            className="w-full h-full bg-[#011120cc] fixed z-3 top-0 left-0"
           ></div>
           <div
             onClick={modalCloseModal}
-            className="bg-[#fff] duration-200 hover:bg-[#6e6e6e] fixed z-20 top-6 right-6 rounded-md p-3"
+            className="bg-[#fff] duration-200 hover:bg-[#6e6e6e] fixed z-4 top-6 right-6 rounded-md p-3"
           >
             <img src={close} alt="close" />
           </div>
-          <div className="flex flex-col gap-3 md:w-[600px] w-[95%] bg-[#fff] p-8 rounded-xl z-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="flex flex-col gap-3 md:w-[600px] w-[95%] bg-[#fff] p-8 rounded-xl z-3 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <h2 className="text-[30px] !font-semibold text-center">
               Заказать обратный звонок
             </h2>
@@ -393,16 +393,16 @@ const Navbar: React.FC = () => {
               <button className="bg-[#186fd4] py-5 rounded-md text-white duration-200 hover:bg-black cursor-pointer w-full">Перезвоните мне</button>
             </div>
           </div>
-        </>
+        </div>
       ) : (
         ""
       )}
         <>
           <div
             onClick={closeModal}
-            className={`${isOpen ? "visible opacity-100" :"invisible opacity-0"} duration-200 w-full h-full bg-[#000000be] fixed z-2 top-0 left-0`}
+            className={`${isOpen ? "visible opacity-100" :"invisible opacity-0"} duration-200 w-full h-full bg-[#000000be] fixed z-3 top-0 left-0`}
           ></div>
-          <div className={`${isOpen ? "left-0" :"-left-full"} duration-200 w-[90%] h-full p-4 bg-[#fff] fixed z-2 top-0`}>
+          <div className={`${isOpen ? "left-0" :"-left-full"} duration-200 w-[90%] h-full p-4 bg-[#fff] fixed z-3 top-0`}>
             <h2 className="text-[18px] !font-semibold">Меню</h2>
             <div
               onClick={closeModal}

@@ -13,9 +13,9 @@ const Footer: React.FC = () => {
           <img
             src={images.logo2}
             alt="Стройоптторг Logo"
-            className="w-[150px] h-[40px] md:w-auto md:h-auto object-contain"
+            className="sm:w-[150px] sm:h-[40px] h-[30px] md:w-auto md:h-auto object-contain"
           />
-          <span className="text-base font-semibold whitespace-nowrap">
+          <span className="sm:text-[15px] text-[13px] text-base font-semibold whitespace-nowrap">
             ООО «Стройоптторг»
           </span>
         </div>
