@@ -42,7 +42,7 @@ const AboutTheCompany = () => {
       index += count;
       if (group.length > 0) {
         result.push(
-          <div key={index} className={`grid grid-cols-${group.length} gap-6`}>
+          <div key={index} className={`grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6`}>
             {group.map((item, idx) => (
               <div key={idx} className="flex gap-4 items-start">
                 <img src={item.img} alt="vector" className="w-10 h-10" />
@@ -67,8 +67,8 @@ const AboutTheCompany = () => {
   return (
     <>
       <div className="bg-[#F9FAFB] relative">
-        <div className="max-w-[1460px] mx-auto py-5">
-          <div className="w-1/2">
+        <div className="max-w-[1460px] relative z-2 2xl:mx-auto mx-3 py-5">
+          <div className="lg:w-1/2 w-full">
             <div className="flex text-[13px] !font-medium gap-2">
               <Link to="/">Стройоптторг</Link> / <Link to="">О компании</Link>
             </div>
@@ -108,27 +108,113 @@ const AboutTheCompany = () => {
             </p>
           </div>
         </div>
-        <div className="absolute bottom-0 right-0 h-full">
+        <div className="lg:block z-1 hidden absolute bottom-0 right-0 h-full">
           <img src={aboutImage1} className="h-full" alt="" />
         </div>
       </div>
 
-      <div className="max-w-[1460px] mx-auto mt-12">
+      <div className="max-w-[1460px] 2xl:mx-auto mx-3 mt-12">
         <h2 className="text-2xl !font-bold mb-8">Почему именно мы</h2>
         <div className="flex flex-col gap-6">{renderedBlocks}</div>
       </div>
-      <div className="max-w-[1460px] mx-auto mt-12">
-        <h2 className="text-2xl !font-bold mb-8">История ООО “Стройоптторг”</h2>
-        <div className="grid md:grid-cols-2 grid-cols-1">
-          <div className="border-3 rounded-md border-[#E6EEF6]">
-            <h2 className="text-[#186FD4] !m-0 !font-bold">2003</h2>
+      <div className="max-w-[1460px] 2xl:mx-auto mx-3 my-10">
+        <h2 className="text-2xl !font-bold !mb-8">История ООО “Стройоптторг”</h2>
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
+          <div className="border-3 rounded-md p-4 pt-0 border-[#E6EEF6]">
+            <h2 className="text-[#186FD4] text-[22px] px-3 w-fit bg-white transform -translate-y-3 !m-0 !font-bold">
+              2003
+            </h2>
+            <div className="text-[15px] mb-4 font-semibold text-[#2C333D]">
+              Компания ООО «Стройоптторг» была зарегистрирована в реестре и
+              получила свидетельство о регистрации 1 октября 2003 года.
+            </div>
+            <div className="mb-4 flex items-center gap-2 text-[13px]">
+              <span className="text-[#EE0906]">•</span>Общая площадь земельного
+              участка составляла{" "}
+              <span className="font-semibold">10 000 м²</span>.
+            </div>
+            <div className="mb-4 flex items-center gap-2 text-[13px]">
+              <span className="text-[#EE0906]">•</span>площадь складских
+              помещений <span className="font-semibold">850 м²</span>.
+            </div>
+            <div className="mb-4 flex items-center gap-2 text-[13px]">
+              <span className="text-[#EE0906]">•</span>численность сотрудников{" "}
+              <span className="font-semibold">10 человек</span>.
+            </div>
+          </div>
+          <div className="border-3 rounded-md p-4 pt-0 border-[#E6EEF6]">
+            <h2 className="text-[#186FD4] text-[22px] px-3 w-fit bg-white transform -translate-y-3 !m-0 !font-bold">
+              2008
+            </h2>
+            <div className="text-[15px] mb-4 font-semibold text-[#2C333D]">
+              С годами компания динамично росла и развивалась и уже к 2008 г. мы
+              достигли более высоких результатов:
+            </div>
+            <div className="mb-4 flex items-center gap-2 text-[13px]">
+              <span className="text-[#EE0906]">•</span>общая площадь базы
+              составила <span className="font-semibold">58 000 м²</span>.
+            </div>
+            <div className="mb-4 flex items-center gap-2 text-[13px]">
+              <span className="text-[#EE0906]">•</span>площадь складских
+              помещений <span className="font-semibold">5 200 м²</span>.
+            </div>
+            <div className="mb-4 flex items-center gap-2 text-[13px]">
+              <span className="text-[#EE0906]">•</span>численность коллектива
+              возросла до <span className="font-semibold">300 человек</span>.
+            </div>
+          </div>
+          <div className="border-3 rounded-md p-4 pt-0 border-[#E6EEF6]">
+            <h2 className="text-[#186FD4] text-[22px] px-3 w-fit bg-white transform -translate-y-3 !m-0 !font-bold">
+              2018
+            </h2>
+            <div className="text-[15px] mb-4 font-semibold text-[#2C333D]">
+              К своему 15-ти летнему юбилею компания расширила торговые площади
+              до 17 805.3 м²
+            </div>
+            <div className="mb-4 flex items-center gap-2 text-[13px]">
+              <span className="text-[#EE0906]">•</span>Торговый центр №1 -{" "}
+              <span className="font-semibold">5 545 м²</span>.
+            </div>
+            <div className="mb-4 flex items-center gap-2 text-[13px]">
+              <span className="text-[#EE0906]">•</span>Торговый центр№2-{" "}
+              <span className="font-semibold">3 951,2 м²</span>.
+            </div>
+            <div className="mb-4 flex items-center gap-2 text-[13px]">
+              <span className="text-[#EE0906]">•</span>Складские помещения -{" "}
+              <span className="font-semibold">8 308,6 м²</span>.
+            </div>
+          </div>
+          <div className="border-3 rounded-md p-4 pt-0 border-[#186FD4]">
+            <h2 className="text-center !mt-3 text-[#186FD4] text-[22px] !font-semibold">
+              Сегодня
+            </h2>
+            <div className="grid gap-2 sm:grid-cols-2 grid-cols-1">
+              <div className="w-[300px] mx-auto text-start">
+                <h2 className="text-[#186FD4] text-[18px] !font-semibold">17 805,3 м²</h2>
+                <p className="text-[13px] !m-0">- торговых и складских помещений</p>
+              </div>
+              <div className="w-[300px] mx-auto text-start">
+                <h2 className="text-[#186FD4] text-[18px] !font-semibold">50 000+</h2>
+                <p className="text-[13px] !m-0">- наименований товаров</p>
+              </div>
+              <div className="w-[300px] mx-auto text-start">
+                <h2 className="text-[#186FD4] text-[18px] !font-semibold">2 500+</h2>
+                <p className="text-[13px] !m-0">- постоянных клиентов</p>
+              </div>
+              <div className="w-[300px] mx-auto text-start">
+                <h2 className="text-[#186FD4] text-[18px] !font-semibold">440</h2>
+                <p className="text-[13px] !m-0">- опытных сотрудников</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div className="mb-10">
         <div className="flex justify-between items-center max-w-[1460px] mx-auto">
           <h2 className="text-2xl !font-bold !m-0">Последние новости</h2>
-          <div className="py-2.5 px-4 cursor-pointer hover:bg-black hover:text-white duration-200 text-[13px] !font-semibold rounded-md bg-[#F6F8FB] text-[#117FE3]">Больше новостей</div>
+          <div className="py-2.5 px-4 cursor-pointer hover:bg-black hover:text-white duration-200 text-[13px] !font-semibold rounded-md bg-[#F6F8FB] text-[#117FE3]">
+            Больше новостей
+          </div>
         </div>
         <NewsCards />
       </div>
