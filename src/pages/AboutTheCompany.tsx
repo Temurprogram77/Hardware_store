@@ -47,8 +47,12 @@ const AboutTheCompany = () => {
               <div key={idx} className="flex gap-4 items-start">
                 <img src={item.img} alt="vector" className="w-10 h-10" />
                 <div>
-                  <h2 className="leading-6 !font-medium text-[19px]">{item.title}</h2>
-                  <p className="leading-6 text-[14px] text-[#6B6C72]">{item.description}</p>
+                  <h2 className="leading-6 !font-medium text-[19px]">
+                    {item.title}
+                  </h2>
+                  <p className="leading-6 text-[14px] text-[#6B6C72]">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -116,7 +120,9 @@ const AboutTheCompany = () => {
       <div className="max-w-[1460px] mx-auto mt-12">
         <h2 className="text-2xl !font-bold mb-8">История ООО “Стройоптторг”</h2>
       </div>
-      <NewsCards/>
+      <div className="">
+        <NewsCards />
+      </div>
     </>
   );
 };
