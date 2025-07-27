@@ -119,8 +119,17 @@ const AboutTheCompany = () => {
       </div>
       <div className="max-w-[1460px] mx-auto mt-12">
         <h2 className="text-2xl !font-bold mb-8">История ООО “Стройоптторг”</h2>
+        <div className="grid md:grid-cols-2 grid-cols-1">
+          <div className="border-3 rounded-md border-[#E6EEF6]">
+            <h2 className="text-[#186FD4] !m-0 !font-bold">2003</h2>
+          </div>
+        </div>
       </div>
       <div className="mb-10">
+        <div className="flex justify-between items-center max-w-[1460px] mx-auto">
+          <h2 className="text-2xl !font-bold !m-0">Последние новости</h2>
+          <div className="py-2.5 px-4 cursor-pointer hover:bg-black hover:text-white duration-200 text-[13px] !font-semibold rounded-md bg-[#F6F8FB] text-[#117FE3]">Больше новостей</div>
+        </div>
         <NewsCards />
       </div>
     </>
