@@ -118,7 +118,7 @@ const [agree, setAgree] = useState(false);
         <div>
           <div>
             <div className='md:mt-11 flex md:flex-row flex-col gap-3 justify-center items-center '>
-               <div className="md:w-[1200px] w-[380px] p-3 flex flex-wrap flex-col gap-4">
+               <div className="md:w-[1200px] w-[380px] p-3 flex flex-wrap md:flex-row flex-col gap-4">
                 {/* birxil cardlar */}
                   {contacts.map((item, index) => (
                   <div key={index} className="md:w-[255px] p-5 md:h-[105px] w-full border border-[#f2f4f6] rounded-lg md:p-4 md:shadow">
@@ -136,14 +136,14 @@ const [agree, setAgree] = useState(false);
           </div>
           <section className="py-8 flex flex-col gap-5 mt-4">
             <h2 className="!font-bold md:text-[18px] text-[22px] mb-6">Работаем по регионам:</h2>
-            <div className="flex md:flex-row flex-col justify-between gap-x-6 overflow-x-auto">
+            <div className="flex md:flex-row flex-col justify-between gap-6 overflow-x-auto">
               {regions.map((region, index) => (
                 <div
                   key={index}
-                  className="min-w-[200px] max-w-[290px] md:border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
+                  className="min-w-[200px] md:w-[150px] leading-3 md:border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
                   <p className="font-semibold text-[#494d52] md:text-[15px] text-[17px]">{region.city}</p>
                   <p className="md:text-[15px] text-[17px] text-[#494d52]">{region.address}</p>
-                  <p className="font-bold">{region.phone}</p>
+                  <p className="font-bold md:text-[15px] text-[17px] text-[]">{region.phone}</p>
                   <a href={`mailto:${region.email}`} className="text-blue-600 hover:underline">
                     {region.email}
                   </a>
