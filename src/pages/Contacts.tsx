@@ -67,7 +67,8 @@ const Contacts = () => {
 const [agree, setAgree] = useState(false);
 
   return (
-    <div className="pr-4 pl-4 mt-4 max-w-[1500px]">
+    <div className='flex justify-center items-center'>
+      <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
       {/* Breadcrumb */}
         <Breadcrumb className="mb-6">
           <Breadcrumb.Item>
@@ -80,9 +81,9 @@ const [agree, setAgree] = useState(false);
             
       <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]" >Контакты</h2>
       <div>
-        <div className='flex flex-row'>
-         <iframe className="border-0 rounded-[10px] !z-0 relative" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1574993.114298276!2d66.8964759!3d39.5560352!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1753176936343!5m2!1sen!2s" width="1300" height="550" loading="lazy"></iframe>
-          <div className=' flex flex-col items-center w-[315px] h-[475px] pt-6  absolute left-[1150px] mt-9 rounded-[10px] !z-10 shadow-lg bg-white'>
+        <div className='flex flex-row'> 
+         <iframe className="border-0 rounded-[10px]  !z-0 relative" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1574993.114298276!2d66.8964759!3d39.5560352!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1753176936343!5m2!1sen!2s" width="1200" height="550" loading="lazy"></iframe>
+          <div className=' flex flex-col items-center w-[315px] h-[475px] pt-6 relative left-[-50px] mt-9 rounded-[10px] !z-10 shadow-lg bg-white'>
               <h2 className='!font-bold'>ООО «Стройоптторг»</h2>
               <div className='flex gap-2 mt-3'>
                 <SlLocationPin className=' text-[20px]' />
@@ -120,7 +121,7 @@ const [agree, setAgree] = useState(false);
                <div className="w-[1200px] flex flex-wrap gap-4">
                 {/* birxil cardlar */}
                   {contacts.map((item, index) => (
-                  <div key={index} className="w-[265px] h-[105px] border border-[#f2f4f6] rounded-lg p-4 shadow">
+                  <div key={index} className="w-[255px] h-[105px] border border-[#f2f4f6] rounded-lg p-4 shadow">
                     <p>{item.title}:</p>
                     <p className="text-md font-bold hover:text-[#007aff]">{item.phone}</p>
                   </div>
@@ -231,6 +232,7 @@ const [agree, setAgree] = useState(false);
       </div>
     </section>
     </div>
+  </div>
   )
 }
 
