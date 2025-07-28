@@ -58,8 +58,8 @@ const Delivery = () => {
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Выгрузка и подъем товара на этаж не входят в стоимость доставки.</li>
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Прием товара с доставкой определяется по внешнему виду, комплектации, отсутствию механических повреждений в момент доставки.</li>
             </ul>
-            <div className='bg-[#f9fafb] md:h-[45px] flex items-center md:w-[990px] w-[390vpx]'>
-              <p className='text-[#003b73] relative  md:left-[33px]  md:top-2.5 font-sans text-[18px]  leading-7 !font-bold md:text-[15px]'>После приема товара претензии покупателя, касающиеся комплектации и механических повреждений товара, не принимаются.</p>
+            <div className='bg-[#f9fafb] md:h-[45px] flex items-center md:w-[990px] w-[387px] relative md:left-[3px] left-[-15px] p-3'>
+              <p className='text-[#003b73] relative top-[7px] md:left-[17px]  md:top-2.5 font-sans text-[18px]  leading-7 !font-bold md:text-[15px]'>После приема товара претензии покупателя, касающиеся комплектации и механических повреждений товара, не принимаются.</p>
             </div>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]'>Если у Вас возникнут вопросы по качеству или количеству товара, Вы можете обратиться за разъяснениями по номеру телефона +7(8782)-28-42-72.</p>
             <p className='text-[#2c333d] text-[21px] leading-7 !font-bold md:text-[16px]'>3. Доставка транспортной компанией.</p>
