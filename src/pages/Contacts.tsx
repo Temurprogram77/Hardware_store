@@ -140,11 +140,11 @@ const [agree, setAgree] = useState(false);
               {regions.map((region, index) => (
                 <div
                   key={index}
-                  className="min-w-[200px] md:w-[150px] leading-3 md:border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
+                  className="min-w-[200px] md:w-[150px] md:h-[130px] mb-[10px] md:mb-0 leading-3 md:border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
                   <p className="font-semibold text-[#494d52] md:text-[15px] text-[17px]">{region.city}</p>
                   <p className="md:text-[15px] text-[17px] text-[#494d52]">{region.address}</p>
                   <p className="font-bold md:text-[15px] text-[17px] text-[#2f3134]">{region.phone}</p>
-                  <a href={`mailto:${region.email}`} className="text-blue-600 hover:underline">
+                  <a href={`mailto:${region.email}`} className="text-blue-600 md:text-[15px] text-[17px] md:underline-none hover:underline">
                     {region.email}
                   </a>
                 </div>
@@ -154,8 +154,8 @@ const [agree, setAgree] = useState(false);
         </div>
       </div>
       <section className="bg-[#f8f9fb] py-12 px-4">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-2xl md:text-3xl !font-bold mb-10 text-gray-800">
+      <div className="md:w-4xl  mx-auto text-center">
+        <h2 className="text-2xl md:text-3xl !mb-[30px] md:mb-10 !font-bold text-gray-800">
           У вас есть вопросы? С радостью ответим на них!
         </h2>
 
@@ -202,7 +202,7 @@ const [agree, setAgree] = useState(false);
           </div>
 
           {/* Submit + Checkbox */}
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row md:items-start items-center justify-between gap-4">
             <button
               type="submit"
               className="bg-blue-600 hover:bg-blue-700 !text-white !text-[14px] font-semibold w-[190px] h-[60px] px-6 py-3 rounded-md"
