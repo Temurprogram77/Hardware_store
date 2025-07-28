@@ -25,7 +25,7 @@ const {
   dataImage21,
   dataImage22,
   dataImage23,
-  dataImage24,
+  dataImage24
 } = images;
 
 let data = [
