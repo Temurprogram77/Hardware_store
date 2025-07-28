@@ -84,7 +84,7 @@ const [agree, setAgree] = useState(false);
         <div className='flex md:flex-row flex-col'> 
          <iframe className="border-0 md:rounded-[10px] md:w-[1200px] md:h-[550px] md:left-[5px] left-[-15px] rounded-none w-[385px] h-[650px] !z-0 relative" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1574993.114298276!2d66.8964759!3d39.5560352!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1753176936343!5m2!1sen!2s" loading="lazy"></iframe>
           <div className=' flex flex-col items-center md:w-[315px] md:h-[475px] h-[475px] pt-6 relative md:left-[-50px] md:top-[2px] top-[-50px] md:mt-9 rounded-[10px] !z-10 shadow-lg bg-white'>
-              <h2 className='!font-bold'>ООО «Стройоптторг»</h2>
+              <h2 className='!font-bold md:text-[16px] text-[20px]'>ООО «Стройоптторг»</h2>
               <div className='flex gap-2 mt-3'>
                 <SlLocationPin className=' text-[20px]' />
                 <div className=''>
@@ -117,32 +117,32 @@ const [agree, setAgree] = useState(false);
         </div>
         <div>
           <div>
-            <div className='mt-11 flex gap-3 justify-center items-center'>
-               <div className="w-[1200px] flex flex-wrap gap-4">
+            <div className='md:mt-11 flex md:flex-row flex-col gap-3 justify-center items-center '>
+               <div className="md:w-[1200px] w-[380px] p-3 flex flex-wrap flex-col gap-4">
                 {/* birxil cardlar */}
                   {contacts.map((item, index) => (
-                  <div key={index} className="w-[255px] h-[105px] border border-[#f2f4f6] rounded-lg p-4 shadow">
-                    <p>{item.title}:</p>
-                    <p className="text-md font-bold hover:text-[#007aff]">{item.phone}</p>
+                  <div key={index} className="md:w-[255px] p-5 md:h-[105px] w-full border border-[#f2f4f6] rounded-lg md:p-4 md:shadow">
+                    <p className="md:text-[15px] text-[18.5px] text-[#494d52] font-sans">{item.title}:</p>
+                    <p className="md:text-md text-[#2f3134] text-[21px] font-bold hover:text-[#007aff]">{item.phone}</p>
                   </div>
                   ))}
                 </div>
 
-              <div className='bg-[#f7f9fc] p-5 h-[230px] font-sans'>
-                <h1 className='font-semibold'>Реквизиты:</h1>
-                <p className='text-xs w-[300px] leading-6'>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "СТРОЙОПТТОРГ"ИНН 0901051787КПП 090101001369000, <span>Карачаево-Черкесская республика, город Черкесск, Октябрьская улица, 301р/с 40702810360000102415 в Ставропольское отделение №5230 ПАО Сбербанк, БИК 040702615</span></p>
+              <div className='bg-[#f7f9fc] p-5 md:h-[230px] h-[265px] font-sans'>
+                <h1 className='font-semibold md:text-[16px] text-[20px]'>Реквизиты:</h1>
+                <p className='md:text-xs  md:w-[300px] leading-6'>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "СТРОЙОПТТОРГ"ИНН 0901051787КПП 090101001369000, <span>Карачаево-Черкесская республика, город Черкесск, Октябрьская улица, 301р/с 40702810360000102415 в Ставропольское отделение №5230 ПАО Сбербанк, БИК 040702615</span></p>
               </div>
             </div>
           </div>
           <section className="py-8 flex flex-col gap-5 mt-4">
-            <h2 className="!font-bold text-[18px] mb-6">Работаем по регионам:</h2>
-            <div className="flex justify-between gap-x-6 overflow-x-auto">
+            <h2 className="!font-bold md:text-[18px] text-[22px] mb-6">Работаем по регионам:</h2>
+            <div className="flex md:flex-row flex-col justify-between gap-x-6 overflow-x-auto">
               {regions.map((region, index) => (
                 <div
                   key={index}
-                  className="min-w-[200px] max-w-[250px] border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
-                  <p className="font-semibold">{region.city}</p>
-                  <p>{region.address}</p>
+                  className="min-w-[200px] max-w-[290px] md:border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
+                  <p className="font-semibold text-[#494d52] md:text-[15px] text-[17px]">{region.city}</p>
+                  <p className="md:text-[15px] text-[17px] text-[#494d52]">{region.address}</p>
                   <p className="font-bold">{region.phone}</p>
                   <a href={`mailto:${region.email}`} className="text-blue-600 hover:underline">
                     {region.email}
