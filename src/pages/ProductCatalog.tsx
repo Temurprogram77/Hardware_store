@@ -4,12 +4,34 @@ import { Link } from "react-router-dom";
 import { Range } from "react-range";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
+import { useHeart } from "../context/HeartClickedContext";
+import { useCompare } from "../context/CompareContext";
 
-const { cartt, heart, compare, arrow } = images;
+const { cartt, heart, compare, arrow, heart2 } = images;
 
-const ProductCatalog = () => {
+const ProductCatalog = ({ item }: { item: { id: string } }) => {
+  const { comparedItems, toggleCompare } = useCompare();
   const [values, setValues] = useState<number[]>([3000, 52500]);
+  const { likedItems, toggleHeart } = useHeart();
   const [checked, setChecked] = useState(false);
+
+  const toggleCheck = (index: number) => {
+    const updated = [...checkedItems];
+    updated[index] = !updated[index];
+    setCheckedItems(updated);
+  };
+  const brands = ["airRoxy", "Bosch", "Blauberg", "Electrolux"]; // Misol uchun
+
+  const [checkedItems, setCheckedItems] = useState<boolean[]>(
+    new Array(brands.length).fill(false)
+  );
+
+  const handleToggle = (index: number) => {
+    const newChecked = [...checkedItems];
+    newChecked[index] = !newChecked[index];
+    setCheckedItems(newChecked);
+  };
+
   return (
     <div className="max-w-[1460px] mx-auto my-5">
       <div className="text-[13px] !font-medium mb-6 flex items-center 2xl:mx-0 mx-3 gap-3">
@@ -837,14 +859,20 @@ const ProductCatalog = () => {
                     <span>Купить</span>
                   </div>
                   <div className="flex items-center md:gap-2 gap-1">
-                    <div className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5]">
+                    <div
+                      onClick={() => toggleHeart(item.id)}
+                      className="border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
+                    >
                       <img
-                        src={heart}
+                        src={likedItems[item.id] ? heart2 : heart}
                         className="w-[24px] h-[18px]"
                         alt="heart"
                       />
                     </div>
-                    <div className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5]">
+                    <div
+                      onClick={() => toggleCompare(item.id)}
+                      className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
+                    >
                       <img
                         src={compare}
                         className="w-[24px] h-[18px]"

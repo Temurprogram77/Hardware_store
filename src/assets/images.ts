@@ -93,9 +93,10 @@ import Vector7 from "./Vector (7).svg"
 import Vector8 from "./Vector (8).svg"
 import Vector9 from "./Vector (9).svg"
 import Vector10 from "./Vector (10).svg"
+import heart2 from "./heart2.svg"
 
 export const images = {
-  // redHeart,
+  heart2,
   Vector10,
   Vector9,
   Vector8,
