@@ -27,7 +27,8 @@ import {
   SearchResults,
   Stock,
   Register,
-  Lichniykabinet
+  Lichniykabinet,
+  LandingStock
 } from "../pages";
 
 export const routes = [
@@ -59,5 +60,6 @@ export const routes = [
   { path: "/search-results", element: <SearchResults /> },
   { path: "/stock", element: <Stock /> },
   { path: "/register", element: <Register /> },
+  {path:'/stock/:id',element:<LandingStock/>},
   { path: "*", element: <NotFound /> },
 ];
