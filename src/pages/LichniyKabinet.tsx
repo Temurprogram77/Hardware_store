@@ -1,6 +1,6 @@
+"use client"
 
 import { Breadcrumb, Pagination, Table, Tag, Button } from "antd"
-import { Breadcrumb } from "antd"
 import { useState } from "react"
 import { CgPassword } from "react-icons/cg"
 import { FaRegHeart, FaRegUserCircle } from "react-icons/fa"
@@ -10,7 +10,7 @@ import { LiaUserEditSolid } from "react-icons/lia"
 import { RiMenuFold2Fill } from "react-icons/ri"
 import { TbUserEdit } from "react-icons/tb"
 import { TfiMenuAlt } from "react-icons/tfi"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const addressData = {
   name: "Евгений Иванов",
@@ -18,22 +18,8 @@ const addressData = {
   phone: "+7 (956) 373-46-33",
   email: "exampleemail@gmail.com",
 }
-import { Link, useNavigate } from "react-router-dom"
-import { Breadcrumb, Pagination, Table, Tag } from "antd";
-import { useState } from "react";
-import { CgPassword } from "react-icons/cg";
-import { FaRegHeart, FaRegUserCircle } from "react-icons/fa";
-import { GoLocation } from "react-icons/go";
-import { IoExitOutline } from "react-icons/io5";
-import { LiaUserEditSolid } from "react-icons/lia";
-import { RiMenuFold2Fill } from "react-icons/ri";
-import { TbUserEdit } from "react-icons/tb";
-import { TfiMenuAlt } from "react-icons/tfi";
-import { Link } from "react-router-dom";
-
 
 const menuItems = [
-<<<<<<< HEAD
   {
     label: "Мой аккаунт",
     icon: <FaRegUserCircle />,
@@ -124,168 +110,7 @@ const LichniyKabinet = () => {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false)
   const [showNewPassword, setShowNewPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-=======
-    {
-        label: "Мой аккаунт",
-        icon: <FaRegUserCircle />,
-        content: [
-            { label: "Изменить профиль", icon: <LiaUserEditSolid /> },
-            { label: "Мои заказы", icon: <TfiMenuAlt /> },
-            { label: "Адрес доставки", icon: <GoLocation /> },
-            { label: "Избранные товары", icon: <FaRegHeart /> },
-            { label: "Сменить пароль", icon: <CgPassword /> },
-            { label: "Выйти из аккаунта", icon: <IoExitOutline /> },
-        ],
-    },
-    {
-        label: "Изменить профиль",
-        icon: <TbUserEdit />,
-        content: [],
-    },
-    {
-        label: "Мои заказы",
-        icon: <RiMenuFold2Fill />,
-        content: [
-            {
-                orderNumber: "#2365341-11",
-                date: "16 Августа 2023",
-                status: "ОБРАБОТКА",
-                statusColor: "orange",
-                total: "36 829 ₽",
-            },
-            {
-                orderNumber: "#2356576-13",
-                date: "1 Августа 2023",
-                status: "ВЫПОЛНЕН",
-                statusColor: "green",
-                total: "11 299 ₽",
-            },
-            {
-                orderNumber: "#577598-26",
-                date: "17 Июля 2023",
-                status: "ОТМЕНЕН",
-                statusColor: "red",
-                total: "1 311 ₽",
-            },
-            {
-                orderNumber: "#436879-12",
-                date: "11 Января 2023",
-                status: "ОБРАБОТКА",
-                statusColor: "orange",
-                total: "12 889 ₽",
-            },
-            {
-                orderNumber: "#2365341-11",
-                date: "10 Декабря 2022",
-                status: "ОБРАБОТКА",
-                statusColor: "orange",
-                total: "2 829 ₽",
-            },
-        ],
-    },
-
-    {
-        label: "Адрес доставки",
-        icon: <GoLocation />,
-        content: [],
-    },
-    {
-        label: "Избранные товары",
-        icon: <FaRegHeart />,
-        content: [],
-    },
-    {
-        label: "Сменить пароль",
-        icon: <CgPassword />,
-        content: [],
-    },
-    {
-        label: "Выйти из аккаунта",
-        icon: <IoExitOutline />,
-        content: [],
-    },
-];
-
-const LichniyKabinet = () => {
-
-    const [activeTab, setActiveTab] = useState(menuItems[0]);
-    const navigate = useNavigate();
-
-    const handleMenuClick = (item: any) => {
-        if (item.label === 'Выйти из аккаунта') {
-            localStorage.removeItem('isAuthenticated');
-            navigate('/my-account');
-        } else {
-            setActiveTab(item);
-        }
-    };
-
-    return (
-        <main className="mb-10 mt-5 px-3">
-            <hr className="text-gray-200" />
-            <div className="max-w-[1460px] mx-auto mt-2.5">
-                <Breadcrumb
-                    items={[
-                        {
-                            title: (
-                                <Link to="/">
-                                    <span className="text-black text-sm">Стройоптторг</span>
-                                </Link>
-                            ),
-                        },
-                        {
-                            title: <span className="text-[#959597] text-sm">Личный кабинет</span>,
-                        }
-                    ]}
-                />
-                <div className="mt-4">
-                    <h2 className="!font-bold text-5xl max-sm:text-4xl">Личный кабинет</h2>
-                    <div className="flex gap-5 mt-10 max-sm:flex-col">
-                        <div className="flex flex-col w-1/4 rounded-xl overflow-hidden max-sm:w-full shadow-lg max-sm:hidden md:hidden xl:block">
-                            <div className="flex flex-col bg-white rounded-lg gap-[0.5px]">
-                                {menuItems.map((item, index) => {
-                                    const isActive = activeTab.label === item.label;
-                                    return (
-                                        <div
-                                            key={index}
-                                            onClick={() => handleMenuClick(item)}
-                                            className={`flex items-center gap-2 p-5 text-sm cursor-pointer transition-all
-                                            ${isActive ? 'bg-black text-white font-semibold' : ' text-gray-600 hover:bg-black hover:text-white'}
-                                        `}
-                                        >
-                                            <span className="text-2xl ">{item.icon}</span>
-                                            <span className="md:text-xl">{item.label}</span>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                        <div className="flex-1 bg-white rounded-xl max-sm:-mt-5">
-                            <span className=" text-xl font-semibold">Здравствуйте, !</span>
-                            {activeTab.content.length > 0 && (
-                                <div className="grid grid-cols-6 max-sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 mt-3">
-                                    {activeTab.content.map((contentItem, index) => (
-                                        <div
-                                            key={index}
-                                            onClick={() => handleMenuClick(contentItem)}
-                                            className=" h-27 border border-gray-300 rounded-md hover:bg-blue-600 text-gray-500 hover:text-white transition-colors flex items-center justify-center gap-y-2.5 cursor-pointer flex-col"
-                                        >
-                                            <span className="text-4xl" >{contentItem.icon}</span>
-                                            <span>{contentItem.label}</span>
-                                        </div>
-
-                                    ))}
-
-                                    <h3 className="!mt-10 !font-semibold text-xl text-gray-600">Текущие заказы</h3>
-                                    <p>Заказов ещё не создано.</p>
-                                </div>
-                            )}
-                        </div>
-=======
-  const [activeTab, setActiveTab] = useState(menuItems[0]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 5;
->>>>>>> ff44a7e210953335e58849505e877291bb9675bc
+  const navigate = useNavigate()
 
   const handlePaginationChange = (page: number) => {
     setCurrentPage(page)
@@ -300,8 +125,20 @@ const LichniyKabinet = () => {
       alert("Пароль должен содержать минимум 6 символов!")
       return
     }
-    // Here you would typically make an API call to update the password
     alert("Пароль успешно изменен!")
+    setCurrentPassword("")
+    setNewPassword("")
+    setConfirmPassword("")
+  }
+
+  const handleMenuClick = (item: any) => {
+    if (item.label === "Выйти из аккаунта") {
+      localStorage.removeItem("isAuthenticated")
+      navigate("/my-account")
+    } else {
+      setActiveTab(item)
+      setCurrentPage(1)
+    }
   }
 
   const columns = [
@@ -395,7 +232,7 @@ const LichniyKabinet = () => {
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                placeholder="Введите текущий пароль"  
+                placeholder="Введите текущий пароль"
               />
               <button
                 type="button"
@@ -486,84 +323,72 @@ const LichniyKabinet = () => {
         <div className="mt-4">
           <h2 className="!font-bold text-5xl max-sm:text-4xl">Личный кабинет</h2>
           <div className="flex gap-5 mt-10 max-sm:flex-col">
-            <div className="flex flex-col w-1/4 rounded-xl overflow-hidden max-sm:w-full shadow-lg">
+            {/* Sidebar Menu */}
+            <div className="flex flex-col w-1/4 rounded-xl overflow-hidden max-sm:w-full shadow-lg max-sm:hidden md:hidden xl:block">
               <div className="flex flex-col bg-white rounded-lg gap-[0.5px]">
                 {menuItems.map((item, index) => {
                   const isActive = activeTab.label === item.label
                   return (
                     <div
                       key={index}
-                      onClick={() => {
-                        setActiveTab(item)
-                        setCurrentPage(1)
-                      }}
+                      onClick={() => handleMenuClick(item)}
                       className={`flex items-center gap-2 p-5 text-sm cursor-pointer transition-all ${
                         isActive ? "bg-black text-white font-semibold" : "text-gray-600 hover:bg-black hover:text-white"
                       }`}
                     >
                       <span className="text-2xl">{item.icon}</span>
-                      <span>{item.label}</span>
-<<<<<<< HEAD
+                      <span className="md:text-xl">{item.label}</span>
                     </div>
                   )
                 })}
               </div>
             </div>
-            <div className="flex-1 bg-white rounded-xl p-6">
+
+            {/* Main Content */}
+            <div className="flex-1 bg-white rounded-xl p-6 max-sm:-mt-5">
+              <span className="text-xl font-semibold">Здравствуйте, {addressData.name}!</span>
+
               {activeTab.label === "Мои заказы" ? (
                 <div className="mt-6">
                   <h3 className="text-xl font-semibold mb-4">История заказов</h3>
                   <Table
                     columns={columns}
                     dataSource={activeTab.content.slice((currentPage - 1) * pageSize, currentPage * pageSize)}
-=======
-                    </div >
-                  );
-                })}
-              </div >
-            </div >
-
-    <div className="flex-1 bg-white rounded-xl p-6">
-        <span className="text-xl font-semibold"></span>
-
-        {activeTab.label === "Мои заказы" ? (
-            <div className="mt-6">
-                <h3 className="text-xl font-semibold mb-4">История заказов</h3>
-                <Table
-                    columns={columns}
-                    dataSource={activeTab.content.slice(
-                        (currentPage - 1) * pageSize,
-                        currentPage * pageSize
-                    )}
->>>>>>> ff44a7e210953335e58849505e877291bb9675bc
                     pagination={false}
                     rowKey="orderNumber"
-                />
-                <div className="mt-4 flex justify-end">
+                  />
+                  <div className="mt-4 flex justify-end">
                     <Pagination
-                        current={currentPage}
-                        pageSize={pageSize}
-                        total={activeTab.content.length}
-                        onChange={handlePaginationChange}
-                        showSizeChanger={false}
+                      current={currentPage}
+                      pageSize={pageSize}
+                      total={activeTab.content.length}
+                      onChange={handlePaginationChange}
+                      showSizeChanger={false}
                     />
+                  </div>
                 </div>
-<<<<<<< HEAD
               ) : activeTab.label === "Адрес доставки" ? (
                 renderAddressContent()
               ) : activeTab.label === "Сменить пароль" ? (
                 renderPasswordContent()
               ) : activeTab.content.length > 0 ? (
-                <div className="flex items-center justify-center gap-3 mt-3 flex-wrap">
-                  {activeTab.content.map((contentItem, index) => (
-                    <div
-                      key={index}
-                      className="w-[170px] h-28 border border-gray-300 rounded-md hover:bg-blue-600 text-gray-500 hover:text-white transition-colors flex items-center justify-center gap-y-2.5 cursor-pointer flex-col"
-                    >
-                      <span className="text-4xl">{contentItem.icon}</span>
-                      <span className="text-sm text-center">{contentItem.label}</span>
-                    </div>
-                  ))}
+                <div>
+                  <div className="grid grid-cols-6 max-sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 mt-3">
+                    {activeTab.content.map((contentItem, index) => (
+                      <div
+                        key={index}
+                        onClick={() => handleMenuClick(contentItem)}
+                        className="h-27 border border-gray-300 rounded-md hover:bg-blue-600 text-gray-500 hover:text-white transition-colors flex items-center justify-center gap-y-2.5 cursor-pointer flex-col p-4"
+                      >
+                        <span className="text-4xl">{contentItem.icon}</span>
+                        <span className="text-sm text-center">{contentItem.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-10">
+                    <h3 className="font-semibold text-xl text-gray-600 mb-2">Текущие заказы</h3>
+                    <p className="text-gray-500">Заказов ещё не создано.</p>
+                  </div>
                 </div>
               ) : (
                 <div className="text-gray-500 mt-6">Контент пока недоступен.</div>
@@ -577,30 +402,3 @@ const LichniyKabinet = () => {
 }
 
 export default LichniyKabinet
-=======
-            </div>
-        ) : activeTab.content.length > 0 ? (
-            <div className="flex items-center justify-center gap-3 mt-3 flex-wrap">
-                {activeTab.content.map((contentItem, index) => (
-                    <div
-                        key={index}
-                        className="w-[170px] h-28 border border-gray-300 rounded-md hover:bg-blue-600 text-gray-500 hover:text-white transition-colors flex items-center justify-center gap-y-2.5 cursor-pointer flex-col"
-                    >
-                        <span className="text-4xl">{contentItem.icon}</span>
-                        <span className="text-sm text-center">{contentItem.label}</span>
-                    </div>
-                ))}
-            </div>
-        ) : (
-            <div className="text-gray-500 mt-6">Контент пока недоступен.</div>
-        )}
-    </div>
-          </div >
-        </div >
-      </div >
-    </main >
-  );
-};
-
-export default LichniyKabinet
->>>>>>> ff44a7e210953335e58849505e877291bb9675bc
