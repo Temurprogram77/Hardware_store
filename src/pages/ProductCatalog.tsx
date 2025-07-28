@@ -124,7 +124,7 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
         <Link to={""}>Электроинструмент</Link>
       </div>
       <div className="flex flex-col lg:flex-row gap-6">
-        <div className="md:block hidden lg:w-[40%] w-full p-4 pl-0 rounded">
+        <div className="lg:block hidden lg:w-[40%] w-full p-4 pl-0 rounded">
           <div className="font-semibold">
             <h3 className="text-[18px] font-medium">Цена, ₽</h3>
             <div className="flex justify-between">
@@ -317,7 +317,6 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
           </div>
         </div>
 
-        {/* Rest of your component remains the same */}
         <div className="md:hidden mx-3 border border-[#0000001d] py-3 rounded-md max-w-full flex items-center gap-3 justify-center">
           <HiMenu size={30} />
           Показать фильтры
