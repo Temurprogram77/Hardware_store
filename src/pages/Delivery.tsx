@@ -34,16 +34,16 @@ const Delivery = () => {
               </Breadcrumb>
         <h1 className="!font-bold !mt-5 text-[32px] text-[#2c333d] md:text-[40px] lg:text-[48px]">Доставка</h1>
         <div className='block gap-4 md:flex'>
-          <div className='flex flex-col gap-2.5 max-md:w-[380px] '>
+          <div className='flex flex-col gap-2.5 max-md:w-[370px] '>
             <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Мы всегда готовы доставить приобретенный Вами товар в удобное для Вас время.</p>
             <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Стоимость доставки товаров определяется исходя из веса, габаритов удаленности до места назначения. Доставка осуществляется до подъезда дома, офиса.</p>
             <h2 className='text-[#2c333d] text-2xl !font-bold md:text-[18px]'>Наш интернет-магазин предлагает несколько вариантов получения товара:</h2>
             <p className='text-[#2c333d] text-[20px] leading-7 !font-bold md:text-[16px]'>1. Самовывоз с территории компании.</p>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]'>Вы можете самостоятельно забрать заказанные товары с наших складов по адресу: г.Черкесск, ул.Октябрьская, 301</p>
             <h5 className='text-[#1e1e1e] font-sans text-[20px] leading-7 !font-bold md:text-[16px]'>Режим работы:</h5>
-            <ul className='relative left-8 flex gap-5 flex-col'>
-              <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 text-[17px]'>Понедельник- суббота с 8:00 до 18:00</li>
-              <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 text-[17px]'>Воскресенье с 8:00 до 17:00</li>
+            <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
+              <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Понедельник- суббота с 8:00 до 18:00</li>
+              <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Воскресенье с 8:00 до 17:00</li>
             </ul>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[18.5px]'>Отгрузка товара возможна, только после поступления звонка от менеджера о его готовности к выдаче.</p>
             <p className='text-[#2c333d] text-[20px] leading-7 !font-bold md:text-[16px]'>2. Быстрая доставка по Карачаево- Черкесской республике.</p>
@@ -52,13 +52,13 @@ const Delivery = () => {
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]'>Мы доставляем заказы с 8:00 до 18:00. Время и день согласовывается с менеджером при оформлении заказа.</p>
             <p className='text-[#1e1e1e] font-sans text-[18px] leading-7 !font-bold md:text-[15px]'>Правила доставки интернет-заказов:</p>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[18.5px] max-md:w-[365px]'>Доставка интернет – заказов осуществляется после полной оплаты (включая стоимость услуги за доставку) на сайте любым удобным для вас способом.</p>
-            <ul className='relative left-8 flex gap-5 flex-col'>
+            <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Производится доставка только после подтверждения о готовности получить товар. В день доставки просим оставаться на связи в согласованное время по указанному в заказе номеру телефона.</li>
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>При доставке просьба обеспечить свободный подъезд к планируемому месту разгрузки.</li>
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Выгрузка и подъем товара на этаж не входят в стоимость доставки.</li>
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Прием товара с доставкой определяется по внешнему виду, комплектации, отсутствию механических повреждений в момент доставки.</li>
             </ul>
-            <div className='bg-[#f9fafb] md:h-[45px] flex items-center md:w-[990px] w-[360vpx]'>
+            <div className='bg-[#f9fafb] md:h-[45px] flex items-center md:w-[990px] w-[390vpx]'>
               <p className='text-[#003b73] relative  md:left-[33px]  md:top-2.5 font-sans text-[18px]  leading-7 !font-bold md:text-[15px]'>После приема товара претензии покупателя, касающиеся комплектации и механических повреждений товара, не принимаются.</p>
             </div>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]'>Если у Вас возникнут вопросы по качеству или количеству товара, Вы можете обратиться за разъяснениями по номеру телефона +7(8782)-28-42-72.</p>
@@ -66,9 +66,9 @@ const Delivery = () => {
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]'>Для доставки интернет-заказов по России, можно воспользоваться услугами транспортных компаний. Только после 100% оплаты и сбора заказа происходит доставка товаров. До терминала транспортных компаний г.Черкесска, мы доставляем ваш заказ-бесплатно. Доставка осуществляется транспортными компаниям «СДЭК» и «ГлавДоставка». При оформлении заказа, Вы можете сообщить менеджеру желаемую транспортную компанию.</p>
             <p className='!font-bold text-[16px] text-[#2c333d]'>4.Почтой России.</p>
             <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Способы получения заказа Почтой России:</p>
-            <ul className='relative left-8'>
-              <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 '>Самовывоз из отделения почтовой связи. Ваши заказы доставляются до выбранного почтового отделения</li>
-              <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 '>Курьером на дом</li>
+            <ul className='relative left-8 w-[300px] md:w-full'>
+              <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Самовывоз из отделения почтовой связи. Ваши заказы доставляются до выбранного почтового отделения</li>
+              <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Курьером на дом</li>
             </ul>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]'>После оформления интернет заказа и отправки товаров, Вы получите трек-номер, для мониторинга этапов доставки на сайте или в мобильном приложении Почты России.</p>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]'>Наша компания понимает и ценит Ваше время, поэтому оперативная доставка приобретенных товаров, дает возможность как можно быстрее завершить ремонт и, наконец, взглянуть с восхищением на получившийся результат.</p>
