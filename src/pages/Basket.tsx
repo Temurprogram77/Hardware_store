@@ -191,13 +191,16 @@ const Basket = () => {
               <span className="text-[#003b73] text-xl font-bold">{discountedTotal.toLocaleString('ru-RU')} ₽</span>
             </div>
 
-            <Input placeholder="Промокод" size="large" className="mb-3 rounded" />
+           <div className='mb-4'> <Input placeholder="Промокод" size="large" className=" rounded" /></div>
+           <div className='mb-2'>
             <Button
               type="default"
-              className="bg-[#f6f8fb] hover:bg-gray-100 text-gray-800 w-full py-2 mb-3"
+              className="bg-[#f6f8fb]  hover:bg-gray-100 text-gray-800 w-full py-2 mb-3"
             >
               Применить промокод
             </Button>
+           </div>
+            
           <Link to="/ordering">
   <button className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
     ПЕРЕЙТИ К ОФОРМЛЕНИЮ

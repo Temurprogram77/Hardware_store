@@ -1,4 +1,3 @@
-"use client"
 
 import { Breadcrumb, Pagination, Table, Tag, Button } from "antd"
 import { useState } from "react"
