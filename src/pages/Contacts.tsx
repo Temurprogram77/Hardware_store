@@ -82,8 +82,8 @@ const [agree, setAgree] = useState(false);
       <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]" >Контакты</h2>
       <div>
         <div className='flex md:flex-row flex-col'> 
-         <iframe className="border-0 md:rounded-[10px] md:w-[1200px] md:h-[550px] left-[-15px] rounded-none w-[385px] h-[650px] !z-0 relative" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1574993.114298276!2d66.8964759!3d39.5560352!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1753176936343!5m2!1sen!2s" loading="lazy"></iframe>
-          <div className=' flex flex-col items-center w-[315px] h-[475px] pt-6 relative left-[-50px] mt-9 rounded-[10px] !z-10 shadow-lg bg-white'>
+         <iframe className="border-0 md:rounded-[10px] md:w-[1200px] md:h-[550px] md:left-[5px] left-[-15px] rounded-none w-[385px] h-[650px] !z-0 relative" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1574993.114298276!2d66.8964759!3d39.5560352!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1753176936343!5m2!1sen!2s" loading="lazy"></iframe>
+          <div className=' flex flex-col items-center md:w-[315px] md:h-[475px] h-[475px] pt-6 relative md:left-[-50px] md:top-[2px] top-[-50px] md:mt-9 rounded-[10px] !z-10 shadow-lg bg-white'>
               <h2 className='!font-bold'>ООО «Стройоптторг»</h2>
               <div className='flex gap-2 mt-3'>
                 <SlLocationPin className=' text-[20px]' />
