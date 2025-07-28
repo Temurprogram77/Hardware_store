@@ -45,6 +45,7 @@ export const routes = [
   { path: "/delivery", element: <Delivery /> },
   { path: "/editing", element: <Editing /> },
   { path: "/featured-products", element: <FeaturedProducts /> },
+  { path: "/product/:id", element: <ProductCard /> },
   { path: "/my-address", element: <MyAddress /> },
   { path: "/my-orders", element: <MyOrders /> },
   { path: "/ordering", element: <Ordering /> },

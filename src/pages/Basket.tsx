@@ -1,6 +1,6 @@
 import { Breadcrumb, Button, Tooltip, Input } from 'antd';
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const Basket = () => {
   const [cartItems, setCartItems] = useState([
     {
@@ -198,9 +198,12 @@ const Basket = () => {
             >
               Применить промокод
             </Button>
-            <button className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
-              ПЕРЕЙТИ К ОФОРМЛЕНИЮ
-            </button>
+          <Link to="/ordering">
+  <button className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+    ПЕРЕЙТИ К ОФОРМЛЕНИЮ
+  </button>
+</Link>
+            
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { useModal } from "../context/ModalContext";
 import { useSidebar } from "../context/SideBarContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useHeart } from "../context/HeartClickedContext";
+import { useCompare } from "../context/CompareContext";
 
 const {
   Logo,
@@ -245,6 +247,21 @@ const Navbar: React.FC = () => {
     closeModal,
     isOpen,
   } = useModal();
+  // const { openModal } = useModal();
+  // const { toggleSidebar, sideBarIsOpen } = useSidebar();
+  // const { likedItems } = useHeart();
+  const { likedItems } = useHeart();
+  const { comparedItems } = useCompare();
+
+  const likedCountt = Object.keys(likedItems).filter(
+    (id) => likedItems[id]
+  ).length;
+  const comparedCount = Object.keys(comparedItems).filter(
+    (id) => comparedItems[id]
+  ).length;
+
+  // LocalStorage orqali like qilingan itemlar sonini hisoblash
+  const likedCount = Object.values(likedItems).filter(Boolean).length;
   const { sideBarIsOpen, toggleSidebar } = useSidebar();
   return (
     <div className="xl:m-0 mb-5">
@@ -345,14 +362,18 @@ const Navbar: React.FC = () => {
             <h2 className="text-[30px] !font-semibold text-center">
               Заказать обратный звонок
             </h2>
-            <label htmlFor="inp1" className="text-[14px] font-medium mt-2">Ваше имя *:</label>
+            <label htmlFor="inp1" className="text-[14px] font-medium mt-2">
+              Ваше имя *:
+            </label>
             <input
               id="inp1"
               type="text"
               className="px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full"
               placeholder="Как к вам обращаться?"
             />
-            <label htmlFor="inp2" className="text-[14px] font-medium mt-2">Номер телефона </label>
+            <label htmlFor="inp2" className="text-[14px] font-medium mt-2">
+              Номер телефона{" "}
+            </label>
             <input
               id="inp2"
               type="text"
@@ -386,104 +407,117 @@ const Navbar: React.FC = () => {
               </label>
               <p className="!m-0 leading-6 text-[14px] !font-medium">
                 Согласен с обработкой персональных данных в соответствии с{" "}
-                <a href="#" className="text-blue-600 underline hover:no-underline">политикой конфиденциальности</a>
+                <a
+                  href="#"
+                  className="text-blue-600 underline hover:no-underline"
+                >
+                  политикой конфиденциальности
+                </a>
               </p>
             </div>
             <div className="max-w-full text-white">
-              <button className="bg-[#186fd4] py-5 rounded-md text-white duration-200 hover:bg-black cursor-pointer w-full">Перезвоните мне</button>
+              <button className="bg-[#186fd4] py-5 rounded-md text-white duration-200 hover:bg-black cursor-pointer w-full">
+                Перезвоните мне
+              </button>
             </div>
           </div>
         </div>
       ) : (
         ""
       )}
-        <>
+      <>
+        <div
+          onClick={closeModal}
+          className={`${
+            isOpen ? "visible opacity-100" : "invisible opacity-0"
+          } duration-200 w-full h-full bg-[#000000be] fixed z-3 top-0 left-0`}
+        ></div>
+        <div
+          className={`${
+            isOpen ? "left-0" : "-left-full"
+          } duration-200 w-[90%] h-full p-4 bg-[#fff] fixed z-3 top-0`}
+        >
+          <h2 className="text-[18px] !font-semibold">Меню</h2>
           <div
             onClick={closeModal}
-            className={`${isOpen ? "visible opacity-100" :"invisible opacity-0"} duration-200 w-full h-full bg-[#000000be] fixed z-3 top-0 left-0`}
-          ></div>
-          <div className={`${isOpen ? "left-0" :"-left-full"} duration-200 w-[90%] h-full p-4 bg-[#fff] fixed z-3 top-0`}>
-            <h2 className="text-[18px] !font-semibold">Меню</h2>
-            <div
-              onClick={closeModal}
-              className="absolute right-4 top-4 rounded-md bg-[#F2F6FC] p-2"
-            >
-              <img src={close} alt="close" />
+            className="absolute right-4 top-4 rounded-md bg-[#F2F6FC] p-2"
+          >
+            <img src={close} alt="close" />
+          </div>
+          <Link to={"/stock"}>
+            <div className="py-4 border-t border-[#EBEEF0]">
+              <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
+                <img src={gift} className="w-[25px]" alt="gift" /> Все акции
+              </p>
             </div>
-            <Link to={"/stock"}>
-              <div className="py-4 border-t border-[#EBEEF0]">
-                <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
-                  <img src={gift} className="w-[25px]" alt="gift" /> Все акции
-                </p>
-              </div>
-            </Link>
-            <Link to={"/about"}>
-              <div className="py-4 border-t border-[#EBEEF0]">
-                <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
-                  О компании
-                </p>
-              </div>
-            </Link>
-            <Link to={"/payment"}>
-              <div className="py-4 border-t border-[#EBEEF0]">
-                <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
-                  Оплата
-                </p>
-              </div>
-            </Link>
-            <Link to={"/delivery"}>
-              <div className="py-4 border-t border-[#EBEEF0]">
-                <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
-                  Доставка
-                </p>
-              </div>
-            </Link>
-            <Link to={"/return"}>
-              <div className="py-4 border-t border-[#EBEEF0]">
-                <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
-                  Возврат
-                </p>
-              </div>
-            </Link>
-            <Link to={"/reviews"}>
-              <div className="py-4 border-t border-[#EBEEF0]">
-                <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
-                  Отзывы
-                </p>
-              </div>
-            </Link>
-            <Link to={"/q-and-a"}>
-              <div className="py-4 border-t border-[#EBEEF0]">
-                <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
-                  Вопрос-ответ
-                </p>
-              </div>
-            </Link>
-            <Link to={"/blog"}>
-              <div className="py-4 border-t border-[#EBEEF0]">
-                <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
-                  Новости
-                </p>
-              </div>
-            </Link>
-            <Link to={"/contacts"}>
-              <div className="py-4 border-t border-b border-[#EBEEF0]">
-                <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
-                  Контакты
-                </p>
-              </div>
-            </Link>
-            <div className="flex justify-between items-center my-6">
-              <p className="!m-0">8 800 444 00 65</p>
-              <div className="py-2 px-4 rounded-sm font-semibold text-[#2A5E8D] bg-[#F2F6FC]">
-                Заказать звонок
-              </div>
+          </Link>
+          <Link to={"/about"}>
+            <div className="py-4 border-t border-[#EBEEF0]">
+              <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
+                О компании
+              </p>
             </div>
-            <div className="text-center my-2 text-[#4E5760]">
-              Ежедневно, с 8:00 до 18:00
+          </Link>
+          <Link to={"/payment"}>
+            <div className="py-4 border-t border-[#EBEEF0]">
+              <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
+                Оплата
+              </p>
+            </div>
+          </Link>
+          <Link to={"/delivery"}>
+            <div className="py-4 border-t border-[#EBEEF0]">
+              <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
+                Доставка
+              </p>
+            </div>
+          </Link>
+          <Link to={"/return"}>
+            <div className="py-4 border-t border-[#EBEEF0]">
+              <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
+                Возврат
+              </p>
+            </div>
+          </Link>
+          <Link to={"/reviews"}>
+            <div className="py-4 border-t border-[#EBEEF0]">
+              <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
+                Отзывы
+              </p>
+            </div>
+          </Link>
+          <Link to={"/q-and-a"}>
+            <div className="py-4 border-t border-[#EBEEF0]">
+              <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
+                Вопрос-ответ
+              </p>
+            </div>
+          </Link>
+          <Link to={"/blog"}>
+            <div className="py-4 border-t border-[#EBEEF0]">
+              <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
+                Новости
+              </p>
+            </div>
+          </Link>
+          <Link to={"/contacts"}>
+            <div className="py-4 border-t border-b border-[#EBEEF0]">
+              <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
+                Контакты
+              </p>
+            </div>
+          </Link>
+          <div className="flex justify-between items-center my-6">
+            <p className="!m-0">8 800 444 00 65</p>
+            <div className="py-2 px-4 rounded-sm font-semibold text-[#2A5E8D] bg-[#F2F6FC]">
+              Заказать звонок
             </div>
           </div>
-        </>
+          <div className="text-center my-2 text-[#4E5760]">
+            Ежедневно, с 8:00 до 18:00
+          </div>
+        </div>
+      </>
 
       <div className="relative">
         <div className="flex flex-wrap items-center justify-between py-4 max-w-[1460px] 2xl:mx-auto mx-3 gap-4">
@@ -567,7 +601,18 @@ const Navbar: React.FC = () => {
 
             <Link to="/comparison">
               <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={compare} alt="compare" className="w-5 h-4" />
+                <div className="relative">
+                  <img
+                    src={compare}
+                    className="w-[24px] h-[18px]"
+                    alt="compare"
+                  />
+                  {comparedCount > 0 && (
+                    <span className="absolute -top-4 -right-4 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                      {comparedCount}
+                    </span>
+                  )}
+                </div>
                 <p className="hidden !m-0 sm:block text-[12px] font-medium">
                   Сравнение
                 </p>
@@ -576,7 +621,18 @@ const Navbar: React.FC = () => {
 
             <Link to="/featured-products">
               <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={heart} alt="heart" className="w-5 h-4" />
+                <div className="relative rounded-md ">
+                  <img
+                    src={heart}
+                    className="w-[24px] h-[18px]"
+                    alt="wishlist"
+                  />
+                  {likedCount > 0 && (
+                    <span className="absolute -top-4 -right-4 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                      {likedCount}
+                    </span>
+                  )}
+                </div>
                 <p className="hidden !m-0 sm:block text-[12px] font-medium">
                   Избранное
                 </p>
@@ -605,7 +661,7 @@ const Navbar: React.FC = () => {
                   return (
                     <Link to="/product-catalog" key={inx}>
                       <div
-                      onClick={toggleSidebar}
+                        onClick={toggleSidebar}
                         key={inx}
                         className="arrow-svg cursor-pointer flex items-center justify-between hover:fill-white hover:text-white border-b border-[#0000002c] py-5 px-5 hover:bg-[#186fd4]"
                       >

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from 'antd';
 import {images} from "../assets/images";
 import { Breadcrumb } from 'antd';
@@ -11,8 +11,10 @@ const NotFoundPage = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4 text-center sm:p-12">
 <div className="absolute top-0 left-0 p-4 sm:p-10 mt-40 sm:mt-60 md:mt-40 lg:mt-24">
   <Breadcrumb className="text-md mb-8">
-    <Breadcrumb.Item className="text-black">Стройоптторг</Breadcrumb.Item>
-    <Breadcrumb.Item className="text-gray-400">
+    <Breadcrumb.Item className="text-black">
+    <Link className="text-black" to={"/"}>Стройоптторг</Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Item className="text-gray-400 cursor-pointer">
       Страница не найдена
     </Breadcrumb.Item>
   </Breadcrumb>

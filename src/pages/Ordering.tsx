@@ -5,21 +5,55 @@ import {
   Input,
   Checkbox,
   Button,
-  Breadcrumb,
 } from 'antd';
 import { Link } from 'react-router-dom';
+import { images } from '../assets/images';
+
 const { Option } = Select;
 
+const products = [
+  {
+    image: images.Comparison1,
+    name: "Мато A",
+    description: "Wander X645-46 GF 1450W",
+    article: "XJ89YHGO",
+    price: 7899
+  },
+  {
+    image: images.Comparison2,
+    name: "Мато B",
+    description: "Hammer ZX-2000 Power",
+    article: "JK77ZZQW",
+    price: 20000
+  },
+  {
+    image: images.Comparison3,
+    name: "Мато C",
+    description: "Bosch Proline Ultra",
+    article: "GH55KLMN",
+    price: 4756
+  },
+  {
+    image: images.Comparison1,
+    name: "Мато D",
+    description: "Makita SpeedMaster",
+    article: "TR44YUOP",
+    price: 20000
+  }
+];
+
 const Ordering: React.FC = () => {
+  const total = products.reduce((acc, product) => acc + product.price, 0);
+
   return (
     <div className="min-h-screen bg-white p-4 md:p-10 flex flex-col lg:flex-row gap-10">
-      {/* LEFT: DELIVERY & PAYMENT */}
+      {/* LEFT SIDE */}
       <div className="w-full lg:w-2/3 space-y-8">
         <div className="text-right text-sm">
-          Уже есть аккаунт? <a href="#" className="text-blue-600"><Link to={'/my-account'}>Войти</Link></a>
+          Уже есть аккаунт? <Link to="/my-account" className="text-blue-600">Войти</Link>
         </div>
 
-        {/* Доставка */}
+        {/* DELIVERY */}
         <div className="bg-white p-6 rounded-xl border border-gray-200 space-y-6">
           <h2 className="text-xl font-semibold">Доставка</h2>
 
@@ -49,7 +83,7 @@ const Ordering: React.FC = () => {
           </Radio.Group>
         </div>
 
-        {/* Оплата */}
+        {/* PAYMENT */}
         <div className="bg-white p-6 rounded-xl border border-gray-200 space-y-6">
           <h2 className="text-xl font-semibold">Оплата</h2>
 
@@ -81,25 +115,27 @@ const Ordering: React.FC = () => {
         </div>
       </div>
 
-      {/* RIGHT: ORDER SUMMARY */}
+      {/* RIGHT SIDE: ORDER SUMMARY */}
       <div className="w-full lg:w-1/3">
         <div className="bg-white p-6 rounded-xl border border-gray-200 space-y-6">
           <h2 className="text-lg font-semibold">Ваш заказ</h2>
 
           <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
-            {[7899, 20000, 4756, 20000].map((price, idx) => (
+            {products.map((product, idx) => (
               <div key={idx} className="flex justify-between items-start border-b pb-3">
                 <img
-                  src={`https://placehold.co/60x60?text=Tool+${idx + 1}`}
-                  alt="item"
+                  src={product.image}
+                  alt={product.name}
                   className="w-14 h-14 object-contain"
                 />
                 <div className="flex-1 px-3">
-                  <div className="font-medium text-sm leading-tight">Перфоратор универсальный</div>
-                  <div className="text-xs text-gray-500">Wander X645-46 GF 1450W</div>
-                  <div className="text-xs text-gray-400">Артикул: XJ89YHGO</div>
+                  <div className="font-medium text-sm leading-tight">{product.name}</div>
+                  <div className="text-xs text-gray-500">{product.description}</div>
+                  <div className="text-xs text-gray-400">Артикул: {product.article}</div>
                 </div>
-                <div className="font-semibold whitespace-nowrap">{price.toLocaleString()} ₽</div>
+                <div className="font-semibold whitespace-nowrap">
+                  {product.price.toLocaleString()} ₽
+                </div>
               </div>
             ))}
           </div>
@@ -107,7 +143,7 @@ const Ordering: React.FC = () => {
           <div className="border-t pt-4 space-y-2 text-sm">
             <div className="flex justify-between">
               <span>Сумма</span>
-              <span className="font-semibold">43 829 ₽</span>
+              <span className="font-semibold">{total.toLocaleString()} ₽</span>
             </div>
             <div className="flex justify-between">
               <span>Доставка</span>
@@ -115,7 +151,7 @@ const Ordering: React.FC = () => {
             </div>
             <div className="flex justify-between text-base font-bold">
               <span>Итого</span>
-              <span>43 829 ₽</span>
+              <span>{total.toLocaleString()} ₽</span>
             </div>
           </div>
 
