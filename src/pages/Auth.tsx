@@ -1,37 +1,68 @@
 import React from 'react';
-import { Breadcrumb, Typography, Input, Button, Space, Checkbox } from 'antd';
-import { Link } from 'react-router-dom';
+import { Breadcrumb, Typography, Input, Button, Space, Checkbox, notification } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
-
 
 const AuthPage: React.FC = () => {
-  const [emailRegexs, setEmailRegex] = React.useState<string>('');
-  const [passwords, setPasswords] = React.useState<string>('');
+  const navigate = useNavigate();
+
+  const [email, setEmail] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
 
   const [errors, setErrors] = React.useState({
     email: '',
     password: '',
-    agree: '',
-  })
+    credentials: '',
+  });
 
-  const handleRegister = (e: React.FormEvent) => {
-    const newErrors = { email: '', password: '', agree: '' }
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    const newErrors = { email: '', password: '', credentials: '' };
+    let hasError = false;
 
-    if (!emailRegex.test(emailRegexs)) {
-      newErrors.email = "Пожалуйста, введите почту!"
-    }
-    if (!password.test(passwords)) {
-      newErrors.password = "Пожалуйста, введите пароль!"
+    if (!emailRegex.test(email)) {
+      newErrors.email = "Iltimos, haqiqiy email kiriting!";
+      hasError = true;
     }
 
-    setErrors(newErrors)
-  }
+    if (!password) {
+      newErrors.password = "Iltimos, parolni kiriting!";
+      hasError = true;
+    }
+
+    if (hasError) {
+      setErrors(newErrors);
+      return;
+    }
+
+    try {
+      const usersString = localStorage.getItem('users');
+      const users = usersString ? JSON.parse(usersString) : [];
+
+      const foundUser = users.find(
+        (user: any) => user.email === email && user.password === password
+      );
+
+      if (foundUser) {
+        localStorage.setItem('isAuthenticated', 'true');
+        notification.success({
+          message: "Tizimga muvaffaqiyatli kirildi",
+          placement: "bottomRight"
+        })
+        navigate('/my-accounts');
+      } else {
+        newErrors.credentials = "Email yoki parol noto'g'ri kiritildi!";
+        setErrors(newErrors);
+      }
+    } catch (error) {
+      newErrors.credentials = "Kirishda kutilmagan xato yuz berdi.";
+      setErrors(newErrors);
+    }
+  };
 
   return (
     <main className='mb-10 mt-5 px-3'>
@@ -53,26 +84,25 @@ const AuthPage: React.FC = () => {
         />
         <div className="mt-4">
           <h2 className="!font-bold text-4xl sm:text-3xl">Авторизация</h2>
-          <div className='mt-20 ml-20 border w-[88%] rounded-lg p-8 px-10  gap-20 border-gray-200 flex justify-between max-sm:flex-col max-sm:mt-10 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5'>
+          <div className='mt-20 ml-20 border w-[88%] rounded-lg p-8 px-10 gap-20 border-gray-200 flex justify-between max-sm:flex-col max-sm:mt-10 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5'>
             <div className='flex items-center flex-col w-1/2 max-sm:w-full'>
               {Object.values(errors).some(val => val) && (
                 <div className='border border-[#E52B0E] w-full p-3 rounded border-dashed bg-[#FFF9F9] mb-5 flex flex-col '>
                   {errors.email && <p className='text-[#E52B0E] text-sm'>{errors.email}</p>}
                   {errors.password && <p className='text-[#E52B0E] text-sm'>{errors.password}</p>}
-                  {errors.agree && <p className='text-[#E52B0E] text-sm'>{errors.agree}</p>}
-
+                  {errors.credentials && <p className='text-[#E52B0E] text-sm'>{errors.credentials}</p>}
                 </div>
               )}
               <Space direction="vertical" className='max-sm:w-[100%] md:w-[100%]'>
                 <Typography.Title className='!text-lg'>
-                  Email или логин <span className='text-red-700'>*</span>:
+                  Email yoki login <span className='text-red-700'>*</span>:
                 </Typography.Title>
                 <Input
                   className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2'
                   placeholder="Введите данные для авторизации"
-                  value={emailRegexs}
-                  onChange={e => setEmailRegex(e.target.value)}
-                  status={errors.email ? 'error' : ''}
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  status={errors.email || errors.credentials ? 'error' : ''}
                 />
                 <Typography.Title className='!text-lg'>
                   Пароль <span className='text-red-700'>*</span>:
@@ -83,9 +113,9 @@ const AuthPage: React.FC = () => {
                   iconRender={(visible: boolean) =>
                     visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                   }
-                  value={passwords}
-                  onChange={e => setPasswords(e.target.value)}
-                  status={errors.password ? "error" : ""}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  status={errors.password || errors.credentials ? "error" : ""}
                 />
               </Space>
 
@@ -97,8 +127,7 @@ const AuthPage: React.FC = () => {
                   <Link to="/password-recovery" className='!text-blue-600'>Восстановить пароль</Link>
                 </Button>
                 <Button
-                  onClick={handleRegister}
-                  // disabled={!emailRegex.test(emailRegexs) || !password.test(passwords) || !agree}
+                  onClick={handleLogin}
                   type='primary'
                   className='!mt-4 !w-full !h-[55px] md:w-full !text-sm !font-bold !uppercase'
                 >
@@ -120,11 +149,11 @@ const AuthPage: React.FC = () => {
                 <FiUserPlus className='text-red-600 font-normal w-13 h-13 max-sm:w-8 max-sm:h-8' />
                 <h3 className='!font-bold text-2xl max-sm:text-lg max-sm:items-center max-sm:flex'>Еще нет аккаунта?</h3>
               </div>
-              <div className='flex max-sm:flex-wrap flex-col ml-18 max-sm:ml-11  max-sm:w-auto mt-7 max-sm:mt-3 md:mt-1'>
+              <div className='flex max-sm:flex-wrap flex-col ml-18 max-sm:ml-11 max-sm:w-auto mt-7 max-sm:mt-3 md:mt-1'>
                 <div className='flex items-center flex-wrap'>
                   <p className='max-sm:w-[220px] flex flex-wrap text-sm leading-7 text-gray-600'>
                     <span className='font-bold text-sm'>Регистрация на сайте</span>
-                    позволяет получить доступ к статусу и истории вашего заказа. Просто заполните поля ниже, и вы получите учетную запись.
+                    {' '}позволяет получить доступ к статусу и истории вашего заказа. Просто заполните поля ниже, и вы получите учетную запись.
                   </p>
                 </div>
                 <p className='!mt-5 max-sm:w-[240px] text-sm flex flex-wrap leading-7 text-gray-500 md:!mt-0'>
