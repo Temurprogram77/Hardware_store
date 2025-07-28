@@ -13,9 +13,9 @@ const Footer: React.FC = () => {
           <img
             src={images.logo2}
             alt="Стройоптторг Logo"
-            className="w-[150px] h-[40px] md:w-auto md:h-auto object-contain"
+            className="sm:w-[150px] sm:h-[40px] h-[30px] md:w-auto md:h-auto object-contain"
           />
-          <span className="text-base font-semibold whitespace-nowrap">
+          <span className="sm:text-[15px] text-[13px] text-base font-semibold whitespace-nowrap">
             ООО «Стройоптторг»
           </span>
         </div>
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
             Ежедневно, с 8:00 до 18:00
           </p>
         </div>
-        <div className=" px-10 py-2.5 text-[12px] uppercase font-semibold rounded-md border-2 border-[#EE0906]">
+        <div className=" px-10 hover:bg-[#ee0906] cursor-pointer hover:text-white py-2.5 text-[12px] uppercase font-semibold rounded-md border-2 border-[#EE0906]">
           Заказать звонок
         </div>
       </div>

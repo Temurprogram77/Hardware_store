@@ -79,8 +79,8 @@ const Comparison: React.FC = () => {
           <button
             onClick={() => product.setLiked(!product.liked)}
             className="border border-gray-200 rounded-md p-1 text-2xl focus:outline-none"
-          >
-            <span className={`${product.liked ? 'text-red-500 animate-ping-short' : 'text-gray-400'}`}>
+          > 
+            <span className={`${product.liked ? 'text-blue-500 animate-ping-short' : 'text-gray-400'}`}>
               {product.liked ? <HeartFilled className="text-lg" /> : <HeartOutlined className="text-lg" />}
             </span>
           </button>

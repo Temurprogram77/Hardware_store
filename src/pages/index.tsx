@@ -27,3 +27,4 @@ export { default as SearchResults } from "./SearchResults";
 export { default as Stock } from "./Stock";
 export { default as Register } from "./Register";
 export { default as Lichniykabinet } from "./LichniyKabinet";
+export { default as LandingStock } from "./LandingStock";

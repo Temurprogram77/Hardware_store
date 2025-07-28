@@ -27,7 +27,8 @@ import {
   SearchResults,
   Stock,
   Register,
-  Lichniykabinet
+  Lichniykabinet,
+  LandingStock
 } from "../pages";
 
 export const routes = [
@@ -44,6 +45,7 @@ export const routes = [
   { path: "/delivery", element: <Delivery /> },
   { path: "/editing", element: <Editing /> },
   { path: "/featured-products", element: <FeaturedProducts /> },
+  { path: "/product/:id", element: <ProductCard /> },
   { path: "/my-address", element: <MyAddress /> },
   { path: "/my-orders", element: <MyOrders /> },
   { path: "/ordering", element: <Ordering /> },
@@ -59,5 +61,6 @@ export const routes = [
   { path: "/search-results", element: <SearchResults /> },
   { path: "/stock", element: <Stock /> },
   { path: "/register", element: <Register /> },
+  {path:'/stock/:id',element:<LandingStock/>},
   { path: "*", element: <NotFound /> },
 ];

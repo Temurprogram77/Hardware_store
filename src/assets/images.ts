@@ -84,8 +84,24 @@ import dataImage23 from "./Rectangle 22 (23).png";
 import dataImage24 from "./Rectangle 22 (24).png";
 import closeSidebar from "./closeSidebar.svg";
 import cartt from "./cartt.svg";
+import arrow from "./Arrow 5.svg";
+import Rectangle from "./Rectangle 48.png"
+import Rectangle2 from "./Rectangle 49.png"
+import Rectangle3 from "./Rectangle 50.png"
+import Rectangle4 from "./Rectangle 51.png"
+import Vector7 from "./Vector (7).svg"
+import Vector8 from "./Vector (8).svg"
+import Vector9 from "./Vector (9).svg"
+import Vector10 from "./Vector (10).svg"
+import heart2 from "./heart2.svg"
 
 export const images = {
+  heart2,
+  Vector10,
+  Vector9,
+  Vector8,
+  Vector7,
+  arrow,
   closeSidebar,
   cartt,
   dataImage,
@@ -171,4 +187,8 @@ export const images = {
   Comparison1,
   Comparison2,
   Comparison3,
+  Rectangle,
+  Rectangle2,
+  Rectangle3,
+  Rectangle4,
 };
