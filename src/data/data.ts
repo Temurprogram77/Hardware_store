@@ -30,6 +30,7 @@ const {
 
 let data = [
   {
+    id: 1,
     image: dataImage,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -38,6 +39,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 2,
     image: dataImage1,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -46,6 +48,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 3,
     image: dataImage2,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -54,6 +57,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 4,
     image: dataImage3,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -62,6 +66,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 5,
     image: dataImage4,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -70,6 +75,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 6,
     image: dataImage5,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -78,6 +84,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 7,
     image: dataImage6,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -86,6 +93,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 8,
     image: dataImage7,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -94,6 +102,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 9,
     image: dataImage8,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -102,6 +111,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 10,
     image: dataImage9,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -110,6 +120,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 11,
     image: dataImage10,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -118,6 +129,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 12,
     image: dataImage11,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -126,6 +138,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 13,
     image: dataImage12,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -134,6 +147,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 14,
     image: dataImage13,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -142,6 +156,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 15,
     image: dataImage14,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -150,6 +165,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 16,
     image: dataImage15,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -158,6 +174,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 17,
     image: dataImage16,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -166,6 +183,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 18,
     image: dataImage17,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -174,6 +192,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 19,
     image: dataImage18,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -182,6 +201,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 20,
     image: dataImage19,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -190,6 +210,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 21,
     image: dataImage20,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -198,6 +219,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 22,
     image: dataImage21,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -206,6 +228,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 23,
     image: dataImage22,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -214,6 +237,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 24,
     image: dataImage23,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -222,6 +246,7 @@ let data = [
     sale: "-15%"
   },
   {
+    id: 25,
     image: dataImage24,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",

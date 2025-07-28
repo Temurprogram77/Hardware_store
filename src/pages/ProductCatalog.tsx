@@ -3,7 +3,7 @@ import { images } from "../assets/images";
 import { Link } from "react-router-dom";
 import { Range } from "react-range";
 import { useState } from "react";
-import { HiMenu } from "react-icons/hi"
+import { HiMenu } from "react-icons/hi";
 
 const { cartt, heart, compare, arrow } = images;
 
@@ -675,9 +675,7 @@ const ProductCatalog = () => {
                 Показать все
               </h2>
             </div>
-            <h3 className="text-[20px] !mt-8 !font-semibold">
-              Расход воздуха
-            </h3>
+            <h3 className="text-[20px] !mt-8 !font-semibold">Расход воздуха</h3>
             <div className="flex flex-col gap-4 mt-4">
               <label className="cursor-pointer inline-flex items-center gap-2 select-none">
                 <input
@@ -773,8 +771,9 @@ const ProductCatalog = () => {
           </div>
         </div>
         <div className="md:hidden mx-3 border border-[#0000001d] py-3 rounded-md max-w-full flex items-center gap-3 justify-center">
-          <HiMenu size={30}/>
-          Показать фильтры</div>
+          <HiMenu size={30} />
+          Показать фильтры
+        </div>
         <div className="flex flex-col">
           <div className="flex justify-between items-center my-3">
             <div className="flex md:w-auto w-full md:m-0 mx-4 justify-between items-center gap-3">
@@ -805,19 +804,22 @@ const ProductCatalog = () => {
           <div className="w-full md:px-0 px-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
             {data.map((item, index) => (
               <div key={index} className="cursor-pointer p-4 rounded shadow">
-                <Link to={"/product-card"}>
+                <Link to={`/product/${item.id}`}>
                   <img
                     src={item.image}
                     alt={item.title}
                     className="w-full h-48 object-cover"
                   />
                 </Link>
-                <p className="text-xs text-gray-500 md:text-[12px] text-[10px]">{item.item}</p>
-                <Link to="/product-card">
+                <p className="text-xs text-gray-500 md:text-[12px] text-[10px]">
+                  {item.item}
+                </p>
+                <Link to={`/product/${item.id}`}>
                   <h3 className="font-semibold md:text-[16px] text-[14px] hover:text-[#186FD4] duration-200">
                     {item.title}
                   </h3>
                 </Link>
+
                 <div className="flex items-center gap-2">
                   <span className="line-through text-gray-400 md:text-[13px] text-[10px]">
                     {item.oldMoney}
@@ -860,7 +862,9 @@ const ProductCatalog = () => {
               <p className="!m-0 text-[12px] font-semibold">Назад</p>
             </div>
             <div className="flex gap-4">
-              <div className="bg-black cursor-pointer text-white px-4 py-3 rounded-md">1</div>
+              <div className="bg-black cursor-pointer text-white px-4 py-3 rounded-md">
+                1
+              </div>
               <div className="border cursor-pointer duration-200 hover:bg-black hover:text-white border-[#DFDFDF] px-4 py-3 rounded-md">
                 2
               </div>
@@ -882,7 +886,11 @@ const ProductCatalog = () => {
             </div>
             <div className="cursor-pointer py-3.5 px-4 flex items-center gap-3 rounded-md border border-[#DFDFDF]">
               <p className="!m-0 text-[12px] font-semibold">Далее</p>
-              <img className="md:w-[20px] w-[15px] rotate-[180deg]" src={arrow} alt="" />
+              <img
+                className="md:w-[20px] w-[15px] rotate-[180deg]"
+                src={arrow}
+                alt=""
+              />
             </div>
           </div>
           <div className="flex flex-col gap-2 2xl:mx-auto mx-3">
