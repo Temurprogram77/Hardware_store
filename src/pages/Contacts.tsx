@@ -82,7 +82,7 @@ const [agree, setAgree] = useState(false);
       <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]" >Контакты</h2>
       <div>
         <div className='flex md:flex-row flex-col'> 
-         <iframe className="border-0 md:rounded-[10px] md:w-[1200px] md:h-[550px] md:left-[5px] left-[-15px] rounded-none w-[385px] h-[650px] !z-0 relative" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1574993.114298276!2d66.8964759!3d39.5560352!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1753176936343!5m2!1sen!2s" loading="lazy"></iframe>
+         <iframe className="border-0 md:rounded-[10px] md:w-[1200px] md:h-[550px] md:left-[5px] left-[-15px] rounded-none w-[384px] h-[650px] !z-0 relative" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1574993.114298276!2d66.8964759!3d39.5560352!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1753176936343!5m2!1sen!2s" loading="lazy"></iframe>
           <div className=' flex flex-col items-center md:w-[315px] md:h-[475px] h-[475px] pt-6 relative md:left-[-50px] md:top-[2px] top-[-50px] md:mt-9 rounded-[10px] !z-10 shadow-lg bg-white'>
               <h2 className='!font-bold md:text-[16px] text-[20px]'>ООО «Стройоптторг»</h2>
               <div className='flex gap-2 mt-3'>
@@ -153,7 +153,7 @@ const [agree, setAgree] = useState(false);
           </section>
         </div>
       </div>
-      <section className="bg-[#f8f9fb] py-12 px-4">
+      <section className="bg-[#f8f9fb] md:w-full w-[390px] relative md:left-0 left-[-20px] py-12 px-4">
       <div className="md:w-4xl  mx-auto text-center">
         <h2 className="text-2xl md:text-3xl !mb-[30px] md:mb-10 !font-bold text-gray-800">
           У вас есть вопросы? С радостью ответим на них!
@@ -210,14 +210,14 @@ const [agree, setAgree] = useState(false);
               ОТПРАВИТЬ
             </button>
 
-            <label className="flex gap-6 items-center text-sm text-gray-700 space-x-2">
+            <label className="flex gap-6 relative md:left-0 left-[7px] items-start md:items-center text-sm text-gray-700 space-x-2">
               <input
                 type="checkbox"
                 checked={agree}
                 onChange={(e) => setAgree(e.target.checked)}
-                className="scale-200 !mt-[-8px] border border-gray-400 rounded "
+                className="scale-200 md:top-0 relative top-[20px] !mt-[-8px] border border-gray-400 rounded "
               />
-              <span className="text-[16px] w-[500px]">
+              <span className="md:text-[16px] text-[17px] md:leading-0 leading-7 w-[305px] md:w-[500px]">
                 Согласен с обработкой персональных данных в соответствии с{" "}
                 <a
                   href="#"
