@@ -23,7 +23,9 @@ const ProductCard = () => {
         <Link to={""}>{product.title}</Link>
       </div>
       <div className="2xl:mx-0 mx-3">
-        <h2 className="md:text-[22px] text-[20px] !font-semibold">Дрель-шуруповерт аккумуляторная MAKITA DF 347DWE14 В 1,5 А/ч</h2>
+        <h2 className="md:text-[22px] text-[20px] !font-semibold">
+          Дрель-шуруповерт аккумуляторная MAKITA DF 347DWE14 В 1,5 А/ч
+        </h2>
         <div className="flex justify-between">
           <div className="w-full md:flex-row flex-col flex justify-between items-center 2xl:gap-12 lg:gap-8 gap-4">
             <div className="flex lg:flex-row flex-col-reverse gap-5 ">
@@ -45,7 +47,11 @@ const ProductCard = () => {
                 </div>
               </div>
               <div className="2xl:w-[550px] flex items-center justify-center h-full mx-4">
-                <Image width={'450px'} src={product.image} className="w-[550px] h-full" alt="img"/>
+                <Image
+                  src={product.image}
+                  alt="img"
+                  className="w-full sm:w-[400px] md:w-[500px] lg:w-[550px] xl:w-[600px] h-auto rounded"
+                />
               </div>
             </div>
             <div className="flex lg:flex-row flex-col-reverse md:w-auto w-full lg:gap-16 md:gap-10 gap-6">
@@ -92,13 +98,21 @@ const ProductCard = () => {
                   <div className="flex justify-between mt-3">
                     <div className="flex items-center gap-2">
                       <div className="rounded-md py-2 px-2 border border-black">
-                        <img className="md:w-[22px] w-[20px]" src={heart} alt="img" />
+                        <img
+                          className="md:w-[22px] w-[20px]"
+                          src={heart}
+                          alt="img"
+                        />
                       </div>
                       <p className="!m-0 text-[14px]">В избранное</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="rounded-md py-2 px-2 border border-black">
-                        <img className="md:w-[22px] w-[20px]" src={compare} alt="img" />
+                        <img
+                          className="md:w-[22px] w-[20px]"
+                          src={compare}
+                          alt="img"
+                        />
                       </div>
                       <p className="!m-0 text-[14px]">Сравнить</p>
                     </div>
