@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import data from "../data/data";
 import { images } from "../assets/images";
 import { useState } from "react";
+import { Image } from "antd";
 
 const { Vector10, Vector9, Vector8, Vector7, heart, compare } = images;
 
@@ -44,7 +45,7 @@ const ProductCard = () => {
                 </div>
               </div>
               <div className="2xl:w-[550px] flex items-center justify-center h-full mx-4">
-                <img src={product.image} className="w-[450px]" alt="img" />
+                <Image width={'450px'} src={product.image} className="w-[550px] h-full" alt="img"/>
               </div>
             </div>
             <div className="flex lg:flex-row flex-col-reverse md:w-auto w-full lg:gap-16 md:gap-10 gap-6">
