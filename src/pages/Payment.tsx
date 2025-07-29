@@ -19,6 +19,12 @@ const creditRequirements = [
   "Использование сервисов Банка: держатель дебетовой банковской карты, выпущенной Банком, заключивший с Банком Договор банковского обслуживания, а также подключившийся к услуге “Мобильный банк” и системе СберБанк Онлайн.",
   "Регистрация: наличие постоянной(временной) регистрации по месту жительства/пребывания на территории Российской Федерации."
 ];
+const creditTerms = [
+  "Без первоначального взноса.",
+  "Срок действия кредита: от 3 до 36 месяцев.",
+  "Сумма кредита от 3000 до 300 000 руб."
+];
+
 
 
 
@@ -75,11 +81,16 @@ const Payment = () => {
                     ))}
                   </ul>
                   <p className='text-[#1e1e1e] font-sans text-18px] leading-7 !font-bold md:text-[15px]'>Преимущества Сервиса:</p>
-                  <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Без первоначального взноса.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Срок действия кредита: от 3 до 36 месяцев.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Сумма кредита от 3000 до 300 000 руб.</li>
+                  <ul className="relative left-8 flex gap-5 flex-col w-[300px] md:w-full">
+                    {creditTerms.map((item, index) => (
+                      <li
+                        key={index}
+                        className="list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]">
+                        {item}
+                      </li>
+                    ))}
                   </ul>
+
                   <p className='text-[#1e1e1e] font-sans text-18px] leading-7 !font-bold md:text-[15px]'>Необходимые действия:</p>
                   <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
                     <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Выберите на сайте товар, нажмите “Добавить в корзину”, далее перейдите на страницу “Корзина”, щелкнув по ее значку в полосе верхнего меню.</li>
