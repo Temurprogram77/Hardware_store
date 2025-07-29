@@ -1,6 +1,18 @@
 import { Breadcrumb } from 'antd';
 import Advertisement from "../components/Advertisement"
 
+const cardList = [
+  "МИР",
+  "VISA International",
+  "Mastercard Worldwide",
+  "JCB"
+];
+const paymentMethods = [
+  "Банковской картой с помощью платежной системы на сайте или на кассе при получении заказа.",
+  "Наличными на кассе при получении заказа",
+  "При получении заказа просим Вас внимательно осмотреть товар, проверить его на предмет наличия внешних дефектов и комплектацию."
+];
+
 
 const Payment = () => {
   return (
@@ -21,20 +33,27 @@ const Payment = () => {
                   <p className='text-[#1e1e1e] text-[23px] leading-7 !font-bold md:text-[16px]'>При заказе доставки</p>
                   <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Банковской картой с помощью платежной системы на сайте. При оформлении заказа в разделе Оплата мы переадресуем Вас на платежную страницу системы, где необходимо будет указать реквизиты вашей банковской карты (номер, дата окончания действия карты, имя владельца). После ввода всех необходимых данных нажмите кнопку «Оплатить».</p>
                   <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Для выбора оплаты товара с помощью банковской карты на соответствующей странице необходимо нажать кнопку Оплата заказа банковской картой. Оплата происходит через ПАО СБЕРБАНК с использованием банковских карт следующих платёжных систем:</p>
-                  <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>МИР</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>VISA International</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Mastercard Worldwide</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>JCB</li>
+                  <ul className="relative left-8 flex gap-1 flex-col w-[300px] md:w-full">
+                    {cardList.map((card, index) => (
+                      <li
+                        key={index}
+                        className="list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]">
+                          {card}
+                      </li>
+                    ))}
                   </ul>
                   <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'><span className='text-[#1e1e1e] font-sans text-18px] leading-7 !font-bold md:text-[15px]'>Наличными</span> водителю при получении заказа.</p>
                   <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Наш менеджер позвонит вам и договорится об удобном для вас времени получении заказа. Скомплектованный заказ будет ждать вас на складе.</p>
                   <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Стоимость доставки определяется в зависимости от габаритов и удаленности до места назначения и дополнительно включается в заказ.</p>
                   <h2 className='text-[#2c333d] text-2xl !font-bold md:text-[18px]'>При самовывозе</h2>
-                  <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Банковской картой с помощью платежной системы на сайте или на кассе при получении заказа.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Наличными на кассе при получении заказа</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>При получении заказа просим Вас внимательно осмотреть товар, проверить его на предмет наличия внешних дефектов и комплектацию.</li>
+                  <ul className="relative left-8 flex gap-5 flex-col w-[300px] md:w-full">
+                    {paymentMethods.map((text, index) => (
+                      <li
+                        key={index}
+                        className="list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]">
+                        {text}
+                      </li>
+                    ))}
                   </ul>
                   <h2 className='text-[#2c333d] text-2xl !font-bold md:text-[18px]'>Сервис “Покупай со Сбером”</h2>
                   <p className='text-[#1e1e1e] font-sans text-18px] leading-7 !font-bold md:text-[15px]'>Основные требования:</p>
