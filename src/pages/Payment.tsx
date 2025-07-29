@@ -51,7 +51,7 @@ const Payment = () => {
                 </Breadcrumb.Item>
               </Breadcrumb>
               <h1 className="!font-bold !mt-5 text-[32px] text-[#2c333d] md:text-[35px] lg:text-[40px]">Способы оплаты</h1>
-              <div className='block gap-4 md:flex'>
+              <div className='block gap-4 md:flex md:mb-6'>
                 <div className='overflow-x-hidden'>
                   <p className='text-[#1e1e1e] text-[23px] leading-7 !font-bold md:text-[16px]'>При заказе доставки</p>
                   <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Банковской картой с помощью платежной системы на сайте. При оформлении заказа в разделе Оплата мы переадресуем Вас на платежную страницу системы, где необходимо будет указать реквизиты вашей банковской карты (номер, дата окончания действия карты, имя владельца). После ввода всех необходимых данных нажмите кнопку «Оплатить».</p>
