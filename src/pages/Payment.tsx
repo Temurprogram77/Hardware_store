@@ -24,6 +24,15 @@ const creditTerms = [
   "Срок действия кредита: от 3 до 36 месяцев.",
   "Сумма кредита от 3000 до 300 000 руб."
 ];
+const purchaseSteps = [
+  'Выберите на сайте товар, нажмите “Добавить в корзину”, далее перейдите на страницу “Корзина”, щелкнув по ее значку в полосе верхнего меню.',
+  'На странице “Корзина” нажмите кнопку “Оформить заказ”.',
+  'В блоке “Оплата” выберете способ оплаты “Покупай со Сбером” (оформление покупки в кредит).',
+  'Заполните все обязательные поля, отмеченные знаком “*”.',
+  'Когда откроется СберБанк Онлайн, авторизуйтесь и заполните заявку. Рассмотрение заявки займет не более 2-х минут.',
+  'Если кредит одобрен, деньги за покупку автоматически будут перечислены на счет ООО “Стройоптторг”.',
+  'Далее Вы выбираете комфортный способ и время доставки или самовывоза.'
+];
 
 
 
@@ -92,17 +101,21 @@ const Payment = () => {
                   </ul>
 
                   <p className='text-[#1e1e1e] font-sans text-18px] leading-7 !font-bold md:text-[15px]'>Необходимые действия:</p>
-                  <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Выберите на сайте товар, нажмите “Добавить в корзину”, далее перейдите на страницу “Корзина”, щелкнув по ее значку в полосе верхнего меню.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>На странице “Корзина” нажмите кнопку “Оформить заказ”.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>В блоке “Оплата” выберете способ оплаты “Покупай со Сбером” (оформление покупки в кредит).</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Заполните все обязательные поля, отмеченные знаком “*”.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Когда откроется СберБанк Онлайн, авторизуйтесь и заполните заявку. Рассмотрение заявки займет не более 2-х минут.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Если кредит одобрен, деньги за покупку автоматически будут перечислены на счет ООО “Стройоптторг”.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Далее Вы выбираете комфортный способ и время доставки или самовывоза.</li>
+                  <ul className="relative left-8 flex gap-5 flex-col w-[300px] md:w-full">
+                    {purchaseSteps.map((step, index) => (
+                      <li
+                        key={index}
+                        className="list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]">
+                        {step}
+                      </li>
+                    ))}
                   </ul>
                   <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Ознакомиться подробнее с условиями кредитования можно по ссылке – <a href="">https://pokupay.ru/credit_terms</a></p>
                   <h2 className='text-[#2c333d] text-2xl !font-bold md:text-[18px]'>Возврат товара</h2>
+                  <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Срок возврата товара надлежащего качества составляет 30 дней с момента получения товара. Возврат переведённых средств, производится на ваш банковский счёт в течение 5-30 рабочих дней (срок зависит от банка, который выдал вашу банковскую карту).</p>
+                  <h2 className='text-[#2c333d] text-2xl !font-bold md:text-[18px]'>Описание процесса передачи данных</h2>
+                  <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Для оплаты (ввода реквизитов Вашей карты) Вы будете перенаправлены на платёжный шлюз ПАО СБЕРБАНК. Соединение с платёжным шлюзом и передача информации осуществляется в защищённом режиме с использованием протокола шифрования SSL. В случае если Ваш банк поддерживает технологию безопасного проведения интернет-платежей Verified By Visa, MasterCard SecureCode, MIR Accept, J-Secure для проведения платежа также может потребоваться ввод специального пароля.</p>
+                  <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Настоящий сайт поддерживает 256-битное шифрование. Конфиденциальность сообщаемой персональной информации обеспечивается ПАО СБЕРБАНК. Введённая информация не будет предоставлена третьим лицам за исключением случаев, предусмотренных законодательством РФ. Проведение платежей по банковским картам осуществляется в строгом соответствии с требованиями платёжных систем МИР, Visa Int., MasterCard Europe Sprl, JCB.</p>
                 </div>
                 <Advertisement/>
               </div>
