@@ -42,7 +42,7 @@ const Payment = () => {
               <ReusableList items={creditTerms} />
                   <p className='text-[#1e1e1e] font-sans text-18px] leading-7 !font-bold md:text-[15px]'>Необходимые действия:</p>
               <ReusableList items={purchaseSteps} />
-                  <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Ознакомиться подробнее с условиями кредитования можно по ссылке – <a href="">https://pokupay.ru/credit_terms</a></p>
+                  <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Ознакомиться подробнее с условиями кредитования можно по ссылке – <a className='' href="https://pokupay.ru/credit_terms">https://pokupay.ru/credit_terms</a></p>
                   <h2 className='text-[#2c333d] text-2xl !font-bold md:text-[18px]'>Возврат товара</h2>
                   <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Срок возврата товара надлежащего качества составляет 30 дней с момента получения товара. Возврат переведённых средств, производится на ваш банковский счёт в течение 5-30 рабочих дней (срок зависит от банка, который выдал вашу банковскую карту).</p>
                   <h2 className='text-[#2c333d] text-2xl !font-bold md:text-[18px]'>Описание процесса передачи данных</h2>
