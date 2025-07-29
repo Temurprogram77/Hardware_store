@@ -12,6 +12,14 @@ const paymentMethods = [
   "Наличными на кассе при получении заказа",
   "При получении заказа просим Вас внимательно осмотреть товар, проверить его на предмет наличия внешних дефектов и комплектацию."
 ];
+const creditRequirements = [
+  "Гражданство: Российская Федерация",
+  "Возраст на момент предоставления кредита: не менее 21 года.",
+  "Возраст на момент возврата кредита по договору: не более 70 лет.",
+  "Использование сервисов Банка: держатель дебетовой банковской карты, выпущенной Банком, заключивший с Банком Договор банковского обслуживания, а также подключившийся к услуге “Мобильный банк” и системе СберБанк Онлайн.",
+  "Регистрация: наличие постоянной(временной) регистрации по месту жительства/пребывания на территории Российской Федерации."
+];
+
 
 
 const Payment = () => {
@@ -57,12 +65,14 @@ const Payment = () => {
                   </ul>
                   <h2 className='text-[#2c333d] text-2xl !font-bold md:text-[18px]'>Сервис “Покупай со Сбером”</h2>
                   <p className='text-[#1e1e1e] font-sans text-18px] leading-7 !font-bold md:text-[15px]'>Основные требования:</p>
-                  <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Гражданство: Российская Федерация</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Возраст на момент предоставления кредита: не менее 21 года.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Возраст на момент возврата кредита по договору: не более 70 лет.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Использование сервисов Банка: держатель дебетовой банковской карты, выпущенной Банком, заключивший с Банком Договор банковского обслуживания, а также подключившийся к услуге “Мобильный банк” и системе СберБанк Онлайн.</li>
-                    <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Регистрация: наличие постоянной(временной) регистрации по месту жительства/пребывания на территории Российской Федерации.</li>
+                  <ul className="relative left-8 flex gap-5 flex-col w-[300px] md:w-full">
+                    {creditRequirements.map((item, index) => (
+                      <li
+                        key={index}
+                        className="list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]">
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                   <p className='text-[#1e1e1e] font-sans text-18px] leading-7 !font-bold md:text-[15px]'>Преимущества Сервиса:</p>
                   <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
