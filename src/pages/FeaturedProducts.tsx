@@ -43,7 +43,6 @@ const products: Product[] = [
     image: "/images/unitaz.png",
   },
 ];
-
 const FeaturedProducts: React.FC = () => {
   return (
     <div className="p-6 bg-white">
@@ -84,7 +83,6 @@ const FeaturedProducts: React.FC = () => {
             </div>
             <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded">
               Купить
-                  Купить
             </button>
           </div>
         ))}
