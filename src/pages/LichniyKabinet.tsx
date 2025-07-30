@@ -1,4 +1,3 @@
-
 import { Breadcrumb, Pagination, Table, Tag, Button } from "antd"
 import { useState } from "react"
 import { CgPassword } from "react-icons/cg"
@@ -331,9 +330,8 @@ const LichniyKabinet = () => {
                     <div
                       key={index}
                       onClick={() => handleMenuClick(item)}
-                      className={`flex items-center gap-2 p-5 text-sm cursor-pointer transition-all ${
-                        isActive ? "bg-black text-white font-semibold" : "text-gray-600 hover:bg-black hover:text-white"
-                      }`}
+                      className={`flex items-center gap-2 p-5 text-sm cursor-pointer transition-all ${isActive ? "bg-black text-white font-semibold" : "text-gray-600 hover:bg-black hover:text-white"
+                        }`}
                     >
                       <span className="text-2xl">{item.icon}</span>
                       <span className="md:text-xl">{item.label}</span>
