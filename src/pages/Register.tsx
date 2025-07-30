@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
+import CustomPhoneInput from '../components/ui/CustomINputPhone';
+import CustomInput from '../components/ui/CustomInput';
 
 export const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -38,15 +40,17 @@ const Register = () => {
   const firstCheckboxRef = useRef<InputRef>(null);
   const secondCheckboxRef = useRef<InputRef>(null);
 
-  // Komponent yuklanganda email maydoniga fokus
   useEffect(() => {
     emailRef.current?.focus();
   }, []);
 
   // TELEFON RAQAMNI FORMATLASH FUNKSIYASI
   const formatPhoneNumber = (value: string): string => {
+    // If the value is empty, return an empty string immediately to clear the input
     if (!value) return '';
+
     let digits = value.replace(/\D/g, '');
+
     if (digits.startsWith('8')) {
       digits = '7' + digits.substring(1);
     }
@@ -87,6 +91,8 @@ const Register = () => {
     }
 
     if (field === 'phone') {
+      // If the formatted value is empty, it means the user cleared the input.
+      // We should only show an error if the input is not empty but still invalid.
       if (!valueToSet) {
         newErrors.phone = "Telefon raqami bo'sh bo'lishi mumkin emas!";
       } else if (!regex.phone.test(valueToSet)) {
@@ -140,7 +146,6 @@ const Register = () => {
     setErrors(newErrors);
   };
 
-  // Enter tugmasi bosilganda keyingi inputga o'tish
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
     nextRef: React.RefObject<InputRef | HTMLInputElement | null>
@@ -151,7 +156,6 @@ const Register = () => {
     }
   };
 
-  // Ro'yxatdan o'tish tugmasi bosilganda barcha maydonlarni yakuniy tekshirish
   const handleRegister = () => {
     const newErrors: Record<string, string> = {};
 
@@ -208,7 +212,7 @@ const Register = () => {
 
         notification.success({
           message: "Muvaffaqiyatli ro'yxatdan o'tish",
-          description: "Hisobingiz muvaffaqiyatli yaratildi! Endi avtorizatsiya sahifasiga yo'naltirilasiz.",
+          description: "Hisobingiz muvaffaqiyatli yaratildi! Endi avtorizatsiya sahifasiga yo'naltirilasyiz.",
           placement: 'topRight',
         });
 
@@ -264,31 +268,13 @@ const Register = () => {
                       <Typography.Title className="!text-lg">
                         Email <span className="text-red-700">*</span>:
                       </Typography.Title>
-                      <Input
-                        ref={emailRef}
-                        value={formValues.email}
-                        onChange={(e) => handleChange('email', e.target.value)}
-                        onKeyDown={(e) => handleKeyDown(e, phoneRef)}
-                        className="md:!w-full max-sm:!w-full xl:!w-[345px] !h-[55px] !text-lg !mb-1 !-mt-2"
-                        placeholder="Введите ваш email адрес"
-                        status={errors.email ? "error" : ""}
-                      />
-                      {errors.email && <p className="text-[#E52B0E] text-sm">{errors.email}</p>}
+                      <CustomInput type='text' className='md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2' />
                     </div>
                     <div className="max-sm:w-full">
                       <Typography.Title className="!text-lg">
                         Номер телефона <span className="text-red-700">*</span>:
                       </Typography.Title>
-                      <Input
-                        ref={phoneRef}
-                        value={formValues.phone}
-                        onChange={(e) => handleChange('phone', e.target.value)}
-                        onKeyDown={(e) => handleKeyDown(e, fullNameRef)}
-                        className="md:!w-full max-sm:!w-full xl:!w-[345px] !h-[55px] !text-lg !mb-1 !-mt-2"
-                        placeholder="+7 (___) ___-__-__"
-                        status={errors.phone ? "error" : ""}
-                      />
-                      {errors.phone && <p className="text-[#E52B0E] text-sm">{errors.phone}</p>}
+                      <CustomPhoneInput className='flex flex-wrap md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2' />
                     </div>
                   </div>
 
