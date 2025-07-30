@@ -16,6 +16,7 @@ const images = [Rectangle, Rectangle2, Rectangle3, Rectangle4, Rectangle, Rectan
 
 
 
+
 const Delivery = () => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
