@@ -35,7 +35,7 @@ const Delivery = () => {
               </Breadcrumb>
         <h1 className="!font-bold !mt-5 text-[32px] text-[#2c333d] md:text-[40px] lg:text-[48px]">Доставка</h1>
         <div className='block gap-4 md:flex'>
-          <div className='flex flex-col gap-2.5 max-md:w-[370px] '>
+          <div className='flex flex-col gap-2.5 w-[95%] '>
             <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Мы всегда готовы доставить приобретенный Вами товар в удобное для Вас время.</p>
             <p className='md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]'>Стоимость доставки товаров определяется исходя из веса, габаритов удаленности до места назначения. Доставка осуществляется до подъезда дома, офиса.</p>
             <h2 className='text-[#2c333d] text-2xl !font-bold md:text-[18px]'>Наш интернет-магазин предлагает несколько вариантов получения товара:</h2>
