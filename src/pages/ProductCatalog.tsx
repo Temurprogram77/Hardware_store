@@ -9,7 +9,13 @@ import { useCompare } from "../context/CompareContext";
 
 const { cartt, heart, compare, arrow, heart2 } = images;
 
-const CheckboxItem = ({ label, checked, onChange }) => (
+type CheckboxItemProps = {
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+};
+
+const CheckboxItem: React.FC<CheckboxItemProps> = ({ label, checked, onChange }) => (
   <label className="cursor-pointer inline-flex items-center gap-2 select-none">
     <input
       type="checkbox"
@@ -82,35 +88,35 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
   });
 
   // Handlers for each checkbox group
-  const handleBrandCheck = (brand) => {
+  const handleBrandCheck = (brand: keyof typeof brandChecks) => {
     setBrandChecks(prev => ({
       ...prev,
       [brand]: !prev[brand]
     }));
   };
 
-  const handleDiameterCheck = (diameter) => {
+  const handleDiameterCheck = (diameter: keyof typeof diameterChecks) => {
     setDiameterChecks(prev => ({
       ...prev,
       [diameter]: !prev[diameter]
     }));
   };
 
-  const handleDiskDiameterCheck = (diameter) => {
+  const handleDiskDiameterCheck = (diameter: keyof typeof diskDiameterChecks) => {
     setDiskDiameterChecks(prev => ({
       ...prev,
       [diameter]: !prev[diameter]
     }));
   };
 
-  const handleMaterialCheck = (material) => {
+  const handleMaterialCheck = (material: keyof typeof materialChecks) => {
     setMaterialChecks(prev => ({
       ...prev,
       [material]: !prev[material]
     }));
   };
 
-  const handleAirFlowCheck = (flow) => {
+  const handleAirFlowCheck = (flow: keyof typeof airFlowChecks) => {
     setAirFlowChecks(prev => ({
       ...prev,
       [flow]: !prev[flow]
@@ -385,7 +391,7 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                   </div>
                   <div className="flex items-center md:gap-2 gap-1">
                     <div
-                      onClick={() => toggleHeart(item.id)}
+                      onClick={() => toggleHeart(item.id.toString())}
                       className="border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
                     >
                       <img
@@ -395,7 +401,7 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                       />
                     </div>
                     <div
-                      onClick={() => toggleCompare(item.id)}
+                      onClick={() => toggleCompare(item.id.toString())}
                       className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
                     >
                       <img
