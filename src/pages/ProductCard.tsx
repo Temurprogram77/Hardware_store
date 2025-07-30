@@ -3,11 +3,14 @@ import data from "../data/data";
 import { images } from "../assets/images";
 import { useState } from "react";
 import { Image } from "antd";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import { useHeart } from "../context/HeartClickedContext";
 
 const { Vector10, Vector9, Vector8, Vector7, heart, compare } = images;
 
-const ProductCard = () => {
+const ProductCard = ({ item }: { item: { id: string } }) => {
   const { id } = useParams<{ id: string }>();
+  const { likedItems, toggleHeart } = useHeart();
   const product = data.find((item) => item.id === Number(id));
   const [part, setPart] = useState(true);
 
@@ -98,11 +101,19 @@ const ProductCard = () => {
                   <div className="flex justify-between mt-3">
                     <div className="flex items-center gap-2">
                       <div className="rounded-md py-2 px-2 border border-black">
-                        <img
-                          className="md:w-[22px] w-[20px]"
-                          src={heart}
-                          alt="img"
-                        />
+                        <span
+                          className={`${
+                            likedItems
+                              ? "text-blue-500 animate-ping-short"
+                              : "text-gray-400"
+                          }`}
+                        >
+                          {likedItems[item.id] ? (
+                            <HeartFilled />
+                          ) : (
+                            <HeartOutlined />
+                          )}
+                        </span>
                       </div>
                       <p className="!m-0 text-[14px]">В избранное</p>
                     </div>

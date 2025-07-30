@@ -30,6 +30,9 @@ const Bestsellers = () => {
           </div>
         ))}
       </div>
+      <div className="flex">
+        
+      </div>
     </div>
   );
 };
