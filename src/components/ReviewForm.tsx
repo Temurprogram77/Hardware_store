@@ -1,4 +1,4 @@
-import { Form, Upload, Checkbox } from "antd";
+import { Form, Upload, } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import CustomButton from "./ui/CustomButton";
 import CustomInput from "./ui/CustomInput";
@@ -60,7 +60,7 @@ const ReviewForm:React.FC = () => {
       </Form.Item>
 
       <Form.Item name="agreement" valuePropName="checked">
-      <CustomCheckbox name={"Согласен с обработкой персональных данных в соответствии с политикой конфиденциальности"} />
+      <CustomCheckbox name={"Согласен c обработкой персональных данных в соответствии c политикой конфиденциальности"} />
       </Form.Item>
 
       <Form.Item>

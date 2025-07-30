@@ -1,8 +1,7 @@
-import { Button, Image } from "antd";
 import { useEffect, useState } from "react";
-import { IoNewspaperOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Advertisement from "../components/Advertisement";
+import CustomButton from "../components/ui/CustomButton";
 
 interface Stock {
   id: number;
@@ -44,11 +43,11 @@ const LandingStock = () => {
     <div className="md:flex w-[100%] justify-between">
       <div className="flex flex-col gap-[1.8rem] mb-[5rem] w-full md:w-[70%]">
         <div className="gap-[2rem] flex w-full h-[50px]">
-            <Button type="default">{aksiya.toUpperCase()}</Button>
+            <CustomButton type="default" text={aksiya.toUpperCase()} />
             <p className="mt-[2rem]">Действует до 1 октября 2023</p>
         </div>
             <p className="text-gray-400 text-[14px] leading-[25px]">Уважаемые клиенты, рады объявить вам о нашей специальной акции на лакокрасочные материалы! Теперь вы можете придать своему дому новое великолепное обличие по невероятно выгодным ценам. Это ваш шанс создать уют и красоту в вашем жилище без лишних затрат!</p>
-        <Image src={chegirma?.img}/>
+        <img src={chegirma?.img}/>
         <h2 className="font-bold text-[#2C333D] text-[33px]">Что мы предлагаем:</h2>
         <div className="text-[14px] text-gray-500">
             <p>Широкий ассортимент качественных лаков и красок для любых поверхностей. Разнообразие цветов и оттенков, чтобы удовлетворить самые изысканные вкусы. Продукция от проверенных производителей, гарантирующих долговечность и качество</p>
@@ -56,7 +55,7 @@ const LandingStock = () => {
         </div>
         <h4 className="font-bold text-[#2C333D] text-[20px] ">Промокод для скидки:</h4>
         <div className="w-[137px]">
-          <Button>LAKOART20 <IoNewspaperOutline /> </Button>
+          <CustomButton text="LAKOART20 📃" type="default" />
         </div>
     </div>
     <Advertisement/>

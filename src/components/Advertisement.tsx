@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Image, Input } from "antd";
+import { Form, Image, } from "antd";
 import rek1 from '../assets/rek1.png'
 import rek2 from '../assets/rek2.png'
 import CustomInput from "./ui/CustomInput";
@@ -14,12 +14,12 @@ const Advertisement: React.FC = () => {
         <div className="w-full p-[1.5rem] flex flex-col gap-[1.7rem]">
           <h4 className="text-center text-[18px] font-medium">Подпишитесь на рассылку</h4>
         <p className="text-center text-[#6A6F75] text-[14px]">
-          Регулярные скидки и спецпредложения, а так же новости компании.
+          Регулярные скидки и спецпредложения, a так же новости компании.
         </p>
         <CustomInput className={"h-[40px]"} type="email" placeholder="Email" />
         
         <CustomButton text="Добавить в корзину" type="primary" />
-        <CustomCheckbox name="Согласен с обработкой персональных данных в соответствии с политикой конфиденциальности" />
+        <CustomCheckbox name="Согласен c обработкой персональных данных в соответствии c политикой конфиденциальности" />
         </div>
       </Form>
     </section>
