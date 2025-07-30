@@ -147,7 +147,7 @@ const AuthPage: React.FC = () => {
 
             <span className='border border-gray-200 max-sm:hidden md:hidden xl:block'></span>
 
-            <div className='flex flex-col items-start w-1/2 md:w-[60%] max-sm:w-full max-sm:mt-5'>
+            <div className='flex flex-col items-start md:w-[60%] max-sm:w-full max-sm:mt-5'>
               <div className='flex gap-5 max-sm:gap-3 max-sm:flex'>
                 <FiUserPlus className='text-red-600 font-normal w-13 h-13 max-sm:w-8 max-sm:h-8' />
                 <h3 className='!font-bold text-2xl max-sm:text-lg max-sm:items-center max-sm:flex'>Еще нет аккаунта?</h3>
