@@ -6,6 +6,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import CustomInput from "../components/ui/CustomInput";
 import CustomTextarea from "../components/ui/CustomTextarea";
 import CustomCheckbox from "../components/ui/CustomCheckbox";
+import CustomButton from "../components/ui/CustomButton";
 
 type Region = {
   city: string;
@@ -191,22 +192,12 @@ const [agree, setAgree] = useState(false);
 
           {/* Submit + Checkbox */}
           <div className="flex flex-col md:flex-row md:items-start items-center justify-between gap-4">
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 !text-white !text-[14px] font-semibold w-[190px] h-[60px] px-6 py-3 rounded-md"
-            >
-              ОТПРАВИТЬ
-            </button>
-
-            <label className="flex gap-6 relative md:left-0 left-[7px] items-start md:items-center text-sm text-gray-700 space-x-2">
-              <input
-                type="checkbox"
-                checked={agree}
-                onChange={(e) => setAgree(e.target.checked)}
-                className="scale-200 md:top-0 relative top-[20px] !mt-[-8px] border border-gray-400 rounded "
-              />
+          <label className="flex gap-6 relative md:left-0 left-[7px] items-start md:items-center text-sm text-gray-700 space-x-2">
+              <div className="w-[350px]">
               <CustomCheckbox name="Согласен с обработкой персональных данных в соответствии с" />
+              </div>
             </label>
+           <CustomButton text="ОТПРАВИТЬ" type="primary"/>
           </div>
         </form>
       </div>
