@@ -1,9 +1,16 @@
 import React from 'react'
+import { Button } from 'antd'
 
-const Button = () => {
-  return (
-    <div>Button</div>
-  )
+interface Props {
+  type:'primary' | 'default' | 'dashed' | 'link' | 'text',
+  className?: string,
+  text:string
 }
 
-export default Button
+const CustomButton: React.FC<Props> = ({ type, className,text }) => {
+  return (
+    <Button type={type} className={className}>{text}</Button>
+  );
+};
+
+export default CustomButton;
