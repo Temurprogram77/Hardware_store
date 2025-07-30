@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import data from "../data/data";
+import {data} from "../data/data";
 import { images } from "../assets/images";
 import { useState } from "react";
 import { Image } from "antd";
@@ -8,7 +8,7 @@ import { useHeart } from "../context/HeartClickedContext";
 
 const { Vector10, Vector9, Vector8, Vector7, heart, compare } = images;
 
-const ProductCard = ({ item }: { item: { id: string } }) => {
+const ProductCard = () => {
   const { id } = useParams<{ id: string }>();
   const { likedItems, toggleHeart } = useHeart();
   const product = data.find((item) => item.id === Number(id));
@@ -17,7 +17,6 @@ const ProductCard = ({ item }: { item: { id: string } }) => {
   if (!product) {
     return <div className="text-center text-red-500">Mahsulot topilmadi</div>;
   }
-
   return (
     <div className="max-w-[1460px] mx-auto py-8">
       <div className="text-[13px] !font-medium mb-6 flex flex-wrap items-center 2xl:mx-0 mx-3 gap-3">
@@ -100,15 +99,18 @@ const ProductCard = ({ item }: { item: { id: string } }) => {
                   </div>
                   <div className="flex justify-between mt-3">
                     <div className="flex items-center gap-2">
-                      <div className="rounded-md py-2 px-2 border border-black">
+                      <div
+                        onClick={toggleHeart}
+                        className="rounded-md py-2 px-2 border border-black"
+                      >
                         <span
                           className={`${
-                            likedItems
+                            likedItems[product.id]
                               ? "text-blue-500 animate-ping-short"
                               : "text-gray-400"
                           }`}
                         >
-                          {likedItems[item.id] ? (
+                          {likedItems[product.id] ? (
                             <HeartFilled />
                           ) : (
                             <HeartOutlined />

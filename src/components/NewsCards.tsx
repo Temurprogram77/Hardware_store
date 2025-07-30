@@ -61,8 +61,6 @@ const NewsCards: React.FC = () => {
         modules={[Navigation, Pagination]}
         spaceBetween={20}
         slidesPerView={1}
-        // modules={[Navigation, Pagination]}
-        // navigation
         navigation
         breakpoints={{
           640: { slidesPerView: 1 },
