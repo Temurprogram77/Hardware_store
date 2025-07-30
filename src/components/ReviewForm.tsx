@@ -25,7 +25,7 @@ const ReviewForm:React.FC = () => {
           name="name"
           rules={[{ required: true, message: "Введите ваше имя" }]}
         >
-          <CustomInput placeholder="Введите ваше имя" type="string"/>
+          <CustomInput  className={"h-[40px]"} placeholder="Введите ваше имя" type="string"/>
         </Form.Item>
 
         <Form.Item
@@ -36,7 +36,7 @@ const ReviewForm:React.FC = () => {
             { type: "email", message: "Неверный формат email" },
           ]}
         >
-          <CustomInput placeholder="Введите ваш электронный адрес" type="string"/>
+          <CustomInput  className={"h-[40px]"} placeholder="Введите ваш электронный адрес" type="string"/>
         </Form.Item>
       </div>
 

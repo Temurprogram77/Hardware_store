@@ -4,7 +4,7 @@ import { Input } from 'antd'
 interface Props {
   type: string,
   className?: string,
-  placeholder:string
+  placeholder?:string
 }
 
 const CustomInput: React.FC<Props> = ({ type, className,placeholder }) => {
