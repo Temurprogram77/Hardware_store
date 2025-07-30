@@ -1,4 +1,3 @@
-import data from "../data/data";
 import { images } from "../assets/images";
 import { Link } from "react-router-dom";
 import { Range } from "react-range";
@@ -7,8 +6,9 @@ import { HiMenu } from "react-icons/hi";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import { data } from "../data/data";
 
-const { cartt, heart, compare, arrow, heart2 } = images;
+const { cartt, compare, arrow } = images;
 
 type CheckboxItemProps = {
   label: string;

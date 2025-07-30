@@ -1,4 +1,4 @@
-import data from "../data/data";
+import {data} from "../data/data";
 import { images } from "../assets/images";
 import { Link } from "react-router-dom";
 import { Range } from "react-range";

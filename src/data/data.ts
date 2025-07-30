@@ -1,5 +1,15 @@
 import { images } from "../assets/images";
 
+interface ProductItem {
+  id: number;
+  image: string;
+  item: string;
+  title: string;
+  oldMoney: string;
+  newMoney: string;
+  sale: string;
+}
+
 const {
   dataImage,
   dataImage1,
@@ -28,7 +38,7 @@ const {
   dataImage24
 } = images;
 
-let data = [
+export let data: ProductItem[] = [
   {
     id: 1,
     image: dataImage,
@@ -256,9 +266,7 @@ let data = [
   },
 ];
 
-export default data;
-
-export let cardData = [
+let cardData = [
    {
     id: 1,
     image: dataImage,
