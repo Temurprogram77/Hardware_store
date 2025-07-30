@@ -46,7 +46,7 @@ const Return:React.FC = () => {
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Возврат</h1>
 
         <div className="flex w-full flex-col md:flex-row gap-[2rem] md:justify-between">
-          <div className="flex flex-col w-full md:w-[76%]">
+          <div className="flex flex-col w-full md:w-[93%]">
           <div className="w-full mt-8 leading-7 text-gray-700">
             <p className="text-[14px] md:text-[16px]">
               Возврат или обмен товара надлежащего качества, возможен в течение 14 дней с момента покупки в соответствие со ст.26.1 Закона «О защите прав потребителей», сохранивший товарный вид и потребительские свойства при наличии документов:

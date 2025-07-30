@@ -41,13 +41,13 @@ const LandingStock = () => {
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">{chegirma?.title}</h1>
     <div className="md:flex w-[100%] justify-between">
-      <div className="flex flex-col gap-[1.8rem] mb-[5rem] w-full md:w-[70%]">
+      <div className="flex flex-col gap-[2rem] mb-[5rem] w-full pr-[2rem] md:w-[90%]">
         <div className="gap-[2rem] flex w-full h-[50px]">
             <CustomButton type="default" text={aksiya.toUpperCase()} />
             <p className="mt-[2rem]">Действует до 1 октября 2023</p>
         </div>
             <p className="text-gray-400 text-[14px] leading-[25px]">Уважаемые клиенты, рады объявить вам о нашей специальной акции на лакокрасочные материалы! Теперь вы можете придать своему дому новое великолепное обличие по невероятно выгодным ценам. Это ваш шанс создать уют и красоту в вашем жилище без лишних затрат!</p>
-        <img src={chegirma?.img}/>
+        <img src={chegirma?.img} width={1000}/>
         <h2 className="font-bold text-[#2C333D] text-[33px]">Что мы предлагаем:</h2>
         <div className="text-[14px] text-gray-500">
             <p>Широкий ассортимент качественных лаков и красок для любых поверхностей. Разнообразие цветов и оттенков, чтобы удовлетворить самые изысканные вкусы. Продукция от проверенных производителей, гарантирующих долговечность и качество</p>
