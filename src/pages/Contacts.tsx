@@ -4,6 +4,8 @@ import { SlLocationPin } from "react-icons/sl";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
 import CustomInput from "../components/ui/CustomInput";
+import CustomTextarea from "../components/ui/CustomTextarea";
+import CustomCheckbox from "../components/ui/CustomCheckbox";
 
 type Region = {
   city: string;
@@ -184,11 +186,7 @@ const [agree, setAgree] = useState(false);
             <label className="block mb-1 text-[14px] font-medium text-gray-700">
               Текст сообщения <span className="text-red-500">*</span>
             </label>
-            <textarea
-              placeholder="Введите ваш вопрос"
-              rows={4}
-              className="w-full border border-[#e3e5e7] rounded-md px-4 pt-4 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-            ></textarea>
+            <CustomTextarea placeholder="Введите ваш вопрос" rows={4} />
           </div>
 
           {/* Submit + Checkbox */}
@@ -207,15 +205,7 @@ const [agree, setAgree] = useState(false);
                 onChange={(e) => setAgree(e.target.checked)}
                 className="scale-200 md:top-0 relative top-[20px] !mt-[-8px] border border-gray-400 rounded "
               />
-              <span className="md:text-[16px] text-[17px] md:leading-0 leading-7 w-[305px] md:w-[500px]">
-                Согласен с обработкой персональных данных в соответствии с{" "}
-                <a
-                  href="#"
-                  className="text-blue-600 hover:underline"
-                >
-                  политикой конфиденциальности
-                </a>
-              </span>
+              <CustomCheckbox name="Согласен с обработкой персональных данных в соответствии с" />
             </label>
           </div>
         </form>
