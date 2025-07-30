@@ -13,12 +13,8 @@
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@tailwindcss/vite": "^4.1.11",
     "antd": "^5.26.6",
-<<<<<<< HEAD
-    "framer-motion": "^12.23.9",
-    "lucide-react": "^0.527.0",
-=======
     "framer-motion": "^12.23.10",
->>>>>>> b81f57c (add)
+    "lucide-react": "^0.527.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
