@@ -9,7 +9,6 @@ type Product = {
   image: string;
   isNew?: boolean;
 };
-
 const products: Product[] = [
   {
     id: 1,
