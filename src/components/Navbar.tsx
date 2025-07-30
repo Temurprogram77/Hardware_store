@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
-import InputMask from "react-input-mask";
 
 const {
   Logo,
