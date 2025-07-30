@@ -3,6 +3,7 @@ import { Breadcrumb } from 'antd';
 import { SlLocationPin } from "react-icons/sl";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
+import CustomInput from "../components/ui/CustomInput";
 
 type Region = {
   city: string;
@@ -160,32 +161,21 @@ const [agree, setAgree] = useState(false);
         </h2>
 
         <form className="text-left space-y-6">
-          {/* 2 ustunli inputlar */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block mb-1 text-[14px] font-medium text-gray-700">
                 Ваше имя <span className="text-red-500">*</span>
               </label>
-              <input
-                type="text"
-                placeholder="Введите ваше имя"
-                className="w-full border border-[#e3e5e7] rounded-md px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-              />
+            
+              <CustomInput placeholder={"Введите ваше имя"} className={"h-[40px]"} type="text" />
             </div>
 
             <div>
               <label className="block mb-1 text-[14px] font-medium text-gray-700">
                 Номер телефона <span className="text-red-500">*</span>
               </label>
-              <input
-              data-name='tel'
-                type="tel"
-                name="tel"
-                aria-required='true'
-                aria-invalid='false'
-                placeholder="+7 (___) ___-__-__"
-                className="w-full border border-[#e3e5e7] rounded-md px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-              />
+              
+              <CustomInput placeholder="+7 (___) ___-__-__" className={'h-[40px]'} type="number" />
             </div>
           </div>
 
