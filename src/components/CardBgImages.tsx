@@ -1,6 +1,5 @@
 import React from "react";
 import { images } from "../assets/images";
-import CustomButton from "./ui/CustomButton";
 import { useNavigate } from "react-router-dom";
 const { cardBgImage1, cardBgImage2, cardBgImage3, cardBgImage4 } = images;
 interface stock{
