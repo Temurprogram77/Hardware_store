@@ -8,7 +8,6 @@ const bgImage = [
   { img: cardBgImage3, prosent: 25, title: "Напольные покрытия" },
   { img: cardBgImage4, prosent: 30, title: "Все для отоплления" },
 ];
-
 const CardBgImages: React.FC = () => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[1460px] 2xl:mx-auto mx-3">
