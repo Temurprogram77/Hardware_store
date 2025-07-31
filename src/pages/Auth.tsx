@@ -82,20 +82,20 @@ const AuthPage: React.FC = () => {
             },
           ]}
         />
-        <div className="mt-4">
+        <div className="mt-4 flex flex-col justify-center">
           <h2 className="!font-bold text-4xl sm:text-3xl">Авторизация</h2>
-          <div className='mt-20 ml-20 border w-[88%] rounded-lg p-8 px-10 gap-20 border-gray-200 flex justify-between max-sm:flex-col max-sm:mt-10 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5'>
-            <div className='flex items-center flex-col w-1/2 max-sm:w-full'>
-              {Object.values(errors).some(val => val) && (
+          <div className='mt-20 border !w-[88%] rounded-lg gap-5 border-gray-200 flex items-center justify-center max-sm:flex-col max-sm:mt-10 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5'>
+            <div className='flex items-center flex-col w-1/3 max-sm:w-full'>
+              {/* {Object.values(errors).some(val => val) && (
                 <div className='border border-[#E52B0E] w-full p-3 rounded border-dashed bg-[#FFF9F9] mb-5 flex flex-col '>
                   {errors.email && <p className='text-[#E52B0E] text-sm'>{errors.email}</p>}
                   {errors.password && <p className='text-[#E52B0E] text-sm'>{errors.password}</p>}
                   {errors.credentials && <p className='text-[#E52B0E] text-sm'>{errors.credentials}</p>}
                 </div>
-              )}
+              )} */}
               <Space direction="vertical" className='max-sm:w-[100%] md:w-[100%]'>
                 <Typography.Title className='!text-lg'>
-                  Email yoki login <span className='text-red-700'>*</span>:
+                  Email или логин  <span className='text-red-700'>*</span>:
                 </Typography.Title>
                 <Input
                   className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2'
@@ -128,10 +128,13 @@ const AuthPage: React.FC = () => {
                 </Button>
                 <Button
                   onClick={handleLogin}
-                  type='primary'
-                  className='!mt-4 !w-full !h-[55px] md:w-full !text-sm !font-bold !uppercase'
+                  type="primary"
+                  className="!h-[60px] !bg-black xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
                 >
-                  Авторизоваться
+                  <Link className="!flex !items-center" to="/my-account">
+                    Авторизоваться
+                    <MdOutlineChevronRight size={30} />
+                  </Link>
                 </Button>
               </div>
 
@@ -144,7 +147,7 @@ const AuthPage: React.FC = () => {
 
             <span className='border border-gray-200 max-sm:hidden md:hidden xl:block'></span>
 
-            <div className='flex flex-col items-start w-1/2 md:w-[60%] max-sm:w-full max-sm:mt-5'>
+            <div className='flex flex-col items-start md:w-[60%] max-sm:w-full max-sm:mt-5'>
               <div className='flex gap-5 max-sm:gap-3 max-sm:flex'>
                 <FiUserPlus className='text-red-600 font-normal w-13 h-13 max-sm:w-8 max-sm:h-8' />
                 <h3 className='!font-bold text-2xl max-sm:text-lg max-sm:items-center max-sm:flex'>Еще нет аккаунта?</h3>

@@ -1,6 +1,9 @@
-import { Button, Checkbox, Form, Image, Input } from "antd";
+import { Form, Image, } from "antd";
 import rek1 from '../assets/rek1.png'
 import rek2 from '../assets/rek2.png'
+import CustomInput from "./ui/CustomInput";
+import CustomButton from "./ui/CustomButton";
+import CustomCheckbox from "./ui/CustomCheckbox";
 
 const Advertisement: React.FC = () => {
   return (
@@ -8,25 +11,16 @@ const Advertisement: React.FC = () => {
       <Image src={rek1} />
       <Image src={rek2} />
       <Form className="w-full flex flex-col gap-[1.7rem] pb-[2rem] bg-[#F9FAFB] px-4">
-        <h4 className="text-center text-[18px] font-medium">Подпишитесь на рассылку</h4>
+        <div className="w-full p-[1.5rem] flex flex-col gap-[1.7rem]">
+          <h4 className="text-center text-[18px] font-medium">Подпишитесь на рассылку</h4>
         <p className="text-center text-[#6A6F75] text-[14px]">
-          Регулярные скидки и спецпредложения, а так же новости компании.
+          Регулярные скидки и спецпредложения, a так же новости компании.
         </p>
-        <Input
-          type="text"
-          className="w-full md:w-[281px] h-[61px] mx-auto"
-          placeholder="Email"
-        />
-        <Button
-          type="primary"
-          className="w-full md:w-[281px] h-[56px] mx-auto p-[2rem]"
-        >
-          Добавить в корзину
-        </Button>
-        <Checkbox className="mx-auto text-center">
-          Согласен с обработкой персональных данных в соответствии с политикой
-          конфиденциальности
-        </Checkbox>
+        <CustomInput className={"h-[40px]"} type="email" placeholder="Email" />
+        
+        <CustomButton text="Добавить в корзину" type="primary" />
+        <CustomCheckbox name="Согласен c обработкой персональных данных в соответствии c политикой конфиденциальности" />
+        </div>
       </Form>
     </section>
   );

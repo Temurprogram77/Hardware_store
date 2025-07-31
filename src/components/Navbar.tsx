@@ -376,7 +376,7 @@ const Navbar: React.FC = () => {
             </label>
             <input
               id="inp2"
-              type="text"
+              type="number"
               className="px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full"
               placeholder="+7 (___) ___-__-__"
             />

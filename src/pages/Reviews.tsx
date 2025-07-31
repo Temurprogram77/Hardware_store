@@ -8,6 +8,7 @@ import img4 from '../assets/ivan2.png'
 import img5 from '../assets/ivan3.png'
 import ReviewForm from "../components/ReviewForm";
 import Advertisement from "../components/Advertisement";
+import CustomButton from "../components/ui/CustomButton";
 interface Review {
   name: string,
   date: string,
@@ -86,10 +87,10 @@ const Reviews:React.FC = () => {
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Отзывы</h1>
 
         <div className="flex flex-col md:flex-row w-full justify-between mt-4 gap-8">
-  <div className="flex flex-col w-full md:w-[76%]">
+  <div className="flex flex-col w-full md:w-[93%]">
     <div className="w-[290px] h-[45px] flex justify-between items-center">
-      <Button type="primary">Сначала новые</Button>
-      <Button type="dashed">Сначала старые</Button>
+      <CustomButton  type="primary" text="Сначала новые" />
+      <CustomButton  type="dashed" text="Сначала старые" />
     </div>
 
     <div>

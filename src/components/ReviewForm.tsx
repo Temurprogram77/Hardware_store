@@ -1,7 +1,9 @@
-import { Form, Input, Upload, Button, Checkbox } from "antd";
+import { Form, Upload, } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-
-const { TextArea } = Input;
+import CustomButton from "./ui/CustomButton";
+import CustomInput from "./ui/CustomInput";
+import CustomTextarea from "./ui/CustomTextarea";
+import CustomCheckbox from "./ui/CustomCheckbox";
 
 const ReviewForm:React.FC = () => {
   const [form] = Form.useForm();
@@ -23,7 +25,7 @@ const ReviewForm:React.FC = () => {
           name="name"
           rules={[{ required: true, message: "Введите ваше имя" }]}
         >
-          <Input placeholder="Введите ваше имя" />
+          <CustomInput  className={"h-[40px]"} placeholder="Введите ваше имя" type="string"/>
         </Form.Item>
 
         <Form.Item
@@ -34,7 +36,7 @@ const ReviewForm:React.FC = () => {
             { type: "email", message: "Неверный формат email" },
           ]}
         >
-          <Input placeholder="Введите ваш электронный адрес" />
+          <CustomInput  className={"h-[40px]"} placeholder="Введите ваш электронный адрес" type="string"/>
         </Form.Item>
       </div>
 
@@ -43,7 +45,7 @@ const ReviewForm:React.FC = () => {
         name="review"
         rules={[{ required: true, message: "Введите ваш отзыв" }]}
       >
-        <TextArea rows={4} placeholder="Ваш отзыв" />
+        <CustomTextarea rows={4} placeholder="Ваш отзыв"/>
       </Form.Item>
 
       <Form.Item label="Прикрепить фото" name="photos">
@@ -58,16 +60,11 @@ const ReviewForm:React.FC = () => {
       </Form.Item>
 
       <Form.Item name="agreement" valuePropName="checked">
-        <Checkbox>
-          Согласен с обработкой персональных данных в соответствии с политикой
-          конфиденциальности
-        </Checkbox>
+      <CustomCheckbox name={"Согласен c обработкой персональных данных в соответствии c политикой конфиденциальности"} />
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
-          ОТПРАВИТЬ
-        </Button>
+      <CustomButton  type="primary" text="ОТПРАВИТЬ" />
       </Form.Item>
     </Form>
   );

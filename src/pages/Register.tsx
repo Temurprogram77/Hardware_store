@@ -1,13 +1,15 @@
 import { useRef, useState, useEffect } from 'react';
-import { Breadcrumb, Typography, Input, Button, Space, Checkbox, notification, type InputRef } from 'antd'; // notification import qilindi
+import { Breadcrumb, Typography, Input, Button, Space, Checkbox, notification, type InputRef } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
+import CustomPhoneInput from '../components/ui/CustomINputPhone';
+import CustomInput from '../components/ui/CustomInput';
 
 export const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-  phone: /^(\+7|8)[\s\(-]*\d{3}[\s\)-]*\d{3}[\s-]*\d{2}[\s-]*\d{2}$/,
+  phone: /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/,
   fullName: /^[A-Za-zА-Яа-яЁё\s]{5,}$/,
   region: /^[A-Za-zА-Яа-яЁё\s-]{2,}$/,
   password: /^(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$/,
@@ -38,21 +40,50 @@ const Register = () => {
   const firstCheckboxRef = useRef<InputRef>(null);
   const secondCheckboxRef = useRef<InputRef>(null);
 
-  // Komponent yuklanganda email maydoniga fokus
   useEffect(() => {
     emailRef.current?.focus();
   }, []);
 
-  // Har bir input o'zgarganda validatsiya
+  // TELEFON RAQAMNI FORMATLASH FUNKSIYASI
+  const formatPhoneNumber = (value: string): string => {
+    // If the value is empty, return an empty string immediately to clear the input
+    if (!value) return '';
+
+    let digits = value.replace(/\D/g, '');
+
+    if (digits.startsWith('8')) {
+      digits = '7' + digits.substring(1);
+    }
+    const numberPart = digits.startsWith('7') ? digits.substring(1) : digits;
+    const limitedNumber = numberPart.slice(0, 10);
+
+    let formatted = '+7 (';
+    if (limitedNumber.length > 0) {
+      formatted += limitedNumber.substring(0, 3);
+    }
+    if (limitedNumber.length >= 4) {
+      formatted += ') ' + limitedNumber.substring(3, 6);
+    }
+    if (limitedNumber.length >= 7) {
+      formatted += '-' + limitedNumber.substring(6, 8);
+    }
+    if (limitedNumber.length >= 9) {
+      formatted += '-' + limitedNumber.substring(8, 10);
+    }
+    return formatted;
+  };
+
+  // YANGILANGAN `handleChange` FUNKSIYASI
   const handleChange = (field: string, value: string) => {
-    setFormValues((prev) => ({ ...prev, [field]: value }));
+    const valueToSet = field === 'phone' ? formatPhoneNumber(value) : value;
+    setFormValues((prev) => ({ ...prev, [field]: valueToSet }));
 
     const newErrors = { ...errors };
 
     if (field === 'email') {
-      if (!value) {
+      if (!valueToSet) {
         newErrors.email = "Email bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.email.test(value)) {
+      } else if (!regex.email.test(valueToSet)) {
         newErrors.email = "Iltimos, haqiqiy email kiriting!";
       } else {
         delete newErrors.email;
@@ -60,19 +91,21 @@ const Register = () => {
     }
 
     if (field === 'phone') {
-      if (!value) {
+      // If the formatted value is empty, it means the user cleared the input.
+      // We should only show an error if the input is not empty but still invalid.
+      if (!valueToSet) {
         newErrors.phone = "Telefon raqami bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.phone.test(value)) {
-        newErrors.phone = "Telefon raqami noto'g'ri formatda!";
+      } else if (!regex.phone.test(valueToSet)) {
+        newErrors.phone = "Raqamni to'liq kiriting!";
       } else {
         delete newErrors.phone;
       }
     }
 
     if (field === 'fullName') {
-      if (!value) {
+      if (!valueToSet) {
         newErrors.fullName = "FIO bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.fullName.test(value)) {
+      } else if (!regex.fullName.test(valueToSet)) {
         newErrors.fullName = "Iltimos, FIO kiriting (kamida 5 belgi)!";
       } else {
         delete newErrors.fullName;
@@ -80,9 +113,9 @@ const Register = () => {
     }
 
     if (field === 'region') {
-      if (!value) {
+      if (!valueToSet) {
         newErrors.region = "Region bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.region.test(value)) {
+      } else if (!regex.region.test(valueToSet)) {
         newErrors.region = "Region noto'g'ri formatda!";
       } else {
         delete newErrors.region;
@@ -90,9 +123,9 @@ const Register = () => {
     }
 
     if (field === 'password') {
-      if (!value) {
+      if (!valueToSet) {
         newErrors.password = "Parol bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.password.test(value)) {
+      } else if (!regex.password.test(valueToSet)) {
         newErrors.password =
           "Parol kamida 6 belgidan iborat bo'lishi kerak, kichik harf, raqam va maxsus belgi qatnashsin!";
       } else {
@@ -101,9 +134,9 @@ const Register = () => {
     }
 
     if (field === 'confirmPassword') {
-      if (!value) {
+      if (!valueToSet) {
         newErrors.confirmPassword = "Parolni tasdiqlash bo'sh bo'lishi mumkin emas!";
-      } else if (value !== formValues.password) {
+      } else if (valueToSet !== formValues.password) {
         newErrors.confirmPassword = "Parollar mos kelmadi!";
       } else {
         delete newErrors.confirmPassword;
@@ -113,7 +146,6 @@ const Register = () => {
     setErrors(newErrors);
   };
 
-  // Enter tugmasi bosilganda keyingi inputga o'tish
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
     nextRef: React.RefObject<InputRef | HTMLInputElement | null>
@@ -124,7 +156,6 @@ const Register = () => {
     }
   };
 
-  // Ro'yxatdan o'tish tugmasi bosilganda barcha maydonlarni yakuniy tekshirish
   const handleRegister = () => {
     const newErrors: Record<string, string> = {};
 
@@ -181,7 +212,7 @@ const Register = () => {
 
         notification.success({
           message: "Muvaffaqiyatli ro'yxatdan o'tish",
-          description: "Hisobingiz muvaffaqiyatli yaratildi! Endi avtorizatsiya sahifasiga yo'naltirilasiz.",
+          description: "Hisobingiz muvaffaqiyatli yaratildi! Endi avtorizatsiya sahifasiga yo'naltirilasyiz.",
           placement: 'topRight',
         });
 
@@ -230,45 +261,20 @@ const Register = () => {
             <h2 className="!font-bold text-4xl">Регистрация</h2>
             <div className="mt-10 border w-[100%] max-sm:w-full max-sm:flex-col rounded-lg py-8 max-sm:!py-4 px-10 border-gray-200 flex justify-between max-sm:px-4 md:p-5">
               <div className="flex flex-col max-sm:mr-0 max-sm:w-full xl:mr-10">
-                {Object.values(errors).some((val) => val) && (
-                  <div className="border border-[#E52B0E] w-full p-3 rounded border-dashed bg-[#FFF9F9] mb-5 flex flex-col">
-                    {errors.email && <p className="text-[#E52B0E] text-sm">{errors.email}</p>}
-                    {errors.phone && <p className="text-[#E52B0E] text-sm">{errors.phone}</p>}
-                    {errors.fullName && <p className="text-[#E52B0E] text-sm">{errors.fullName}</p>}
-                    {errors.region && <p className="text-[#E52B0E] text-sm">{errors.region}</p>}
-                    {errors.password && <p className="text-[#E52B0E] text-sm">{errors.password}</p>}
-                    {errors.confirmPassword && <p className="text-[#E52B0E] text-sm">{errors.confirmPassword}</p>}
-                    {errors.terms && <p className="text-[#E52B0E] text-sm">{errors.terms}</p>}
-                    {errors.privacy && <p className="text-[#E52B0E] text-sm">{errors.privacy}</p>}
-                  </div>
-                )}
+
                 <Space direction="vertical">
                   <div className="xl:flex xl:gap-7">
                     <div className="max-sm:w-full">
                       <Typography.Title className="!text-lg">
                         Email <span className="text-red-700">*</span>:
                       </Typography.Title>
-                      <Input
-                        ref={emailRef}
-                        value={formValues.email}
-                        onChange={(e) => handleChange('email', e.target.value)}
-                        onKeyDown={(e) => handleKeyDown(e, phoneRef)}
-                        className="md:!w-full max-sm:!w-full xl:!w-[345px] !h-[55px] !text-lg !mb-1 !-mt-2"
-                        placeholder="Введите ваш email адрес"
-                      />
+                      <CustomInput type='text' className='md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2' />
                     </div>
                     <div className="max-sm:w-full">
                       <Typography.Title className="!text-lg">
                         Номер телефона <span className="text-red-700">*</span>:
                       </Typography.Title>
-                      <Input
-                        ref={phoneRef}
-                        value={formValues.phone}
-                        onChange={(e) => handleChange('phone', e.target.value)}
-                        onKeyDown={(e) => handleKeyDown(e, fullNameRef)}
-                        className="md:!w-full max-sm:!w-full xl:!w-[345px] !h-[55px] !text-lg !mb-1 !-mt-2"
-                        placeholder="+7 (___) ___-__-__"
-                      />
+                      <CustomPhoneInput className='flex flex-wrap md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2' />
                     </div>
                   </div>
 
@@ -282,7 +288,10 @@ const Register = () => {
                     onKeyDown={(e) => handleKeyDown(e, regionRef)}
                     className="w-full !h-[55px] !text-lg !mb-1 !-mt-2"
                     placeholder="Ваше полное имя"
+                    status={errors.fullName ? "error" : ""}
                   />
+                  {errors.fullName && <p className="text-[#E52B0E] text-sm">{errors.fullName}</p>}
+
 
                   <Typography.Title className="!text-lg">
                     Регион <span className="text-red-700">*</span>:
@@ -294,7 +303,10 @@ const Register = () => {
                     onKeyDown={(e) => handleKeyDown(e, passwordRef)}
                     className="w-full !h-[55px] !text-lg !mb-1 !-mt-2"
                     placeholder="Ваш регион"
+                    status={errors.region ? "error" : ""}
                   />
+                  {errors.region && <p className="text-[#E52B0E] text-sm">{errors.region}</p>}
+
 
                   <Typography.Title className="!text-lg">
                     Пароль <span className="text-red-700">*</span>:
@@ -307,7 +319,10 @@ const Register = () => {
                     className="w-full !h-[55px] !text-lg !-mt-2"
                     placeholder="Введите пароль"
                     iconRender={(visible: boolean) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                    status={errors.password ? "error" : ""}
                   />
+                  {errors.password && <p className="text-[#E52B0E] text-sm">{errors.password}</p>}
+
 
                   <Typography.Title className="!text-lg">
                     Подтвердите пароль <span className="text-red-700">*</span>:
@@ -320,7 +335,10 @@ const Register = () => {
                     className="w-full !h-[55px] !text-lg !-mt-2"
                     placeholder="Введите пароль"
                     iconRender={(visible: boolean) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                    status={errors.confirmPassword ? "error" : ""}
                   />
+                  {errors.confirmPassword && <p className="text-[#E52B0E] text-sm">{errors.confirmPassword}</p>}
+
                 </Space>
 
                 <div className="flex flex-col">
@@ -345,6 +363,8 @@ const Register = () => {
                   >
                     Согласен с условиями обслуживания
                   </Checkbox>
+                  {errors.terms && <p className="text-[#E52B0E] text-sm">{errors.terms}</p>}
+
                   <Checkbox
                     ref={secondCheckboxRef}
                     checked={agreedToPrivacy}
@@ -369,6 +389,8 @@ const Register = () => {
                       политикой конфиденциальности
                     </Link>{' '}
                   </Checkbox>
+                  {errors.privacy && <p className="text-[#E52B0E] text-sm">{errors.privacy}</p>}
+
                 </div>
 
                 <div className="w-full">
