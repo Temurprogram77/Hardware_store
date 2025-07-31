@@ -216,7 +216,7 @@ const navigate = useNavigate();
         <div className="grid gap-[1.5rem] md:grid-cols-2 grid-cols-1 mb-[5rem] lg:grid-cols-3 xl:grid-cols-4">
           {
             Stocks.map((item)=>{
-            return <div className=" cursor-pointer relative h-70 rounded-md hover:shadow-md  overflow-hidden group" key={item.id} onClick={()=>handleClick(item.id)}>
+            return <div className=" cursor-pointer relative h-70 rounded-md hover:shadow-xl transition-shadow duration-700 overflow-hidden group" key={item.id} onClick={()=>handleClick(item.id)}>
               <div className='relative h-[180px]'>
                 <img className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={item.img} alt={item.description} />
                 <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 text-black">
