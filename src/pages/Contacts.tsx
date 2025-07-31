@@ -68,7 +68,7 @@ const contacts = [
 
 
 const Contacts = () => {
-const [agree, setAgree] = useState(false);
+// const [agree, setAgree] = useState(false);
 
   return (
     <div className='flex justify-center items-center'>
@@ -119,11 +119,13 @@ const [agree, setAgree] = useState(false);
               <button className='mt-1 bg-[#186fd4] cursor-pointer font-bold !text-white rounded-[10px] w-[250px] h-[50px]'>Заказать звонок</button>
           </div>
         </div>
+
+        {/* birxil cardlar */}
         <div>
           <div>
             <div className='md:mt-11 flex md:flex-row flex-col gap-3 justify-center items-center '>
                <div className="md:w-[1200px] w-[380px] p-3 flex flex-wrap md:flex-row flex-col gap-4">
-                {/* birxil cardlar */}
+                {/* map() da aylanish */}
                   {contacts.map((item, index) => (
                   <div key={index} className="md:w-[255px] p-5 md:h-[105px] w-full border border-[#f2f4f6] rounded-lg md:p-4 md:shadow">
                     <p className="md:text-[15px] text-[18.5px] text-[#494d52] font-sans">{item.title}:</p>
@@ -138,6 +140,9 @@ const [agree, setAgree] = useState(false);
               </div>
             </div>
           </div>
+
+          {/* Работаем по регионам: */}
+
           <section className="py-8 flex flex-col gap-5 mt-4">
             <h2 className="!font-bold md:text-[18px] text-[22px] mb-6">Работаем по регионам:</h2>
             <div className="flex md:flex-row flex-col justify-between gap-6 overflow-x-auto">
@@ -157,11 +162,16 @@ const [agree, setAgree] = useState(false);
           </section>
         </div>
       </div>
+
+      {/* Section */}
+      
       <section className="bg-[#f8f9fb] md:w-full w-[390px] relative md:left-0 left-[-20px] py-12 px-4">
-      <div className="md:w-4xl  mx-auto text-center">
-        <h2 className="text-2xl md:text-3xl !mb-[30px] md:mb-10 !font-bold text-gray-800">
-          У вас есть вопросы? С радостью ответим на них!
-        </h2>
+        <div className="md:w-4xl  mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl !mb-[30px] md:mb-10 !font-bold text-gray-800">
+            У вас есть вопросы? С радостью ответим на них!
+          </h2>
+
+        {/* Form */}
 
         <form className="text-left space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
