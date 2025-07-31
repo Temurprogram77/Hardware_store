@@ -70,12 +70,14 @@ const NewsCards: React.FC = () => {
       >
         {data.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="bg-white shadow-md rounded-lg overflow-hidden">
-              <img
-                src={item.img}
-                alt={`News ${index + 1}`}
-                className="w-full h-[160px] object-cover"
-              />
+            <div className="bg-white shadow-md rounded-lg overflow-hidden group">
+              <div className="overflow-hidden rounded-lg">
+                <img
+                  src={item.img}
+                  alt={`News ${index + 1}`}
+                  className="w-full h-[160px] object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
               <div className="p-4">
                 <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
                 <p className="text-sm text-gray-600 mb-2">{item.description}</p>
