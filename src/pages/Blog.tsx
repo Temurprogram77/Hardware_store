@@ -8,7 +8,7 @@ import { data2 } from "../data/data"
 
 const Blog = () => {
   return (
-    <div className='flex justify-center items-center md:mb-15'>
+    <div className='flex justify-center items-center md:mb-15 mb-13'>
       <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
         {/* Breadcrumb */}
         <Breadcrumb className="mb-6">
@@ -21,10 +21,10 @@ const Blog = () => {
         </Breadcrumb>
         <div>
           <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]">Блог</h2>
-          <div  className='flex gap-[10px] '>
-            <div>
+          <div  className='flex md:gap-[10px] gap-[20px] md:flex-row flex-col'>
+            <div className=''>
               {/* birxil cardlar map() da */}
-              <div className='flex flex-wrap gap-[14px]'>
+              <div className='flex flex-wrap gap-[14px] justify-center items-center'>
                   {data2.map((item, index) => (
                     <div key={index}>
                       <div className="bg-white shadow-md rounded-lg w-[370px] overflow-hidden">
@@ -45,7 +45,7 @@ const Blog = () => {
                   ))}
               </div>
             </div>
-            <div className='!w-[1220px]'>
+            <div className='md:w-[1220px] w-[350px]'>
               <Form className="w-full flex flex-col gap-[1.7rem] pb-[2rem] bg-[#F9FAFB] px-4">
                <div className="w-full p-[1.5rem] flex flex-col gap-[1.2rem]">
                  <h4 className="text-center text-[18px] font-medium">Подпишитесь на рассылку</h4>
