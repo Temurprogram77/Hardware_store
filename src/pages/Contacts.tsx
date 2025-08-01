@@ -73,7 +73,7 @@ const Contacts = () => {
     <div className='flex justify-center items-center'>
       <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
       {/* Link */}
-        <Names />
+        <Names name='Контакты' link='/contacts' />
             
       <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]" >Контакты</h2>
       <div>
