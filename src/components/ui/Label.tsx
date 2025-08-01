@@ -1,33 +1,17 @@
 import React from "react";
-import { Tag } from "antd";
-import { CheckCircleOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
-
-type Status = "success" | "warning" | "error" | "default";
 
 interface LabelProps {
   text: string;
-  color?: string; // Ant Design ranglari yoki custom ranglar
-  iconType?: Status;
+  required?: boolean;
   className?: string;
 }
 
-const Label: React.FC<LabelProps> = ({ text, color = "default", iconType, className }) => {
-  const getIcon = () => {
-    switch (iconType) {
-      case "success":
-        return <CheckCircleOutlined />;
-      case "warning":
-      case "error":
-        return <ExclamationCircleOutlined />;
-      default:
-        return null;
-    }
-  };
-
+const Label: React.FC<LabelProps> = ({ text, required = false, className }) => {
   return (
-    <Tag color={color} className={className}>
-      {iconType && getIcon()} {text}
-    </Tag>
+    <label className={`text-sm font-medium text-black ${className}`}>
+      {required && <span className="text-red-500 mr-1">*</span>}
+      {text}
+    </label>
   );
 };
 
