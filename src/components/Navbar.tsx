@@ -46,6 +46,7 @@ const Navbar: React.FC = () => {
   const comparedCount = Object.keys(comparedItems).filter(
     (id) => comparedItems[id]
   ).length;
+  
 
   // LocalStorage orqali like qilingan itemlar sonini hisoblash
   const likedCount = Object.values(likedItems).filter(Boolean).length;
