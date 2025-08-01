@@ -8,6 +8,7 @@ interface ProductItem {
   oldMoney: string;
   newMoney: string;
   sale: string;
+  type: string;
 }
 
 
@@ -15,6 +16,7 @@ interface SideBarItem {
   name: string;
   obj: (string | string[] | { obj: string[][] })[];
 }
+
 
 export const sideBar: SideBarItem[] = [
   {
@@ -491,6 +493,7 @@ export const cardData: ProductItem[] = [
     oldMoney: "15 999 ₽",
     newMoney: "12 789 ₽",
     sale: "-15%",
+    type: "Инструменты"
   },
   {
     id: 2,
@@ -500,6 +503,7 @@ export const cardData: ProductItem[] = [
     oldMoney: "15 999 ₽",
     newMoney: "12 789 ₽",
     sale: "-15%",
+    type: "Сантехника"
   },
   {
     id: 3,
@@ -509,6 +513,7 @@ export const cardData: ProductItem[] = [
     oldMoney: "15 999 ₽",
     newMoney: "12 789 ₽",
     sale: "-15%",
+    type: "Для дома"
   },
   {
     id: 4,
@@ -518,6 +523,7 @@ export const cardData: ProductItem[] = [
     oldMoney: "15 999 ₽",
     newMoney: "12 789 ₽",
     sale: "-15%",
+    type: "Для сада"
   },
   {
     id: 5,
@@ -527,6 +533,7 @@ export const cardData: ProductItem[] = [
     oldMoney: "15 999 ₽",
     newMoney: "12 789 ₽",
     sale: "-15%",
+    type: "Инструменты"
   },
 ];
 

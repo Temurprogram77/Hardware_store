@@ -1,13 +1,22 @@
 import React from "react";
 import { images } from "../assets/images";
+
 const { cardBgImage1, cardBgImage2, cardBgImage3, cardBgImage4 } = images;
 
-const bgImage = [
+// Tipni aniq belgilaymiz:
+interface BgImageItem {
+  img: string;
+  prosent: number;
+  title: string;
+}
+
+const bgImage: BgImageItem[] = [
   { img: cardBgImage1, prosent: 15, title: "Метизные изделия" },
   { img: cardBgImage2, prosent: 30, title: "Лакокрасочные материалы" },
   { img: cardBgImage3, prosent: 25, title: "Напольные покрытия" },
   { img: cardBgImage4, prosent: 30, title: "Все для отоплления" },
 ];
+
 const CardBgImages: React.FC = () => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[1460px] 2xl:mx-auto mx-3">
@@ -18,7 +27,7 @@ const CardBgImages: React.FC = () => {
         >
           <img
             src={item.img}
-            alt="bg"
+            alt={`bg-${index}`}
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
           <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 text-black">
