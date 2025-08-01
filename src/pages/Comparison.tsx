@@ -1,11 +1,19 @@
-import React from 'react'
-import { Breadcrumb, Button } from 'antd'
-import { Link } from 'react-router-dom'
-import { images } from '../assets/images'
-import { div } from 'framer-motion/client'
+import React, { useEffect, useState } from 'react';
+import { Breadcrumb, Button } from 'antd';
+import { Link } from 'react-router-dom';
+import { images } from '../assets/images';
 
 const Comparison = () => {
-  const products = [] // bu props yoki global state (Redux, Context) orqali keladi
+  const [items, setItems] = useState({});
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("yourKey");
+    if (storedData) {
+      setItems(JSON.parse(storedData));
+    }
+  }, []);
+
+  const hasItems = Object.keys(items).length > 0;
 
   return (
     <div className='max-w-[1460px] mx-auto my-5'>
@@ -19,7 +27,16 @@ const Comparison = () => {
         <h2 className="text-2xl md:text-3xl font-bold mt-2">Сравнение</h2>
       </div>
 
-      {products.length === 0 ? (
+      {hasItems ? (
+        <div className="grid grid-cols-2 gap-4">
+          {Object.entries(items).map(([key, value]) => (
+            <div key={key} className="p-4 border rounded shadow">
+              <h3>ID: {key}</h3>
+              <p>Status: {value ? "True" : "False"}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
         <div className="flex flex-col items-center justify-center mt-16 text-center">
           <div className="mb-6">
             <img src={images.ciziq} alt="empty" />
@@ -30,16 +47,12 @@ const Comparison = () => {
             На странице <span className="font-semibold">"Каталог"</span> вы найдете много интересных товаров.
           </p>
           <Button type="primary" className="w-[200px] !h-[50px] mt-4">
-            <Link to="/product-catalog">ПЕРЕЙТИ В КАТАЛОГ</Link>
+            <Link  to="/product-catalog">ПЕРЕЙТИ В КАТАЛОГ</Link>
           </Button>
-        </div>
-      ) : (
-        <div>
-          
         </div>
       )}
     </div>
-  )
-}
+  );
+}; 
 
-export default Comparison
+export default Comparison;
