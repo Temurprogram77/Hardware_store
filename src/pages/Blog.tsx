@@ -75,7 +75,7 @@ const Blog = () => {
                <h2 className="text-lg font-bold font-sans mb-4 hidden md:block">Рубрики</h2>
 
 {/* Desktop list */}
-               <ul className="space-y-2 hidden  md:flex md:flex-col md:!mt-[10px] md:gap-[12px]">
+               <ul className="space-y-2 hidden  md:flex md:flex-col md:gap-[12px]">
                  {categories.map((cat, i) => (
                    <li 
                      key={i}
