@@ -1,6 +1,10 @@
-import React from 'react'
 import { Link } from "react-router-dom"
-const Links = () => {
+interface Props{
+        link:string,
+        name:string
+    }
+const Names:React.FC<Props>= ({link,name}) => {
+    
   return (
     <ul className="flex text-[15px] gap-4 flex-wrap">
         <li>
@@ -8,10 +12,10 @@ const Links = () => {
         </li>
         /
         <li className="text-gray-500">
-          <Link to={'/deals'}>Акции</Link>
+          <Link to={link}>{name}</Link>
         </li>
       </ul>
   )
 }
 
-export default Links
+export default Names

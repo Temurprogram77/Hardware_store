@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import Questions from "../components/Questions"
 import Advantages from "../components/Advantages"
 import Advertisement from "../components/Advertisement"
+import Names from "../components/Names"
 interface Review {
   key: number,
   quiz: string,
@@ -32,15 +33,7 @@ const quizs:Review[]=[
 const Return:React.FC = () => {
   return (
     <section className="mt-8 max-w-[1470px] mx-auto px-4">
-      <ul className="flex text-[15px] gap-4 flex-wrap">
-        <li>
-          <Link to={'/'}>Стройоптторг</Link>
-        </li>
-        /
-        <li className="text-gray-500">
-          <Link to={'/return'}>Возврат</Link>
-        </li>
-      </ul>
+      <Names name="Возврат" link="/return" />
 
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Возврат</h1>
