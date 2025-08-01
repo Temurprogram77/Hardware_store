@@ -64,7 +64,9 @@ const Basket = () => {
       {/* Breadcrumb */}
       <div className="mb-6">
         <Breadcrumb>
-          <Breadcrumb.Item>Стройоптторг</Breadcrumb.Item>
+          <Breadcrumb.Item className='cursor-pointer hover:text-blue-500'>
+          <Link className='hover:text-blue-500' to={"/"}>Стройоптторг</Link>
+          </Breadcrumb.Item>
           <Breadcrumb.Item>Корзина товаров</Breadcrumb.Item>
         </Breadcrumb>
         <h2 className="text-2xl md:text-3xl font-bold mt-2">Корзина товаров</h2>

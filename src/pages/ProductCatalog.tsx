@@ -413,6 +413,7 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                         )}
                       </span>
                     </div>
+                    
                     <div
                       onClick={() => toggleCompare(item.id.toString())}
                       className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
