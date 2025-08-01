@@ -131,6 +131,7 @@ const Contacts = () => {
                     <p className="md:text-[15px] text-[18.5px] text-[#494d52] font-sans">{item.title}:</p>
                     <p className="md:text-[15px] text-[#2f3134] text-[21px] font-bold hover:text-[#007aff]">{item.phone}</p>
                   </div>
+                  
                   ))}
                 </div>
 
