@@ -1,6 +1,6 @@
 import React from "react";
 import { useModal } from "../context/ModalContext";
-import {images} from "../assets/images";
+import { images } from "../assets/images";
 
 const Modal: React.FC = () => {
   const { isOpen, closeModal } = useModal();
@@ -10,7 +10,7 @@ const Modal: React.FC = () => {
       <div
         onClick={closeModal}
         className={`fixed inset-0 bg-[#000000be] z-20 transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0"
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-auto" // Yopilgan bo‘lsa, klikka yopilmasin
         }`}
       ></div>
 
@@ -25,7 +25,10 @@ const Modal: React.FC = () => {
           onClick={closeModal}
           className="absolute right-4 top-4 rounded-md bg-[#F2F6FC] p-2 cursor-pointer"
         >
-          {/* <img src={close} alt="close" /> */}
+          {/* 
+          Agar `images` ichida `close` rasmi bo‘lsa shu joyda ko‘rsating:
+          <img src={images.close} alt="close" />
+          */}
         </div>
 
         <div className="mt-6">

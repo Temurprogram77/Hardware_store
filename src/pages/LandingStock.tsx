@@ -32,10 +32,10 @@ const LandingStock = () => {
         </li>
         /
         <li className="text-gray-500">
-          <Link to={'/stock'}>Акции</Link>
+          <Link to={'/deals'}>Акции</Link>
         </li>/
         <li className="text-gray-500">
-          <Link to={`/stock/${chegirma?.id}`}>{chegirma?.title}</Link>
+          <Link to={`/deals/${chegirma?.id}`}>{chegirma?.title}</Link>
         </li>
       </ul>
       <div className="w-full mt-8 items-center">

@@ -96,7 +96,12 @@ import Vector10 from "./Vector (10).svg"
 import heart2 from "./heart2.svg"
 import ciziq from "./ciziq.svg"
 import mapCard1 from "./mapCard1.jpg"
+<<<<<<< HEAD
 import buy from './buy.svg'
+=======
+import mapCard2 from "./mapCard2.jpg"
+
+>>>>>>> 517eda62ef6fa05bb5d622927a2f2386e481f06c
 export const images = {
   heart2,
   Vector10,
@@ -196,4 +201,5 @@ export const images = {
 buy,
   ciziq,
   mapCard1,
+  mapCard2,
 };

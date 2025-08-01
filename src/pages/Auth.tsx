@@ -1,6 +1,6 @@
-import React from 'react';
-import { Breadcrumb, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Breadcrumb, Typography, notification } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
 import CustomInput from '../components/ui/CustomInput';
@@ -8,6 +8,33 @@ import CustomButton from '../components/ui/CustomButton';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
 
 const AuthPage: React.FC = () => {
+  const [emailValue, setEmailValue] = useState<string>("")
+  const [passwordValue, setPasswordValue] = useState<string>("")
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    const storedAccountString = localStorage.getItem("accounts");
+
+    if (storedAccountString) {
+      const storedAccount = JSON.parse(storedAccountString);
+
+      if (storedAccount.email === emailValue && storedAccount.password === passwordValue) {
+        notification.success({
+          message: "Tizimga kirish muvaffaqiyatli",
+          description: "Siz shaxsiy kabinetingizga yo'naltirilyapsiz."
+        });
+        navigate("/dashboard");
+      } else {
+        console.log("Tizimga kirishda xatolik");
+        
+      }
+    } else {
+      notification.warning({
+        message: "Akkount topilmadi",
+        description: "Iltimos, avval ro'yxatdan o'ting."
+      });
+    }
+  };
 
   return (
     <main className='mb-10 mt-5 px-3'>
@@ -33,20 +60,24 @@ const AuthPage: React.FC = () => {
             <div className='flex items-center flex-col w-1/2 max-sm:w-full'>
               <div className='max-sm:w-[100%] md:w-[100%]'>
                 <Typography.Title className='!text-lg'>
-                  Email или логин  <span className='text-red-700'>*</span>:
+                  Email yoki login  <span className='text-red-700'>*</span>:
                 </Typography.Title>
                 <CustomInput
-                  type=''
+                  type='text'
                   className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2'
                   placeholder="Введите данные для авторизации"
+                  value={emailValue}
+                  onChange={(e) => setEmailValue(e.target.value)}
                 />
                 <Typography.Title className='!text-lg'>
                   Пароль <span className='text-red-700'>*</span>:
                 </Typography.Title>
                 <CustomInput
-                  type=''
+                  type='password'
                   className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !-mt-2'
                   placeholder="Введите пароль"
+                  value={passwordValue}
+                  onChange={(e) => setPasswordValue(e.target.value)}
                 />
               </div>
 
@@ -58,16 +89,15 @@ const AuthPage: React.FC = () => {
                     className='!mt-7 !w-full !h-[55px] md:w-full !text-blue-600 !font-semibold !text-[15px]'
                   />
                 </Link>
-                <Link to="">
-                  <CustomButton
-                    text=''
-                    type="primary"
-                    className="!flex !items-center !mb-2.5 !h-[60px] !bg-blue-600 w-full !text-sm !uppercase hover:!bg-black"
-                  >
-                    Авторизоваться
-                    <MdOutlineChevronRight size={30} />
-                  </CustomButton>
-                </Link>
+                <CustomButton
+                  onClick={handleSubmit}
+                  text=''
+                  type="primary"
+                  className="!flex !items-center !mb-2.5 !h-[60px] !bg-blue-600 w-full !text-sm !uppercase hover:!bg-black"
+                >
+                  Авторизоваться
+                  <MdOutlineChevronRight size={30} />
+                </CustomButton>
               </div>
               <CustomCheckbox name='Запомнить меня' />
             </div>
