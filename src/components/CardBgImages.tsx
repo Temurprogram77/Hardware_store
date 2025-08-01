@@ -1,16 +1,13 @@
 import React from "react";
 import { images } from "../assets/images";
-import { useNavigate } from "react-router-dom";
 const { cardBgImage1, cardBgImage2, cardBgImage3, cardBgImage4 } = images;
-interface stock{
-  id:number,
-  title:string,
-  description:string,
-  discount:string,
-  link:string,
-  img:any
-}
 
+const bgImage = [
+  { img: cardBgImage1, prosent: 15, title: "Метизные изделия" },
+  { img: cardBgImage2, prosent: 30, title: "Лакокрасочные материалы" },
+  { img: cardBgImage3, prosent: 25, title: "Напольные покрытия" },
+  { img: cardBgImage4, prosent: 30, title: "Все для отоплления" },
+];
 const CardBgImages: React.FC = () => {
   const Stocks:stock[] = [
   {
@@ -62,7 +59,7 @@ const navigate = useNavigate();
         >
           <img
             src={item.img}
-            alt="bg"
+            alt={`bg-${index}`}
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
           <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 text-black">
