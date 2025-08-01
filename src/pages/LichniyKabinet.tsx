@@ -1,5 +1,5 @@
 import { Breadcrumb } from "antd"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { CgPassword } from "react-icons/cg"
 import { FaRegHeart, FaRegUserCircle } from "react-icons/fa"
 import { GoLocation } from "react-icons/go"
@@ -8,7 +8,7 @@ import { LiaUserEditSolid } from "react-icons/lia"
 import { RiMenuFold2Fill } from "react-icons/ri"
 import { TbUserEdit } from "react-icons/tb"
 import { TfiMenuAlt } from "react-icons/tfi"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const menuItems = [
     {
@@ -57,6 +57,29 @@ const menuItems = [
 
 const LichniyKabinet = () => {
     const [activeTab, setActiveTab] = useState(menuItems[0]);
+    const [accountFullName, setAccountFullName] = useState<string>('');
+    const navigate = useNavigate();
+
+    // useEffect yordamida component yuklanganda localStorage'dan ma'lumotlarni olamiz
+    useEffect(() => {
+        const storedAccountString = localStorage.getItem("accounts");
+        if (storedAccountString) {
+            try {
+                const storedAccount = JSON.parse(storedAccountString);
+                if (storedAccount.fullName) {
+                    setAccountFullName(storedAccount.fullName);
+                }
+            } catch (error) {
+                console.error("Failed to parse stored account data from localStorage:", error);
+            }
+        }
+    }, []); // Bo'sh massiv component bir marta yuklanganda ishlashini ta'minlaydi
+
+    // Tizimdan chiqish funksiyasi
+    const handleLogout = () => {
+        localStorage.removeItem("accounts"); // localStorage'dan akkount ma'lumotlarini o'chiramiz
+        navigate("/auth"); // Foydalanuvchini avtorizatsiya sahifasiga yo'naltiramiz
+    };
 
     return (
         <main className="mb-10 mt-5 px-3">
@@ -86,10 +109,16 @@ const LichniyKabinet = () => {
                                     return (
                                         <div
                                             key={index}
-                                            onClick={() => setActiveTab(item)}
+                                            onClick={() => {
+                                                if (item.label === 'Выйти из аккаунта') {
+                                                    handleLogout();
+                                                } else {
+                                                    setActiveTab(item);
+                                                }
+                                            }}
                                             className={`flex items-center gap-2 p-5 text-sm cursor-pointer transition-all 
-                        ${isActive ? 'bg-black text-white font-semibold' : ' text-gray-600 hover:bg-black hover:text-white'}
-                      `}
+                                ${isActive ? 'bg-black text-white font-semibold' : ' text-gray-600 hover:bg-black hover:text-white'}
+                            `}
                                         >
                                             <span className="text-2xl">{item.icon}</span>
                                             <span>{item.label}</span>
@@ -99,7 +128,7 @@ const LichniyKabinet = () => {
                             </div>
                         </div>
                         <div className="flex-1 bg-white rounded-xl">
-                            <span className=" text-xl font-semibold">Здравствуйте,  !</span>
+                            <span className=" text-xl font-semibold">Здравствуйте, {accountFullName || 'Гость'}!</span>
                             {activeTab.content.length > 0 && (
                                 <div className="flex items-center justify-center gap-3 mt-3">
                                     {activeTab.content.map((contentItem, index) => (

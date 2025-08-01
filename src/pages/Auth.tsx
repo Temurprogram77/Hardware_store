@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import { Breadcrumb, Typography, notification } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
 import CustomInput from '../components/ui/CustomInput';
@@ -10,11 +10,31 @@ import CustomCheckbox from '../components/ui/CustomCheckbox';
 const AuthPage: React.FC = () => {
   const [emailValue, setEmailValue] = useState<string>("")
   const [passwordValue, setPasswordValue] = useState<string>("")
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
-    setEmailValue
-    setPasswordValue
-  }
+    const storedAccountString = localStorage.getItem("accounts");
+
+    if (storedAccountString) {
+      const storedAccount = JSON.parse(storedAccountString);
+
+      if (storedAccount.email === emailValue && storedAccount.password === passwordValue) {
+        notification.success({
+          message: "Tizimga kirish muvaffaqiyatli",
+          description: "Siz shaxsiy kabinetingizga yo'naltirilyapsiz."
+        });
+        navigate("/dashboard");
+      } else {
+        console.log("Tizimga kirishda xatolik");
+        
+      }
+    } else {
+      notification.warning({
+        message: "Akkount topilmadi",
+        description: "Iltimos, avval ro'yxatdan o'ting."
+      });
+    }
+  };
 
   return (
     <main className='mb-10 mt-5 px-3'>
@@ -40,10 +60,10 @@ const AuthPage: React.FC = () => {
             <div className='flex items-center flex-col w-1/2 max-sm:w-full'>
               <div className='max-sm:w-[100%] md:w-[100%]'>
                 <Typography.Title className='!text-lg'>
-                  Email или логин  <span className='text-red-700'>*</span>:
+                  Email yoki login  <span className='text-red-700'>*</span>:
                 </Typography.Title>
                 <CustomInput
-                  type=''
+                  type='text'
                   className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2'
                   placeholder="Введите данные для авторизации"
                   value={emailValue}
@@ -53,7 +73,7 @@ const AuthPage: React.FC = () => {
                   Пароль <span className='text-red-700'>*</span>:
                 </Typography.Title>
                 <CustomInput
-                  type=''
+                  type='password'
                   className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !-mt-2'
                   placeholder="Введите пароль"
                   value={passwordValue}

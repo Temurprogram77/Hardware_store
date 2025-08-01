@@ -28,6 +28,7 @@ interface CustomPhoneInputProps {
 
 export interface CustomPhoneInputRef {
     getValue: () => string;
+    clearValue: () => void;
 }
 
 const CustomPhoneInput = forwardRef<CustomPhoneInputRef, CustomPhoneInputProps>(
@@ -37,6 +38,12 @@ const CustomPhoneInput = forwardRef<CustomPhoneInputRef, CustomPhoneInputProps>(
 
         useImperativeHandle(ref, () => ({
             getValue: () => inputRef.current?.value || '',
+            clearValue: () => {
+                if (inputRef.current) {
+                    inputRef.current.value = '';
+                }
+                setError('');
+            }
         }));
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,9 +53,9 @@ const CustomPhoneInput = forwardRef<CustomPhoneInputRef, CustomPhoneInputProps>(
             }
 
             if (!formattedValue) {
-                setError("Telefon raqami bo'sh bo'lishi mumkin emas!");
+                setError("Telefon raqami bo'sh bo'lishi mumkin emas!")
             } else if (!phoneRegex.test(formattedValue)) {
-                setError("Raqamni to'liq kiriting: +998 (XX) XXX-XX-XX");
+                setError("Raqamni to'liq kiriting");
             } else {
                 setError('');
             }
