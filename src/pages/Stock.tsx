@@ -216,13 +216,19 @@ const navigate = useNavigate();
         <div className="grid gap-[1.5rem] md:grid-cols-2 grid-cols-1 mb-[5rem] lg:grid-cols-3 xl:grid-cols-4">
           {
             Stocks.map((item)=>{
-            return <div className="cursor-pointer" key={item.id} onClick={()=>handleClick(item.id)}>
+            return <div className=" cursor-pointer relative h-70 rounded-md hover:shadow-xl transition-shadow duration-700 overflow-hidden group" key={item.id} onClick={()=>handleClick(item.id)}>
               <div className='relative h-[180px]'>
-                <img className="absolute w-full h-full object-cover rounded-[8px]" src={item.img} alt={item.description} />
-                <p className='absolute bottom-[2.3rem] left-3 w-[178px] font-medium text-[22px]'>{item.title}</p>
-                <CustomButton className='absolute bottom-[-8rem] left-2.5' type="primary" text={item.discount}/>
+                <img className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={item.img} alt={item.description} />
+                <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 text-black">
+            <p className="!mb-3 w-[130px] text-[19px] !font-medium">
+              {item.title}
+            </p>
+            <div className="py-1.5 px-2 text-[12px] text-white bg-black rounded-md">
+            {item.discount}
+            </div>
+          </div>
               </div>
-              <div className="flex flex-col leading-6 relative w-full h-[83px]">
+              <div className="flex pl-[1rem] flex-col leading-6 relative w-full h-[83px]">
                 <h3 className="font-medium absolute top-[0.5rem] h-[52px]">{item.description}</h3>
               <CustomButton className='absolute top-[3.3rem] left-[-6.3rem]' type="link" text={item.link}/>
               </div>
