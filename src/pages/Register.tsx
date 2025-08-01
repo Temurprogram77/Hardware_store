@@ -1,248 +1,116 @@
-import { useRef, useState, useEffect } from 'react';
-import { Breadcrumb, Typography, Input, Button, Space, Checkbox, notification, type InputRef } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Breadcrumb, notification, Typography, type InputRef } from 'antd';
+import { Link } from 'react-router-dom';
 import { FiUserPlus } from 'react-icons/fi';
-import { MdOutlineChevronRight } from 'react-icons/md';
-import CustomPhoneInput from '../components/ui/CustomINputPhone';
+import CustomPhoneInput, { phoneRegex, type CustomPhoneInputRef } from '../components/ui/CustomINputPhone';
 import CustomInput from '../components/ui/CustomInput';
+import CustomCheckbox from '../components/ui/CustomCheckbox';
+import CustomButton from '../components/ui/CustomButton';
+import { useRef, useState } from 'react';
 
 export const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-  phone: /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/,
   fullName: /^[A-Za-zА-Яа-яЁё\s]{5,}$/,
   region: /^[A-Za-zА-Яа-яЁё\s-]{2,}$/,
-  password: /^(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$/,
+  password: /^(?=.*[a-z])(?=.*\d)[A-Za-z\d\W_]{6,}$/,
 };
 
 const Register = () => {
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [formValues, setFormValues] = useState({
-    email: '',
-    phone: '',
-    fullName: '',
-    region: '',
-    password: '',
-    confirmPassword: '',
-  });
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
-
-  const navigate = useNavigate();
-
-  // Input ref'lar
   const emailRef = useRef<InputRef>(null);
-  const phoneRef = useRef<InputRef>(null);
+  const phoneRef = useRef<CustomPhoneInputRef>(null);
   const fullNameRef = useRef<InputRef>(null);
   const regionRef = useRef<InputRef>(null);
   const passwordRef = useRef<InputRef>(null);
   const confirmPasswordRef = useRef<InputRef>(null);
-  const firstCheckboxRef = useRef<InputRef>(null);
-  const secondCheckboxRef = useRef<InputRef>(null);
 
-  useEffect(() => {
-    emailRef.current?.focus();
-  }, []);
+  const [isChecked1, setIsChecked1] = useState<boolean>(false);
+  const [isChecked2, setIsChecked2] = useState<boolean>(false);
 
-  // TELEFON RAQAMNI FORMATLASH FUNKSIYASI
-  const formatPhoneNumber = (value: string): string => {
-    // If the value is empty, return an empty string immediately to clear the input
-    if (!value) return '';
+  const [formError, setFormError] = useState<{ field: string, message: string } | null>(null);
 
-    let digits = value.replace(/\D/g, '');
+  const validateForm = () => {
+    setFormError(null);
 
-    if (digits.startsWith('8')) {
-      digits = '7' + digits.substring(1);
-    }
-    const numberPart = digits.startsWith('7') ? digits.substring(1) : digits;
-    const limitedNumber = numberPart.slice(0, 10);
+    const email = emailRef.current?.input?.value || "";
+    const phone = phoneRef.current?.getValue() || "";
+    const fullName = fullNameRef.current?.input?.value || "";
+    const region = regionRef.current?.input?.value || "";
+    const password = passwordRef.current?.input?.value || "";
+    const confirmPassword = confirmPasswordRef.current?.input?.value || "";
 
-    let formatted = '+7 (';
-    if (limitedNumber.length > 0) {
-      formatted += limitedNumber.substring(0, 3);
+    if (!email || !regex.email.test(email)) {
+      return { field: "email", message: "Пожалуйста, введите действительную почту!" };
     }
-    if (limitedNumber.length >= 4) {
-      formatted += ') ' + limitedNumber.substring(3, 6);
+    if (!phone || !phoneRegex.test(phone)) {
+      return { field: "phone", message: "Поле телефон не заполнено!" };
     }
-    if (limitedNumber.length >= 7) {
-      formatted += '-' + limitedNumber.substring(6, 8);
+    if (!fullName || !regex.fullName.test(fullName)) {
+      return { field: "fullName", message: "Пожалуйста, введите ФИО!" };
     }
-    if (limitedNumber.length >= 9) {
-      formatted += '-' + limitedNumber.substring(8, 10);
+    if (!region || !regex.region.test(region)) {
+      return { field: "region", message: "Поле регион не заполнено!" };
     }
-    return formatted;
+    if (!password || password.length < 6) {
+      return { field: "password", message: "Пароль должен состоять не менее, чем из 6 символов" };
+    }
+    if (password !== confirmPassword) {
+      return { field: "confirmPassword", message: "Пароли не совпадают" };
+    }
+    if (!isChecked1) {
+      return { field: "terms", message: "Вы должны согласиться с условиями обслуживания" };
+    }
+    if (!isChecked2) {
+      return { field: "policy", message: "Вы должны согласиться с политикой конфиденциальности" };
+    }
+
+    return {
+      email,
+      phone,
+      fullName,
+      region,
+      password,
+    };
   };
 
-  // YANGILANGAN `handleChange` FUNKSIYASI
-  const handleChange = (field: string, value: string) => {
-    const valueToSet = field === 'phone' ? formatPhoneNumber(value) : value;
-    setFormValues((prev) => ({ ...prev, [field]: valueToSet }));
-
-    const newErrors = { ...errors };
-
-    if (field === 'email') {
-      if (!valueToSet) {
-        newErrors.email = "Email bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.email.test(valueToSet)) {
-        newErrors.email = "Iltimos, haqiqiy email kiriting!";
-      } else {
-        delete newErrors.email;
-      }
+  const clearForm = () => {
+    if (emailRef.current?.input) {
+      emailRef.current.input.value = "";
     }
-
-    if (field === 'phone') {
-      // If the formatted value is empty, it means the user cleared the input.
-      // We should only show an error if the input is not empty but still invalid.
-      if (!valueToSet) {
-        newErrors.phone = "Telefon raqami bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.phone.test(valueToSet)) {
-        newErrors.phone = "Raqamni to'liq kiriting!";
-      } else {
-        delete newErrors.phone;
-      }
+    if (phoneRef.current) {
+      phoneRef.current?.clearValue()
     }
-
-    if (field === 'fullName') {
-      if (!valueToSet) {
-        newErrors.fullName = "FIO bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.fullName.test(valueToSet)) {
-        newErrors.fullName = "Iltimos, FIO kiriting (kamida 5 belgi)!";
-      } else {
-        delete newErrors.fullName;
-      }
+    if (fullNameRef.current?.input) {
+      fullNameRef.current.input.value = "";
     }
-
-    if (field === 'region') {
-      if (!valueToSet) {
-        newErrors.region = "Region bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.region.test(valueToSet)) {
-        newErrors.region = "Region noto'g'ri formatda!";
-      } else {
-        delete newErrors.region;
-      }
+    if (regionRef.current?.input) {
+      regionRef.current.input.value = "";
     }
-
-    if (field === 'password') {
-      if (!valueToSet) {
-        newErrors.password = "Parol bo'sh bo'lishi mumkin emas!";
-      } else if (!regex.password.test(valueToSet)) {
-        newErrors.password =
-          "Parol kamida 6 belgidan iborat bo'lishi kerak, kichik harf, raqam va maxsus belgi qatnashsin!";
-      } else {
-        delete newErrors.password;
-      }
+    if (passwordRef.current?.input) {
+      passwordRef.current.input.value = "";
     }
-
-    if (field === 'confirmPassword') {
-      if (!valueToSet) {
-        newErrors.confirmPassword = "Parolni tasdiqlash bo'sh bo'lishi mumkin emas!";
-      } else if (valueToSet !== formValues.password) {
-        newErrors.confirmPassword = "Parollar mos kelmadi!";
-      } else {
-        delete newErrors.confirmPassword;
-      }
+    if (confirmPasswordRef.current?.input) {
+      confirmPasswordRef.current.input.value = "";
     }
-
-    setErrors(newErrors);
+    setIsChecked1(false);
+    setIsChecked2(false);
+    setFormError(null);
   };
 
-  const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    nextRef: React.RefObject<InputRef | HTMLInputElement | null>
-  ) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      nextRef.current?.focus();
-    }
-  };
+  const handleSubmit = () => {
+    const validationResult = validateForm();
 
-  const handleRegister = () => {
-    const newErrors: Record<string, string> = {};
-
-    if (!formValues.email) newErrors.email = "Email bo'sh bo'lishi mumkin emas!";
-    else if (!regex.email.test(formValues.email)) newErrors.email = "Iltimos, haqiqiy email kiriting!";
-
-    if (!formValues.phone) newErrors.phone = "Telefon raqami bo'sh bo'lishi mumkin emas!";
-    else if (!regex.phone.test(formValues.phone)) newErrors.phone = "Telefon raqami noto'g'ri formatda!";
-
-    if (!formValues.fullName) newErrors.fullName = "FIO bo'sh bo'lishi mumkin emas!";
-    else if (!regex.fullName.test(formValues.fullName)) newErrors.fullName = "Iltimos, FIO kiriting (kamida 5 belgi)!";
-
-    if (!formValues.region) newErrors.region = "Region bo'sh bo'lishi mumkin emas!";
-    else if (!regex.region.test(formValues.region)) newErrors.region = "Region noto'g'ri formatda!";
-
-    if (!formValues.password) newErrors.password = "Parol bo'sh bo'lishi mumkin emas!";
-    else if (!regex.password.test(formValues.password)) {
-      newErrors.password =
-        "Parol kamida 6 belgidan iborat bo'lishi kerak, kichik harf, raqam va maxsus belgi qatnashsin!";
+    if (validationResult.field) {
+      setFormError(validationResult);
+      return;
     }
 
-    if (!formValues.confirmPassword) newErrors.confirmPassword = "Parolni tasdiqlash bo'sh bo'lishi mumkin emas!";
-    else if (formValues.password !== formValues.confirmPassword) newErrors.confirmPassword = "Parollar mos kelmadi!";
+    const formData = validationResult;
+    localStorage.setItem("accounts", JSON.stringify(formData));
+    notification.success({
+      message: "Ro'yxatdan o'tildi",
+      description: "Ma'lumotlar muvaffaqiyatli saqlandi!"
+    });
 
-    if (!agreedToTerms) newErrors.terms = "Shartnoma shartlariga rozi bo'lishingiz kerak!";
-    if (!agreedToPrivacy) newErrors.privacy = "Maxfiylik siyosatiga rozi bo'lishingiz kerak!";
-
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      try {
-        const users = JSON.parse(localStorage.getItem('users') || '[]');
-        const newUser = {
-          email: formValues.email,
-          password: formValues.password,
-          fullName: formValues.fullName,
-          phone: formValues.phone,
-          region: formValues.region
-        };
-
-        const userExists = users.some((user: any) => user.email === newUser.email);
-        if (userExists) {
-          notification.error({
-            message: "Ro'yxatdan o'tishda xato",
-            description: "Bu email allaqachon ro'yxatdan o'tgan!",
-            placement: 'topRight',
-          });
-          setErrors((prev) => ({ ...prev, email: "Bu email allaqachon ro'yxatdan o'tgan!" }));
-          return;
-        }
-
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-
-        notification.success({
-          message: "Muvaffaqiyatli ro'yxatdan o'tish",
-          description: "Hisobingiz muvaffaqiyatli yaratildi! Endi avtorizatsiya sahifasiga yo'naltirilasyiz.",
-          placement: 'topRight',
-        });
-
-        setFormValues({
-          email: '',
-          phone: '',
-          fullName: '',
-          region: '',
-          password: '',
-          confirmPassword: '',
-        });
-        setAgreedToTerms(false);
-        setAgreedToPrivacy(false);
-        setErrors({});
-
-        navigate('/my-account');
-      } catch (e) {
-        notification.error({
-          message: "Xato",
-          description: "Ro'yxatdan o'tishda kutilmagan xato yuz berdi. Iltimos, qayta urinib ko'ring.",
-          placement: 'topRight',
-        });
-      }
-    } else {
-      notification.warning({
-        message: "Ma'lumotlarni kiriting",
-        description: "Iltimos, barcha maydonlarni to'g'ri to'ldiring.",
-        placement: 'topRight',
-      });
-    }
+    clearForm()
   };
 
   return (
@@ -261,146 +129,101 @@ const Register = () => {
             <h2 className="!font-bold text-4xl">Регистрация</h2>
             <div className="mt-10 border w-[100%] max-sm:w-full max-sm:flex-col rounded-lg py-8 max-sm:!py-4 px-10 border-gray-200 flex justify-between max-sm:px-4 md:p-5">
               <div className="flex flex-col max-sm:mr-0 max-sm:w-full xl:mr-10">
-
-                <Space direction="vertical">
-                  <div className="xl:flex xl:gap-7">
-                    <div className="max-sm:w-full">
-                      <Typography.Title className="!text-lg">
+                <div className='flex flex-col gap-2 mb-2'>
+                  <div className="xl:flex xl:gap-3">
+                    <div className="max-sm:w-full flex flex-col gap-2">
+                      <Typography.Title className="!text-[15px]">
                         Email <span className="text-red-700">*</span>:
                       </Typography.Title>
-                      <CustomInput type='text' className='md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2' />
+                      <CustomInput
+                        ref={emailRef}
+                        type='text'
+                        className='md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2'
+                        placeholder='Введите ваш email адрес'
+                      />
+                      {formError?.field === "email" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
                     </div>
-                    <div className="max-sm:w-full">
-                      <Typography.Title className="!text-lg">
+                    <div className="max-sm:w-full flex flex-col gap-2">
+                      <Typography.Title className="!text-[15px]">
                         Номер телефона <span className="text-red-700">*</span>:
                       </Typography.Title>
-                      <CustomPhoneInput className='flex flex-wrap md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2' />
+                      <CustomPhoneInput
+                        ref={phoneRef}
+                        placeholder='+998 (__) ___-__-__'
+                        className='flex flex-wrap border border-gray-300 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 transition-all'
+                      />
+                      {formError?.field === "phone" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
                     </div>
                   </div>
 
-                  <Typography.Title className="!text-lg">
+                  <Typography.Title className="!text-[15px]">
                     ФИО <span className="text-red-700">*</span>:
                   </Typography.Title>
-                  <Input
+                  <CustomInput
                     ref={fullNameRef}
-                    value={formValues.fullName}
-                    onChange={(e) => handleChange('fullName', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, regionRef)}
+                    type='text'
                     className="w-full !h-[55px] !text-lg !mb-1 !-mt-2"
                     placeholder="Ваше полное имя"
-                    status={errors.fullName ? "error" : ""}
                   />
-                  {errors.fullName && <p className="text-[#E52B0E] text-sm">{errors.fullName}</p>}
+                  {formError?.field === "fullName" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
 
-
-                  <Typography.Title className="!text-lg">
+                  <Typography.Title className="!text-[15px]">
                     Регион <span className="text-red-700">*</span>:
                   </Typography.Title>
-                  <Input
+                  <CustomInput
                     ref={regionRef}
-                    value={formValues.region}
-                    onChange={(e) => handleChange('region', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
+                    type='text'
                     className="w-full !h-[55px] !text-lg !mb-1 !-mt-2"
                     placeholder="Ваш регион"
-                    status={errors.region ? "error" : ""}
                   />
-                  {errors.region && <p className="text-[#E52B0E] text-sm">{errors.region}</p>}
+                  {formError?.field === "region" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
 
-
-                  <Typography.Title className="!text-lg">
+                  <Typography.Title className="!text-[15px]">
                     Пароль <span className="text-red-700">*</span>:
                   </Typography.Title>
-                  <Input.Password
+                  <CustomInput
                     ref={passwordRef}
-                    value={formValues.password}
-                    onChange={(e) => handleChange('password', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, confirmPasswordRef)}
+                    type='password'
                     className="w-full !h-[55px] !text-lg !-mt-2"
                     placeholder="Введите пароль"
-                    iconRender={(visible: boolean) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                    status={errors.password ? "error" : ""}
                   />
-                  {errors.password && <p className="text-[#E52B0E] text-sm">{errors.password}</p>}
+                  {formError?.field === "password" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
 
-
-                  <Typography.Title className="!text-lg">
+                  <Typography.Title className="!text-[15px]">
                     Подтвердите пароль <span className="text-red-700">*</span>:
                   </Typography.Title>
-                  <Input.Password
+                  <CustomInput
                     ref={confirmPasswordRef}
-                    value={formValues.confirmPassword}
-                    onChange={(e) => handleChange('confirmPassword', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, firstCheckboxRef)}
+                    type='password'
                     className="w-full !h-[55px] !text-lg !-mt-2"
                     placeholder="Введите пароль"
-                    iconRender={(visible: boolean) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                    status={errors.confirmPassword ? "error" : ""}
                   />
-                  {errors.confirmPassword && <p className="text-[#E52B0E] text-sm">{errors.confirmPassword}</p>}
-
-                </Space>
-
-                <div className="flex flex-col">
-                  <Checkbox
-                    ref={firstCheckboxRef}
-                    checked={agreedToTerms}
-                    onChange={(e) => {
-                      setAgreedToTerms(e.target.checked);
-                      setErrors((prev) => {
-                        const newErrors = { ...prev };
-                        if (e.target.checked) delete newErrors.terms;
-                        return newErrors;
-                      });
-                    }}
-                    className="!mt-2.5 items-baseline !text-sm"
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        e.preventDefault();
-                        secondCheckboxRef.current?.focus();
-                      }
-                    }}
-                  >
-                    Согласен с условиями обслуживания
-                  </Checkbox>
-                  {errors.terms && <p className="text-[#E52B0E] text-sm">{errors.terms}</p>}
-
-                  <Checkbox
-                    ref={secondCheckboxRef}
-                    checked={agreedToPrivacy}
-                    onChange={(e) => {
-                      setAgreedToPrivacy(e.target.checked);
-                      setErrors((prev) => {
-                        const newErrors = { ...prev };
-                        if (e.target.checked) delete newErrors.privacy;
-                        return newErrors;
-                      });
-                    }}
-                    className="!mt-2.5 !text-sm flex "
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        e.preventDefault();
-                        handleRegister();
-                      }
-                    }}
-                  >
-                    Согласен с обработкой персональных данных в соответствии с{' '}
-                    <Link className="!underline !text-[12px] ml-1" to="/privacy-policy">
-                      политикой конфиденциальности
-                    </Link>{' '}
-                  </Checkbox>
-                  {errors.privacy && <p className="text-[#E52B0E] text-sm">{errors.privacy}</p>}
-
+                  {formError?.field === "confirmPassword" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <CustomCheckbox
+                    checked={isChecked1}
+                    onChange={(e) => setIsChecked1(e.target.checked)}
+                    name='Согласен с условиями обслуживания'
+                  />
+                  {formError?.field === "terms" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                  <CustomCheckbox
+                    checked={isChecked2}
+                    onChange={(e) => setIsChecked2(e.target.checked)}
+                    name='Согласен с обработкой персональных данных в соответствии с политикой конфиденциальности'
+                  />
+                  {formError?.field === "policy" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
                 </div>
 
                 <div className="w-full">
-                  <Button
+                  <CustomButton
+                    onClick={handleSubmit}
+                    text=''
                     type="primary"
                     className="!mt-4 !w-full !h-[55px] !text-sm !font-bold !uppercase"
-                    onClick={handleRegister}
                   >
                     Зарегистрироваться
-                  </Button>
+                  </CustomButton>
                 </div>
               </div>
 
@@ -415,15 +238,13 @@ const Register = () => {
                       Перейдите к <span className="font-bold">авторизации</span> если у вас уже есть зарегистрированный аккаунт.
                     </p>
                   </div>
-                  <Button
+                  <CustomButton
+                    text=''
                     type="primary"
                     className="!h-[60px] !bg-black xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
                   >
-                    <Link className="!flex !items-center" to="/my-account">
-                      Авторизоваться
-                      <MdOutlineChevronRight size={30} />
-                    </Link>
-                  </Button>
+                    <Link to={"/auth"}>Авторизоваться</Link>
+                  </CustomButton>
                 </div>
               </div>
             </div>

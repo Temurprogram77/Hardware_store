@@ -1,66 +1,38 @@
-import React from 'react';
-import { Breadcrumb, Typography, Input, Button, Space, Checkbox, notification } from 'antd';
+import React, { useState } from 'react';
+import { Breadcrumb, Typography, notification } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
-
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+import CustomInput from '../components/ui/CustomInput';
+import CustomButton from '../components/ui/CustomButton';
+import CustomCheckbox from '../components/ui/CustomCheckbox';
 
 const AuthPage: React.FC = () => {
+  const [emailValue, setEmailValue] = useState<string>("")
+  const [passwordValue, setPasswordValue] = useState<string>("")
   const navigate = useNavigate();
 
-  const [email, setEmail] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
+  const handleSubmit = () => {
+    const storedAccountString = localStorage.getItem("accounts");
 
-  const [errors, setErrors] = React.useState({
-    email: '',
-    password: '',
-    credentials: '',
-  });
+    if (storedAccountString) {
+      const storedAccount = JSON.parse(storedAccountString);
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    const newErrors = { email: '', password: '', credentials: '' };
-    let hasError = false;
-
-    if (!emailRegex.test(email)) {
-      newErrors.email = "Iltimos, haqiqiy email kiriting!";
-      hasError = true;
-    }
-
-    if (!password) {
-      newErrors.password = "Iltimos, parolni kiriting!";
-      hasError = true;
-    }
-
-    if (hasError) {
-      setErrors(newErrors);
-      return;
-    }
-
-    try {
-      const usersString = localStorage.getItem('users');
-      const users = usersString ? JSON.parse(usersString) : [];
-
-      const foundUser = users.find(
-        (user: any) => user.email === email && user.password === password
-      );
-
-      if (foundUser) {
-        localStorage.setItem('isAuthenticated', 'true');
+      if (storedAccount.email === emailValue && storedAccount.password === passwordValue) {
         notification.success({
-          message: "Tizimga muvaffaqiyatli kirildi",
-          placement: "bottomRight"
-        })
-        navigate('/my-accounts');
+          message: "Tizimga kirish muvaffaqiyatli",
+          description: "Siz shaxsiy kabinetingizga yo'naltirilyapsiz."
+        });
+        navigate("/dashboard");
       } else {
-        newErrors.credentials = "Email yoki parol noto'g'ri kiritildi!";
-        setErrors(newErrors);
+        console.log("Tizimga kirishda xatolik");
+        
       }
-    } catch (error) {
-      newErrors.credentials = "Kirishda kutilmagan xato yuz berdi.";
-      setErrors(newErrors);
+    } else {
+      notification.warning({
+        message: "Akkount topilmadi",
+        description: "Iltimos, avval ro'yxatdan o'ting."
+      });
     }
   };
 
@@ -84,68 +56,51 @@ const AuthPage: React.FC = () => {
         />
         <div className="mt-4 flex flex-col justify-center">
           <h2 className="!font-bold text-4xl sm:text-3xl">Авторизация</h2>
-          <div className='mt-20 border !w-[88%] rounded-lg gap-5 border-gray-200 flex items-center justify-center max-sm:flex-col max-sm:mt-10 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5'>
-            <div className='flex items-center flex-col w-1/3 max-sm:w-full'>
-              {/* {Object.values(errors).some(val => val) && (
-                <div className='border border-[#E52B0E] w-full p-3 rounded border-dashed bg-[#FFF9F9] mb-5 flex flex-col '>
-                  {errors.email && <p className='text-[#E52B0E] text-sm'>{errors.email}</p>}
-                  {errors.password && <p className='text-[#E52B0E] text-sm'>{errors.password}</p>}
-                  {errors.credentials && <p className='text-[#E52B0E] text-sm'>{errors.credentials}</p>}
-                </div>
-              )} */}
-              <Space direction="vertical" className='max-sm:w-[100%] md:w-[100%]'>
+          <div className='mt-20 !ml-20 border !w-[88%] rounded-lg gap-5 border-gray-200 flex items-center justify-center max-sm:flex-col max-sm:mt-10 lg:gap-20 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5 lg:p-10'>
+            <div className='flex items-center flex-col w-1/2 max-sm:w-full'>
+              <div className='max-sm:w-[100%] md:w-[100%]'>
                 <Typography.Title className='!text-lg'>
-                  Email или логин  <span className='text-red-700'>*</span>:
+                  Email yoki login  <span className='text-red-700'>*</span>:
                 </Typography.Title>
-                <Input
+                <CustomInput
+                  type='text'
                   className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2'
                   placeholder="Введите данные для авторизации"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  status={errors.email || errors.credentials ? 'error' : ''}
+                  value={emailValue}
+                  onChange={(e) => setEmailValue(e.target.value)}
                 />
                 <Typography.Title className='!text-lg'>
                   Пароль <span className='text-red-700'>*</span>:
                 </Typography.Title>
-                <Input.Password
+                <CustomInput
+                  type='password'
                   className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !-mt-2'
                   placeholder="Введите пароль"
-                  iconRender={(visible: boolean) =>
-                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                  }
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  status={errors.password || errors.credentials ? "error" : ""}
+                  value={passwordValue}
+                  onChange={(e) => setPasswordValue(e.target.value)}
                 />
-              </Space>
-
-              <div className='w-full md:w-full'>
-                <Button
-                  type='default'
-                  className='!mt-7 !w-full !h-[55px] md:w-full !text-blue-600 !font-semibold !text-[15px]'
-                >
-                  <Link to="/password-recovery" className='!text-blue-600'>Восстановить пароль</Link>
-                </Button>
-                <Button
-                  onClick={handleLogin}
-                  type="primary"
-                  className="!h-[60px] !bg-black xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
-                >
-                  <Link className="!flex !items-center" to="/my-account">
-                    Авторизоваться
-                    <MdOutlineChevronRight size={30} />
-                  </Link>
-                </Button>
               </div>
 
-              <Checkbox
-                className='!mt-2.5 !items-center !text-sm max-sm:!mb-10'
-              >
-                Запомнить меня
-              </Checkbox>
+              <div className='w-full md:w-full flex flex-col gap-5'>
+                <Link to="/password-recovery" className='!text-blue-600'>
+                  <CustomButton
+                    text=' Восстановить пароль'
+                    type='default'
+                    className='!mt-7 !w-full !h-[55px] md:w-full !text-blue-600 !font-semibold !text-[15px]'
+                  />
+                </Link>
+                <CustomButton
+                  onClick={handleSubmit}
+                  text=''
+                  type="primary"
+                  className="!flex !items-center !mb-2.5 !h-[60px] !bg-blue-600 w-full !text-sm !uppercase hover:!bg-black"
+                >
+                  Авторизоваться
+                  <MdOutlineChevronRight size={30} />
+                </CustomButton>
+              </div>
+              <CustomCheckbox name='Запомнить меня' />
             </div>
-
-            <span className='border border-gray-200 max-sm:hidden md:hidden xl:block'></span>
 
             <div className='flex flex-col items-start md:w-[60%] max-sm:w-full max-sm:mt-5'>
               <div className='flex gap-5 max-sm:gap-3 max-sm:flex'>
@@ -162,12 +117,13 @@ const AuthPage: React.FC = () => {
                 <p className='!mt-5 max-sm:w-[240px] text-sm flex flex-wrap leading-7 text-gray-500 md:!mt-0'>
                   Мы запрашиваем у вас только информацию, необходимую для того, чтобы сделать процесс покупки более быстрым и легким.
                 </p>
-                <Button
+                <CustomButton
+                  text=''
                   type='primary'
-                  className='!h-[60px] max-sm:w-[220px] lg:w-3xs !bg-black !text-sm !uppercase hover:!bg-orange-700'
+                  className='!h-[60px] lg:!mt-8 max-sm:w-[220px] lg:w-3xs !bg-black !text-sm !uppercase hover:!bg-orange-700'
                 >
                   <Link className='!flex !items-center' to={"/register"}>Зарегистрироваться <MdOutlineChevronRight size={30} /></Link>
-                </Button>
+                </CustomButton>
               </div>
             </div>
           </div>
