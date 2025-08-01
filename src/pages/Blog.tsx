@@ -4,7 +4,7 @@ import CustomButton from "../components/ui/CustomButton";
 import CustomCheckbox from "../components/ui/CustomCheckbox";
 import { images } from "../assets/images";
 
-const { newsImage1, newsImage2, newsImage3, newsImage4 } = images;
+const { mapCard1, newsImage2, newsImage3, newsImage4 } = images;
 
 interface NewsItem {
   img: string;
@@ -15,7 +15,7 @@ interface NewsItem {
 
 const data: NewsItem[] = [
   {
-    img: newsImage1,
+    img: mapCard1,
     title: "Электронная карта скидок!",
     description: "Теперь совершать покупки в ООО«Стройоптторг» стало еще удобнее! Для Вашего удобства мы запускаем электронную карту скидок. Электронная дисконтная карта имеет",
     date: "21 ноября 2023",
