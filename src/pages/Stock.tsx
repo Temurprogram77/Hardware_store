@@ -223,7 +223,7 @@ const navigate = useNavigate();
             <p className="!mb-3 w-[130px] text-[19px] !font-medium">
               {item.title}
             </p>
-            <div className="py-1.5 px-2 text-[12px] text-white bg-black rounded-md">
+            <div className="py-1  .5 px-2 text-[12px] text-white bg-black rounded-md">
             {item.discount}
             </div>
           </div>
