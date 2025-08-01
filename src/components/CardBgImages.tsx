@@ -2,13 +2,14 @@ import React from "react";
 import { images } from "../assets/images";
 import { useNavigate } from "react-router-dom";
 const { cardBgImage1, cardBgImage2, cardBgImage3, cardBgImage4 } = images;
-
-const bgImage = [
-  { img: cardBgImage1, prosent: 15, title: "Метизные изделия" },
-  { img: cardBgImage2, prosent: 30, title: "Лакокрасочные материалы" },
-  { img: cardBgImage3, prosent: 25, title: "Напольные покрытия" },
-  { img: cardBgImage4, prosent: 30, title: "Все для отоплления" },
-];
+interface stock{
+  id:number,
+  title:string,
+  description:string,
+  discount:string,
+  link:string,
+  img:any
+}
 const CardBgImages: React.FC = () => {
   const Stocks: stock[] = [
     {

@@ -1,5 +1,5 @@
 import { images } from "../assets/images";
-import { Link } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import { Range } from "react-range";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
@@ -52,10 +52,9 @@ const CheckboxItem: React.FC<CheckboxItemProps> = ({
 );
 
 const ProductCatalog = ({ item }: { item: { id: string } }) => {
-  const { comparedItems, toggleCompare } = useCompare();
   const [values, setValues] = useState<number[]>([3000, 52500]);
   const { likedItems, toggleHeart } = useHeart();
-
+const { comparedItems, toggleCompare } = useCompare();
   // State for each checkbox group
   const [brandChecks, setBrandChecks] = useState({
     airRoxy: false,
@@ -128,6 +127,8 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
     }));
   };
 
+
+  
   return (
     <div className="max-w-[1460px] mx-auto my-5">
       <div className="text-[13px] !font-medium mb-6 flex items-center 2xl:mx-0 mx-3 gap-3">
@@ -413,18 +414,11 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                         )}
                       </span>
                     </div>
-                    <div
-                      onClick={() => toggleCompare(item.id.toString())}
-                      className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
-                    >
-                      <img
-                        src={compare}
-                        className="w-[24px] h-[18px]"
-                        alt="compare"
-                      />
-                    </div>
+                    <div onClick={() => toggleCompare(item.id.toString())} className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer">
+  <img src={compare} className="w-[24px] h-[18px]" alt="compare" />
+</div>
                   </div>
-                </div>
+                </div>      
               </div>
             ))}
           </div>
