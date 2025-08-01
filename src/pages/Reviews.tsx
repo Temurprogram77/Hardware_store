@@ -9,7 +9,7 @@ import img5 from '../assets/ivan3.png'
 import ReviewForm from "../components/ReviewForm";
 import Advertisement from "../components/Advertisement";
 import CustomButton from "../components/ui/CustomButton";
-import Names from "../components/Names";
+import Names from "../components/ui/Names";
 interface Review {
   name: string,
   date: string,

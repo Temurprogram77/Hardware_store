@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import Questions from "../components/Questions"
 import Advantages from "../components/Advantages"
 import Advertisement from "../components/Advertisement"
-import Names from "../components/Names"
+import Names from "../components/ui/Names"
 interface Review {
   key: number,
   quiz: string,
