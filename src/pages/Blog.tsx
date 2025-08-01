@@ -21,7 +21,7 @@ const Blog = () => {
         </Breadcrumb>
         <div>
           <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]">Блог</h2>
-          <div  className='flex gap-[10px]'>
+          <div  className='flex gap-[10px] '>
             <div>
               <div className='flex flex-wrap gap-[14px]'>
                   {data2.map((item, index) => (
@@ -31,7 +31,7 @@ const Blog = () => {
                           <img 
                             src={item.img}
                             alt={`News ${index + 1}`}
-                            className=" h-[200px] w-[370px] rounded-b-[0px] object-cover"
+                            className=" h-[200px] w-[370px] rounded-b-[0px] object-cover transition-transform duration-300 hover:scale-110"
                           />
                         </div>
                         <div className="p-4">
