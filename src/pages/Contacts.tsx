@@ -125,12 +125,15 @@ const Contacts = () => {
           <div>
             <div className='md:mt-11 flex md:flex-row flex-col gap-3 justify-center items-center '>
                <div className="md:w-[1200px] w-[380px] p-3 flex flex-wrap md:flex-row flex-col gap-4">
+                
                 {/* map() da aylanish */}
+                
                   {contacts.map((item, index) => (
                   <div key={index} className="md:w-[255px] p-5 md:h-[105px] w-full border border-[#f2f4f6] rounded-lg md:p-4 md:shadow">
                     <p className="md:text-[15px] text-[18.5px] text-[#494d52] font-sans">{item.title}:</p>
                     <p className="md:text-[15px] text-[#2f3134] text-[21px] font-bold hover:text-[#007aff]">{item.phone}</p>
                   </div>
+
                   ))}
                 </div>
 
