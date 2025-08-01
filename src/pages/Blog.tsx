@@ -14,8 +14,8 @@ const categories = [
 ];
 
 const Blog = () => {
-   const [open, setOpen] = useState(false);
-   
+   const [selected, setSelected] = useState("");
+
   return (
     <div className='flex justify-center items-center md:mb-15 mb-13'>
       <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
@@ -54,7 +54,41 @@ const Blog = () => {
                   ))}
               </div>
             </div>
-            <div className='md:w-[1220px] w-[350px]'>
+            <div className='md:w-[1220px] w-[350px] md:mt-[6px] flex flex-col gap-[20px]'>
+              <div className="w-full max-w-xs border border-[#ececec] rounded-lg p-4">
+      <h2 className="text-lg font-bold font-sans mb-4 hidden md:block">Рубрики</h2>
+
+      {/* Desktop list */}
+      <ul className="space-y-2 hidden  md:flex md:flex-col md:!mt-[10px] md:gap-[12px]">
+        {categories.map((cat, i) => (
+          <li 
+            key={i}
+            className="h-[35px] pb-[10px] flex justify-between items-center text-sm font-bold border-b-[#ececec] border border-t-[0px] border-r-[0px] border-l-[0px]  md:text-[12px] hover:text-blue-600 cursor-pointer"
+          >
+            <span>{cat.name}</span>
+            <span className="bg-gray-100 rounded-full px-2 py-0.5 text-xs">
+              {cat.count}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      {/* Mobile select */}
+      <div className="md:hidden w-full max-w-xs">
+      <select
+        value={selected}
+        onChange={(e) => setSelected(e.target.value)}
+        className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+        <option value="">Выбрать рубрику</option>
+        {categories.map((cat, index) => (
+          <option key={index} value={cat.name}>
+            {cat.name}
+          </option>
+        ))}
+      </select>
+    </div>
+    </div>
               <Form className="w-full flex flex-col gap-[1.7rem] pb-[2rem] bg-[#F9FAFB] px-4">
                <div className="w-full p-[1.5rem] flex flex-col gap-[1.2rem]">
                  <h4 className="text-center text-[18px] font-medium">Подпишитесь на рассылку</h4>
