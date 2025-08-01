@@ -47,7 +47,7 @@ const Comparison = () => {
             На странице <span className="font-semibold">"Каталог"</span> вы найдете много интересных товаров.
           </p>
           <Button type="primary" className="w-[200px] !h-[50px] mt-4">
-            <Link  to="/product-catalog">ПЕРЕЙТИ В КАТАЛОГ</Link>
+            <Link  to="/catalog">ПЕРЕЙТИ В КАТАЛОГ</Link>
           </Button>
         </div>
       )}
