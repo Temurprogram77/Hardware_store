@@ -1,7 +1,7 @@
 import React from 'react';
 import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
-import { CaretRightOutlined } from '@ant-design/icons';
+import { FaMinus, FaPlus } from 'react-icons/fa';
 
 interface Review {
   key: number;
@@ -35,7 +35,7 @@ const Acardion: React.FC<Props> = ({ quiz }) => {
         expandIconPosition="end"
         expandIcon={({ isActive }) => (
           <span className="text-lg font-bold">
-            {isActive ? '−' : '+'}
+            {!isActive ? <FaPlus/> : <FaMinus/>}
           </span>
         )}
         className="[&_.ant-collapse-content]:!px-0 [&_.ant-collapse-header]:!px-0"
