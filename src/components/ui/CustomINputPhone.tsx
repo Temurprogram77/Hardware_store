@@ -2,24 +2,17 @@ import React, { useState } from 'react';
 import 'antd/dist/reset.css';
 import { Input, Typography } from 'antd';
 
-// Regex for Uzbek phone numbers: +998 (XX) XXX-XX-XX
 const phoneRegex = /^\+998 \(\d{2}\) \d{3}-\d{2}-\d{2}$/;
 
-// This is a utility function, not a React component
 const formatPhoneNumber = (value: string): string => {
-    if (!value) return ''; // If the value is empty, return an empty string
-    let digits = value.replace(/\D/g, ''); // Remove all non-digit characters
+    if (!value) return '';
+    let digits = value.replace(/\D/g, '');
 
-    // Ensure the number starts with '998' or prepend it if not
-    // This logic might need refinement if you want to allow users to start typing without '998'
-    // but for strict formatting, it's fine.
     if (!digits.startsWith('998')) {
         digits = '998' + digits;
     }
 
-    // Get digits after '998' prefix
     const numberPart = digits.substring(3);
-    // Limit to 9 digits for (XX) XXX-XX-XX
     const limitedNumber = numberPart.slice(0, 9);
 
     let formatted = '+998 ';

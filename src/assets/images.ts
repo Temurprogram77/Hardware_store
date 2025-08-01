@@ -94,7 +94,12 @@ import Vector8 from "./Vector (8).svg"
 import Vector9 from "./Vector (9).svg"
 import Vector10 from "./Vector (10).svg"
 import heart2 from "./heart2.svg"
+<<<<<<< HEAD
 import ciziq from "./ciziq.svg"
+=======
+import mapCard1 from "./mapCard1.jpg"
+
+>>>>>>> 010676f3d85c1beb19e954bd43d2c23ead8f1aee
 export const images = {
   heart2,
   Vector10,
@@ -191,5 +196,9 @@ export const images = {
   Rectangle2,
   Rectangle3,
   Rectangle4,
+<<<<<<< HEAD
   ciziq,
+=======
+  mapCard1,
+>>>>>>> 010676f3d85c1beb19e954bd43d2c23ead8f1aee
 };
