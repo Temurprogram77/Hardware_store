@@ -151,7 +151,7 @@ const Contacts = () => {
                   key={index}
                   className="min-w-[200px] md:w-[150px] md:h-[130px] mb-[10px] md:mb-0 leading-3 md:border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
                   <p className="font-semibold text-[#494d52] md:text-[15px] text-[17px]">{region.city}</p>
-                  <p className="md:text-[15px] leading-5 text-[17px] text-[#494d52]">{region.address}</p>
+                  <p className="md:text-[15px] md:leading-5 text-[17px] text-[#494d52]">{region.address}</p>
                   <p className="font-bold md:text-[15px] text-[17px] text-[#2f3134]">{region.phone}</p>
                   <a href={`mailto:${region.email}`} className="text-blue-600 md:text-[15px] text-[17px] md:underline-none hover:underline">
                     {region.email}
