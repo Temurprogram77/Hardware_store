@@ -4,7 +4,7 @@ import CustomButton from "../components/ui/CustomButton";
 import CustomCheckbox from "../components/ui/CustomCheckbox";
 import { images } from "../assets/images";
 
-const { mapCard1, newsImage2, newsImage3, newsImage4 } = images;
+const { mapCard1, mapCard2, newsImage1, newsImage2, newsImage3, newsImage4, } = images;
 
 interface NewsItem {
   img: string;
@@ -21,7 +21,7 @@ const data: NewsItem[] = [
     date: "21 ноября 2023",
   },
   {
-    img: newsImage2,
+    img: mapCard2,
     title: "Хватит мечтать, пора покупать!",
     description: "Кредит от ОТП БАНК Получайте товар сразу, а платите — потом. Как оформить онлайн заявку в интернет магазине через “ОТП“",
     date: "21 ноября 2023",
@@ -35,18 +35,67 @@ const data: NewsItem[] = [
   },
   {
     img: newsImage3,
-    title: "Масштабное обновление каталога инструментов",
+    title: "Масштабное обновление каталога инструментов15",
     description:
       "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "5 Августа 2023",
+    date: "1 октября 2023",
   },
   {
-    img: mapCard1,
-    title: "Масштабное обновление каталога инструментов",
+    img: newsImage1,
+    title: "Масштабное обновление каталога инструментов16",
     description:
       "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "5 Августа 2023",
+    date: "1 октября 2023",
   },
+  {
+    img: newsImage4,
+    title: "Масштабное обновление каталога инструментов14",
+    description:
+      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
+    date: "1 октября 2023",
+  },
+  {
+    img: newsImage2,
+    title: "Масштабное обновление каталога инструментов13",
+    description:
+      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
+    date: "1 октября 2023",
+  },
+  {
+    img: newsImage1,
+    title: "Масштабное обновление каталога инструментов17",
+    description:
+      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
+    date: "1 октября 2023",
+  },
+  {
+    img: newsImage3,
+    title: "Масштабное обновление каталога инструментов12",
+    description:
+      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
+    date: "1 октября 2023",
+  },
+  {
+    img: newsImage4,
+    title: "Масштабное обновление каталога инструментов11",
+    description:
+      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
+    date: "1 октября 2023",
+  },
+  {
+    img: newsImage2,
+    title: "Масштабное обновление каталога инструментов10",
+    description:
+      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
+    date: "1 октября 2023",
+  },
+  {
+    img: newsImage1,
+    title: "Масштабное обновление каталога инструментов9",
+    description:
+      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
+    date: "1 октября 2023",
+  }
 ];
 
 const Blog = () => {
@@ -87,7 +136,7 @@ const Blog = () => {
         ))}
               </div>
             </div>
-            <div className='w-[500px]'>
+            <div className='!w-[1220px]'>
               <Form className="w-full flex flex-col gap-[1.7rem] pb-[2rem] bg-[#F9FAFB] px-4">
                <div className="w-full p-[1.5rem] flex flex-col gap-[1.2rem]">
                  <h4 className="text-center text-[18px] font-medium">Подпишитесь на рассылку</h4>
