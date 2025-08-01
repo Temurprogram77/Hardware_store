@@ -243,7 +243,7 @@ const Register = () => {
                     type="primary"
                     className="!h-[60px] !bg-black xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
                   >
-                    <Link to={"/my-account"}>Авторизоваться</Link>
+                    <Link to={"/auth"}>Авторизоваться</Link>
                   </CustomButton>
                 </div>
               </div>

@@ -21,7 +21,7 @@ const ProductCard = () => {
     <div className="max-w-[1460px] mx-auto py-8">
       <div className="text-[13px] !font-medium mb-6 flex flex-wrap items-center 2xl:mx-0 mx-3 gap-3">
         <Link to={"/"}>Стройоптторг</Link> /{" "}
-        <Link to={"/product-catalog"}>Электроинструмент</Link> /{" "}
+        <Link to={"/catalog"}>Электроинструмент</Link> /{" "}
         <Link to={""}>{product.title}</Link>
       </div>
       <div className="2xl:mx-0 mx-3">

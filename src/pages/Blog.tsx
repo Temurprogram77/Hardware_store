@@ -1,12 +1,21 @@
+import { useState } from 'react';
 import { Breadcrumb, Form } from 'antd';
 import CustomInput from "../components/ui/CustomInput";
 import CustomButton from "../components/ui/CustomButton";
 import CustomCheckbox from "../components/ui/CustomCheckbox";
 import { data2 } from "../data/data"
 
-
+const categories = [
+  { name: 'ВСЕ ПУБЛИКАЦИИ', count: 20 },
+  { name: 'НОВОСТИ', count: 18 },
+  { name: 'ОБЗОРЫ', count: 1 },
+  { name: 'СОВЕТЫ', count: 1 },
+  { name: 'СТАТЬИ', count: 1 },
+];
 
 const Blog = () => {
+   const [open, setOpen] = useState(false);
+   
   return (
     <div className='flex justify-center items-center md:mb-15 mb-13'>
       <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">

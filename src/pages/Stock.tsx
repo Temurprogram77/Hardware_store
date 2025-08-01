@@ -198,7 +198,7 @@ const navigate = useNavigate();
   const handleClick = (id: number) => {
     const stock = Stocks.find((item) => id === item.id);
     localStorage.setItem("Stock", JSON.stringify(stock));
-    navigate(`/stock/${id}`);
+    navigate(`/deals/${id}`);
   };
   return (
     <section className="mt-8 max-w-[1470px] mx-auto px-4">
@@ -208,7 +208,7 @@ const navigate = useNavigate();
         </li>
         /
         <li className="text-gray-500">
-          <Link to={'/stock'}>Акции</Link>
+          <Link to={'/deals'}>Акции</Link>
         </li>
       </ul>
       <div className="w-full mt-8 items-center">

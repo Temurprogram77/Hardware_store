@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
               </Link>
               <Link
                 className="hover:text-[#186fd4] w-fit h-fit text-[12px]"
-                to="/q-and-a"
+                to="/faq"
               >
                 Вопрос-ответ
               </Link>
@@ -231,7 +231,7 @@ const Navbar: React.FC = () => {
           >
             <img src={close} alt="close" />
           </div>
-          <Link to={"/stock"}>
+          <Link to={"/deals"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 <img src={gift} className="w-[25px]" alt="gift" /> Все акции
@@ -273,7 +273,7 @@ const Navbar: React.FC = () => {
               </p>
             </div>
           </Link>
-          <Link to={"/q-and-a"}>
+          <Link to={"/faq"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 Вопрос-ответ
@@ -370,14 +370,14 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-            <Link to="/stock">
+            <Link to="/deals">
               <div className="hidden sm:flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
                 <img src={gift} alt="gift" className="w-5 h-4" />
                 <p className="text-[12px] !m-0 font-medium">Все акции</p>
               </div>
             </Link>
 
-            <Link to="/my-account">
+            <Link to="/auth">
               <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
                 <img src={user} alt="user" className="w-5 h-4" />
                 <p className="hidden !m-0 sm:block text-[12px] font-medium">
@@ -448,7 +448,7 @@ const Navbar: React.FC = () => {
                       onMouseLeave={() => setHoveredIndex(null)}
                       className="relative group"
                     >
-                      <Link to="/product-catalog">
+                      <Link to="/catalog">
                         <div
                           onClick={toggleSidebar}
                           className="overflow-hidden arrow-svg cursor-pointer flex items-center justify-between hover:fill-white hover:text-white border-b border-[#0000002c] py-5 px-5 hover:bg-[#186fd4]"
@@ -480,7 +480,7 @@ const Navbar: React.FC = () => {
                             key={i}
                             className="text-[15px] hover:text-[#186fd4] duration-300 cursor-pointer py-3"
                           >
-                            <Link to="/product-catalog">
+                            <Link to="/catalog">
                               {Array.isArray(child)
                                 ? child.join(", ")
                                 : typeof child === "object" && "obj" in child
