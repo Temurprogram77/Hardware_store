@@ -1,4 +1,4 @@
-import Questions from "../components/Questions"
+import Acardion from "../components/Acardion"
 import Advertisement from "../components/Advertisement"
 import Names from "../components/ui/Names"
 interface Review {
@@ -62,7 +62,7 @@ const Return:React.FC = () => {
             <div>
              {
   quizs.map(item => (
-    <Questions key={item.key} quiz={item} />
+    <Acardion key={item.key} quiz={item} />
   ))
 }
 

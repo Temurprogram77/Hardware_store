@@ -1,6 +1,7 @@
 import React from 'react';
 import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
 
 interface Review {
   key: number;
@@ -12,7 +13,7 @@ interface Props {
   quiz: Review;
 }
 
-const Questions: React.FC<Props> = ({ quiz }) => {
+const Acardion: React.FC<Props> = ({ quiz }) => {
   const items: CollapseProps['items'] = [
     {
       key: quiz.key,
@@ -32,10 +33,15 @@ const Questions: React.FC<Props> = ({ quiz }) => {
         ghost
         items={items}
         expandIconPosition="end"
+        expandIcon={({ isActive }) => (
+          <span className="text-lg font-bold">
+            {isActive ? '−' : '+'}
+          </span>
+        )}
         className="[&_.ant-collapse-content]:!px-0 [&_.ant-collapse-header]:!px-0"
       />
     </div>
   );
 };
 
-export default Questions;
+export default Acardion;
