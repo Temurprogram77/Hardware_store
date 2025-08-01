@@ -8,7 +8,7 @@ interface LabelProps {
 
 const Label: React.FC<LabelProps> = ({ text, required = false, className }) => {
   return (
-    <label className={`text-sm font-medium text-black ${className}`}>
+    <label  className={`text-sm font-medium text-black ${className}`}>
       {required && <span className="text-red-500 mr-1">*</span>}
       {text}
     </label>
