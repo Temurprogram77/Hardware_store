@@ -2,105 +2,13 @@ import { Breadcrumb, Form } from 'antd';
 import CustomInput from "../components/ui/CustomInput";
 import CustomButton from "../components/ui/CustomButton";
 import CustomCheckbox from "../components/ui/CustomCheckbox";
-import { images } from "../assets/images";
+import { data2 } from "../data/data"
 
-const { mapCard1, mapCard2, newsImage1, newsImage2, newsImage3, newsImage4, } = images;
 
-interface NewsItem {
-  img: string;
-  title: string;
-  description: string;
-  date: string;
-}
-
-const data: NewsItem[] = [
-  {
-    img: mapCard1,
-    title: "Электронная карта скидок!",
-    description: "Теперь совершать покупки в ООО«Стройоптторг» стало еще удобнее! Для Вашего удобства мы запускаем электронную карту скидок. Электронная дисконтная карта имеет",
-    date: "21 ноября 2023",
-  },
-  {
-    img: mapCard2,
-    title: "Хватит мечтать, пора покупать!",
-    description: "Кредит от ОТП БАНК Получайте товар сразу, а платите — потом. Как оформить онлайн заявку в интернет магазине через “ОТП“",
-    date: "21 ноября 2023",
-  },
-  {
-    img: newsImage3,
-    title: "Как выбрать электродрель: Практическое руководство для...",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "3 октября 2023",
-  },
-  {
-    img: newsImage3,
-    title: "Масштабное обновление каталога инструментов15",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "1 октября 2023",
-  },
-  {
-    img: newsImage1,
-    title: "Масштабное обновление каталога инструментов16",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "1 октября 2023",
-  },
-  {
-    img: newsImage4,
-    title: "Масштабное обновление каталога инструментов14",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "1 октября 2023",
-  },
-  {
-    img: newsImage2,
-    title: "Масштабное обновление каталога инструментов13",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "1 октября 2023",
-  },
-  {
-    img: newsImage1,
-    title: "Масштабное обновление каталога инструментов17",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "1 октября 2023",
-  },
-  {
-    img: newsImage3,
-    title: "Масштабное обновление каталога инструментов12",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "1 октября 2023",
-  },
-  {
-    img: newsImage4,
-    title: "Масштабное обновление каталога инструментов11",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "1 октября 2023",
-  },
-  {
-    img: newsImage2,
-    title: "Масштабное обновление каталога инструментов10",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "1 октября 2023",
-  },
-  {
-    img: newsImage1,
-    title: "Масштабное обновление каталога инструментов9",
-    description:
-      "С радостью сообщаем вам о крупном пополнении нашего каталога инструментов.",
-    date: "1 октября 2023",
-  }
-];
 
 const Blog = () => {
   return (
-    <div className='flex justify-center items-center'>
+    <div className='flex justify-center items-center md:mb-15'>
       <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
         {/* Breadcrumb */}
         <Breadcrumb className="mb-6">
@@ -116,24 +24,24 @@ const Blog = () => {
           <div  className='flex gap-[10px]'>
             <div>
               <div className='flex flex-wrap gap-[14px]'>
-                  {data.map((item, index) => (
-          <div key={index}>
-            <div className="bg-white shadow-md rounded-lg w-[370px] overflow-hidden">
-              <div className='overflow-hidden w-[370px] h-[200px] '>
-                <img 
-                  src={item.img}
-                  alt={`News ${index + 1}`}
-                  className=" h-[200px] w-[370px] rounded-b-[0px] object-cover"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600 mb-2">{item.description}</p>
-                <span className="text-xs text-gray-400">{item.date}</span>
-              </div>
-            </div>
-          </div>
-        ))}
+                  {data2.map((item, index) => (
+                    <div key={index}>
+                      <div className="bg-white shadow-md rounded-lg w-[370px] overflow-hidden">
+                        <div className='overflow-hidden w-[370px] h-[200px] '>
+                          <img 
+                            src={item.img}
+                            alt={`News ${index + 1}`}
+                            className=" h-[200px] w-[370px] rounded-b-[0px] object-cover"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                          <p className="text-sm text-gray-600 mb-2">{item.description}</p>
+                          <span className="text-xs text-gray-400">{item.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
               </div>
             </div>
             <div className='!w-[1220px]'>
