@@ -26,20 +26,11 @@ export const CompareProvider = ({ children }: { children: React.ReactNode }) => 
   );
 };
 
-<<<<<<< HEAD
-export const useCompare = () => useContext(CompareContext);
-=======
+// ✅ Faqat bitta useCompare funksiyasi bo‘lishi kerak:
 export const useCompare = () => {
-  const context = useContext(CompareClickedContext);
+  const context = useContext(CompareContext);
   if (!context) {
-    throw new Error("useCompare must be used within a CompareClickedProvider");
+    throw new Error("useCompare must be used within a CompareProvider");
   }
   return context;
 };
-
-
-
-
-
-
->>>>>>> fb332c74702fef9b58ec0907244d7cfa2c4a1ae6
