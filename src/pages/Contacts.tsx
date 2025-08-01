@@ -1,4 +1,4 @@
-import { Names } from '../components/ui/Names';
+import  Names  from '../components/ui/Names';
 import { SlLocationPin } from "react-icons/sl";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
