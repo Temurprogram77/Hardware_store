@@ -31,7 +31,7 @@ const quizs:Review[]=[
 const Return:React.FC = () => {
   return (
     <section className="mt-8 max-w-[1470px] mx-auto px-4">
-      <Names name="Возврат" link="/return" />
+      <Names name="Возврат" link="/return"/>
 
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Возврат</h1>
