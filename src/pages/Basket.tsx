@@ -201,7 +201,7 @@ const Basket = () => {
             </Button>
            </div>
             
-          <Link to="/ordering">
+          <Link to="/checkout">
   <button className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
     ПЕРЕЙТИ К ОФОРМЛЕНИЮ
   </button>
