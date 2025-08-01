@@ -23,6 +23,7 @@ const Blog = () => {
           <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]">Блог</h2>
           <div  className='flex gap-[10px] '>
             <div>
+              {/* birxil cardlar map() da */}
               <div className='flex flex-wrap gap-[14px]'>
                   {data2.map((item, index) => (
                     <div key={index}>
