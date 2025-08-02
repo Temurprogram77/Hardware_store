@@ -1,25 +1,40 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
+type ItemType = {
+  id: string;
+  title: string;
+  image: string;
+  price: number;
+  oldPrice?: number;
+  discount?: number;
+  isNew?: boolean;
+};
+
 type HeartContextType = {
-  likedItems: { [id: string]: boolean };
-  toggleHeart: (id: string) => void;
+  likedItems: { [id: string]: ItemType };
+  toggleHeart: (item: ItemType) => void;
 };
 
 const HeartClickedContext = createContext<HeartContextType | undefined>(undefined);
 
 export const HeartClickedProvider = ({ children }: { children: ReactNode }) => {
-  const [likedItems, setLikedItems] = useState<{ [id: string]: boolean }>(() => {
+  const [likedItems, setLikedItems] = useState<{ [id: string]: ItemType }>(() => {
     const stored = localStorage.getItem("likedItems");
     return stored ? JSON.parse(stored) : {};
   });
 
-  const toggleHeart = (id: string) => {
+  useEffect(() => {
+    localStorage.setItem("likedItems", JSON.stringify(likedItems));
+  }, [likedItems]);
+
+  const toggleHeart = (item: ItemType) => {
     setLikedItems(prev => {
-      const updated = {
-        ...prev,
-        [id]: !prev[id],
-      };
-      localStorage.setItem("likedItems", JSON.stringify(updated));
+      const updated = { ...prev };
+      if (updated[item.id]) {
+        delete updated[item.id];
+      } else {
+        updated[item.id] = item;
+      }
       return updated;
     });
   };
