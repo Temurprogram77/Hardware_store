@@ -1,15 +1,26 @@
-import data from "../data/data";
 import { images } from "../assets/images";
-import { Link } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import { Range } from "react-range";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import { data } from "../data/data";
 
-const { cartt, heart, compare, arrow, heart2 } = images;
+const { cartt, compare, arrow } = images;
 
-const CheckboxItem = ({ label, checked, onChange }) => (
+type CheckboxItemProps = {
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+};
+
+const CheckboxItem: React.FC<CheckboxItemProps> = ({
+  label,
+  checked,
+  onChange,
+}) => (
   <label className="cursor-pointer inline-flex items-center gap-2 select-none">
     <input
       type="checkbox"
@@ -19,9 +30,7 @@ const CheckboxItem = ({ label, checked, onChange }) => (
     />
     <div
       className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all duration-200 ${
-        checked
-          ? "bg-blue-600 border-blue-600"
-          : "bg-white border-gray-400"
+        checked ? "bg-blue-600 border-blue-600" : "bg-white border-gray-400"
       }`}
     >
       {checked && (
@@ -43,17 +52,16 @@ const CheckboxItem = ({ label, checked, onChange }) => (
 );
 
 const ProductCatalog = ({ item }: { item: { id: string } }) => {
-  const { comparedItems, toggleCompare } = useCompare();
   const [values, setValues] = useState<number[]>([3000, 52500]);
   const { likedItems, toggleHeart } = useHeart();
-  
+const { comparedItems, toggleCompare } = useCompare();
   // State for each checkbox group
   const [brandChecks, setBrandChecks] = useState({
     airRoxy: false,
     Awenta: false,
     Blauberg: false,
     Domovent: false,
-    Dospel: false
+    Dospel: false,
   });
 
   const [diameterChecks, setDiameterChecks] = useState({
@@ -61,62 +69,66 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
     d118: false,
     d120: false,
     d125: false,
-    d147: false
+    d147: false,
   });
 
   const [diskDiameterChecks, setDiskDiameterChecks] = useState({
     dd100: false,
-    dd125: false
+    dd125: false,
   });
 
   const [materialChecks, setMaterialChecks] = useState({
     plastic: false,
     metal: false,
-    steel: false
+    steel: false,
   });
 
   const [airFlowChecks, setAirFlowChecks] = useState({
     af100: false,
     af102: false,
-    af105: false
+    af105: false,
   });
 
   // Handlers for each checkbox group
-  const handleBrandCheck = (brand) => {
-    setBrandChecks(prev => ({
+  const handleBrandCheck = (brand: keyof typeof brandChecks) => {
+    setBrandChecks((prev) => ({
       ...prev,
-      [brand]: !prev[brand]
+      [brand]: !prev[brand],
     }));
   };
 
-  const handleDiameterCheck = (diameter) => {
-    setDiameterChecks(prev => ({
+  const handleDiameterCheck = (diameter: keyof typeof diameterChecks) => {
+    setDiameterChecks((prev) => ({
       ...prev,
-      [diameter]: !prev[diameter]
+      [diameter]: !prev[diameter],
     }));
   };
 
-  const handleDiskDiameterCheck = (diameter) => {
-    setDiskDiameterChecks(prev => ({
+  const handleDiskDiameterCheck = (
+    diameter: keyof typeof diskDiameterChecks
+  ) => {
+    setDiskDiameterChecks((prev) => ({
       ...prev,
-      [diameter]: !prev[diameter]
+      [diameter]: !prev[diameter],
     }));
   };
 
-  const handleMaterialCheck = (material) => {
-    setMaterialChecks(prev => ({
+  const handleMaterialCheck = (material: keyof typeof materialChecks) => {
+    setMaterialChecks((prev) => ({
       ...prev,
-      [material]: !prev[material]
+      [material]: !prev[material],
     }));
   };
 
-  const handleAirFlowCheck = (flow) => {
-    setAirFlowChecks(prev => ({
+  const handleAirFlowCheck = (flow: keyof typeof airFlowChecks) => {
+    setAirFlowChecks((prev) => ({
       ...prev,
-      [flow]: !prev[flow]
+      [flow]: !prev[flow],
     }));
   };
 
+
+  
   return (
     <div className="max-w-[1460px] mx-auto my-5">
       <div className="text-[13px] !font-medium mb-6 flex items-center 2xl:mx-0 mx-3 gap-3">
@@ -174,34 +186,34 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                 Qiymat: {values[0]} - {values[1]}
               </div>
             </div>
-            
+
             {/* Brand Checkboxes */}
             <h3 className="text-[20px] !font-semibold">Бренд</h3>
             <div className="flex flex-col gap-4 mt-4">
-              <CheckboxItem 
-                label="airRoxy" 
-                checked={brandChecks.airRoxy} 
-                onChange={() => handleBrandCheck('airRoxy')} 
+              <CheckboxItem
+                label="airRoxy"
+                checked={brandChecks.airRoxy}
+                onChange={() => handleBrandCheck("airRoxy")}
               />
-              <CheckboxItem 
-                label="Awenta" 
-                checked={brandChecks.Awenta} 
-                onChange={() => handleBrandCheck('Awenta')} 
+              <CheckboxItem
+                label="Awenta"
+                checked={brandChecks.Awenta}
+                onChange={() => handleBrandCheck("Awenta")}
               />
-              <CheckboxItem 
-                label="Blauberg" 
-                checked={brandChecks.Blauberg} 
-                onChange={() => handleBrandCheck('Blauberg')} 
+              <CheckboxItem
+                label="Blauberg"
+                checked={brandChecks.Blauberg}
+                onChange={() => handleBrandCheck("Blauberg")}
               />
-              <CheckboxItem 
-                label="Domovent" 
-                checked={brandChecks.Domovent} 
-                onChange={() => handleBrandCheck('Domovent')} 
+              <CheckboxItem
+                label="Domovent"
+                checked={brandChecks.Domovent}
+                onChange={() => handleBrandCheck("Domovent")}
               />
-              <CheckboxItem 
-                label="Dospel" 
-                checked={brandChecks.Dospel} 
-                onChange={() => handleBrandCheck('Dospel')} 
+              <CheckboxItem
+                label="Dospel"
+                checked={brandChecks.Dospel}
+                onChange={() => handleBrandCheck("Dospel")}
               />
               <h2 className="text-[16px] !font-semibold text-[#117FE3] underline">
                 Показать все
@@ -211,30 +223,30 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
             {/* Diameter Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Диаметр</h3>
             <div className="flex flex-col gap-4 mt-4">
-              <CheckboxItem 
-                label="100" 
-                checked={diameterChecks.d100} 
-                onChange={() => handleDiameterCheck('d100')} 
+              <CheckboxItem
+                label="100"
+                checked={diameterChecks.d100}
+                onChange={() => handleDiameterCheck("d100")}
               />
-              <CheckboxItem 
-                label="118" 
-                checked={diameterChecks.d118} 
-                onChange={() => handleDiameterCheck('d118')} 
+              <CheckboxItem
+                label="118"
+                checked={diameterChecks.d118}
+                onChange={() => handleDiameterCheck("d118")}
               />
-              <CheckboxItem 
-                label="120" 
-                checked={diameterChecks.d120} 
-                onChange={() => handleDiameterCheck('d120')} 
+              <CheckboxItem
+                label="120"
+                checked={diameterChecks.d120}
+                onChange={() => handleDiameterCheck("d120")}
               />
-              <CheckboxItem 
-                label="125" 
-                checked={diameterChecks.d125} 
-                onChange={() => handleDiameterCheck('d125')} 
+              <CheckboxItem
+                label="125"
+                checked={diameterChecks.d125}
+                onChange={() => handleDiameterCheck("d125")}
               />
-              <CheckboxItem 
-                label="147" 
-                checked={diameterChecks.d147} 
-                onChange={() => handleDiameterCheck('d147')} 
+              <CheckboxItem
+                label="147"
+                checked={diameterChecks.d147}
+                onChange={() => handleDiameterCheck("d147")}
               />
               <h2 className="text-[16px] !font-semibold text-[#117FE3] underline">
                 Показать все
@@ -244,15 +256,15 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
             {/* Disk Diameter Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Диаметр диска</h3>
             <div className="flex flex-col gap-4 mt-4">
-              <CheckboxItem 
-                label="100" 
-                checked={diskDiameterChecks.dd100} 
-                onChange={() => handleDiskDiameterCheck('dd100')} 
+              <CheckboxItem
+                label="100"
+                checked={diskDiameterChecks.dd100}
+                onChange={() => handleDiskDiameterCheck("dd100")}
               />
-              <CheckboxItem 
-                label="125" 
-                checked={diskDiameterChecks.dd125} 
-                onChange={() => handleDiskDiameterCheck('dd125')} 
+              <CheckboxItem
+                label="125"
+                checked={diskDiameterChecks.dd125}
+                onChange={() => handleDiskDiameterCheck("dd125")}
               />
               <h2 className="text-[16px] !font-semibold text-[#117FE3] underline">
                 Показать все
@@ -262,10 +274,10 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
             {/* Material Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Материал</h3>
             <div className="flex flex-col gap-4 mt-4">
-              <CheckboxItem 
-                label="Пластик" 
-                checked={materialChecks.plastic} 
-                onChange={() => handleMaterialCheck('plastic')} 
+              <CheckboxItem
+                label="Пластик"
+                checked={materialChecks.plastic}
+                onChange={() => handleMaterialCheck("plastic")}
               />
               <h2 className="text-[16px] !font-semibold text-[#117FE3] underline">
                 Показать все
@@ -275,20 +287,20 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
             {/* Material (duplicate section) Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Материал</h3>
             <div className="flex flex-col gap-4 mt-4">
-              <CheckboxItem 
-                label="Металл" 
-                checked={materialChecks.metal} 
-                onChange={() => handleMaterialCheck('metal')} 
+              <CheckboxItem
+                label="Металл"
+                checked={materialChecks.metal}
+                onChange={() => handleMaterialCheck("metal")}
               />
-              <CheckboxItem 
-                label="Пластик" 
-                checked={materialChecks.plastic} 
-                onChange={() => handleMaterialCheck('plastic')} 
+              <CheckboxItem
+                label="Пластик"
+                checked={materialChecks.plastic}
+                onChange={() => handleMaterialCheck("plastic")}
               />
-              <CheckboxItem 
-                label="Сталь" 
-                checked={materialChecks.steel} 
-                onChange={() => handleMaterialCheck('steel')} 
+              <CheckboxItem
+                label="Сталь"
+                checked={materialChecks.steel}
+                onChange={() => handleMaterialCheck("steel")}
               />
               <h2 className="text-[16px] !font-semibold text-[#117FE3] underline">
                 Показать все
@@ -298,20 +310,20 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
             {/* Air Flow Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Расход воздуха</h3>
             <div className="flex flex-col gap-4 mt-4">
-              <CheckboxItem 
-                label="100" 
-                checked={airFlowChecks.af100} 
-                onChange={() => handleAirFlowCheck('af100')} 
+              <CheckboxItem
+                label="100"
+                checked={airFlowChecks.af100}
+                onChange={() => handleAirFlowCheck("af100")}
               />
-              <CheckboxItem 
-                label="102" 
-                checked={airFlowChecks.af102} 
-                onChange={() => handleAirFlowCheck('af102')} 
+              <CheckboxItem
+                label="102"
+                checked={airFlowChecks.af102}
+                onChange={() => handleAirFlowCheck("af102")}
               />
-              <CheckboxItem 
-                label="105" 
-                checked={airFlowChecks.af105} 
-                onChange={() => handleAirFlowCheck('af105')} 
+              <CheckboxItem
+                label="105"
+                checked={airFlowChecks.af105}
+                onChange={() => handleAirFlowCheck("af105")}
               />
             </div>
           </div>
@@ -385,27 +397,28 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                   </div>
                   <div className="flex items-center md:gap-2 gap-1">
                     <div
-                      onClick={() => toggleHeart(item.id)}
+                      onClick={() => toggleHeart(item.id.toString())}
                       className="border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
                     >
-                      <img
-                        src={likedItems[item.id] ? heart2 : heart}
-                        className="w-[24px] h-[18px]"
-                        alt="heart"
-                      />
+                      <span
+                        className={`${
+                          likedItems
+                            ? "text-blue-500 animate-ping-short"
+                            : "text-gray-400"
+                        }`}
+                      >
+                        {likedItems[item.id] ? (
+                          <HeartFilled />
+                        ) : (
+                          <HeartOutlined />
+                        )}
+                      </span>
                     </div>
-                    <div
-                      onClick={() => toggleCompare(item.id)}
-                      className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
-                    >
-                      <img
-                        src={compare}
-                        className="w-[24px] h-[18px]"
-                        alt="compare"
-                      />
-                    </div>
+                    <div onClick={() => toggleCompare(item.id.toString())} className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer">
+  <img src={compare} className="w-[24px] h-[18px]" alt="compare" />
+</div>
                   </div>
-                </div>
+                </div>      
               </div>
             ))}
           </div>

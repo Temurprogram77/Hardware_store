@@ -64,7 +64,9 @@ const Basket = () => {
       {/* Breadcrumb */}
       <div className="mb-6">
         <Breadcrumb>
-          <Breadcrumb.Item>Стройоптторг</Breadcrumb.Item>
+          <Breadcrumb.Item className='cursor-pointer hover:text-blue-500'>
+            <Link className='hover:text-blue-500' to={"/"}>Стройоптторг</Link>
+          </Breadcrumb.Item>
           <Breadcrumb.Item>Корзина товаров</Breadcrumb.Item>
         </Breadcrumb>
         <h2 className="text-2xl md:text-3xl font-bold mt-2">Корзина товаров</h2>
@@ -134,14 +136,14 @@ const Basket = () => {
 
                 <div className="md:col-span-2 text-center">
                   <span className="block md:hidden font-semibold mb-1">Кол-во:</span>
-                  <div className="flex md:flex-row flex-col gap-1 items-center justify-center">
+                  <div className="flex  md:flex-row flex-col gap-1 items-center justify-center">
                     <button
-                      className="w-8 h-8 rounded-full bg-gray-300   flex items-center justify-center"
+                      className="w-15 h-8 rounded-full bg-gray-300   flex items-center justify-center"
                       onClick={() => decreaseQuantity(item.id)}
                     >-</button>
                     <span className="w-10 h-8 flex items-center justify-center font-medium">{item.quantity}</span>
                     <button
-                      className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center"
+                      className="w-15 h-8 rounded-full bg-gray-300 flex items-center justify-center"
                       onClick={() => increaseQuantity(item.id)}
                     >+</button>
                   </div>
@@ -191,19 +193,29 @@ const Basket = () => {
               <span className="text-[#003b73] text-xl font-bold">{discountedTotal.toLocaleString('ru-RU')} ₽</span>
             </div>
 
-            <Input placeholder="Промокод" size="large" className="mb-3 rounded" />
-            <Button
-              type="default"
-              className="bg-[#f6f8fb] hover:bg-gray-100 text-gray-800 w-full py-2 mb-3"
+            <div className='mb-4'> <Input placeholder="Промокод" size="large" className=" rounded" /></div>
+            <div className='mb-2'>
+              <Button
+                type="default"
+                className="bg-[#f6f8fb]  hover:bg-gray-100 text-gray-800 w-full py-2 mb-3"
+              >
+                Применить промокод
+              </Button>
+            </div>
+
+            <Link
+              to="/ordering"
+              className="block w-full py-3 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 transition"
             >
-              Применить промокод
-            </Button>
-          <Link to="/ordering">
-  <button className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
-    ПЕРЕЙТИ К ОФОРМЛЕНИЮ
-  </button>
-</Link>
-            
+              ПЕРЕЙТИ К ОФОРМЛЕНИЮ
+              </Link>
+              <Link to="/checkout">
+                <button className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+                  ПЕРЕЙТИ К ОФОРМЛЕНИЮ
+                </button>
+              </Link>
+
+
           </div>
         </div>
       </div>

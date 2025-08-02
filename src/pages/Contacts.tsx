@@ -3,6 +3,10 @@ import { Breadcrumb } from 'antd';
 import { SlLocationPin } from "react-icons/sl";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
+import CustomInput from "../components/ui/CustomInput";
+import CustomTextarea from "../components/ui/CustomTextarea";
+import CustomCheckbox from "../components/ui/CustomCheckbox";
+import CustomButton from "../components/ui/CustomButton";
 
 type Region = {
   city: string;
@@ -64,7 +68,7 @@ const contacts = [
 
 
 const Contacts = () => {
-const [agree, setAgree] = useState(false);
+// const [agree, setAgree] = useState(false);
 
   return (
     <div className='flex justify-center items-center'>
@@ -115,11 +119,13 @@ const [agree, setAgree] = useState(false);
               <button className='mt-1 bg-[#186fd4] cursor-pointer font-bold !text-white rounded-[10px] w-[250px] h-[50px]'>Заказать звонок</button>
           </div>
         </div>
+
+        {/* birxil cardlar */}
         <div>
           <div>
             <div className='md:mt-11 flex md:flex-row flex-col gap-3 justify-center items-center '>
                <div className="md:w-[1200px] w-[380px] p-3 flex flex-wrap md:flex-row flex-col gap-4">
-                {/* birxil cardlar */}
+                {/* map() da aylanish */}
                   {contacts.map((item, index) => (
                   <div key={index} className="md:w-[255px] p-5 md:h-[105px] w-full border border-[#f2f4f6] rounded-lg md:p-4 md:shadow">
                     <p className="md:text-[15px] text-[18.5px] text-[#494d52] font-sans">{item.title}:</p>
@@ -134,6 +140,9 @@ const [agree, setAgree] = useState(false);
               </div>
             </div>
           </div>
+
+          {/* Работаем по регионам: */}
+
           <section className="py-8 flex flex-col gap-5 mt-4">
             <h2 className="!font-bold md:text-[18px] text-[22px] mb-6">Работаем по регионам:</h2>
             <div className="flex md:flex-row flex-col justify-between gap-6 overflow-x-auto">
@@ -153,39 +162,33 @@ const [agree, setAgree] = useState(false);
           </section>
         </div>
       </div>
+
+      {/* Section */}
+      
       <section className="bg-[#f8f9fb] md:w-full w-[390px] relative md:left-0 left-[-20px] py-12 px-4">
-      <div className="md:w-4xl  mx-auto text-center">
-        <h2 className="text-2xl md:text-3xl !mb-[30px] md:mb-10 !font-bold text-gray-800">
-          У вас есть вопросы? С радостью ответим на них!
-        </h2>
+        <div className="md:w-4xl  mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl !mb-[30px] md:mb-10 !font-bold text-gray-800">
+            У вас есть вопросы? С радостью ответим на них!
+          </h2>
+
+        {/* Form */}
 
         <form className="text-left space-y-6">
-          {/* 2 ustunli inputlar */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block mb-1 text-[14px] font-medium text-gray-700">
                 Ваше имя <span className="text-red-500">*</span>
               </label>
-              <input
-                type="text"
-                placeholder="Введите ваше имя"
-                className="w-full border border-[#e3e5e7] rounded-md px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-              />
+            
+              <CustomInput placeholder={"Введите ваше имя"} className={"h-[40px]"} type="text" />
             </div>
 
             <div>
               <label className="block mb-1 text-[14px] font-medium text-gray-700">
                 Номер телефона <span className="text-red-500">*</span>
               </label>
-              <input
-              data-name='tel'
-                type="tel"
-                name="tel"
-                aria-required='true'
-                aria-invalid='false'
-                placeholder="+7 (___) ___-__-__"
-                className="w-full border border-[#e3e5e7] rounded-md px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-              />
+              
+              <CustomInput placeholder="+7 (___) ___-__-__" className={'h-[40px]'} type="number" />
             </div>
           </div>
 
@@ -194,39 +197,17 @@ const [agree, setAgree] = useState(false);
             <label className="block mb-1 text-[14px] font-medium text-gray-700">
               Текст сообщения <span className="text-red-500">*</span>
             </label>
-            <textarea
-              placeholder="Введите ваш вопрос"
-              rows={4}
-              className="w-full border border-[#e3e5e7] rounded-md px-4 pt-4 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-            ></textarea>
+            <CustomTextarea placeholder="Введите ваш вопрос" rows={4} />
           </div>
 
           {/* Submit + Checkbox */}
           <div className="flex flex-col md:flex-row md:items-start items-center justify-between gap-4">
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 !text-white !text-[14px] font-semibold w-[190px] h-[60px] px-6 py-3 rounded-md"
-            >
-              ОТПРАВИТЬ
-            </button>
-
-            <label className="flex gap-6 relative md:left-0 left-[7px] items-start md:items-center text-sm text-gray-700 space-x-2">
-              <input
-                type="checkbox"
-                checked={agree}
-                onChange={(e) => setAgree(e.target.checked)}
-                className="scale-200 md:top-0 relative top-[20px] !mt-[-8px] border border-gray-400 rounded "
-              />
-              <span className="md:text-[16px] text-[17px] md:leading-0 leading-7 w-[305px] md:w-[500px]">
-                Согласен с обработкой персональных данных в соответствии с{" "}
-                <a
-                  href="#"
-                  className="text-blue-600 hover:underline"
-                >
-                  политикой конфиденциальности
-                </a>
-              </span>
+          <label className="flex gap-6 relative md:left-0 left-[7px] items-start md:items-center text-sm text-gray-700 space-x-2">
+              <div className="w-[350px]">
+              <CustomCheckbox name="Согласен с обработкой персональных данных в соответствии с" />
+              </div>
             </label>
+           <CustomButton text="ОТПРАВИТЬ" type="primary"/>
           </div>
         </form>
       </div>

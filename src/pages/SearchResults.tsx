@@ -1,4 +1,4 @@
-import data from "../data/data";
+import {data} from "../data/data";
 import { images } from "../assets/images";
 import { Link } from "react-router-dom";
 import { Range } from "react-range";
@@ -803,7 +803,7 @@ const ProductCatalog = () => {
           <div className="w-full md:px-0 px-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
             {data.map((item, index) => (
               <div key={index} className="cursor-pointer p-4 rounded shadow">
-                <Link to={"/product-card"}>
+                <Link to={`/product/${item.id}`}>
                   <img
                     src={item.image}
                     alt={item.title}
@@ -811,7 +811,7 @@ const ProductCatalog = () => {
                   />
                 </Link>
                 <p className="text-xs text-gray-500 md:text-[12px] text-[10px]">{item.item}</p>
-                <Link to="/product-card">
+                <Link to={`/product/${item.id}`}>
                   <h3 className="font-semibold md:text-[16px] text-[14px] hover:text-[#186FD4] duration-200">
                     {item.title}
                   </h3>

@@ -50,7 +50,7 @@ const Ordering: React.FC = () => {
       {/* LEFT SIDE */}
       <div className="w-full lg:w-2/3 space-y-8">
         <div className="text-right text-sm">
-          Уже есть аккаунт? <Link to="/my-account" className="text-blue-600">Войти</Link>
+          Уже есть аккаунт? <Link to="/auth" className="text-blue-600">Войти</Link>
         </div>
 
         {/* DELIVERY */}

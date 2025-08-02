@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import aksiya1 from '../assets/aksiya1.png'
 import aksiya2 from '../assets/aksiya2.png'
 import aksiya3 from '../assets/aksiya3.png'
@@ -19,8 +18,11 @@ import aksiya17 from '../assets/aksiya17.png'
 import aksiya18 from '../assets/aksiya18.png'
 import aksiya19 from '../assets/aksiya19.png'
 import aksiya20 from '../assets/aksiya20.png'
-import { Button, Checkbox, Input } from "antd";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "../components/ui/CustomButton"
+import CustomInput from "../components/ui/CustomInput"
+import CustomCheckbox from "../components/ui/CustomCheckbox"
+import Names from '../components/Names'
 interface stock{
   id:number,
   title:string,
@@ -196,33 +198,31 @@ const navigate = useNavigate();
   const handleClick = (id: number) => {
     const stock = Stocks.find((item) => id === item.id);
     localStorage.setItem("Stock", JSON.stringify(stock));
-    navigate(`/stock/${id}`);
+    navigate(`/deals/${id}`);
   };
   return (
     <section className="mt-8 max-w-[1470px] mx-auto px-4">
-        <ul className="flex text-[15px] gap-4 flex-wrap">
-        <li>
-          <Link to={'/'}>Стройоптторг</Link>
-        </li>
-        /
-        <li className="text-gray-500">
-          <Link to={'/stock'}>Акции</Link>
-        </li>
-      </ul>
+        <Names name='Акции' link='/deals'/>
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Акции</h1>
         <div className="grid gap-[1.5rem] md:grid-cols-2 grid-cols-1 mb-[5rem] lg:grid-cols-3 xl:grid-cols-4">
           {
             Stocks.map((item)=>{
-            return <div className="cursor-pointer" key={item.id} onClick={()=>handleClick(item.id)}>
+            return <div className=" cursor-pointer relative h-70 rounded-md hover:shadow-xl transition-shadow duration-700 overflow-hidden group" key={item.id} onClick={()=>handleClick(item.id)}>
               <div className='relative h-[180px]'>
-                <img className="absolute w-full h-full object-cover rounded-[8px]" src={item.img} alt={item.description} />
-                <p className='absolute bottom-[2.3rem] left-3 w-[178px] font-medium text-[22px]'>{item.title}</p>
-                <Button className='absolute bottom-[-8rem] left-2.5' type="primary">{item.discount}</Button>
+                <img className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={item.img} alt={item.description} />
+                <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 text-black">
+            <p className="!mb-3 w-[130px] text-[19px] !font-medium">
+              {item.title}
+            </p>
+            <div className="py-1  .5 px-2 text-[12px] text-white bg-black rounded-md">
+            {item.discount}
+            </div>
+          </div>
               </div>
-              <div className="flex flex-col leading-6 relative w-full h-[83px]">
+              <div className="flex pl-[1rem] flex-col leading-6 relative w-full h-[83px]">
                 <h3 className="font-medium absolute top-[0.5rem] h-[52px]">{item.description}</h3>
-              <Button type="link" className='absolute top-[3.3rem] left-[-4.9rem]'>{item.link}</Button>
+              <CustomButton className='absolute top-[3.3rem] left-[-6.3rem]' type="link" text={item.link}/>
               </div>
             </div>
             })
@@ -233,13 +233,11 @@ const navigate = useNavigate();
             <h4 className="text-[18px]">Подпишитесь на рассылку</h4>
             <p className="text-[#6A6F75] text-[14px]">Регулярные скидки и спецпредложения, а так же новости компании.</p>
           </div>
-          <div className="md:w-[628px] w-[300px] flex gap-[2rem] flex-col">
-            <Input />
-            <Button type="primary">Добавить в корзину</Button>
+          <div className="md:w-[628px] w-[300px] flex md:flex-row gap-[2rem] flex-col">
+            <CustomInput type="text" />
+            <CustomButton text="Добавить в корзину" type="primary" />
           </div>
-            <Checkbox className="w-[330px] text-[13px]">
-          Согласен с обработкой персональных данных в соответствии
-        </Checkbox>
+            <CustomCheckbox name="Согласен с обработкой персональных данных в соответствии" />
         </section>  
       </div>
     </section>

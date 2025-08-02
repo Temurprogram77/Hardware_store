@@ -1,11 +1,12 @@
-import Bestsellers from "./Bestsellers"
+import React from "react";
+import Bestsellers from "./Bestsellers";
 
-const BestsellersCards = () => {
+const BestsellersCards: React.FC = () => {
   return (
     <div>
-        <Bestsellers/>
+      <Bestsellers />
     </div>
-  )
-}
+  );
+};
 
-export default BestsellersCards
+export default BestsellersCards;

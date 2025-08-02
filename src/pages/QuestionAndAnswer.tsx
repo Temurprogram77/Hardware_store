@@ -69,7 +69,7 @@ const quizs: Review[] = [
   </ul>
 
   <div className="flex flex-col md:flex-row justify-between gap-8 mt-8">
-    <div className="flex flex-col w-full md:w-[76%]">
+    <div className="flex flex-col w-full md:w-[93%]">
       <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px] mb-8">Вопрос-ответ</h1>
       <div>
         {
