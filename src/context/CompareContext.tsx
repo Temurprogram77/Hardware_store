@@ -1,44 +1,35 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-type CompareContextType = {
-  comparedItems: { [id: string]: boolean };
-  toggleCompare: (id: string) => void;
-};
+const CompareContext = createContext<any>(null);
 
-const CompareClickedContext = createContext<CompareContextType | undefined>(undefined);
-
-export const CompareClickedProvider = ({ children }: { children: ReactNode }) => {
-  const [comparedItems, setComparedItems] = useState<{ [id: string]: boolean }>({});
-
-  useEffect(() => {
-    const stored = localStorage.getItem("comparedItems");
-    if (stored) {
-      setComparedItems(JSON.parse(stored));
-    }
-  }, []);
+export const CompareProvider = ({ children }: { children: React.ReactNode }) => {
+  const [comparedItems, setComparedItems] = useState<{ [key: string]: boolean }>(() => {
+    const saved = localStorage.getItem("comparedItems");
+    return saved ? JSON.parse(saved) : {};
+  });
 
   useEffect(() => {
     localStorage.setItem("comparedItems", JSON.stringify(comparedItems));
   }, [comparedItems]);
 
   const toggleCompare = (id: string) => {
-    setComparedItems(prev => ({
+    setComparedItems((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
   };
 
   return (
-    <CompareClickedContext.Provider value={{ comparedItems, toggleCompare }}>
+    <CompareContext.Provider value={{ comparedItems, toggleCompare }}>
       {children}
-    </CompareClickedContext.Provider>
+    </CompareContext.Provider>
   );
 };
 
 export const useCompare = () => {
-  const context = useContext(CompareClickedContext);
+  const context = useContext(CompareContext);
   if (!context) {
-    throw new Error("useCompare must be used within a CompareClickedProvider");
+    throw new Error("useCompare must be used within a CompareProvider");
   }
   return context;
 };

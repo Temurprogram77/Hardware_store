@@ -9,6 +9,7 @@ import img5 from '../assets/ivan3.png'
 import ReviewForm from "../components/ReviewForm";
 import Advertisement from "../components/Advertisement";
 import CustomButton from "../components/ui/CustomButton";
+import Names from "../components/ui/Names";
 interface Review {
   name: string,
   date: string,
@@ -73,16 +74,7 @@ const reviews: Review[]=[
 const Reviews:React.FC = () => {
   return (
     <section className="mt-8 max-w-[1470px] mx-auto px-4">
-      <ul className="flex text-[15px] gap-4 flex-wrap">
-        <li>
-          <Link to="/">Стройоптторг</Link>
-        </li>
-        /
-        <li className="text-gray-500">
-          <Link to="/reviews">Отзывы</Link>
-        </li>
-      </ul>
-
+    <Names name="Отзывы"  link="/reviews"/>
       <div className="w-full mt-8">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Отзывы</h1>
 

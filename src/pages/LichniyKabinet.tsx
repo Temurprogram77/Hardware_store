@@ -46,7 +46,7 @@ const menuItems = [
     {
         label: 'Сменить пароль',
         icon: <CgPassword />,
-        content: []
+        content: [] 
     },
     {
         label: 'Выйти из аккаунта',

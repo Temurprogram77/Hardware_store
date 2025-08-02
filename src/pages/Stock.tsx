@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import aksiya1 from '../assets/aksiya1.png'
 import aksiya2 from '../assets/aksiya2.png'
 import aksiya3 from '../assets/aksiya3.png'
@@ -23,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import CustomButton from "../components/ui/CustomButton"
 import CustomInput from "../components/ui/CustomInput"
 import CustomCheckbox from "../components/ui/CustomCheckbox"
+import Names from '../components/ui/Names'
 interface stock{
   id:number,
   title:string,
@@ -202,15 +202,7 @@ const navigate = useNavigate();
   };
   return (
     <section className="mt-8 max-w-[1470px] mx-auto px-4">
-        <ul className="flex text-[15px] gap-4 flex-wrap">
-        <li>
-          <Link to={'/'}>Стройоптторг</Link>
-        </li>
-        /
-        <li className="text-gray-500">
-          <Link to={'/deals'}>Акции</Link>
-        </li>
-      </ul>
+        <Names name='Акции' link='/deals'/>
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Акции</h1>
         <div className="grid gap-[1.5rem] md:grid-cols-2 grid-cols-1 mb-[5rem] lg:grid-cols-3 xl:grid-cols-4">
