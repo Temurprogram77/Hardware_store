@@ -4,6 +4,7 @@ import CustomButton from "./ui/CustomButton";
 import CustomInput from "./ui/CustomInput";
 import CustomTextarea from "./ui/CustomTextarea";
 import CustomCheckbox from "./ui/CustomCheckbox";
+import Label from "./ui/Label";
 
 const ReviewForm:React.FC = () => {
   const [form] = Form.useForm();
@@ -19,34 +20,20 @@ const ReviewForm:React.FC = () => {
       onFinish={onFinish}
       className="max-w-[600px] mx-auto"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Form.Item
-          label="Ваше имя"
-          name="name"
-          rules={[{ required: true, message: "Введите ваше имя" }]}
-        >
+      <div className="grid grid-cols-1 mb-[1rem] md:grid-cols-2 gap-4">
+         <div>
+           <Label text="Ваше имя" required/>
           <CustomInput  className={"h-[40px]"} placeholder="Введите ваше имя" type="string"/>
-        </Form.Item>
+         </div>
 
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            { required: true, message: "Введите ваш электронный адрес" },
-            { type: "email", message: "Неверный формат email" },
-          ]}
-        >
+          <div>
+            <Label text="Введите ваш электронный адрес" required/>
           <CustomInput  className={"h-[40px]"} placeholder="Введите ваш электронный адрес" type="string"/>
-        </Form.Item>
+          </div>
       </div>
 
-      <Form.Item
-        label="Текст отзыва"
-        name="review"
-        rules={[{ required: true, message: "Введите ваш отзыв" }]}
-      >
+            <Label text="Текст отзыва" required/>
         <CustomTextarea rows={4} placeholder="Ваш отзыв"/>
-      </Form.Item>
 
       <Form.Item label="Прикрепить фото" name="photos">
         <Upload.Dragger name="files" multiple>

@@ -26,7 +26,6 @@ export const CompareProvider = ({ children }: { children: React.ReactNode }) => 
   );
 };
 
-// ✅ Faqat bitta useCompare funksiyasi bo‘lishi kerak:
 export const useCompare = () => {
   const context = useContext(CompareContext);
   if (!context) {

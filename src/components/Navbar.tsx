@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
 import { sideBar } from "../data/data";
+import { useSidebar2 } from "../context/SidebarContext2";
 
 const {
   Logo,
@@ -34,9 +35,6 @@ const Navbar: React.FC = () => {
     closeModal,
     isOpen,
   } = useModal();
-  // const { openModal } = useModal();
-  // const { toggleSidebar, sideBarIsOpen } = useSidebar();
-  // const { likedItems } = useHeart();
   const { likedItems } = useHeart();
   const { comparedItems } = useCompare();
 
@@ -46,11 +44,10 @@ const Navbar: React.FC = () => {
   const comparedCount = Object.keys(comparedItems).filter(
     (id) => comparedItems[id]
   ).length;
-  
 
-  // LocalStorage orqali like qilingan itemlar sonini hisoblash
   const likedCount = Object.values(likedItems).filter(Boolean).length;
   const { sideBarIsOpen, toggleSidebar } = useSidebar();
+  const { sideBarIsOpen2, toggleSidebar2 } = useSidebar2();
   return (
     <div className="xl:m-0 mb-5">
       <div className="border-b border-[#ebeef0]">
@@ -142,7 +139,7 @@ const Navbar: React.FC = () => {
           ></div>
           <div
             onClick={modalCloseModal}
-            className="bg-[#fff] duration-200 hover:bg-[#6e6e6e] fixed z-4 top-6 right-6 rounded-md p-3"
+            className="cursor-pointer bg-[#fff] duration-200 hover:bg-[#6e6e6e] fixed z-4 top-6 right-6 rounded-md p-3"
           >
             <img src={close} alt="close" />
           </div>
@@ -358,7 +355,7 @@ const Navbar: React.FC = () => {
               Каталог
             </motion.div>
 
-            <div className="flex flex-1 p-[3px] rounded-md bg-[#186fd4]">
+            <div className="cursor-pointer flex flex-1 p-[3px] rounded-md bg-[#186fd4]">
               <input
                 type="text"
                 placeholder="Найти среди 50000 товаров. Например: Дрель Bosch"
@@ -500,8 +497,88 @@ const Navbar: React.FC = () => {
         )}
       </div>
 
+      {sideBarIsOpen2 ? (
+        <div
+          onClick={toggleSidebar2}
+          className="bg-[#000000c1] fixed top-0 left-0 w-full h-full z-10"
+        ></div>
+      ) : (
+        ""
+      )}
+
+      {sideBarIsOpen2 && (
+        <div className="fixed z-20 top-0 left-0 py-8 w-[80%] bg-[#f9fafb] duration-200 opacity-100 visible">
+          <div className="max-w-full mx-auto">
+            <div className="w-[90%] rounded-md bg-white">
+              <div className="relative">
+                {sideBar.map((item, index) => (
+                  <div
+                    key={index}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    className="relative group"
+                  >
+                    <Link to="/catalog">
+                      <div
+                        onClick={toggleSidebar}
+                        className="overflow-hidden arrow-svg cursor-pointer flex items-center justify-between hover:fill-white hover:text-white border-b border-[#0000002c] py-5 px-5 hover:bg-[#186fd4]"
+                      >
+                        <p className="!m-0 text-[12px] uppercase font-semibold">
+                          {item.name}
+                        </p>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="5"
+                          height="8"
+                          viewBox="0 0 5 8"
+                          fill="#919AA3"
+                        >
+                          <path d="M4.35355 4.35355C4.54882 4.15829 4.54882 3.84171 4.35355 3.64645L1.17157 0.464466C0.976311 0.269204 0.659728 0.269204 0.464466 0.464466C0.269204 0.659728 0.269204 0.976311 0.464466 1.17157L3.29289 4L0.464466 6.82843C0.269204 7.02369 0.269204 7.34027 0.464466 7.53553C0.659728 7.7308 0.976311 7.7308 1.17157 7.53553L4.35355 4.35355ZM3 4.5H4V3.5H3V4.5Z"></path>
+                        </svg>
+                      </div>
+                    </Link>
+
+                    <div
+                      className={`h-[300px] overflow-y-scroll absolute left-0 top-full ml-2 p-5 w-[350px] bg-white shadow-lg rounded-md z-20 transition-opacity duration-300 ${
+                        hoveredIndex === index
+                          ? "opacity-100 visible"
+                          : "opacity-0 invisible"
+                      }`}
+                    >
+                      {item.obj?.map((child, i) => (
+                        <p
+                          key={i}
+                          className="text-[15px] hover:text-[#186fd4] duration-300 cursor-pointer py-3"
+                        >
+                          <Link to="/catalog">
+                            {Array.isArray(child)
+                              ? child.join(", ")
+                              : typeof child === "object" && "obj" in child
+                              ? child.obj.flat().join(", ")
+                              : String(child)}
+                          </Link>
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div onClick={toggleSidebar2} className="absolute w-[20px] z-[10000] top-3 right-4">
+                <img
+                  src={close}
+                  className="w-[30px]"
+                  alt="close"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="max-w-[1460px] flex lg:hidden items-center gap-2 xl:mx-auto mx-3">
-        <div className="bg-[#186fd4] hover:bg-black duration-200 cursor-pointer rounded-md pl-4 pr-8 py-3.5 text-white flex items-center gap-3 uppercase text-[12px] font-semibold">
+        <div
+          onClick={toggleSidebar2}
+          className="bg-[#186fd4] hover:bg-black duration-200 cursor-pointer rounded-md pl-4 pr-8 py-3.5 text-white flex items-center gap-3 uppercase text-[12px] font-semibold"
+        >
           <img src={burger} alt="burger" />
           Каталог
         </div>
@@ -511,7 +588,7 @@ const Navbar: React.FC = () => {
             type="text"
             placeholder="Поиск..."
           />
-          <div className="flex items-center md:px-4 px-3">
+          <div className="cursor-pointer flex items-center md:px-4 px-3">
             <img src={search} alt="search" />
           </div>
         </div>

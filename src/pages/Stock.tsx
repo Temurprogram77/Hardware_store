@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 import CustomButton from "../components/ui/CustomButton"
 import CustomInput from "../components/ui/CustomInput"
 import CustomCheckbox from "../components/ui/CustomCheckbox"
-import Names from '../components/Names'
+import Names from '../components/ui/Names'
 interface stock{
   id:number,
   title:string,

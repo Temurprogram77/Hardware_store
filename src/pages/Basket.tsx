@@ -65,7 +65,7 @@ const Basket = () => {
       <div className="mb-6">
         <Breadcrumb>
           <Breadcrumb.Item className='cursor-pointer hover:text-blue-500'>
-            <Link className='hover:text-blue-500' to={"/"}>Стройоптторг</Link>
+          <Link className='hover:text-blue-500' to={"/"}>Стройоптторг</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>Корзина товаров</Breadcrumb.Item>
         </Breadcrumb>
@@ -193,29 +193,24 @@ const Basket = () => {
               <span className="text-[#003b73] text-xl font-bold">{discountedTotal.toLocaleString('ru-RU')} ₽</span>
             </div>
 
-            <div className='mb-4'> <Input placeholder="Промокод" size="large" className=" rounded" /></div>
-            <div className='mb-2'>
-              <Button
-                type="default"
-                className="bg-[#f6f8fb]  hover:bg-gray-100 text-gray-800 w-full py-2 mb-3"
-              >
-                Применить промокод
-              </Button>
-            </div>
-
-            <Link
-              to="/ordering"
-              className="block w-full py-3 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 transition"
+           <div className='mb-4'> <Input placeholder="Промокод" size="large" className=" rounded" /></div>
+           <div className='mb-2'>
+            <Button
+              type="default"
+              className="bg-[#f6f8fb]  hover:bg-gray-100 text-gray-800 w-full py-2 mb-3"
             >
-              ПЕРЕЙТИ К ОФОРМЛЕНИЮ
-              </Link>
-              <Link to="/checkout">
-                <button className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
-                  ПЕРЕЙТИ К ОФОРМЛЕНИЮ
-                </button>
-              </Link>
+              Применить промокод
+            </Button>
+           </div>
+            
+          <Link
+  to="/ordering"
+  className="block w-full py-3 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 transition"
+>
+  ПЕРЕЙТИ К ОФОРМЛЕНИЮ
+</Link>
 
-
+            
           </div>
         </div>
       </div>

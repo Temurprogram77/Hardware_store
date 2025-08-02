@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Breadcrumb } from 'antd';
+import  Names  from '../components/ui/Names';
 import { SlLocationPin } from "react-icons/sl";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -73,21 +72,14 @@ const Contacts = () => {
   return (
     <div className='flex justify-center items-center'>
       <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
-      {/* Breadcrumb */}
-        <Breadcrumb className="mb-6">
-          <Breadcrumb.Item>
-            <span className="text-black">Стройоптторг</span>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <span className="text-gray-400">Контакты</span>
-          </Breadcrumb.Item>
-        </Breadcrumb>
+      {/* Link */}
+        <Names name='Контакты' link='/contacts' />
             
       <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]" >Контакты</h2>
       <div>
         <div className='flex md:flex-row flex-col'> 
          <iframe className="border-0 md:rounded-[10px] md:w-[1200px] md:h-[550px] md:left-[5px] left-[-15px] rounded-none w-[384px] h-[650px] !z-0 relative" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1574993.114298276!2d66.8964759!3d39.5560352!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1753176936343!5m2!1sen!2s" loading="lazy"></iframe>
-          <div className=' flex flex-col items-center md:w-[315px] md:h-[475px] h-[475px] pt-6 relative md:left-[-50px] md:top-[2px] top-[-50px] md:mt-9 rounded-[10px] !z-10 shadow-lg bg-white'>
+          <div className=' flex flex-col items-center md:w-[315px] md:h-[475px] w-[365px] h-[475px] pt-6 relative md:left-[-50px] md:top-[2px] left-[-5px] top-[-108.5px] md:mt-9 rounded-[10px]  shadow-lg bg-white'>
               <h2 className='!font-bold md:text-[16px] text-[20px]'>ООО «Стройоптторг»</h2>
               <div className='flex gap-2 mt-3'>
                 <SlLocationPin className=' text-[20px]' />
@@ -125,12 +117,15 @@ const Contacts = () => {
           <div>
             <div className='md:mt-11 flex md:flex-row flex-col gap-3 justify-center items-center '>
                <div className="md:w-[1200px] w-[380px] p-3 flex flex-wrap md:flex-row flex-col gap-4">
+                
                 {/* map() da aylanish */}
+                
                   {contacts.map((item, index) => (
                   <div key={index} className="md:w-[255px] p-5 md:h-[105px] w-full border border-[#f2f4f6] rounded-lg md:p-4 md:shadow">
                     <p className="md:text-[15px] text-[18.5px] text-[#494d52] font-sans">{item.title}:</p>
-                    <p className="md:text-md text-[#2f3134] text-[21px] font-bold hover:text-[#007aff]">{item.phone}</p>
+                    <p className="md:text-[15px] text-[#2f3134] text-[21px] font-bold hover:text-[#007aff]">{item.phone}</p>
                   </div>
+
                   ))}
                 </div>
 
@@ -151,7 +146,7 @@ const Contacts = () => {
                   key={index}
                   className="min-w-[200px] md:w-[150px] md:h-[130px] mb-[10px] md:mb-0 leading-3 md:border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
                   <p className="font-semibold text-[#494d52] md:text-[15px] text-[17px]">{region.city}</p>
-                  <p className="md:text-[15px] text-[17px] text-[#494d52]">{region.address}</p>
+                  <p className="md:text-[15px] md:leading-5 text-[17px] text-[#494d52]">{region.address}</p>
                   <p className="font-bold md:text-[15px] text-[17px] text-[#2f3134]">{region.phone}</p>
                   <a href={`mailto:${region.email}`} className="text-blue-600 md:text-[15px] text-[17px] md:underline-none hover:underline">
                     {region.email}
