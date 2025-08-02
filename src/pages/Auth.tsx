@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { notification } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
 import CustomInput from '../components/ui/CustomInput';
 import CustomButton from '../components/ui/CustomButton';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
-import CustomBreadcrum from '../components/ui/Breadcrumb';
-import CustomTypography from '../components/ui/CustomTypography';
+import Names from '../components/ui/Names';
+import Label from '../components/ui/Label';
 
 const AuthPage: React.FC = () => {
   const [emailValue, setEmailValue] = useState<string>("");
@@ -19,7 +18,6 @@ const AuthPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    // Clear previous errors first
     setEmailError(false);
     setPasswordError(false);
     setErrorMessage("");
@@ -34,65 +32,50 @@ const AuthPage: React.FC = () => {
       } else {
         setEmailError(true);
         setPasswordError(true);
-        setErrorMessage("Noto'g'ri email yoki parol kiritildi.");
-        notification.error({
-          message: 'Avtorizatsiya muvaffaqiyatsiz',
-          description: "Email yoki parol xato kiritildi. Iltimos, qaytadan urinib ko'ring.",
-        });
+        setErrorMessage("Noto'g'ri email yoki parol xato!");
       }
     } else {
       setEmailError(true);
       setPasswordError(true);
-      setErrorMessage("Hisob topilmadi. Iltimos, ro'yxatdan o'ting.");
-      notification.error({
-        message: 'Hisob topilmadi',
-        description: "Hisob mavjud emas. Iltimos, ro'yxatdan o'ting.",
-      });
+      setErrorMessage("HIsobingiz bulsa kiriting aks holda Hisob yarating");
     }
   };
 
-  const breadcrumbItems = [
-    {
-      title: <Link to="/" className='!text-black'>Стройоптторг</Link>,
-    },
-    {
-      title: <p className='text-gray-400'>Авторизация</p>,
-    },
-  ];
+
 
   return (
     <main className='mb-10 mt-5 px-3'>
       <hr className='text-gray-200' />
       <div className="max-w-[1460px] mx-auto mt-2.5">
-        <CustomBreadcrum items={breadcrumbItems} />
+        <Names link='#' name='Авторизация' />
         <div className="mt-4 flex flex-col justify-center">
           <h2 className="!font-bold text-4xl sm:text-3xl">Авторизация</h2>
           <div className='mt-20 !ml-20 border !w-[88%] rounded-lg gap-5 border-gray-200 flex items-center justify-center max-sm:flex-col max-sm:mt-10 lg:gap-20 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5 lg:p-10'>
             <div className='flex items-center flex-col w-1/2 max-sm:w-full'>
               <div className='max-sm:w-[100%] md:w-[100%]'>
-                <CustomTypography className='!text-sm !mb-2.5'>
-                  Email yoki login <span className='text-red-700'>*</span>:
-                </CustomTypography>
-                <CustomInput
-                  type='text'
-                  className={`lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2 ${emailError ? '!border-red-500' : ''}`}
-                  placeholder="Введите данные для авторизации"
-                  value={emailValue}
-                  onChange={(e) => setEmailValue(e.target.value)}
-                  onFocus={() => setEmailError(false)}
-                />
-                <CustomTypography className='!text-sm !mb-2.5'>
-                  Пароль <span className='text-red-700'>*</span>:
-                </CustomTypography>
-                <CustomInput
-                  type='password'
-                  className={`lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !-mt-2 ${passwordError ? '!border-red-500' : ''}`}
-                  placeholder="Введите пароль"
-                  value={passwordValue}
-                  onChange={(e) => setPasswordValue(e.target.value)}
-                  onFocus={() => setPasswordError(false)}
-                />
-                {errorMessage && <p className='text-red-500 text-sm mt-1'>{errorMessage}</p>}
+                <div className='flex flex-col gap-3'>
+                  <Label required text='Email yoki login ' className='!mt-5' />
+                  <CustomInput
+                    type='text'
+                    className={`lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2 ${emailError ? '!border-red-500' : ''}`}
+                    placeholder="Введите данные для авторизации"
+                    value={emailValue}
+                    onChange={(e) => setEmailValue(e.target.value)}
+                    onFocus={() => setEmailError(false)}
+                  />
+                </div>
+                <div className='flex flex-col gap-3'>
+                  <Label text='Parol ' required />
+                  <CustomInput
+                    type='password'
+                    className={`lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !-mt-2 ${passwordError ? '!border-red-500' : ''}`}
+                    placeholder="Введите пароль"
+                    value={passwordValue}
+                    onChange={(e) => setPasswordValue(e.target.value)}
+                    onFocus={() => setPasswordError(false)}
+                  />
+                </div>
+                {errorMessage && <p className='text-red-500 text-sm !mt-1 !-mb-3'>{errorMessage}</p>}
               </div>
 
               <div className='w-full md:w-full flex flex-col gap-5'>
