@@ -8,7 +8,7 @@ interface ProductItem {
   oldMoney: string;
   newMoney: string;
   sale: string;
-  type: string;
+  type?: string;
 }
 
 interface NewsItem {

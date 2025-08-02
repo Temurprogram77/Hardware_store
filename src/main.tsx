@@ -7,16 +7,19 @@ import { ModalProvider } from "./context/ModalContext";
 import { SidebarProvider } from "./context/SideBarContext.tsx";
 import { HeartClickedProvider } from "./context/HeartClickedContext.tsx";
 import { CompareProvider } from "./context/CompareContext.tsx";
+import { SidebarProvider2 } from "./context/SidebarContext2.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <>
     <ModalProvider>
       <SidebarProvider>
-        <HeartClickedProvider>
+        <SidebarProvider2>
+          <HeartClickedProvider>
             <CompareProvider>
               <App />
             </CompareProvider>
-        </HeartClickedProvider>
+          </HeartClickedProvider>
+        </SidebarProvider2>
       </SidebarProvider>
     </ModalProvider>
   </>
