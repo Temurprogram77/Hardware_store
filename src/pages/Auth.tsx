@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FiUserPlus } from 'react-icons/fi';
-import { MdOutlineChevronRight } from 'react-icons/md';
 import CustomInput from '../components/ui/CustomInput';
 import CustomButton from '../components/ui/CustomButton';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
 import Names from '../components/ui/Names';
 import Label from '../components/ui/Label';
+import RightIcon from '../components/RightIcon';
+import UserIcon from '../components/UserIcon';
 
 const AuthPage: React.FC = () => {
   const [emailValue, setEmailValue] = useState<string>("");
@@ -93,7 +93,7 @@ const AuthPage: React.FC = () => {
                   className="!flex !items-center !mb-2.5 !h-[60px] !bg-blue-600 w-full !text-sm !uppercase hover:!bg-black"
                 >
                   Авторизоваться
-                  <MdOutlineChevronRight size={30} />
+                  <RightIcon size={30} />
                 </CustomButton>
               </div>
               <CustomCheckbox name='Запомнить меня' />
@@ -101,7 +101,7 @@ const AuthPage: React.FC = () => {
 
             <div className='flex flex-col items-start md:w-[60%] max-sm:w-full max-sm:mt-5'>
               <div className='flex gap-5 max-sm:gap-3 max-sm:flex'>
-                <FiUserPlus className='text-red-600 font-normal w-13 h-13 max-sm:w-8 max-sm:h-8' />
+                <UserIcon className='text-red-600 font-normal w-13 h-13 max-sm:w-8 max-sm:h-8' />
                 <h3 className='!font-bold text-2xl max-sm:text-lg max-sm:items-center max-sm:flex'>Еще нет аккаунта?</h3>
               </div>
               <div className='flex max-sm:flex-wrap flex-col ml-18 max-sm:ml-11 max-sm:w-auto mt-7 max-sm:mt-3 md:mt-1'>
@@ -114,7 +114,12 @@ const AuthPage: React.FC = () => {
                 <p className='!mt-5 max-sm:w-[240px] text-sm flex flex-wrap leading-7 text-gray-500 md:!mt-0'>
                   Мы запрашиваем у вас только информацию, необходимую для того, чтобы сделать процесс покупки более быстрым и легким.
                 </p>
-                <Link className='flex items-center justify-center rounded-sm text-white !h-[60px] lg:!mt-8 max-sm:w-[220px] lg:w-3xs !bg-black !text-sm !uppercase hover:!bg-orange-700 transition-all' to={"/register"}>Зарегистрироваться <MdOutlineChevronRight size={30} /></Link>
+                <Link
+                  className='flex items-center justify-center rounded-sm text-white !h-[60px] lg:!mt-8 max-sm:w-[220px] lg:w-3xs !bg-black !text-sm !uppercase hover:!bg-orange-700 transition-all'
+                  to={"/register"}
+                >Зарегистрироваться
+                  <RightIcon size={30} />
+                </Link>
               </div>
             </div>
           </div>

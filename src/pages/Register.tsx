@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FiUserPlus } from 'react-icons/fi';
 import CustomPhoneInput, { phoneRegex } from '../components/ui/CustomINputPhone';
 import CustomInput from '../components/ui/CustomInput';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
 import CustomButton from '../components/ui/CustomButton';
 import Label from '../components/ui/Label';
 import Names from '../components/ui/Names';
+import UserIcon from '../components/UserIcon';
+import RightIcon from '../components/RightIcon';
 
 export const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -244,8 +245,8 @@ const Register = () => {
               </div>
 
               <div className="max-sm:mt-15">
-                <div className="flex gap-5 max-sm:gap-3">
-                  <FiUserPlus className="text-red-600 font-normal max-sm:w-8 max-sm:h-8 md:w-10 md:h-10" />
+                <div className="flex items-center gap-5 max-sm:gap-3">
+                  <UserIcon className="text-red-600 font-normal !w-15 !h-15 md:w-10 md:h-10" />
                   <h3 className="!font-bold text-2xl max-sm:text-lg md:text-xl">Уже есть аккаунт?</h3>
                 </div>
                 <div className="flex flex-col ml-18 mt-7 max-sm:mt-2">
@@ -254,13 +255,14 @@ const Register = () => {
                       Перейдите к <span className="font-bold">авторизации</span> если у вас уже есть зарегистрированный аккаунт.
                     </p>
                   </div>
-                  <CustomButton
-                    text=''
+                  <Link
+                    to={"/auth"}
                     type="primary"
-                    className="!h-[60px] !bg-black xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
+                    className="!h-[60px] !bg-black text-white flex items-center justify-center rounded-sm xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
                   >
-                    <Link to={"/auth"}>Авторизоваться</Link>
-                  </CustomButton>
+                    Авторизоваться
+                    <RightIcon size={30} />
+                  </Link>
                 </div>
               </div>
             </div>
