@@ -67,7 +67,6 @@ const contacts = [
 
 
 const Contacts = () => {
-// const [agree, setAgree] = useState(false);
 
   return (
     <div className='flex justify-center items-center'>
