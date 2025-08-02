@@ -149,7 +149,7 @@ const Register = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         onFocus={() => setEmailError(null)}
                         onBlur={() => handleBlur("email")}
-                        className={`md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 
+                        className={`md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-md   !mb-1 !-mt-2 
                           ${emailError ? '!border-red-500' : ''}`}
                         placeholder='Введите ваш email адрес'
                       />
@@ -163,7 +163,7 @@ const Register = () => {
                         onFocus={() => setPhoneError(null)}
                         onBlur={() => handleBlur("phone")}
                         placeholder='+998 (__) ___-__-__'
-                        className={`flex flex-wrap border border-gray-200 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 transition-all 
+                        className={`flex flex-wrap border border-gray-200 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-md !mb-1 !-mt-2 transition-all 
                           ${phoneError ? '!border-red-500' : ''}`}
                       />
                       {phoneError && <p className="text-red-600 text-sm mt-1">{phoneError}</p>}
@@ -176,7 +176,7 @@ const Register = () => {
                     onChange={(e) => setFullName(e.target.value)}
                     onFocus={() => setFullNameError(null)}
                     onBlur={() => handleBlur("fullName")}
-                    className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
+                    className={`w-full !h-[55px] !text-md !mb-1 !-mt-2 
                       ${fullNameError ? '!border-red-500' : ''}`}
                     placeholder="Ваше полное имя"
                   />
@@ -189,7 +189,7 @@ const Register = () => {
                     onChange={(e) => setRegion(e.target.value)}
                     onFocus={() => setRegionError(null)}
                     onBlur={() => handleBlur("region")}
-                    className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
+                    className={`w-full !h-[55px] !text-md !mb-1 !-mt-2 
                       ${regionError ? '!border-red-500' : ''}`}
                     placeholder="Ваш регион"
                   />
@@ -202,7 +202,7 @@ const Register = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     onFocus={() => setPasswordError(null)}
                     onBlur={() => handleBlur("password")}
-                    className={`w-full !h-[55px] !text-lg !-mt-2 
+                    className={`w-full !h-[55px] !text-md !-mt-2 
                       ${passwordError ? '!border-red-500' : ''}`}
                     placeholder="Введите пароль"
                   />
@@ -215,7 +215,7 @@ const Register = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     onFocus={() => setConfirmPasswordError(null)}
                     onBlur={() => handleBlur("confirmPassword")}
-                    className={`w-full !h-[55px] !text-lg !-mt-2 
+                    className={`w-full !h-[55px] !text-md !-mt-2 
                       ${confirmPasswordError ? '!border-red-500' : ''}`}
                     placeholder="Введите пароль"
                   />
