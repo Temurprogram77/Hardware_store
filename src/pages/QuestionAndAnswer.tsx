@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Questions from "../components/Questions"
+import Questions from "../components/Acardion"
 import Advertisement from "../components/Advertisement";
 
 const QuestionAndAnswer:React.FC = () => {

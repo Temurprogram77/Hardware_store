@@ -2,6 +2,7 @@ import { Link,  } from "react-router-dom";
 import { Range } from "react-range";
 import { useState } from "react";
 import CatalogCard from "../components/CatalogCard";
+import Names from "../components/ui/Names";
 
 
 type CheckboxItemProps = {
@@ -122,10 +123,7 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
   
   return (
     <div className="max-w-[1460px] mx-auto my-5">
-      <div className="text-[13px] !font-medium mb-6 flex items-center 2xl:mx-0 mx-3 gap-3">
-        <Link to={"/"}>Стройоптторг</Link> /{" "}
-        <Link to={""}>Электроинструмент</Link>
-      </div>
+      <Names link="/catalog" name="Каталог"/>
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="lg:block hidden lg:w-[40%] w-full p-4 pl-0 rounded">
           <div className="font-semibold">
