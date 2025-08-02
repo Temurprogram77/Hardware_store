@@ -16,7 +16,7 @@ interface Props {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   value?: string | number
   ref?: Ref<InputRef>
-  onFocus: FocusEventHandler<HTMLInputElement>
+  onFocus?: FocusEventHandler<HTMLInputElement>
 }
 
 const CustomInput: React.FC<Props> = (
