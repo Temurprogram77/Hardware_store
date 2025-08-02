@@ -36,5 +36,5 @@ export const useHeart = () => {
   if (!context) {
     throw new Error("useHeart must be used within a HeartClickedProvider");
   }
-  return context;
+  return context;ad
 };
