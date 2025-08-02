@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Advertisement from "../components/Advertisement";
 import CustomButton from "../components/ui/CustomButton";
+import Names from "../components/ui/Names";
 
 interface Stock {
   id: number;
@@ -26,18 +27,8 @@ const LandingStock = () => {
   const aksiya='акция'
   return (
     <section className="mt-8 max-w-[1470px] mx-auto px-4">
-      <ul className="flex text-[15px] gap-4 flex-wrap">
-        <li>
-          <Link to={'/'}>Стройоптторг</Link>
-        </li>
-        /
-        <li className="text-gray-500">
-          <Link to={'/deals'}>Акции</Link>
-        </li>/
-        <li className="text-gray-500">
-          <Link to={`/deals/${chegirma?.id}`}>{chegirma?.title}</Link>
-        </li>
-      </ul>
+      
+      <Names name="Акции" link="/deals" link2={`/deals/${chegirma?.id}`} name2={chegirma?.title} />
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">{chegirma?.title}</h1>
     <div className="md:flex w-[100%] justify-between">

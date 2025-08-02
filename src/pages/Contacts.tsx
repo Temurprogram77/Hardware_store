@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Breadcrumb } from 'antd';
+import  Names  from '../components/ui/Names';
 import { SlLocationPin } from "react-icons/sl";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -73,15 +72,8 @@ const Contacts = () => {
   return (
     <div className='flex justify-center items-center'>
       <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
-      {/* Breadcrumb */}
-        <Breadcrumb className="mb-6">
-          <Breadcrumb.Item>
-            <span className="text-black">Стройоптторг</span>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <span className="text-gray-400">Контакты</span>
-          </Breadcrumb.Item>
-        </Breadcrumb>
+      {/* Link */}
+        <Names name='Контакты' link='/contacts' />
             
       <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]" >Контакты</h2>
       <div>
@@ -125,12 +117,15 @@ const Contacts = () => {
           <div>
             <div className='md:mt-11 flex md:flex-row flex-col gap-3 justify-center items-center '>
                <div className="md:w-[1200px] w-[380px] p-3 flex flex-wrap md:flex-row flex-col gap-4">
+                
                 {/* map() da aylanish */}
+                
                   {contacts.map((item, index) => (
                   <div key={index} className="md:w-[255px] p-5 md:h-[105px] w-full border border-[#f2f4f6] rounded-lg md:p-4 md:shadow">
                     <p className="md:text-[15px] text-[18.5px] text-[#494d52] font-sans">{item.title}:</p>
                     <p className="md:text-[15px] text-[#2f3134] text-[21px] font-bold hover:text-[#007aff]">{item.phone}</p>
                   </div>
+
                   ))}
                 </div>
 
