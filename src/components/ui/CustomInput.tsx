@@ -17,6 +17,7 @@ interface Props {
   value?: string | number
   ref?: Ref<InputRef>
   onFocus?: FocusEventHandler<HTMLInputElement>
+  onBlur?: FocusEventHandler<HTMLInputElement>
 }
 
 const CustomInput: React.FC<Props> = (
@@ -27,7 +28,8 @@ const CustomInput: React.FC<Props> = (
     onChange,
     value,
     ref,
-    onFocus
+    onFocus,
+    onBlur
   }
 ) => {
 
@@ -40,6 +42,7 @@ const CustomInput: React.FC<Props> = (
       onFocus={onFocus}
       onChange={onChange}
       value={value}
+      onBlur={onBlur}
     />
   );
 };

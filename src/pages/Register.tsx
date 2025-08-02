@@ -1,12 +1,13 @@
-import { Breadcrumb, notification, Typography, type InputRef } from 'antd';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiUserPlus } from 'react-icons/fi';
-import CustomPhoneInput, { phoneRegex, type CustomPhoneInputRef } from '../components/ui/CustomINputPhone';
+import CustomPhoneInput, { phoneRegex } from '../components/ui/CustomINputPhone';
 import CustomInput from '../components/ui/CustomInput';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
 import CustomButton from '../components/ui/CustomButton';
-import { useRef, useState } from 'react';
- 
+import Label from '../components/ui/Label';
+import Names from '../components/ui/Names';
+
 export const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   fullName: /^[A-Za-zА-Яа-яЁё\s]{5,}$/,
@@ -15,115 +16,123 @@ export const regex = {
 };
 
 const Register = () => {
-  const emailRef = useRef<InputRef>(null);
-  const phoneRef = useRef<CustomPhoneInputRef>(null);
-  const fullNameRef = useRef<InputRef>(null);
-  const regionRef = useRef<InputRef>(null);
-  const passwordRef = useRef<InputRef>(null);
-  const confirmPasswordRef = useRef<InputRef>(null);
+  const navigate = useNavigate();
 
-  const [isChecked1, setIsChecked1] = useState<boolean>(false);
-  const [isChecked2, setIsChecked2] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [fullName, setFullName] = useState<string>("");
+  const [region, setRegion] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-  const [formError, setFormError] = useState<{ field: string, message: string } | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [fullNameError, setFullNameError] = useState<string | null>(null);
+  const [regionError, setRegionError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [confirmPasswordError, setConfirmPasswordError] = useState<string | null>(null);
+  const [termsError, setTermsError] = useState<string | null>(null);
+  const [policyError, setPolicyError] = useState<string | null>(null);
 
-  const validateForm = () => {
-    setFormError(null);
+  const handleBlur = (field: string) => {
+    switch (field) {
+      case "email":
+        if (!email || !regex.email.test(email)) {
+          setEmailError("Пожалуйста, введите действительную почту!");
+        } else {
+          setEmailError(null);
+        }
+        break;
+      case "phone":
+        if (!phone || !phoneRegex.test(phone)) {
+          setPhoneError("Пожалуйста, введите действительный телефон!");
+        } else {
+          setPhoneError(null);
+        }
+        break;
+      case "fullName":
+        if (!fullName || !regex.fullName.test(fullName)) {
+          setFullNameError("Пожалуйста, введите ФИО!");
+        } else {
+          setFullNameError(null);
+        }
+        break;
+      case "region":
+        if (!region || !regex.region.test(region)) {
+          setRegionError("Поле регион не заполнено!");
+        } else {
+          setRegionError(null);
+        }
+        break;
+      case "password":
+        if (!password || password.length < 6) {
+          setPasswordError("Пароль должен состоять не менее, чем из 6 символов");
+        } else {
+          setPasswordError(null);
+        }
+        break;
+      case "confirmPassword":
+        if (password !== confirmPassword) {
+          setConfirmPasswordError("Пароли не совпадают");
+        } else {
+          setConfirmPasswordError(null);
+        }
+        break;
+      default:
+        break;
+    }
+  };
 
-    const email = emailRef.current?.input?.value || "";
-    const phone = phoneRef.current?.getValue() || "";
-    const fullName = fullNameRef.current?.input?.value || "";
-    const region = regionRef.current?.input?.value || "";
-    const password = passwordRef.current?.input?.value || "";
-    const confirmPassword = confirmPasswordRef.current?.input?.value || "";
+  const handleSubmit = () => {
+    setEmailError(null);
+    setPhoneError(null);
+    setFullNameError(null);
+    setRegionError(null);
+    setPasswordError(null);
+    setConfirmPasswordError(null);
+    setTermsError(null);
+    setPolicyError(null);
 
-    if (!email || !regex.email.test(email)) {
-      return { field: "email", message: "Пожалуйста, введите действительную почту!" };
-    }
-    if (!phone || !phoneRegex.test(phone)) {
-      return { field: "phone", message: "Поле телефон не заполнено!" };
-    }
-    if (!fullName || !regex.fullName.test(fullName)) {
-      return { field: "fullName", message: "Пожалуйста, введите ФИО!" };
-    }
-    if (!region || !regex.region.test(region)) {
-      return { field: "region", message: "Поле регион не заполнено!" };
-    }
-    if (!password || password.length < 6) {
-      return { field: "password", message: "Пароль должен состоять не менее, чем из 6 символов" };
-    }
-    if (password !== confirmPassword) {
-      return { field: "confirmPassword", message: "Пароли не совпадают" };
-    }
-    if (!isChecked1) {
-      return { field: "terms", message: "Вы должны согласиться с условиями обслуживания" };
-    }
-    if (!isChecked2) {
-      return { field: "policy", message: "Вы должны согласиться с политикой конфиденциальности" };
+    let hasError = false;
+
+    if (!email || !regex.email.test(email)) { setEmailError("Пожалуйста, введите действительную почту!"); hasError = true; }
+    if (!phone || !phoneRegex.test(phone)) { setPhoneError("Пожалуйста, введите действительный телефон!"); hasError = true; }
+    if (!fullName || !regex.fullName.test(fullName)) { setFullNameError("Пожалуйста, введите ФИО!"); hasError = true; }
+    if (!region || !regex.region.test(region)) { setRegionError("Поле регион не заполнено!"); hasError = true; }
+    if (!password || password.length < 6) { setPasswordError("Пароль должен состоять не менее, чем из 6 символов"); hasError = true; }
+    if (password !== confirmPassword) { setConfirmPasswordError("Пароли не совпадают"); hasError = true; }
+
+    if (hasError) {
+      return;
     }
 
-    return {
+    const formData = {
       email,
       phone,
       fullName,
       region,
       password,
     };
-  };
 
-  const clearForm = () => {
-    if (emailRef.current?.input) {
-      emailRef.current.input.value = "";
-    }
-    if (phoneRef.current) {
-      phoneRef.current?.clearValue()
-    }
-    if (fullNameRef.current?.input) {
-      fullNameRef.current.input.value = "";
-    }
-    if (regionRef.current?.input) {
-      regionRef.current.input.value = "";
-    }
-    if (passwordRef.current?.input) {
-      passwordRef.current.input.value = "";
-    }
-    if (confirmPasswordRef.current?.input) {
-      confirmPasswordRef.current.input.value = "";
-    }
-    setIsChecked1(false);
-    setIsChecked2(false);
-    setFormError(null);
-  };
-
-  const handleSubmit = () => {
-    const validationResult = validateForm();
-
-    if (validationResult.field) {
-      setFormError(validationResult);
-      return;
-    }
-
-    const formData = validationResult;
     localStorage.setItem("accounts", JSON.stringify(formData));
-    notification.success({
-      message: "Ro'yxatdan o'tildi",
-      description: "Ma'lumotlar muvaffaqiyatli saqlandi!"
-    });
 
-    clearForm()
+
+
+    setEmail("");
+    setPhone("");
+    setFullName("");
+    setRegion("");
+    setPassword("");
+    setConfirmPassword("");
+
+    navigate('/auth');
   };
 
   return (
     <main className="mt-4 mb-10 px-3">
       <hr className="text-gray-200" />
       <div className="max-w-[1460px] mx-auto mt-2.5">
-        <Breadcrumb
-          items={[
-            { title: <Link to="/"><span className="text-black text-sm">Стройоптторг</span></Link> },
-            { title: <span className="text-[#959597] text-sm">Регистрация</span> },
-          ]}
-        />
-
+        <Names link='' name='Регистрация' />
         <section>
           <div className="mt-4">
             <h2 className="!font-bold text-4xl">Регистрация</h2>
@@ -132,87 +141,94 @@ const Register = () => {
                 <div className='flex flex-col gap-2 mb-2'>
                   <div className="xl:flex xl:gap-3">
                     <div className="max-sm:w-full flex flex-col gap-2">
-                      <Typography.Title className="!text-[15px]">
-                        Email <span className="text-red-700">*</span>:
-                      </Typography.Title>
+                      <Label text='Email ' required />
                       <CustomInput
-                        ref={emailRef}
                         type='text'
-                        className='md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        onFocus={() => setEmailError(null)}
+                        onBlur={() => handleBlur("email")}
+                        className={`md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 
+                          ${emailError ? '!border-red-500' : ''}`}
                         placeholder='Введите ваш email адрес'
                       />
-                      {formError?.field === "email" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                      {emailError && <p className="text-red-600 text-sm mt-1">{emailError}</p>}
                     </div>
                     <div className="max-sm:w-full flex flex-col gap-2">
-                      <Typography.Title className="!text-[15px]">
-                        Номер телефона <span className="text-red-700">*</span>:
-                      </Typography.Title>
+                      <Label text='Номер телефона' required />
                       <CustomPhoneInput
-                        ref={phoneRef}
+                        value={phone}
+                        onChange={setPhone}
+                        onFocus={() => setPhoneError(null)}
+                        onBlur={() => handleBlur("phone")}
                         placeholder='+998 (__) ___-__-__'
-                        className='flex flex-wrap border border-gray-300 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 transition-all'
+                        className={`flex flex-wrap border border-gray-200 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 transition-all 
+                          ${phoneError ? '!border-red-500' : ''}`}
                       />
-                      {formError?.field === "phone" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                      {phoneError && <p className="text-red-600 text-sm mt-1">{phoneError}</p>}
                     </div>
                   </div>
-
-                  <Typography.Title className="!text-[15px]">
-                    ФИО <span className="text-red-700">*</span>:
-                  </Typography.Title>
+                  <Label text='ФИО ' required />
                   <CustomInput
-                    ref={fullNameRef}
                     type='text'
-                    className="w-full !h-[55px] !text-lg !mb-1 !-mt-2"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    onFocus={() => setFullNameError(null)}
+                    onBlur={() => handleBlur("fullName")}
+                    className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
+                      ${fullNameError ? '!border-red-500' : ''}`}
                     placeholder="Ваше полное имя"
                   />
-                  {formError?.field === "fullName" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                  {fullNameError && <p className="text-red-600 text-sm mt-1">{fullNameError}</p>}
 
-                  <Typography.Title className="!text-[15px]">
-                    Регион <span className="text-red-700">*</span>:
-                  </Typography.Title>
+                  <Label text='Регион' required />
                   <CustomInput
-                    ref={regionRef}
                     type='text'
-                    className="w-full !h-[55px] !text-lg !mb-1 !-mt-2"
+                    value={region}
+                    onChange={(e) => setRegion(e.target.value)}
+                    onFocus={() => setRegionError(null)}
+                    onBlur={() => handleBlur("region")}
+                    className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
+                      ${regionError ? '!border-red-500' : ''}`}
                     placeholder="Ваш регион"
                   />
-                  {formError?.field === "region" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                  {regionError && <p className="text-red-600 text-sm mt-1">{regionError}</p>}
 
-                  <Typography.Title className="!text-[15px]">
-                    Пароль <span className="text-red-700">*</span>:
-                  </Typography.Title>
+                  <Label text='Пароль' required />
                   <CustomInput
-                    ref={passwordRef}
                     type='password'
-                    className="w-full !h-[55px] !text-lg !-mt-2"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onFocus={() => setPasswordError(null)}
+                    onBlur={() => handleBlur("password")}
+                    className={`w-full !h-[55px] !text-lg !-mt-2 
+                      ${passwordError ? '!border-red-500' : ''}`}
                     placeholder="Введите пароль"
                   />
-                  {formError?.field === "password" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                  {passwordError && <p className="text-red-600 text-sm mt-1">{passwordError}</p>}
 
-                  <Typography.Title className="!text-[15px]">
-                    Подтвердите пароль <span className="text-red-700">*</span>:
-                  </Typography.Title>
+                  <Label text='Подтвердите пароль' required />
                   <CustomInput
-                    ref={confirmPasswordRef}
                     type='password'
-                    className="w-full !h-[55px] !text-lg !-mt-2"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    onFocus={() => setConfirmPasswordError(null)}
+                    onBlur={() => handleBlur("confirmPassword")}
+                    className={`w-full !h-[55px] !text-lg !-mt-2 
+                      ${confirmPasswordError ? '!border-red-500' : ''}`}
                     placeholder="Введите пароль"
                   />
-                  {formError?.field === "confirmPassword" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                  {confirmPasswordError && <p className="text-red-600 text-sm mt-1">{confirmPasswordError}</p>}
                 </div>
                 <div className="flex flex-col gap-2">
                   <CustomCheckbox
-                    checked={isChecked1}
-                    onChange={(e) => setIsChecked1(e.target.checked)}
                     name='Согласен с условиями обслуживания'
                   />
-                  {formError?.field === "terms" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                  {termsError && <p className="text-red-600 text-sm mt-1">{termsError}</p>}
                   <CustomCheckbox
-                    checked={isChecked2}
-                    onChange={(e) => setIsChecked2(e.target.checked)}
                     name='Согласен с обработкой персональных данных в соответствии с политикой конфиденциальности'
                   />
-                  {formError?.field === "policy" && <p className="text-red-600 text-sm mt-1">{formError.message}</p>}
+                  {policyError && <p className="text-red-600 text-sm mt-1">{policyError}</p>}
                 </div>
 
                 <div className="w-full">
