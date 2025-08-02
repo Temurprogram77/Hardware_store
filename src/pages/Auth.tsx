@@ -1,84 +1,98 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Typography, notification } from 'antd';
+import { notification } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineChevronRight } from 'react-icons/md';
 import CustomInput from '../components/ui/CustomInput';
 import CustomButton from '../components/ui/CustomButton';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
+import CustomBreadcrum from '../components/ui/Breadcrumb';
+import CustomTypography from '../components/ui/CustomTypography';
 
 const AuthPage: React.FC = () => {
-  const [emailValue, setEmailValue] = useState<string>("")
-  const [passwordValue, setPasswordValue] = useState<string>("")
+  const [emailValue, setEmailValue] = useState<string>("");
+  const [passwordValue, setPasswordValue] = useState<string>("");
+  const [emailError, setEmailError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
   const navigate = useNavigate();
 
   const handleSubmit = () => {
+    // Clear previous errors first
+    setEmailError(false);
+    setPasswordError(false);
+    setErrorMessage("");
+
     const storedAccountString = localStorage.getItem("accounts");
 
     if (storedAccountString) {
       const storedAccount = JSON.parse(storedAccountString);
 
       if (storedAccount.email === emailValue && storedAccount.password === passwordValue) {
-        notification.success({
-          message: "Tizimga kirish muvaffaqiyatli",
-          description: "Siz shaxsiy kabinetingizga yo'naltirilyapsiz."
-        });
         navigate("/dashboard");
       } else {
-        console.log("Tizimga kirishda xatolik");
-        
+        setEmailError(true);
+        setPasswordError(true);
+        setErrorMessage("Noto'g'ri email yoki parol kiritildi.");
+        notification.error({
+          message: 'Avtorizatsiya muvaffaqiyatsiz',
+          description: "Email yoki parol xato kiritildi. Iltimos, qaytadan urinib ko'ring.",
+        });
       }
     } else {
-      notification.warning({
-        message: "Akkount topilmadi",
-        description: "Iltimos, avval ro'yxatdan o'ting."
+      setEmailError(true);
+      setPasswordError(true);
+      setErrorMessage("Hisob topilmadi. Iltimos, ro'yxatdan o'ting.");
+      notification.error({
+        message: 'Hisob topilmadi',
+        description: "Hisob mavjud emas. Iltimos, ro'yxatdan o'ting.",
       });
     }
   };
+
+  const breadcrumbItems = [
+    {
+      title: <Link to="/" className='!text-black'>Стройоптторг</Link>,
+    },
+    {
+      title: <p className='text-gray-400'>Авторизация</p>,
+    },
+  ];
 
   return (
     <main className='mb-10 mt-5 px-3'>
       <hr className='text-gray-200' />
       <div className="max-w-[1460px] mx-auto mt-2.5">
-        <Breadcrumb
-          items={[
-            {
-              title: (
-                <Link to="/">
-                  <span className='text-black text-sm'>Стройоптторг</span>
-                </Link>
-              ),
-            },
-            {
-              title: <span className='text-[#959597] text-sm'>Авторизация</span>,
-            },
-          ]}
-        />
+        <CustomBreadcrum items={breadcrumbItems} />
         <div className="mt-4 flex flex-col justify-center">
           <h2 className="!font-bold text-4xl sm:text-3xl">Авторизация</h2>
           <div className='mt-20 !ml-20 border !w-[88%] rounded-lg gap-5 border-gray-200 flex items-center justify-center max-sm:flex-col max-sm:mt-10 lg:gap-20 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5 lg:p-10'>
             <div className='flex items-center flex-col w-1/2 max-sm:w-full'>
               <div className='max-sm:w-[100%] md:w-[100%]'>
-                <Typography.Title className='!text-lg'>
-                  Email yoki login  <span className='text-red-700'>*</span>:
-                </Typography.Title>
+                <CustomTypography className='!text-sm !mb-2.5'>
+                  Email yoki login <span className='text-red-700'>*</span>:
+                </CustomTypography>
                 <CustomInput
                   type='text'
-                  className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2'
+                  className={`lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2 ${emailError ? '!border-red-500' : ''}`}
                   placeholder="Введите данные для авторизации"
                   value={emailValue}
                   onChange={(e) => setEmailValue(e.target.value)}
+                  onFocus={() => setEmailError(false)}
                 />
-                <Typography.Title className='!text-lg'>
+                <CustomTypography className='!text-sm !mb-2.5'>
                   Пароль <span className='text-red-700'>*</span>:
-                </Typography.Title>
+                </CustomTypography>
                 <CustomInput
                   type='password'
-                  className='lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !-mt-2'
+                  className={`lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !-mt-2 ${passwordError ? '!border-red-500' : ''}`}
                   placeholder="Введите пароль"
                   value={passwordValue}
                   onChange={(e) => setPasswordValue(e.target.value)}
+                  onFocus={() => setPasswordError(false)}
                 />
+                {errorMessage && <p className='text-red-500 text-sm mt-1'>{errorMessage}</p>}
               </div>
 
               <div className='w-full md:w-full flex flex-col gap-5'>
@@ -117,13 +131,7 @@ const AuthPage: React.FC = () => {
                 <p className='!mt-5 max-sm:w-[240px] text-sm flex flex-wrap leading-7 text-gray-500 md:!mt-0'>
                   Мы запрашиваем у вас только информацию, необходимую для того, чтобы сделать процесс покупки более быстрым и легким.
                 </p>
-                <CustomButton
-                  text=''
-                  type='primary'
-                  className='!h-[60px] lg:!mt-8 max-sm:w-[220px] lg:w-3xs !bg-black !text-sm !uppercase hover:!bg-orange-700'
-                >
-                  <Link className='!flex !items-center' to={"/register"}>Зарегистрироваться <MdOutlineChevronRight size={30} /></Link>
-                </CustomButton>
+                <Link className='flex items-center justify-center rounded-sm text-white !h-[60px] lg:!mt-8 max-sm:w-[220px] lg:w-3xs !bg-black !text-sm !uppercase hover:!bg-orange-700 transition-all' to={"/register"}>Зарегистрироваться <MdOutlineChevronRight size={30} /></Link>
               </div>
             </div>
           </div>

@@ -60,7 +60,6 @@ const LichniyKabinet = () => {
     const [accountFullName, setAccountFullName] = useState<string>('');
     const navigate = useNavigate();
 
-    // useEffect yordamida component yuklanganda localStorage'dan ma'lumotlarni olamiz
     useEffect(() => {
         const storedAccountString = localStorage.getItem("accounts");
         if (storedAccountString) {
@@ -73,12 +72,11 @@ const LichniyKabinet = () => {
                 console.error("Failed to parse stored account data from localStorage:", error);
             }
         }
-    }, []); // Bo'sh massiv component bir marta yuklanganda ishlashini ta'minlaydi
+    }, []); 
 
-    // Tizimdan chiqish funksiyasi
     const handleLogout = () => {
-        localStorage.removeItem("accounts"); // localStorage'dan akkount ma'lumotlarini o'chiramiz
-        navigate("/auth"); // Foydalanuvchini avtorizatsiya sahifasiga yo'naltiramiz
+        localStorage.removeItem("accounts");
+        navigate("/auth");
     };
 
     return (

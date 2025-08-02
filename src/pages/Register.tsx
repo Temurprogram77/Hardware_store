@@ -6,7 +6,7 @@ import CustomInput from '../components/ui/CustomInput';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
 import CustomButton from '../components/ui/CustomButton';
 import { useRef, useState } from 'react';
-
+ 
 export const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   fullName: /^[A-Za-zА-Яа-яЁё\s]{5,}$/,

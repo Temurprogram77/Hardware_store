@@ -18,6 +18,7 @@ const formatPhoneNumber = (value: string): string => {
     if (numberPart.length >= 3) formatted += ') ' + numberPart.substring(2, 5);
     if (numberPart.length >= 6) formatted += '-' + numberPart.substring(5, 7);
     if (numberPart.length >= 8) formatted += '-' + numberPart.substring(7, 9);
+
     return formatted;
 };
 
@@ -48,12 +49,20 @@ const CustomPhoneInput = forwardRef<CustomPhoneInputRef, CustomPhoneInputProps>(
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const formattedValue = formatPhoneNumber(e.target.value);
+
+            const cursorPosition = e.target.selectionStart;
+
             if (inputRef.current) {
                 inputRef.current.value = formattedValue;
+
+                if (cursorPosition !== null) {
+                    const newCursorPosition = Math.min(formattedValue.length, cursorPosition + (formattedValue.length - e.target.value.length));
+                    inputRef.current.setSelectionRange(newCursorPosition, newCursorPosition);
+                }
             }
 
             if (!formattedValue) {
-                setError("Telefon raqami bo'sh bo'lishi mumkin emas!")
+                setError("Telefon raqami bo'sh bo'lishi mumkin emas!");
             } else if (!phoneRegex.test(formattedValue)) {
                 setError("Raqamni to'liq kiriting");
             } else {
