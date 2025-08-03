@@ -204,7 +204,7 @@ const Basket = () => {
            </div>
             
           <Link
-  to="/ordering"
+  to="/"
   className="block w-full py-3 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 transition"
 >
   ПЕРЕЙТИ К ОФОРМЛЕНИЮ

@@ -55,6 +55,7 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
   const [values, setValues] = useState<number[]>([3000, 52500]);
   const { likedItems, toggleHeart } = useHeart();
 const { comparedItems, toggleCompare } = useCompare();
+
   // State for each checkbox group
   const [brandChecks, setBrandChecks] = useState({
     airRoxy: false,
@@ -414,8 +415,21 @@ const { comparedItems, toggleCompare } = useCompare();
                         )}
                       </span>
                     </div>
-                    <div onClick={() => toggleCompare(item.id.toString())} className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer">
-  <img src={compare} className="w-[24px] h-[18px]" alt="compare" />
+                 <div
+  onClick={() => {
+    toggleCompare(item.id.toString());
+  }}
+  className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
+>
+  <span
+   
+  >
+    {comparedItems[item.id] ? (
+      <img src={images.checked} className="w-[24px] h-[18px]" alt="compare" />
+    ) : (
+      <img src={compare} className="w-[24px] h-[18px]" alt="compare" />
+    )}
+  </span>
 </div>
                   </div>
                 </div>      

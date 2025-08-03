@@ -6,6 +6,7 @@ import tinkoff from "./tinkoff.svg";
 import visa from "./visa.svg";
 import halva from "./halva.svg";
 import v from "./v.svg";
+import checked from './checked.svg'
 import check from "./ptichka.svg";
 import burger from "./burger2.svg";
 import search from "./search.svg";
@@ -197,6 +198,8 @@ export const images = {
   Rectangle4,
 buy,
   ciziq,
+checked,
   mapCard1,
   mapCard2,
+   check,
 };

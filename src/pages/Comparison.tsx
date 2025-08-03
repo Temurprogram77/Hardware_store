@@ -1,38 +1,101 @@
-import React, { useEffect, useState } from 'react';
-import { Breadcrumb, Button } from 'antd';
-import { Link } from 'react-router-dom';
-import { images } from '../assets/images';
+import { Breadcrumb, Button } from "antd";
+import { Link } from "react-router-dom";
+import { images } from "../assets/images";
+import { useCompare } from "../context/CompareContext";
+import { data } from "../data/data";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import { useHeart } from "../context/HeartClickedContext";
+
+const { cartt } = images;
 
 const Comparison = () => {
-  const [items, setItems] = useState({});
+  const { comparedItems } = useCompare();
+  const { likedItems, toggleHeart } = useHeart();
 
-  useEffect(() => {
-    const storedData = localStorage.getItem("yourKey");
-    if (storedData) {
-      setItems(JSON.parse(storedData));
-    }
-  }, []);
+  // Faqat true bo'lgan id'lar
+  const selectedIds = Object.keys(comparedItems)
+    .filter((id) => comparedItems[id])
+    .map(Number);
 
-  const hasItems = Object.keys(items).length > 0;
+  // data.ts dan filter
+  const selectedProducts = data.filter((product) =>
+    selectedIds.includes(product.id)
+  );
+
+  const hasItems = selectedProducts.length > 0;
 
   return (
-    <div className='max-w-[1460px] mx-auto my-5'>
+    <div className="max-w-[1460px] mx-auto my-5">
       <div className="mb-6">
         <Breadcrumb>
-          <Breadcrumb.Item className='cursor-pointer hover:text-blue-500'>
-            <Link className='hover:text-blue-500' to={"/"}>Стройоптторг</Link>
+          <Breadcrumb.Item className="cursor-pointer hover:text-blue-500">
+            <Link className="hover:text-blue-500" to={"/"}>
+              Стройоптторг
+            </Link>
           </Breadcrumb.Item>
-          <Breadcrumb.Item>Корзина товаров</Breadcrumb.Item>
+          <Breadcrumb.Item>Сравнение</Breadcrumb.Item>
         </Breadcrumb>
         <h2 className="text-2xl md:text-3xl font-bold mt-2">Сравнение</h2>
       </div>
 
       {hasItems ? (
-        <div className="grid grid-cols-2 gap-4">
-          {Object.entries(items).map(([key, value]) => (
-            <div key={key} className="p-4 border rounded shadow">
-              <h3>ID: {key}</h3>
-              <p>Status: {value ? "True" : "False"}</p>
+        <div className="w-full md:px-0 px-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
+          {selectedProducts.map((item) => (
+            <div key={item.id} className="cursor-pointer p-4 rounded shadow">
+              <Link to={`/product/${item.id}`}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-48 object-cover"
+                />
+              </Link>
+              <p className="text-xs text-gray-500 md:text-[12px] text-[10px]">
+                {item.item}
+              </p>
+              <Link to={`/product/${item.id}`}>
+                <h3 className="font-semibold md:text-[16px] text-[14px] hover:text-[#186FD4] duration-200">
+                  {item.title}
+                </h3>
+              </Link>
+
+              <div className="flex items-center gap-2">
+                <span className="line-through text-gray-400 md:text-[13px] text-[10px]">
+                  {item.oldMoney}
+                </span>
+                <span className="text-[#003B73] font-bold md:text-[16px] text-[13px]">
+                  {item.newMoney}
+                </span>
+                <p className="!m-0 bg-[#1B9665] text-white pb-1 pt-1.5 px-2 text-[10px] font-semibold rounded-md">
+                  {item.sale}
+                </p>
+              </div>
+
+              <div className="mt-3 md:gap-0 gap-1 flex items-center justify-between">
+                <div className="flex gap-3 hover:bg-[#000] duration-200 bg-[#186FD4] text-white w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md">
+                  <img src={cartt} alt="cart" className="sm:block hidden" />
+                  <span>Купить</span>
+                </div>
+                <div className="flex items-center md:gap-2 gap-1">
+                  <div
+                    onClick={() => toggleHeart(item.id.toString())}
+                    className="border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
+                  >
+                    <span
+                      className={`${
+                        likedItems[item.id]
+                          ? "text-blue-500 animate-ping-short"
+                          : "text-gray-400"
+                      }`}
+                    >
+                      {likedItems[item.id] ? (
+                        <HeartFilled />
+                      ) : (
+                        <HeartOutlined />
+                      )}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -44,15 +107,16 @@ const Comparison = () => {
           <p className="text-lg font-medium">Ваш список сравнения пуст</p>
           <p className="text-gray-600 mt-2">
             У вас пока нет товаров в списке сравнения. <br />
-            На странице <span className="font-semibold">"Каталог"</span> вы найдете много интересных товаров.
+            На странице <span className="font-semibold">"Каталог"</span> вы
+            найдете много интересных товаров.
           </p>
           <Button type="primary" className="w-[200px] !h-[50px] mt-4">
-            <Link  to="/catalog">ПЕРЕЙТИ В КАТАЛОГ</Link>
+            <Link to="/catalog">ПЕРЕЙТИ В КАТАЛОГ</Link>
           </Button>
         </div>
       )}
     </div>
   );
-}; 
+};
 
 export default Comparison;
