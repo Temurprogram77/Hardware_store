@@ -92,7 +92,7 @@ const Blog = () => {
                <CustomInput className={"h-[40px]"} type="email" placeholder="Email" />
 
                <CustomButton text=" Добавить в корзину" type="primary" />
-               <CustomCheckbox name="Согласен c обработкой персональных данных в соответствии c политикой конфиденциальности" />
+               <CustomCheckbox name="Согласен c обработкой персональных" />
                </div>
              </Form>
             </div>

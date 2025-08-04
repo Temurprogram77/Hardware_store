@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FiUserPlus } from 'react-icons/fi';
 import CustomPhoneInput, { phoneRegex } from '../components/ui/CustomINputPhone';
 import CustomInput from '../components/ui/CustomInput';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
@@ -164,7 +163,7 @@ const Register = () => {
                         onFocus={() => setPhoneError(null)}
                         onBlur={() => handleBlur("phone")}
                         placeholder='+998 (__) ___-__-__'
-className={`flex flex-wrap border border-gray-200 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 transition-all 
+                        className={`flex flex-wrap border border-gray-200 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 transition-all 
 ${phoneError ? '!border-red-500' : ''}`}
                       />
                       {phoneError && <p className="text-red-600 text-sm mt-1">{phoneError}</p>}
@@ -177,7 +176,7 @@ ${phoneError ? '!border-red-500' : ''}`}
                     onChange={(e) => setFullName(e.target.value)}
                     onFocus={() => setFullNameError(null)}
                     onBlur={() => handleBlur("fullName")}
-className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
+                    className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
                       ${fullNameError ? '!border-red-500' : ''}`}
                     placeholder="Ваше полное имя"
                   />
