@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import CustomPhoneInput, { phoneRegex } from '../components/ui/CustomINputPhone';
+import CustomPhoneInput, { phoneRegex } from '../components/ui/InputPhone';
 import CustomInput from '../components/ui/CustomInput';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
 import CustomButton from '../components/ui/CustomButton';
