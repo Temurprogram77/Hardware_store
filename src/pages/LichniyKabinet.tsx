@@ -76,6 +76,7 @@ const LichniyKabinet = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("accounts");
+        navigate("/auth"); 
         navigate("/auth");
     };
 
