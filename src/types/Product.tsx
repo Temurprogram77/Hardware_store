@@ -3,5 +3,5 @@ export interface Product {
   name: string;
   price: number;
   image: string;
-  [key: string]: any; // Agar qo‘shimcha maydonlar bo‘lsa
+  [key: string]: any;
 }

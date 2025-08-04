@@ -9,7 +9,6 @@ type Product = {
   image: string;
   isNew?: boolean;
 };
-
 const products: Product[] = [
   {
     id: 1,
@@ -42,10 +41,8 @@ const products: Product[] = [
     discount: 12,
     image: "/images/unitaz.png",
   },
-  
 ];
-
-const FavoriteProducts: React.FC = () => {
+const FeaturedProducts: React.FC = () => {
   return (
     <div className="p-6 bg-white">
       <h1 className="text-3xl font-semibold mb-6">Избранные товары</h1>
@@ -93,4 +90,4 @@ const FavoriteProducts: React.FC = () => {
   );
 };
 
-export default FavoriteProducts;
+export default FeaturedProducts;
