@@ -8,6 +8,7 @@ import { useHeart } from "../context/HeartClickedContext";
 import { images } from "../assets/images";
 import { useCompare } from "../context/CompareContext";
 
+
 const { cartt, compare, arrow } = images;
 
 type CheckboxItemProps = {
@@ -50,7 +51,7 @@ const CheckboxItem: React.FC<CheckboxItemProps> = ({
     <span className="text-[13px] !font-medium">{label}</span>
   </label>
 );
-const CatalogCard = () => {
+const FeaturedProducts = () => {
   const { likedItems, toggleHeart } = useHeart();
 const { comparedItems, toggleCompare } = useCompare();
   return (
@@ -247,4 +248,4 @@ const { comparedItems, toggleCompare } = useCompare();
   )
 }
 
-export default CatalogCard
+export default FeaturedProducts
