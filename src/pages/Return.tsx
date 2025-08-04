@@ -1,33 +1,7 @@
 import Acardion from "../components/Acardion"
 import Advertisement from "../components/Advertisement"
 import Names from "../components/ui/Names"
-interface Review {
-  key: number,
-  quiz: string,
-  answer: string,
-}
-const quizs:Review[]=[
-    {
-    key: 1,
-    quiz: "Куда обращаться в случае поломки в течении гарантийного срока?",
-    answer: "Был не раз, рекомендую",
-  },
-  {
-    key: 2,
-    quiz: "Куда обращаться в случае поломки в течении гарантийного срока?",
-    answer: "Проводится платная диагностика и ремонт товара",
-  },
-  {
-    key: 3,
-    quiz: "Есть ли гарантийный ремонт?",
-    answer: "Был не раз, рекомендую",
-  },
-  {
-    key: 4,
-    quiz: "Какой срок действия гарантии?",
-    answer: "Был не раз, рекомендую",
-  }
-]
+import {quizs} from '../data/Rew'
 const Return:React.FC = () => {
   return (
     <section className="mt-8 max-w-[1470px] mx-auto px-4">
