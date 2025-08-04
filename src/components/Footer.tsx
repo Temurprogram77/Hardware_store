@@ -121,18 +121,21 @@ const Footer: React.FC = () => {
             <p className="w-[290px] text-[15px]">
               Подпишитесь на рассылку и будьте в курсе!
             </p>
-            <div className="relative w-full max-w-md">
-              <Input
-                className="w-full h-12 pr-12 pl-4 py-2 border border-gray-300 rounded-lg hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
-                placeholder="Ваш email"
-              />
-              <button
-                type="submit"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-500 hover:text-blue-700"
-              >
-                <IoSend size={20} />
-              </button>
-            </div>
+       <div className="relative w-full max-w-md">
+  <Input
+    className="w-full h-12 pl-4 pr-14 border border-gray-300 rounded-lg hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+    placeholder="Ваш email"
+  />
+  <button
+    type="submit"
+    className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-500 hover:text-blue-700"
+  >
+    <IoSend size={20} />
+  </button>
+</div>
+
+
+
           </div>
         </div>
 
