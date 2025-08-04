@@ -7,6 +7,8 @@ import CustomCheckbox from '../components/ui/CustomCheckbox';
 import CustomButton from '../components/ui/CustomButton';
 import Label from '../components/ui/Label';
 import Names from '../components/ui/Names';
+import UserIcon from '../components/UserIcon';
+import RightIcon from '../components/RightIcon';
 
 export const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -162,8 +164,8 @@ const Register = () => {
                         onFocus={() => setPhoneError(null)}
                         onBlur={() => handleBlur("phone")}
                         placeholder='+998 (__) ___-__-__'
-                        className={`flex flex-wrap border border-gray-200 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 transition-all 
-                          ${phoneError ? '!border-red-500' : ''}`}
+className={`flex flex-wrap border border-gray-200 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 transition-all 
+${phoneError ? '!border-red-500' : ''}`}
                       />
                       {phoneError && <p className="text-red-600 text-sm mt-1">{phoneError}</p>}
                     </div>
@@ -175,7 +177,7 @@ const Register = () => {
                     onChange={(e) => setFullName(e.target.value)}
                     onFocus={() => setFullNameError(null)}
                     onBlur={() => handleBlur("fullName")}
-                    className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
+className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
                       ${fullNameError ? '!border-red-500' : ''}`}
                     placeholder="Ваше полное имя"
                   />
@@ -244,8 +246,8 @@ const Register = () => {
               </div>
 
               <div className="max-sm:mt-15">
-                <div className="flex gap-5 max-sm:gap-3">
-                  <FiUserPlus className="text-red-600 font-normal max-sm:w-8 max-sm:h-8 md:w-10 md:h-10" />
+                <div className="flex items-center gap-5 max-sm:gap-3">
+                  <UserIcon className="text-red-600 font-normal !w-15 !h-15 md:w-10 md:h-10" />
                   <h3 className="!font-bold text-2xl max-sm:text-lg md:text-xl">Уже есть аккаунт?</h3>
                 </div>
                 <div className="flex flex-col ml-18 mt-7 max-sm:mt-2">
@@ -254,13 +256,14 @@ const Register = () => {
                       Перейдите к <span className="font-bold">авторизации</span> если у вас уже есть зарегистрированный аккаунт.
                     </p>
                   </div>
-                  <CustomButton
-                    text=''
+                  <Link
+                    to={"/auth"}
                     type="primary"
-                    className="!h-[60px] !bg-black xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
+                    className="!h-[60px] !bg-black text-white flex items-center justify-center rounded-sm xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
                   >
-                    <Link to={"/auth"}>Авторизоваться</Link>
-                  </CustomButton>
+                    Авторизоваться
+                    <RightIcon size={30} />
+                  </Link>
                 </div>
               </div>
             </div>

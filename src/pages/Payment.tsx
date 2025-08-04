@@ -1,4 +1,4 @@
-import { Breadcrumb } from 'antd';
+import  Names  from '../components/ui/Names';
 import Advertisement from "../components/Advertisement"
 import ReusableList from "../components/ReusableList";
 import {
@@ -14,15 +14,9 @@ const Payment = () => {
   return (
     <div className='flex justify-center items-center'>
         <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
-            {/* Breadcrumb */}
-              <Breadcrumb className="mb-6">
-                <Breadcrumb.Item>
-                  <span className="text-black">Стройоптторг</span>
-                </Breadcrumb.Item>
-                <Breadcrumb.Item>
-                  <span className="text-gray-400">Способы оплаты</span>
-                </Breadcrumb.Item>
-              </Breadcrumb>
+            {/* Link */}
+            <Names name='Способы оплаты' link='/payment' />
+            
               <h1 className="!font-bold !mt-5 text-[32px] text-[#2c333d] md:text-[35px] lg:text-[40px]">Способы оплаты</h1>
               <div className='block gap-4 md:flex md:mb-6'>
                 <div className='overflow-x-hidden w-[95%]'>

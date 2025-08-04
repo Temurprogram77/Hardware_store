@@ -67,7 +67,6 @@ const contacts = [
 
 
 const Contacts = () => {
-// const [agree, setAgree] = useState(false);
 
   return (
     <div className='flex justify-center items-center'>
@@ -112,7 +111,6 @@ const Contacts = () => {
           </div>
         </div>
 
-        {/* birxil cardlar */}
         <div>
           <div>
             <div className='md:mt-11 flex md:flex-row flex-col gap-3 justify-center items-center '>
@@ -183,7 +181,7 @@ const Contacts = () => {
                 Номер телефона <span className="text-red-500">*</span>
               </label>
               
-              <CustomInput placeholder="+7 (___) ___-__-__" className={'h-[40px]'} type="number" />
+              <CustomInput placeholder="+7 (___) ___-__-__" className={'h-[40px]'} type="number" /> 
             </div>
           </div>
 
