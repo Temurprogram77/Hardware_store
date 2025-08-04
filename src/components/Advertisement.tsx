@@ -30,7 +30,7 @@ const Advertisement: React.FC = () => {
 
           <CustomButton text="Добавить в корзину" type="primary" />
 
-          <CustomCheckbox name="Согласен c обработкой персональных данных в соответствии c политикой конфиденциальности" />
+          <CustomCheckbox name="Согласен c обработкой персональных" />
         </div>
       </Form>
     </section>

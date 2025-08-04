@@ -334,7 +334,7 @@ const { comparedItems, toggleCompare } = useCompare();
           Показать фильтры
         </div>
         <div className="flex flex-col">
-          <div className="flex justify-between items-center my-3">
+        <div className="flex justify-between items-center my-3">
             <div className="flex md:w-auto w-full md:m-0 mx-4 justify-between items-center gap-3">
               <p className="!m-0">Сортировка:</p>
               <select
