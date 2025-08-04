@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Breadcrumb, Form } from 'antd';
+import  Names  from '../components/ui/Names';
+import { Form } from 'antd';
 import CustomInput from "../components/ui/CustomInput";
 import CustomButton from "../components/ui/CustomButton";
 import CustomCheckbox from "../components/ui/CustomCheckbox";
@@ -19,15 +20,8 @@ const Blog = () => {
   return (
     <div className='flex justify-center items-center md:mb-15 mb-13'>
       <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
-{/* Breadcrumb */}
-        <Breadcrumb className="mb-6">
-          <Breadcrumb.Item>
-            <span className="text-black">Стройоптторг</span>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <span className="text-gray-400">Блог</span>
-          </Breadcrumb.Item>
-        </Breadcrumb>
+{/* Link */}
+      <Names name='Блог' link='/blog' />
         <div>
           <h2 className="text-[40px] !font-bold !mt-5 text-[#2c333d]">Блог</h2>
           <div  className='flex md:gap-[10px] gap-[20px] md:flex-row flex-col'>
