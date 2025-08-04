@@ -2,10 +2,12 @@ import  Names  from '../components/ui/Names';
 import { SlLocationPin } from "react-icons/sl";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
-import CustomInput from "../components/ui/CustomInput";
+import CustomPhoneInput, { phoneRegex } from "../components/ui/CustomINputPhone";
+import CustomInput from "../components/ui/CustomInput"
 import CustomTextarea from "../components/ui/CustomTextarea";
 import CustomCheckbox from "../components/ui/CustomCheckbox";
 import CustomButton from "../components/ui/CustomButton";
+import { useState } from 'react';
 
 type Region = {
   city: string;
@@ -53,7 +55,6 @@ const regions: Region[] = [
   },
 ];
 
-
 const contacts = [
   { title: "Генеральный директор", phone: "8 (8782) 28-42-67 (приемная)" },
   { title: "Отдел снабжения", phone: "8 (8782) 28-42-67" },
@@ -65,8 +66,25 @@ const contacts = [
   { title: "Отдел кадров", phone: "8 (8782) 28-42-73" }
 ];
 
-
 const Contacts = () => {
+  const [phone, setPhone] = useState<string>("");
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+
+
+    const handleBlur = (field: string) => {
+      switch (field) {
+        case "phone":
+          if (!phone || !phoneRegex.test(phone)) {
+            setPhoneError("Пожалуйста, введите действительный телефон!");
+          } else {
+            setPhoneError(null);
+          }
+          break;
+        default:
+          break;
+      }
+    };
+  
 
   return (
     <div className='flex justify-center items-center'>
@@ -181,7 +199,15 @@ const Contacts = () => {
                 Номер телефона <span className="text-red-500">*</span>
               </label>
               
-              <CustomInput placeholder="+7 (___) ___-__-__" className={'h-[40px]'} type="number" /> 
+              <CustomPhoneInput
+              value={phone}
+              onChange={setPhone}
+              onFocus={() => setPhoneError(null)}
+              onBlur={() => handleBlur("phone")}
+              placeholder="+998 () ___--__"
+              className={`h-[40px] bg-white rounded-md text-[12px]  text-[#2c333d] outline-none placeholder:text-[#] border-[1px] border-[#d9d9d9] lg:w-full 
+              ${phoneError ? "!border-red-500" : ""}`}
+            /> 
             </div>
           </div>
 
