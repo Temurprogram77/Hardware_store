@@ -213,7 +213,7 @@ const Contacts = () => {
 
           {/* Textarea */}
           <div>
-            <label className="block mb-1 text-[14pxadd] font-medium text-gray-700">
+            <label className="block mb-1 text-[14px] font-medium text-gray-700">
               Текст сообщения <span className="text-red-500">*</span>
             </label>
             <CustomTextarea placeholder="Введите ваш вопрос" rows={4} />
