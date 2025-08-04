@@ -64,7 +64,7 @@ const quizs: Review[] = [
     </li>
     /
     <li className="text-gray-500">
-      <Link to={'/return'}>Вопрос-ответ</Link>
+      <Link to={'/faq'}>Вопрос-ответ</Link>
     </li>
   </ul>
 
