@@ -114,7 +114,8 @@ const AuthPage: React.FC = () => {
                 <p className='!mt-5 max-sm:w-[240px] text-sm flex flex-wrap leading-7 text-gray-500 md:!mt-0'>
                   Мы запрашиваем у вас только информацию, необходимую для того, чтобы сделать процесс покупки более быстрым и легким.
                 </p>
-                <Link
+<Link className='flex items-center justify-center rounded-sm text-white !h-[60px] lg:!mt-8 max-sm:w-[220px] lg:w-3xs !bg-black !text-sm !uppercase hover:!bg-orange-700 transition-all' to={"/register"}>Зарегистрироваться <MdOutlineChevronRight size={30} /></Link>
+               <Link
                   className='flex items-center justify-center rounded-sm text-white !h-[60px] lg:!mt-8 max-sm:w-[220px] lg:w-3xs !bg-black !text-sm !uppercase hover:!bg-orange-700 transition-all'
                   to={"/register"}
                 >Зарегистрироваться

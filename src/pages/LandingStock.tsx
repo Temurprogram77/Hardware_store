@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Advertisement from "../components/Advertisement";
 import CustomButton from "../components/ui/CustomButton";
 import Names from "../components/ui/Names";
