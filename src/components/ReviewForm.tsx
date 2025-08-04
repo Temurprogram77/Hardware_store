@@ -5,6 +5,7 @@ import CustomInput from "./ui/CustomInput";
 import CustomTextarea from "./ui/CustomTextarea";
 import CustomCheckbox from "./ui/CustomCheckbox";
 import Label from "./ui/Label";
+import CustomUpload from "./ui/CustomUpload";
 
 const ReviewForm:React.FC = () => {
   const [form] = Form.useForm();
@@ -47,14 +48,8 @@ const ReviewForm:React.FC = () => {
             <Label text="Текст отзыва" required/>
         <CustomTextarea rows={4} placeholder="Ваш отзыв" regex={/^.{10,}$/}/>
 
-        <Upload.Dragger name="files" multiple>
-          <p className="ant-upload-drag-icon">
-            <UploadOutlined />
-          </p>
-          <p className="ant-upload-text">
-            Нажмите для загрузки или перетащите файл в это поле
-          </p>
-        </Upload.Dragger>
+        <CustomUpload regex={/\.(pdf|jpg|jpeg|png)$/i} />
+
 
       <CustomCheckbox name={"Согласен c обработкой персональных данных в соответствии c политикой конфиденциальности"} />
 
