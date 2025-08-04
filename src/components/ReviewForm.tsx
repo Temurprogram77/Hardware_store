@@ -45,7 +45,7 @@ const ReviewForm:React.FC = () => {
       </div>
 
             <Label text="Текст отзыва" required/>
-        <CustomTextarea rows={4} placeholder="Ваш отзыв"/>
+        <CustomTextarea rows={4} placeholder="Ваш отзыв" regex={/^.{10,}$/}/>
 
       <Form.Item label="Прикрепить фото" name="photos">
         <Upload.Dragger name="files" multiple>
