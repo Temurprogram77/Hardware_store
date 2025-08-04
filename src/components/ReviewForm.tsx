@@ -23,12 +23,24 @@ const ReviewForm:React.FC = () => {
       <div className="grid grid-cols-1 mb-[1rem] md:grid-cols-2 gap-4">
          <div>
            <Label text="Ваше имя" required/>
-          <CustomInput  className={"h-[40px]"} placeholder="Введите ваше имя" type="string"/>
+         <CustomInput
+  type="text"
+  placeholder="Введите ваше имя"
+  className={"h-[40px]"}
+  regex={/^[A-Za-z]{3,}( [A-Za-z]{3,})?$/}
+/>
+ 
          </div>
 
           <div>
             <Label text="Введите ваш электронный адрес" required/>
-          <CustomInput  className={"h-[40px]"} placeholder="Введите ваш электронный адрес" type="string"/>
+          <CustomInput
+  type="text"
+  placeholder="Введите ваш электронный адрес"
+  className={"h-[40px]"}
+  regex={/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/}
+/>
+
           </div>
       </div>
 
