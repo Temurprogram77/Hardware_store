@@ -1,10 +1,15 @@
-import { Link  } from "react-router-dom";
+import { images } from "../assets/images";
+import { Link,  } from "react-router-dom";
 import { Range } from "react-range";
 import { useState } from "react";
-import CatalogCard from "../components/CatalogCard";
-import Names from "../components/ui/Names";
 import { HiMenu } from "react-icons/hi";
-import { HeartOutlined, HeartFilled } from "@ant-design/icons";
+import { useHeart } from "../context/HeartClickedContext";
+import { useCompare } from "../context/CompareContext";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import { data } from "../data/data";
+
+const { cartt, compare, arrow } = images;
+
 type CheckboxItemProps = {
   label: string;
   checked: boolean;
@@ -49,8 +54,7 @@ const CheckboxItem: React.FC<CheckboxItemProps> = ({
 const ProductCatalog = ({ item }: { item: { id: string } }) => {
   const [values, setValues] = useState<number[]>([3000, 52500]);
   const { likedItems, toggleHeart } = useHeart();
-  const { comparedItems, toggleCompare } = useCompare();
-
+const { comparedItems, toggleCompare } = useCompare();
   // State for each checkbox group
   const [brandChecks, setBrandChecks] = useState({
     airRoxy: false,
@@ -127,7 +131,10 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
   
   return (
     <div className="max-w-[1460px] mx-auto my-5">
-      <Names link="/catalog" name="Каталог"/>
+      <div className="text-[13px] !font-medium mb-6 flex items-center 2xl:mx-0 mx-3 gap-3">
+        <Link to={"/"}>Стройоптторг</Link> /{" "}
+        <Link to={""}>Электроинструмент</Link>
+      </div>
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="lg:block hidden lg:w-[40%] w-full p-4 pl-0 rounded">
           <div className="font-semibold">
@@ -407,21 +414,8 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                         )}
                       </span>
                     </div>
-                 <div
-  onClick={() => {
-    toggleCompare(item.id.toString());
-  }}
-  className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
->
-  <span
-   
-  >
-    {comparedItems[item.id] ? (
-      <img src={images.checked} className="w-[24px] h-[18px]" alt="compare" />
-    ) : (
-      <img src={compare} className="w-[24px] h-[18px]" alt="compare" />
-    )}
-  </span>
+                    <div onClick={() => toggleCompare(item.id.toString())} className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer">
+  <img src={compare} className="w-[24px] h-[18px]" alt="compare" />
 </div>
                   </div>
                 </div>      
@@ -523,7 +517,6 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
             </p>
           </div>
         </div>
-        <CatalogCard />
       </div>
     </div>
   );
