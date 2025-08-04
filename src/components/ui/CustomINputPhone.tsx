@@ -45,7 +45,7 @@ const CustomPhoneInput = forwardRef<HTMLInputElement, CustomPhoneInputProps>(
             <input
                 {...rest}
                 ref={ref}
-                type="tel" // tel type mobil qurilmalarda raqamli klaviaturani ochadi
+                type="tel"
                 onChange={handleChange}
                 value={value}
                 placeholder={placeholder}

@@ -2,7 +2,6 @@ import React from "react";
 
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { data } from "../data/data";
-import { HiMenu } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { useHeart } from "../context/HeartClickedContext";
 import { images } from "../assets/images";
@@ -144,13 +143,13 @@ const CatalogCard = () => {
                       className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
                     >
                       {isCompared ? (
-                        <FaCheck className="w-[24px] h-[18px]" />
-                      ) : (
                         <img
                           src={compare}
                           className="w-[24px] h-[18px]"
                           alt="compare"
                         />
+                      ) : (
+                        <FaCheck className="w-[24px] h-[18px]" />
                       )}
                     </div>
                   </div>
