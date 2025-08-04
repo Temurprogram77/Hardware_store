@@ -18,7 +18,7 @@ const ReviewForm:React.FC = () => {
       form={form}
       layout="vertical"
       onFinish={onFinish}
-      className="max-w-[600px] mx-auto"
+      className="max-w-[600px] mx-auto flex flex-col gap-[1rem]"
     >
       <div className="grid grid-cols-1 mb-[1rem] md:grid-cols-2 gap-4">
          <div>
@@ -47,7 +47,6 @@ const ReviewForm:React.FC = () => {
             <Label text="Текст отзыва" required/>
         <CustomTextarea rows={4} placeholder="Ваш отзыв" regex={/^.{10,}$/}/>
 
-      <Form.Item label="Прикрепить фото" name="photos">
         <Upload.Dragger name="files" multiple>
           <p className="ant-upload-drag-icon">
             <UploadOutlined />
@@ -56,15 +55,10 @@ const ReviewForm:React.FC = () => {
             Нажмите для загрузки или перетащите файл в это поле
           </p>
         </Upload.Dragger>
-      </Form.Item>
 
-      <Form.Item name="agreement" valuePropName="checked">
       <CustomCheckbox name={"Согласен c обработкой персональных данных в соответствии c политикой конфиденциальности"} />
-      </Form.Item>
 
-      <Form.Item>
       <CustomButton  type="primary" text="ОТПРАВИТЬ" />
-      </Form.Item>
     </Form>
   );
 };
