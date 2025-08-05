@@ -43,15 +43,10 @@ const ReviewForm:React.FC = () => {
 
           </div>
       </div>
-
             <Label text="Текст отзыва" required/>
         <CustomTextarea rows={4} placeholder="Ваш отзыв" regex={/^.{10,}$/}/>
-
         <CustomUpload regex={/\.(pdf|jpg|jpeg|png)$/i} />
-
-
       <CustomCheckbox name={"Согласен c обработкой персональных данных в соответствии c политикой конфиденциальности"} />
-
       <CustomButton  type="primary" text="ОТПРАВИТЬ" />
     </Form>
   );
