@@ -3,6 +3,7 @@ import CustomButton from "../components/ui/CustomButton"
 import CustomInput from "../components/ui/CustomInput"
 import CustomCheckbox from "../components/ui/CustomCheckbox"
 import Names from '../components/ui/Names'
+import { Stocks } from "../data/Rew";
 
 const Stock:React.FC= () => {
 const navigate = useNavigate();
