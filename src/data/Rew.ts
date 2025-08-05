@@ -102,7 +102,7 @@ export const reviews: Review2[]=[
     images: []
   }
 ];
-export const reviews: Review2[]=[
+export const reviews2: Review2[]=[
   {
     name: "Василий",
     date: "10.06.2022",
