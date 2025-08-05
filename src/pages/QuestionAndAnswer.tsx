@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import Questions from "../components/Acardion"
 import Advertisement from "../components/Advertisement";
 import { quizs2 } from "../data/Rew";
