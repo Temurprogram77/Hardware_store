@@ -1,5 +1,6 @@
 import type {Review} from '../types/Review'
 import type {Review2} from '../types/Review'
+import type {stock} from '../types/Review'
 import img1 from '../assets/vasiliy1.png'
 import img2 from '../assets/vasiliy2.png'
 import img3 from '../assets/ivan1.png'
@@ -128,7 +129,7 @@ export const quizs2: Review[] = [
     answer: "Акции проводятся регулярно, следите за обновлениями на сайте или в наших соцсетях.",
   }
 ];
-  const Stocks:stock[]= [
+export  const Stocks:stock[]= [
   {
     id:1,
     title: "Метизные изделия",
