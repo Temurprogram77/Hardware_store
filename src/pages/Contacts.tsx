@@ -112,6 +112,7 @@ const Contacts = () => {
                   <h6 className='hover:text-[#186fd4]'>8 (8782) 28-42-72</h6>
                 </div>
               </div>
+              
               <div className='flex gap-2 mt-4'>
                 <MdOutlineMailOutline className='text-[20px]'/>
                 <div>
