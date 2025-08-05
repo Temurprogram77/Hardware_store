@@ -84,7 +84,7 @@ const CatalogCard = () => {
             </div>
           </div>
         </div>
-        <div className="w-full md:px-0 px-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
+        <div className="w-full md:px-0 px-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
           {data.map((item, index) => {
             const isCompared = comparedItems[item.id];
             const isInCart = cartItems.some(
@@ -97,7 +97,7 @@ const CatalogCard = () => {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-50 mb-2 "
                   />
                 </Link>
                 <p className="text-xs text-gray-500 md:text-[12px] text-[10px]">

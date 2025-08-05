@@ -231,7 +231,7 @@ const Navbar: React.FC = () => {
               <img
                 src={Logo}
                 alt="Logo"
-                className="h-8 md:h-10 xl:w-40 2xl:w-40 object-contain"
+                className="h-9 md:h-10 xl:w-40 2xl:w-40 object-contain"
               />
             </Link>
           </div>
@@ -290,14 +290,14 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
             <Link to="/deals">
               <div className="hidden sm:flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={gift} alt="gift" className="w-5 h-4" />
+                <img src={gift} alt="gift" className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]" />
                 <p className="text-[12px] !m-0 font-medium">Все акции</p>
               </div>
             </Link>
 
             <Link to="/auth">
               <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={user} alt="user" className="w-5 h-4" />
+                <img src={user} alt="user" className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]" />
                 <p className="hidden !m-0 sm:block text-[12px] font-medium">
                   Войти
                 </p>
@@ -309,7 +309,7 @@ const Navbar: React.FC = () => {
                 <div className="relative">
                   <img
                     src={compare}
-                    className="w-[24px] h-[18px]"
+                    className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]"
                     alt="compare"
                   />
                   {comparedCount > 0 && (
@@ -329,7 +329,7 @@ const Navbar: React.FC = () => {
                 <div className="relative rounded-md ">
                   <img
                     src={heart}
-                    className="w-[24px] h-[18px]"
+                    className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]"
                     alt="wishlist"
                   />
                   {likedCount > 0 && (
@@ -346,7 +346,7 @@ const Navbar: React.FC = () => {
 
             <Link to="/basket">
               <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={basket} alt="basket" className="w-5 h-4" />
+                <img src={basket} alt="basket" className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]" />
                 <p className="hidden !m-0 sm:block text-[12px] font-medium">
                   Корзина
                 </p>
