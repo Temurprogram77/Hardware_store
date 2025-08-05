@@ -2,20 +2,13 @@ import { Link } from "react-router-dom"
 import Questions from "../components/Acardion"
 import Advertisement from "../components/Advertisement";
 import { quizs2 } from "../data/Rew";
+import Names from "../components/ui/Names";
 
 const QuestionAndAnswer:React.FC = () => {
 
   return (
     <section className="mt-8 max-w-[1470px] mb-[3rem] mx-auto px-4">
-  <ul className="flex text-[15px] gap-4 flex-wrap">
-    <li>
-      <Link to={'/'}>Стройоптторг</Link>
-    </li>
-    /
-    <li className="text-gray-500">
-      <Link to={'/faq'}>Вопрос-ответ</Link>
-    </li>
-  </ul>
+  <Names link="/faq"  name="Вопрос-ответ"/>
 
   <div className="flex flex-col md:flex-row justify-between gap-8 mt-8">
     <div className="flex flex-col w-full md:w-[93%]">
