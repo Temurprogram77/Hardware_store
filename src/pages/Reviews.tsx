@@ -23,7 +23,7 @@ const Reviews:React.FC = () => {
 
     <div>
       {
-        isNew?<NewList item={reviews} />:<NewList item={reviews2} />
+        isNew?<NewList item={reviews2} />:<NewList item={reviews} />
       }
     </div>
 
