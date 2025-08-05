@@ -52,7 +52,7 @@ const CheckboxItem: React.FC<CheckboxItemProps> = ({
 );
 
 const CatalogCard = () => {
-  const { addToCart } = useCart();
+  const { addToCart, cartItems } = useCart();
   const { likedItems, toggleHeart } = useHeart();
   const { comparedItems, toggleCompare, stateCLick } = useCompare();
   return (
@@ -87,6 +87,9 @@ const CatalogCard = () => {
         <div className="w-full md:px-0 px-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
           {data.map((item, index) => {
             const isCompared = comparedItems[item.id];
+            const isInCart = cartItems.some(
+              (cartItem) => cartItem.id === item.id
+            );
 
             return (
               <div key={index} className="cursor-pointer p-4 rounded shadow">
@@ -120,11 +123,26 @@ const CatalogCard = () => {
 
                 <div className="mt-3 md:gap-0 gap-1 flex items-center justify-between">
                   <div
-                    onClick={() => {addToCart(item); console.log("salom")}}
-                    className="flex gap-3 hover:bg-[#000] duration-200 bg-[#186FD4] text-white w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md"
+                    onClick={() => addToCart(item)}
+                    className={`flex gap-3 duration-200 w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md 
+    ${
+      isInCart
+        ? "bg-gray-400 cursor-not-allowed"
+        : "bg-[#186FD4] hover:bg-[#000] text-white cursor-pointer"
+    }`}
                   >
-                    <img src={cartt} alt="cart" className="sm:block hidden" />
-                    <span>Купить</span>
+                    {isInCart ? (
+                      <span>Добавлено</span>
+                    ) : (
+                      <>
+                        <img
+                          src={cartt}
+                          alt="cart"
+                          className="sm:block hidden"
+                        />
+                        <span>Купить</span>
+                      </>
+                    )}
                   </div>
 
                   <div className="flex items-center md:gap-2 gap-1">
