@@ -191,7 +191,7 @@ const Contacts = () => {
                 Ваше имя <span className="text-red-500">*</span>
               </label>
             
-              <CustomInput placeholder={"Введите ваше имя"} className={"h-[40px]"} type="text" />
+              <CustomInput regex={/^[A-Za-z]{3,}( [A-Za-z]{3,})?$/} placeholder={"Введите ваше имя"} className={"h-[40px]"} type="text" />
             </div>
 
             <div>
@@ -216,7 +216,7 @@ const Contacts = () => {
             <label className="block mb-1 text-[14px] font-medium text-gray-700">
               Текст сообщения <span className="text-red-500">*</span>
             </label>
-            <CustomTextarea placeholder="Введите ваш вопрос" rows={4} />
+            <CustomTextarea rows={4} regex={/^.{10,}$/} placeholder="Введите ваш вопрос"/>
           </div>
 
           {/* Submit + Checkbox */}
