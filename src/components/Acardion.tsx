@@ -29,7 +29,7 @@ const Acardion: React.FC<Props> = ({ quiz }) => {
           initial={false}
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-400 text-blue-200 text-xl"
+          className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-500 text-xl"
         >
           {isOpen ? <FaMinus /> : <FaPlus />}
         </motion.div>
