@@ -1,5 +1,4 @@
-import { Form, Upload, } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Form} from "antd";
 import CustomButton from "./ui/CustomButton";
 import CustomInput from "./ui/CustomInput";
 import CustomTextarea from "./ui/CustomTextarea";
