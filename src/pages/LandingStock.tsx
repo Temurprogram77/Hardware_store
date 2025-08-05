@@ -4,11 +4,11 @@ import CustomButton from "../components/ui/CustomButton";
 import Names from "../components/ui/Names";
 import type {stock} from '../types/Review'
 const LandingStock = () => {
-    const [chegirma,setChegirma]=useState<Stocks|null>(null)
+    const [chegirma,setChegirma]=useState<stock|null>(null)
   useEffect(() => {
     const stock = localStorage.getItem("Stock");
     if (stock) {
-      const stocks: Stocks = JSON.parse(stock);
+      const stocks: stock = JSON.parse(stock);
       setChegirma(stocks)
     } else {
       console.log("Stock not found in localStorage");
