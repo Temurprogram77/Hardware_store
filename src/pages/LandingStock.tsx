@@ -3,14 +3,6 @@ import Advertisement from "../components/Advertisement";
 import CustomButton from "../components/ui/CustomButton";
 import Names from "../components/ui/Names";
 
-interface Stock {
-  id: number;
-  title: string;
-  description: string;
-  discount: string;
-  link: string;
-  img: any;
-}
 
 const LandingStock = () => {
     const [chegirma,setChegirma]=useState<Stock|null>(null)
