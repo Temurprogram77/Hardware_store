@@ -3,7 +3,7 @@ import ReviewForm from "../components/ReviewForm";
 import Advertisement from "../components/Advertisement";
 import CustomButton from "../components/ui/CustomButton";
 import Names from "../components/ui/Names";
-import {reviews} from '../data/Rew'
+import {reviews, reviews2} from '../data/Rew'
 import { useState } from "react";
 
 const Reviews:React.FC = () => {
@@ -23,7 +23,7 @@ const Reviews:React.FC = () => {
 
     <div>
       {
-        isNew?<NewList item={reviews} />:<NewList item={reviews} />
+        isNew?<NewList item={reviews} />:<NewList item={reviews2} />
       }
     </div>
 
