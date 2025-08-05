@@ -4,8 +4,10 @@ import Advertisement from "../components/Advertisement";
 import CustomButton from "../components/ui/CustomButton";
 import Names from "../components/ui/Names";
 import {reviews} from '../data/Rew'
+import { useState } from "react";
 
 const Reviews:React.FC = () => {
+  const [isNew, setIsNew] = useState<boolean>(false);
   return (
     <section className="mt-8 max-w-[1470px] mb-[4rem]  mx-auto px-4">
     <Names name="Отзывы"  link="/reviews"/>
