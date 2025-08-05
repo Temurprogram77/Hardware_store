@@ -10,3 +10,12 @@ export interface Review2 {
   text: string,
   images: string[],
 }
+
+export interface stock{
+  id:number,
+  title:string,
+  description:string,
+  discount:string,
+  link:string,
+  img:any
+}
