@@ -129,7 +129,7 @@ const CatalogCard = () => {
 
                   <div className="flex items-center md:gap-2 gap-1">
                     <div
-                      onClick={() => toggleHeart(item.id.toString())}
+                      onClick={() => toggleHeart(item)}
                       className="border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
                     >
                       <span
