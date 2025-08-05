@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import Advertisement from "../components/Advertisement";
 import CustomButton from "../components/ui/CustomButton";
 import Names from "../components/ui/Names";
-import { Stocks } from "../data/Rew";
-
-
+import type {stock} from '../types/Review'
 const LandingStock = () => {
     const [chegirma,setChegirma]=useState<Stocks|null>(null)
   useEffect(() => {
