@@ -17,8 +17,8 @@ const Reviews:React.FC = () => {
         <div className="flex flex-col md:flex-row w-full justify-between mt-4 gap-8">
   <div className="flex flex-col w-full md:w-[93%]">
     <div className="w-[290px] h-[45px] flex justify-between items-center">
-      <CustomButton  type="primary" onClick={()=>setIsNew(false)} text="Сначала новые" />
-      <CustomButton  type="dashed" onClick={()=>setIsNew(true)} text="Сначала старые" />
+      <CustomButton  type={!isNew?'primary':'dashed'} onClick={()=>setIsNew(false)} text="Сначала новые" />
+      <CustomButton  type={isNew?'primary':'dashed'} onClick={()=>setIsNew(true)} text="Сначала старые" />
     </div>
 
     <div>
