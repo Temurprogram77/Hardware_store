@@ -47,7 +47,7 @@ const Acardion: React.FC<Props> = ({ quiz }) => {
               open: { opacity: 1, height: 'auto' },
               collapsed: { opacity: 0, height: 0 },
             }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
             <p className="text-sm text-gray-500 leading-6 mt-2">{quiz.answer}</p>
