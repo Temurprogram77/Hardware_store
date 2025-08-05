@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import Advertisement from "../components/Advertisement";
 import CustomButton from "../components/ui/CustomButton";
 import Names from "../components/ui/Names";
+import { Stocks } from "../data/Rew";
 
 
 const LandingStock = () => {
-    const [chegirma,setChegirma]=useState<Stock|null>(null)
+    const [chegirma,setChegirma]=useState<|null>(null)
   useEffect(() => {
     const stock = localStorage.getItem("Stock");
     if (stock) {
-      const stocks: Stock = JSON.parse(stock);
+      const stocks: Stocks = JSON.parse(stock);
       setChegirma(stocks)
     } else {
       console.log("Stock not found in localStorage");
