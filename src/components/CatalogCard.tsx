@@ -7,6 +7,7 @@ import { useHeart } from "../context/HeartClickedContext";
 import { images } from "../assets/images";
 import { useCompare } from "../context/CompareContext";
 import { FaCheck } from "react-icons/fa";
+import { useCart } from "../context/CartContext";
 const { cartt, compare, arrow } = images;
 
 type CheckboxItemProps = {
@@ -49,7 +50,9 @@ const CheckboxItem: React.FC<CheckboxItemProps> = ({
     <span className="text-[13px] !font-medium">{label}</span>
   </label>
 );
+
 const CatalogCard = () => {
+  const { addToCart } = useCart();
   const { likedItems, toggleHeart } = useHeart();
   const { comparedItems, toggleCompare, stateCLick } = useCompare();
   return (
@@ -114,11 +117,16 @@ const CatalogCard = () => {
                     {item.sale}
                   </p>
                 </div>
+
                 <div className="mt-3 md:gap-0 gap-1 flex items-center justify-between">
-                  <div className="flex gap-3 hover:bg-[#000] duration-200 bg-[#186FD4] text-white w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md">
+                  <div
+                    onClick={() => {addToCart(item); console.log("salom")}}
+                    className="flex gap-3 hover:bg-[#000] duration-200 bg-[#186FD4] text-white w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md"
+                  >
                     <img src={cartt} alt="cart" className="sm:block hidden" />
                     <span>Купить</span>
                   </div>
+
                   <div className="flex items-center md:gap-2 gap-1">
                     <div
                       onClick={() => toggleHeart(item.id.toString())}
@@ -138,6 +146,7 @@ const CatalogCard = () => {
                         )}
                       </span>
                     </div>
+
                     <div
                       onClick={() => toggleCompare(item.id.toString())}
                       className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"

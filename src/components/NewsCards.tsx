@@ -70,7 +70,7 @@ const NewsCards: React.FC = () => {
       >
         {data.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="bg-white shadow-md rounded-lg overflow-hidden group">
+            <div className="bg-white shadow-md rounded-lg m-1 overflow-hidden group">
               <div className="overflow-hidden rounded-lg">
                 <img
                   src={item.img}
