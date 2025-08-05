@@ -7,7 +7,7 @@ import {reviews} from '../data/Rew'
 
 const Reviews:React.FC = () => {
   return (
-    <section className="mt-8 max-w-[1470px] mx-auto px-4">
+    <section className="mt-8 max-w-[1470px] mb-[4rem]  mx-auto px-4">
     <Names name="Отзывы"  link="/reviews"/>
       <div className="w-full mt-8">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">Отзывы</h1>

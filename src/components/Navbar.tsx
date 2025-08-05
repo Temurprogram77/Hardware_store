@@ -8,6 +8,7 @@ import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
 import { sideBar } from "../data/data";
 import { useSidebar2 } from "../context/SidebarContext2";
+import CustomPhoneInput, { phoneRegex } from "./ui/CustomINputPhone";
 
 const {
   Logo,
@@ -25,8 +26,26 @@ const {
 } = images;
 
 const Navbar: React.FC = () => {
+  const [phone, setPhone] = useState<string>("");
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [checked, setChecked] = useState(false);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+
+
+    const handleBlur = (field: string) => {
+      switch (field) {
+        case "phone":
+          if (!phone || !phoneRegex.test(phone)) {
+            setPhoneError("Пожалуйста, введите действительный телефон!");
+          } else {
+            setPhoneError(null);
+          }
+          break;
+        default:
+          break;
+      }
+    };
+
   const {
     modalIsOpen,
     modalOpenModal,
@@ -159,12 +178,15 @@ const Navbar: React.FC = () => {
             <label htmlFor="inp2" className="text-[14px] font-medium mt-2">
               Номер телефона{" "}
             </label>
-            <input
-              id="inp2"
-              type="number"
-              className="px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full"
-              placeholder="+7 (___) ___-__-__"
-            />
+            <CustomPhoneInput
+                        value={phone}
+                        onChange={setPhone}
+                        onFocus={() => setPhoneError(null)}
+                        onBlur={() => handleBlur("phone")}
+                        placeholder='+998 (__) ___-__-__'
+                        className={`px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full 
+${phoneError ? '!border-red-500' : ''}`}
+                      />
             <div className="flex items-start gap-3 my-4">
               <label className="cursor-pointer inline-block">
                 <input

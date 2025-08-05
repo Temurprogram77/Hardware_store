@@ -1,4 +1,10 @@
-import React from 'react';
+import React, {
+  type FocusEventHandler,
+  type Ref,
+  forwardRef,
+  useState
+} from 'react';
+
 import { Input } from 'antd';
 
 const { TextArea } = Input;
@@ -7,12 +13,57 @@ interface Props {
   className?: string;
   placeholder?: string;
   rows?: number;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onFocus?: FocusEventHandler<HTMLTextAreaElement>;
+  onBlur?: FocusEventHandler<HTMLTextAreaElement>;
+  regex?: RegExp;
 }
 
-const CustomTextarea: React.FC<Props> = ({ className, placeholder, rows = 4 }) => {
+const CustomTextarea = forwardRef<HTMLTextAreaElement, Props>(({
+  className,
+  placeholder,
+  rows = 4,
+  value,
+  onChange,
+  onFocus,
+  onBlur,
+  regex,
+}, ref) => {
+  const [hasError, setHasError] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = e.target.value;
+    if (regex && !regex.test(newValue)) {
+      setHasError(true);
+    } else {
+      setHasError(false);
+    }
+    onChange?.(e);
+  };
+
+  const handleBlur: FocusEventHandler<HTMLTextAreaElement> = (e) => {
+    if (regex && !regex.test(e.target.value)) {
+      setHasError(true);
+    } else {
+      setHasError(false);
+    }
+    onBlur?.(e);
+  };
+
   return (
-    <TextArea className={className} placeholder={placeholder} rows={rows} />
+    <TextArea
+      ref={ref}
+      className={className}
+      placeholder={placeholder}
+      rows={rows}
+      value={value}
+      onChange={handleChange}
+      onFocus={onFocus}
+      onBlur={handleBlur}
+      status={hasError ? 'error' : ''}
+    />
   );
-};
+});
 
 export default CustomTextarea;

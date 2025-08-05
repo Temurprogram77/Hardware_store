@@ -2,7 +2,6 @@ import React from "react";
 
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { data } from "../data/data";
-import { HiMenu } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { useHeart } from "../context/HeartClickedContext";
 import { images } from "../assets/images";
