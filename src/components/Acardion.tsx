@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
+// Asosiy Review interfeysi
 interface Review {
   key: number;
   quiz: string;
   answer: string;
 }
 
-interface Props {
-  quiz: Review;
-}
+interface Props extends Review {}
 
-const Acardion: React.FC<Props> = ({ quiz }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Acardion: React.FC<{ quiz: Props }> = ({ quiz }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const toggleAccordion = () => setIsOpen(prev => !prev);
 
