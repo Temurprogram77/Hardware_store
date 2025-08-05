@@ -2,7 +2,6 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
-// Asosiy Review interfeysi
 interface Review {
   key: number;
   quiz: string;
