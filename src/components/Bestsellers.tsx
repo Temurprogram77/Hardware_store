@@ -7,7 +7,6 @@ import { images } from "../assets/images";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { useCart } from "../context/CartContext";
 
-// Mahsulotlar uchun interfeys
 interface Product {
   id: number;
   item: string;

@@ -68,7 +68,7 @@ const CatalogCard = () => {
               <option value="">Цена по убыванию</option>
             </select>
           </div>
-          <div className="md:flex hidden items-center gap-3">
+          <div className="md:flex 2xl:m-0 mx-4 hidden items-center gap-3">
             <p className="!m-0">Показывать по:</p>
             <div className="w-[40px] h-[40px] cursor-pointer flex items-center justify-center rounded-md border-1 border-[#EEEEEE]">
               9
