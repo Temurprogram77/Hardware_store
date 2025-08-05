@@ -22,7 +22,9 @@ const Reviews:React.FC = () => {
     </div>
 
     <div>
-      <NewList item={reviews} />
+      {
+        
+      }
     </div>
 
     <div className="w-full mt-12">
