@@ -97,7 +97,7 @@ const CatalogCard = () => {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-50 mb-2 "
+                    className="w-full h-50 mb-2"
                   />
                 </Link>
                 <p className="text-xs text-gray-500 md:text-[12px] text-[10px]">

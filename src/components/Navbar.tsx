@@ -426,8 +426,8 @@ const Navbar: React.FC = () => {
         ""
       )}
 
-      {sideBarIsOpen2 && (
-        <div className="fixed z-20 top-0 left-0 py-8 w-[80%] bg-[#f9fafb] duration-200 opacity-100 visible">
+      
+        <div className={`fixed z-20 top-0 -left-full ${sideBarIsOpen2 && "left-0"} py-8 w-[80%] bg-[#f9fafb] duration-200 opacity-100 visible`}>
           <div className="max-w-full mx-auto">
             <div
               onClick={toggleSidebar2}
@@ -438,8 +438,7 @@ const Navbar: React.FC = () => {
             <div className="w-[100%] h-full rounded-md bg-white max-h-screen overflow-y-auto relative pb-8 pt-2">
               {sideBar.map((item, index) => (
                 <div key={index} className="border-b border-[#0000002c]">
-                  <Link
-                    to="/catalog"
+                  <div
                     onClick={() => handleItemClick(index)}
                     className="cursor-pointer flex items-center justify-between py-5 px-6 hover:bg-[#186fd4] hover:text-white duration-300"
                   >
@@ -461,13 +460,13 @@ const Navbar: React.FC = () => {
                         <path d="M4.35355 4.35355C4.54882 4.15829 4.54882 3.84171 4.35355 3.64645L1.17157 0.464466C0.976311 0.269204 0.659728 0.269204 0.464466 0.464466C0.269204 0.659728 0.269204 0.976311 0.464466 1.17157L3.29289 4L0.464466 6.82843C0.269204 7.02369 0.269204 7.34027 0.464466 7.53553C0.659728 7.7308 0.976311 7.7308 1.17157 7.53553L4.35355 4.35355ZM3 4.5H4V3.5H3V4.5Z"></path>
                       </svg>
                     </div>
-                  </Link>
+                  </div>
 
                   {/* Dropdown content */}
                   {activeIndex === index && (
                     <div className="pl-5 pr-3 py-2 max-h-[300px] bg-[#dfdfdf99] overflow-y-auto transition-all duration-300">
                       {item.obj?.map((child: any, i: number) => (
-                        <Link key={i} to="/catalog" className="w-full">
+                        <Link key={i} to="/catalog" className="w-full" onClick={()=>{handleItemClick(index);toggleSidebar2()}}>
                           <p className="text-[15px] w-full hover:text-[#186fd4] cursor-pointer py-2">
                             {Array.isArray(child)
                               ? child.join(", ")
@@ -484,7 +483,6 @@ const Navbar: React.FC = () => {
             </div>
           </div>
         </div>
-      )}
       <div className="max-w-[1460px] flex lg:hidden items-center gap-2 xl:mx-auto mx-3">
         <div
           onClick={toggleSidebar2}
