@@ -6,7 +6,7 @@ import { Stocks } from "../data/Rew";
 
 
 const LandingStock = () => {
-    const [chegirma,setChegirma]=useState<|null>(null)
+    const [chegirma,setChegirma]=useState<Stocks|null>(null)
   useEffect(() => {
     const stock = localStorage.getItem("Stock");
     if (stock) {
