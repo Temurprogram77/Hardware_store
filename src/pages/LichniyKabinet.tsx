@@ -8,7 +8,7 @@ import { TbUserEdit } from "react-icons/tb"
 import { TfiMenuAlt } from "react-icons/tfi"
 import { useNavigate } from "react-router-dom"
 import Names from "../components/ui/Names"
-import IzmenetProfel from "../components/IzmenitProfel"
+// import IzmenetProfel from "../components/IzmenitProfel"
 
 const menuItems = [
     {
@@ -85,7 +85,7 @@ const LichniyKabinet = () => {
             <hr className="text-gray-200" />
             <div className="max-w-[1460px] mx-auto mt-2.5">
                 <Names link="" name="Личный кабинет" />
-                <IzmenetProfel />
+                {/* <IzmenetProfel /> */}
                 <div className="mt-4">
                     <h2 className="!font-bold text-5xl max-sm:text-4xl">Личный кабинет</h2>
                     <div className="flex gap-5 mt-10 max-sm:flex-col">
