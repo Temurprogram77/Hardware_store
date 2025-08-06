@@ -7,7 +7,6 @@ import Names from '../components/ui/Names';
 import Label from '../components/ui/Label';
 import RightIcon from '../components/RightIcon';
 import UserIcon from '../components/UserIcon';
-import { MdOutlineChevronRight } from 'react-icons/md';
 
 const AuthPage: React.FC = () => {
   const [emailValue, setEmailValue] = useState<string>("");
@@ -51,7 +50,7 @@ const AuthPage: React.FC = () => {
         <Names link='#' name='Авторизация' />
         <div className="mt-4 flex flex-col justify-center">
           <h2 className="!font-bold text-4xl sm:text-3xl">Авторизация</h2>
-          <div className='mt-20 !ml-20 border !w-[88%] rounded-lg gap-5 border-gray-200 flex items-center justify-center max-sm:flex-col max-sm:mt-10 lg:gap-20 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5 lg:p-10'>
+          <div className='mt-20 lg:!ml-20 border w-full lg:!w-[88%] rounded-lg gap-5 border-gray-200 flex items-center justify-center max-sm:flex-col max-sm:mt-10 lg:gap-20 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5 lg:p-10'>
             <div className='flex items-center flex-col w-1/2 max-sm:w-full'>
               <div className='max-sm:w-[100%] md:w-[100%]'>
                 <div className='flex flex-col gap-3'>
