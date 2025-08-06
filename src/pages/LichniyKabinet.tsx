@@ -1,21 +1,21 @@
-import { Breadcrumb } from "antd"
 import { useState, useEffect } from "react"
 import { CgPassword } from "react-icons/cg"
 import { FaRegHeart, FaRegUserCircle } from "react-icons/fa"
 import { GoLocation } from "react-icons/go"
 import { IoExitOutline } from "react-icons/io5"
-import { LiaUserEditSolid } from "react-icons/lia"
 import { RiMenuFold2Fill } from "react-icons/ri"
 import { TbUserEdit } from "react-icons/tb"
 import { TfiMenuAlt } from "react-icons/tfi"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import Names from "../components/ui/Names"
+import IzmenetProfel from "../components/IzmenitProfel"
 
 const menuItems = [
     {
         label: 'Мой аккаунт',
         icon: <FaRegUserCircle />,
         content: [
-            { label: 'Изменить профиль', icon: <LiaUserEditSolid /> },
+            { label: 'Изменить профиль', icon: <TbUserEdit /> },
             { label: 'Мои заказы', icon: <TfiMenuAlt /> },
             { label: 'Адрес доставки', icon: <GoLocation /> },
             { label: 'Избранные товары', icon: <FaRegHeart /> },
@@ -46,7 +46,7 @@ const menuItems = [
     {
         label: 'Сменить пароль',
         icon: <CgPassword />,
-        content: [] 
+        content: []
     },
     {
         label: 'Выйти из аккаунта',
@@ -72,11 +72,11 @@ const LichniyKabinet = () => {
                 console.error("Failed to parse stored account data from localStorage:", error);
             }
         }
-    }, []); 
+    }, []);
 
     const handleLogout = () => {
         localStorage.removeItem("accounts");
-        navigate("/auth"); 
+        navigate("/auth");
         navigate("/auth");
     };
 
@@ -84,20 +84,8 @@ const LichniyKabinet = () => {
         <main className="mb-10 mt-5 px-3">
             <hr className="text-gray-200" />
             <div className="max-w-[1460px] mx-auto mt-2.5">
-                <Breadcrumb
-                    items={[
-                        {
-                            title: (
-                                <Link to="/">
-                                    <span className="text-black text-sm">Стройоптторг</span>
-                                </Link>
-                            ),
-                        },
-                        {
-                            title: <span className="text-[#959597] text-sm">Личный кабинет</span>,
-                        }
-                    ]}
-                />
+                <Names link="" name="Личный кабинет" />
+                <IzmenetProfel />
                 <div className="mt-4">
                     <h2 className="!font-bold text-5xl max-sm:text-4xl">Личный кабинет</h2>
                     <div className="flex gap-5 mt-10 max-sm:flex-col">
