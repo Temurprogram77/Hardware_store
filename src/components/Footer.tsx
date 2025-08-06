@@ -196,7 +196,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="relative w-full max-w-md">
               <Input
-                className="w-full h-12 pl-4 pr-14 border border-gray-300 rounded-lg hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                className="w-full h-12 pl-4 !pr-10 border border-gray-300 rounded-lg hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
                 placeholder="Ваш email"
               />
               <button
