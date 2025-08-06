@@ -1,37 +1,57 @@
-import React,
-{
+import React, {
   type FocusEventHandler,
-  type Ref
-} from 'react'
+  type Ref,
+  forwardRef,
+  useState
+} from 'react';
 
 import {
   Input,
   type InputRef
-} from 'antd'
+} from 'antd';
 
 interface Props {
-  type: string,
-  className?: string,
-  placeholder?: string,
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  value?: string | number
-  ref?: Ref<InputRef>
-  onFocus?: FocusEventHandler<HTMLInputElement>
-  onBlur?: FocusEventHandler<HTMLInputElement>
+  type: string;
+  className?: string;
+  placeholder?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string | number;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  regex?: RegExp;
 }
 
-const CustomInput: React.FC<Props> = (
-  {
-    type,
-    className,
-    placeholder,
-    onChange,
-    value,
-    ref,
-    onFocus,
-    onBlur
-  }
-) => {
+const CustomInput = forwardRef<InputRef, Props>(({
+  type,
+  className,
+  placeholder,
+  onChange,
+  value,
+  onFocus,
+  onBlur,
+  regex,
+}, ref) => {
+
+  const [hasError, setHasError] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    if (regex && !regex.test(newValue)) {
+      setHasError(true);
+    } else {
+      setHasError(false);
+    }
+    onChange?.(e);
+  };
+
+  const handleBlur: FocusEventHandler<HTMLInputElement> = (e) => {
+    if (regex && !regex.test(e.target.value)) {
+      setHasError(true);
+    } else {
+      setHasError(false);
+    }
+    onBlur?.(e);
+  };
 
   return (
     <Input
@@ -40,11 +60,12 @@ const CustomInput: React.FC<Props> = (
       className={className}
       placeholder={placeholder}
       onFocus={onFocus}
-      onChange={onChange}
+      onChange={handleChange}
       value={value}
-      onBlur={onBlur}
+      onBlur={handleBlur}
+      status={hasError ? 'error' : ''}
     />
   );
-};
+});
 
 export default CustomInput;

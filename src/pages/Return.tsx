@@ -4,7 +4,7 @@ import Names from "../components/ui/Names"
 import {quizs} from '../data/Rew'
 const Return:React.FC = () => {
   return (
-    <section className="mt-8 max-w-[1470px] mx-auto px-4">
+    <section className="mt-8 max-w-[1470px] mx-auto px-4 mb-[3rem]">
       <Names name="Возврат" link="/return"/>
 
       <div className="w-full mt-8 items-center">

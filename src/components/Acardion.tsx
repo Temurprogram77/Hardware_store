@@ -1,7 +1,6 @@
 import React from 'react';
-import { Collapse } from 'antd';
-import type { CollapseProps } from 'antd';
-import { FaMinus, FaPlus } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaPlus, FaMinus } from 'react-icons/fa';
 
 interface Review {
   key: number;
@@ -9,37 +8,50 @@ interface Review {
   answer: string;
 }
 
-interface Props {
-  quiz: Review;
-}
+interface Props extends Review {}
 
-const Acardion: React.FC<Props> = ({ quiz }) => {
-  const items: CollapseProps['items'] = [
-    {
-      key: quiz.key,
-      label: (
-        <span className="text-sm font-medium text-gray-800">{quiz.quiz}</span>
-      ),
-      children: (
-        <p className="text-sm text-gray-500 leading-6">{quiz.answer}</p>
-      ),
-    },
-  ];
+const Acardion: React.FC<{ quiz: Props }> = ({ quiz }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const toggleAccordion = () => setIsOpen(prev => !prev);
 
   return (
-    <div className="border-b border-gray-200 py-2">
-      <Collapse
-        accordion
-        ghost
-        items={items}
-        expandIconPosition="end"
-        expandIcon={({ isActive }) => (
-          <span className="text-lg font-bold">
-            {!isActive ? <FaPlus/> : <FaMinus/>}
-          </span>
+    <div className="border-b border-gray-200 py-5">
+      {/* Header */}
+      <div
+        onClick={toggleAccordion}
+        className="flex justify-between items-center cursor-pointer"
+      >
+        <span className="text-sm font-medium text-gray-800">{quiz.quiz}</span>
+        <motion.div
+          initial={false}
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-500 text-xl"
+        >
+          {isOpen ? <FaMinus /> : <FaPlus />}
+        </motion.div>
+      </div>
+
+      {/* Content */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: 'auto' },
+              collapsed: { opacity: 0, height: 0 },
+            }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <p className="text-sm text-gray-500 leading-6 mt-2">{quiz.answer}</p>
+          </motion.div>
         )}
-        className="[&_.ant-collapse-content]:!px-0 [&_.ant-collapse-header]:!px-0"
-      />
+      </AnimatePresence>
     </div>
   );
 };

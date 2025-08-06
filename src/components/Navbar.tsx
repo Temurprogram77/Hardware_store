@@ -8,6 +8,7 @@ import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
 import { sideBar } from "../data/data";
 import { useSidebar2 } from "../context/SidebarContext2";
+import ModalComponent from "./ModalComponent";
 
 const {
   Logo,
@@ -21,22 +22,18 @@ const {
   menu,
   close,
   closeSidebar,
-  arrowRight,
 } = images;
 
 const Navbar: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [checked, setChecked] = useState(false);
-  const {
-    modalIsOpen,
-    modalOpenModal,
-    modalCloseModal,
-    openModal,
-    closeModal,
-    isOpen,
-  } = useModal();
+  const { modalOpenModal, openModal, closeModal, isOpen } = useModal();
   const { likedItems } = useHeart();
   const { comparedItems } = useCompare();
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const handleItemClick = (index: number) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+  };
 
   const likedCountt = Object.keys(likedItems).filter(
     (id) => likedItems[id]
@@ -131,85 +128,8 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {modalIsOpen ? (
-        <div className="overflow-y-scroll">
-          <div
-            onClick={modalCloseModal}
-            className="w-full h-full bg-[#011120cc] fixed z-3 top-0 left-0"
-          ></div>
-          <div
-            onClick={modalCloseModal}
-            className="cursor-pointer bg-[#fff] duration-200 hover:bg-[#6e6e6e] fixed z-4 top-6 right-6 rounded-md p-3"
-          >
-            <img src={close} alt="close" />
-          </div>
-          <div className="flex flex-col gap-3 md:w-[600px] w-[95%] bg-[#fff] p-8 rounded-xl z-3 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <h2 className="text-[30px] !font-semibold text-center">
-              Заказать обратный звонок
-            </h2>
-            <label htmlFor="inp1" className="text-[14px] font-medium mt-2">
-              Ваше имя *:
-            </label>
-            <input
-              id="inp1"
-              type="text"
-              className="px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full"
-              placeholder="Как к вам обращаться?"
-            />
-            <label htmlFor="inp2" className="text-[14px] font-medium mt-2">
-              Номер телефона{" "}
-            </label>
-            <input
-              id="inp2"
-              type="number"
-              className="px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full"
-              placeholder="+7 (___) ___-__-__"
-            />
-            <div className="flex items-start gap-3 my-4">
-              <label className="cursor-pointer inline-block">
-                <input
-                  type="checkbox"
-                  className="hidden"
-                  checked={checked}
-                  onChange={() => setChecked(!checked)}
-                />
-                <motion.div
-                  animate={{
-                    backgroundColor: checked ? "#3B82F6" : "#fff", // blue-500
-                    borderColor: checked ? "#3B82F6" : "#ccc",
-                  }}
-                  transition={{ duration: 0.2 }}
-                  className="w-[25px] h-[25px] border-2 rounded flex items-center justify-center"
-                >
-                  {checked && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="w-[16px] h-[16px] bg-white rounded"
-                    />
-                  )}
-                </motion.div>
-              </label>
-              <p className="!m-0 leading-6 text-[14px] !font-medium">
-                Согласен с обработкой персональных данных в соответствии с{" "}
-                <a
-                  href="#"
-                  className="text-blue-600 underline hover:no-underline"
-                >
-                  политикой конфиденциальности
-                </a>
-              </p>
-            </div>
-            <div className="max-w-full text-white">
-              <button className="bg-[#186fd4] py-5 rounded-md text-white duration-200 hover:bg-black cursor-pointer w-full">
-                Перезвоните мне
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
+      <ModalComponent />
+
       <>
         <div
           onClick={closeModal}
@@ -311,7 +231,7 @@ const Navbar: React.FC = () => {
               <img
                 src={Logo}
                 alt="Logo"
-                className="h-8 md:h-10 xl:w-40 2xl:w-40 object-contain"
+                className="h-9 md:h-10 xl:w-40 2xl:w-40 object-contain"
               />
             </Link>
           </div>
@@ -370,14 +290,14 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
             <Link to="/deals">
               <div className="hidden sm:flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={gift} alt="gift" className="w-5 h-4" />
+                <img src={gift} alt="gift" className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]" />
                 <p className="text-[12px] !m-0 font-medium">Все акции</p>
               </div>
             </Link>
 
             <Link to="/auth">
               <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={user} alt="user" className="w-5 h-4" />
+                <img src={user} alt="user" className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]" />
                 <p className="hidden !m-0 sm:block text-[12px] font-medium">
                   Войти
                 </p>
@@ -389,7 +309,7 @@ const Navbar: React.FC = () => {
                 <div className="relative">
                   <img
                     src={compare}
-                    className="w-[24px] h-[18px]"
+                    className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]"
                     alt="compare"
                   />
                   {comparedCount > 0 && (
@@ -409,7 +329,7 @@ const Navbar: React.FC = () => {
                 <div className="relative rounded-md ">
                   <img
                     src={heart}
-                    className="w-[24px] h-[18px]"
+                    className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]"
                     alt="wishlist"
                   />
                   {likedCount > 0 && (
@@ -426,7 +346,7 @@ const Navbar: React.FC = () => {
 
             <Link to="/basket">
               <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={basket} alt="basket" className="w-5 h-4" />
+                <img src={basket} alt="basket" className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]" />
                 <p className="hidden !m-0 sm:block text-[12px] font-medium">
                   Корзина
                 </p>
@@ -506,74 +426,63 @@ const Navbar: React.FC = () => {
         ""
       )}
 
-      {sideBarIsOpen2 && (
-        <div className="fixed z-20 top-0 left-0 py-8 w-[80%] bg-[#f9fafb] duration-200 opacity-100 visible">
+      
+        <div className={`fixed z-20 top-0 -left-full ${sideBarIsOpen2 && "left-0"} py-8 w-[80%] bg-[#f9fafb] duration-200 opacity-100 visible`}>
           <div className="max-w-full mx-auto">
-            <div className="w-[90%] rounded-md bg-white">
-              <div className="relative">
-                {sideBar.map((item, index) => (
+            <div
+              onClick={toggleSidebar2}
+              className="absolute w-[20px] z-[10000] top-3 right-3 cursor-pointer"
+            >
+              <img src={close} className="w-[30px]" alt="close" />
+            </div>
+            <div className="w-[100%] h-full rounded-md bg-white max-h-screen overflow-y-auto relative pb-8 pt-2">
+              {sideBar.map((item, index) => (
+                <div key={index} className="border-b border-[#0000002c]">
                   <div
-                    key={index}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    className="relative group"
+                    onClick={() => handleItemClick(index)}
+                    className="cursor-pointer flex items-center justify-between py-5 px-6 hover:bg-[#186fd4] hover:text-white duration-300"
                   >
-                    <Link to="/catalog">
-                      <div
-                        onClick={toggleSidebar}
-                        className="overflow-hidden arrow-svg cursor-pointer flex items-center justify-between hover:fill-white hover:text-white border-b border-[#0000002c] py-5 px-5 hover:bg-[#186fd4]"
-                      >
-                        <p className="!m-0 text-[12px] uppercase font-semibold">
-                          {item.name}
-                        </p>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="5"
-                          height="8"
-                          viewBox="0 0 5 8"
-                          fill="#919AA3"
-                        >
-                          <path d="M4.35355 4.35355C4.54882 4.15829 4.54882 3.84171 4.35355 3.64645L1.17157 0.464466C0.976311 0.269204 0.659728 0.269204 0.464466 0.464466C0.269204 0.659728 0.269204 0.976311 0.464466 1.17157L3.29289 4L0.464466 6.82843C0.269204 7.02369 0.269204 7.34027 0.464466 7.53553C0.659728 7.7308 0.976311 7.7308 1.17157 7.53553L4.35355 4.35355ZM3 4.5H4V3.5H3V4.5Z"></path>
-                        </svg>
-                      </div>
-                    </Link>
-
+                    <p className="!m-0 text-[12px] uppercase font-semibold">
+                      {item.name}
+                    </p>
                     <div
-                      className={`h-[300px] overflow-y-scroll absolute left-0 top-full ml-2 p-5 w-[350px] bg-white shadow-lg rounded-md z-20 transition-opacity duration-300 ${
-                        hoveredIndex === index
-                          ? "opacity-100 visible"
-                          : "opacity-0 invisible"
+                      className={`w-[12px] h-[12px] flex items-center ${
+                        sideBarIsOpen2 ? "" : ""
                       }`}
                     >
-                      {item.obj?.map((child, i) => (
-                        <p
-                          key={i}
-                          className="text-[15px] hover:text-[#186fd4] duration-300 cursor-pointer py-3"
-                        >
-                          <Link to="/catalog">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="full"
+                        height="full"
+                        viewBox="0 0 5 8"
+                        fill="#919AA3"
+                      >
+                        <path d="M4.35355 4.35355C4.54882 4.15829 4.54882 3.84171 4.35355 3.64645L1.17157 0.464466C0.976311 0.269204 0.659728 0.269204 0.464466 0.464466C0.269204 0.659728 0.269204 0.976311 0.464466 1.17157L3.29289 4L0.464466 6.82843C0.269204 7.02369 0.269204 7.34027 0.464466 7.53553C0.659728 7.7308 0.976311 7.7308 1.17157 7.53553L4.35355 4.35355ZM3 4.5H4V3.5H3V4.5Z"></path>
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Dropdown content */}
+                  {activeIndex === index && (
+                    <div className="pl-5 pr-3 py-2 max-h-[300px] bg-[#dfdfdf99] overflow-y-auto transition-all duration-300">
+                      {item.obj?.map((child: any, i: number) => (
+                        <Link key={i} to="/catalog" className="w-full" onClick={()=>{handleItemClick(index);toggleSidebar2()}}>
+                          <p className="text-[15px] w-full hover:text-[#186fd4] cursor-pointer py-2">
                             {Array.isArray(child)
                               ? child.join(", ")
                               : typeof child === "object" && "obj" in child
                               ? child.obj.flat().join(", ")
                               : String(child)}
-                          </Link>
-                        </p>
+                          </p>
+                        </Link>
                       ))}
                     </div>
-                  </div>
-                ))}
-              </div>
-              <div onClick={toggleSidebar2} className="absolute w-[20px] z-[10000] top-3 right-4">
-                <img
-                  src={close}
-                  className="w-[30px]"
-                  alt="close"
-                />
-              </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      )}
       <div className="max-w-[1460px] flex lg:hidden items-center gap-2 xl:mx-auto mx-3">
         <div
           onClick={toggleSidebar2}

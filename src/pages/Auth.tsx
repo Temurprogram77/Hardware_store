@@ -1,3 +1,13 @@
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import CustomInput from "../components/ui/CustomInput";
+import CustomButton from "../components/ui/CustomButton";
+import CustomCheckbox from "../components/ui/CustomCheckbox";
+import Names from "../components/ui/Names";
+import Label from "../components/ui/Label";
+import RightIcon from "../components/RightIcon";
+import UserIcon from "../components/UserIcon";
+import { MdOutlineChevronRight } from "react-icons/md";
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomInput from '../components/ui/CustomInput';
@@ -27,7 +37,10 @@ const AuthPage: React.FC = () => {
     if (storedAccountString) {
       const storedAccount = JSON.parse(storedAccountString);
 
-      if (storedAccount.email === emailValue && storedAccount.password === passwordValue) {
+      if (
+        storedAccount.email === emailValue &&
+        storedAccount.password === passwordValue
+      ) {
         navigate("/dashboard");
       } else {
         setEmailError(true);
@@ -41,13 +54,11 @@ const AuthPage: React.FC = () => {
     }
   };
 
-
-
   return (
-    <main className='mb-10 mt-5 px-3'>
-      <hr className='text-gray-200' />
+    <main className="mb-10 mt-5 px-3">
+      <hr className="text-gray-200" />
       <div className="max-w-[1460px] mx-auto mt-2.5">
-        <Names link='#' name='Авторизация' />
+        <Names link="#" name="Авторизация" />
         <div className="mt-4 flex flex-col justify-center">
           <h2 className="!font-bold text-4xl sm:text-3xl">Авторизация</h2>
           <div className='mt-20 lg:!ml-20 border w-full lg:!w-[88%] rounded-lg gap-5 border-gray-200 flex items-center justify-center max-sm:flex-col max-sm:mt-10 lg:gap-20 max-sm:gap-0 max-sm:ml-0 max-sm:w-full max-sm:p-5 md:mt-10 md:ml-0 md:w-full md:p-5 lg:p-10'>
@@ -125,7 +136,7 @@ const AuthPage: React.FC = () => {
           </div>
         </div>
       </div>
-    </main >
+    </main>
   );
 };
 
