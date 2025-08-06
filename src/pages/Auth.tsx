@@ -1,13 +1,3 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import CustomInput from "../components/ui/CustomInput";
-import CustomButton from "../components/ui/CustomButton";
-import CustomCheckbox from "../components/ui/CustomCheckbox";
-import Names from "../components/ui/Names";
-import Label from "../components/ui/Label";
-import RightIcon from "../components/RightIcon";
-import UserIcon from "../components/UserIcon";
-import { MdOutlineChevronRight } from "react-icons/md";
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomInput from '../components/ui/CustomInput';
