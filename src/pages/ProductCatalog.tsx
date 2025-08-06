@@ -1,15 +1,7 @@
-// import { images } from "../assets/images";
-import { data, Link } from "react-router-dom";
 import { Range } from "react-range";
 import { useState } from "react";
-import { HiMenu } from "react-icons/hi";
-// import { useHeart } from "../context/HeartClickedContext";
-// import { useCompare } from "../context/CompareContext";
-// import { HeartFilled, HeartOutlined } from "@ant-design/icons";
-// import { data } from "../data/data";
-import CatalogCard from "./FeaturedProducts";
-
-// const { cartt, compare, arrow } = images;
+import CatalogCard from "../components/CatalogCard";
+import Names from "../components/ui/Names";
 
 type CheckboxItemProps = {
   label: string;
@@ -130,9 +122,8 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
 
   return (
     <div className="max-w-[1460px] mx-auto my-5">
-      <div className="text-[13px] !font-medium mb-6 flex items-center 2xl:mx-0 mx-3 gap-3">
-        <Link to={"/"}>Стройоптторг</Link> /{" "}
-        <Link to={""}>Электроинструмент</Link>
+      <div className="mx-3">
+        <Names link="/catalog" name="Каталог" />
       </div>
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="lg:block hidden lg:w-[40%] w-full p-4 pl-0 rounded">
@@ -328,10 +319,10 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
           </div>
         </div>
 
-        <div className="md:hidden mx-3 border border-[#0000001d] py-3 rounded-md max-w-full flex items-center gap-3 justify-center">
+        {/* <div className="md:hidden mx-3 border border-[#0000001d] py-3 rounded-md max-w-full flex items-center gap-3 justify-center">
           <HiMenu size={30} />
           Показать фильтры
-        </div>
+        </div> */}
         <div className="flex flex-col">
           <CatalogCard />
         </div>

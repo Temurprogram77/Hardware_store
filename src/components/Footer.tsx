@@ -2,8 +2,11 @@ import React from "react";
 import { Input } from "antd";
 import { IoSend } from "react-icons/io5";
 import { images } from "../assets/images";
+import ModalComponent from "./ModalComponent";
+import { useModal } from "../context/ModalContext";
 
 const Footer: React.FC = () => {
+    const { modalOpenModal } = useModal();
   return (
     <footer className="bg-gray-100 text-gray-700 pt-10 px-4 sm:px-8 md:px-16">
       <div className="max-w-[1460px] mx-auto ">
@@ -43,62 +46,112 @@ const Footer: React.FC = () => {
               Ежедневно, с 8:00 до 18:00
             </p>
           </div>
-          <div className="duration-200 px-10 hover:bg-[#ee0906] cursor-pointer hover:text-white py-2.5 text-[12px] uppercase font-semibold rounded-md border-2 border-[#EE0906]">
+          <div onClick={modalOpenModal} className="duration-200 px-10 hover:bg-[#ee0906] cursor-pointer hover:text-white py-2.5 text-[12px] uppercase font-semibold rounded-md border-2 border-[#EE0906]">
             Заказать звонок
           </div>
         </div>
+
+        <ModalComponent />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 py-10 border-b border-gray-300 text-sm">
           <div>
             <h4 className="mb-3 text-[18px] !font-semibold">Информация</h4>
             <ul className="space-y-1 flex flex-col gap-2">
-              <li><a href="#">О компании</a></li>
-              <li><a href="#">Как купить</a></li>
-              <li><a href="#">Способы оплаты</a></li>
-              <li><a href="#">Доставка</a></li>
-              <li><a href="#">Возврат</a></li>
-              <li><a href="#">Отзывы</a></li>
-              <li><a href="#">Юридическим лицам</a></li>
+              <li>
+                <a href="#">О компании</a>
+              </li>
+              <li>
+                <a href="#">Как купить</a>
+              </li>
+              <li>
+                <a href="#">Способы оплаты</a>
+              </li>
+              <li>
+                <a href="#">Доставка</a>
+              </li>
+              <li>
+                <a href="#">Возврат</a>
+              </li>
+              <li>
+                <a href="#">Отзывы</a>
+              </li>
+              <li>
+                <a href="#">Юридическим лицам</a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
             <ul className="space-y-1 flex flex-col gap-2">
-              <li><a href="#">Карта сайта</a></li>
-              <li><a href="#">Вопрос-ответ</a></li>
-              <li><a href="#">Блог</a></li>
-              <li><a href="#">Контакты</a></li>
-              <li><a href="#">Вход \ Регистрация</a></li>
-              <li><a href="#">Все акции</a></li>
+              <li>
+                <a href="#">Карта сайта</a>
+              </li>
+              <li>
+                <a href="#">Вопрос-ответ</a>
+              </li>
+              <li>
+                <a href="#">Блог</a>
+              </li>
+              <li>
+                <a href="#">Контакты</a>
+              </li>
+              <li>
+                <a href="#">Вход \ Регистрация</a>
+              </li>
+              <li>
+                <a href="#">Все акции</a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="!font-semibold mb-3 text-[18px]">Каталог</h4>
             <ul className="space-y-1 flex flex-col gap-2">
-              <li><a href="#">Инструмент</a></li>
-              <li><a href="#">Товары для дома, сада и огорода</a></li>
-              <li><a href="#">Метизные, такелажные и скобяные изделия</a></li>
-              <li><a href="#">Сантехника</a></li>
+              <li>
+                <a href="#">Инструмент</a>
+              </li>
+              <li>
+                <a href="#">Товары для дома, сада и огорода</a>
+              </li>
+              <li>
+                <a href="#">Метизные, такелажные и скобяные изделия</a>
+              </li>
+              <li>
+                <a href="#">Сантехника</a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
             <ul className="space-y-1 flex flex-col gap-2">
-              <li><a href="#">Спецодежда и средства индивидуальной и пожарной защиты</a></li>
-              <li><a href="#">Столярные изделия</a></li>
-              <li><a href="#">Всё для сауны и бани</a></li>
+              <li>
+                <a href="#">
+                  Спецодежда и средства индивидуальной и пожарной защиты
+                </a>
+              </li>
+              <li>
+                <a href="#">Столярные изделия</a>
+              </li>
+              <li>
+                <a href="#">Всё для сауны и бани</a>
+              </li>
             </ul>
           </div>
 
           <div className="lg:block hidden">
             <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
             <ul className="space-y-1">
-              <li><a href="#">Общестроительные материалы</a></li>
-              <li><a href="#">Электротовары</a></li>
-              <li><a href="#">Водо-газоснабжение, отопление, вентиляция</a></li>
+              <li>
+                <a href="#">Общестроительные материалы</a>
+              </li>
+              <li>
+                <a href="#">Электротовары</a>
+              </li>
+              <li>
+                <a href="#">Водо-газоснабжение, отопление, вентиляция</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -109,11 +162,31 @@ const Footer: React.FC = () => {
               Мы принимаем <br /> к оплате:
             </span>
             <div className="flex flex-wrap items-center gap-9">
-              <img src={images.visa} alt="Visa" className="w-12 sm:w-10  opacity-50 hover:opacity-100 transition duration-300" />
-              <img src={images.v} alt="MasterCard" className="w-12 opacity-50 hover:opacity-100 transition duration-300" />
-              <img src={images.mir} alt="MIR" className="w-12 opacity-50 hover:opacity-100 transition duration-300" />
-              <img src={images.halva} alt="Halva" className="w-12 opacity-50 hover:opacity-100 transition duration-300" />
-              <img src={images.tinkoff} alt="Tinkoff" className="w-12 opacity-50 hover:opacity-100 transition duration-300" />
+              <img
+                src={images.visa}
+                alt="Visa"
+                className="w-12 sm:w-10  opacity-50 hover:opacity-100 transition duration-300"
+              />
+              <img
+                src={images.v}
+                alt="MasterCard"
+                className="w-12 opacity-50 hover:opacity-100 transition duration-300"
+              />
+              <img
+                src={images.mir}
+                alt="MIR"
+                className="w-12 opacity-50 hover:opacity-100 transition duration-300"
+              />
+              <img
+                src={images.halva}
+                alt="Halva"
+                className="w-12 opacity-50 hover:opacity-100 transition duration-300"
+              />
+              <img
+                src={images.tinkoff}
+                alt="Tinkoff"
+                className="w-12 opacity-50 hover:opacity-100 transition duration-300"
+              />
             </div>
           </div>
 
@@ -121,21 +194,18 @@ const Footer: React.FC = () => {
             <p className="w-[290px] text-[15px]">
               Подпишитесь на рассылку и будьте в курсе!
             </p>
-       <div className="relative w-full max-w-md">
-  <Input
-    className="w-full h-12 pl-4 pr-14 border border-gray-300 rounded-lg hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
-    placeholder="Ваш email"
-  />
-  <button
-    type="submit"
-    className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-500 hover:text-blue-700"
-  >
-    <IoSend size={20} />
-  </button>
-</div>
-
-
-
+            <div className="relative w-full max-w-md">
+              <Input
+                className="w-full h-12 pl-4 pr-14 border border-gray-300 rounded-lg hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                placeholder="Ваш email"
+              />
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-500 hover:text-blue-700"
+              >
+                <IoSend size={20} />
+              </button>
+            </div>
           </div>
         </div>
 

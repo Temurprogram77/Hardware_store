@@ -107,11 +107,13 @@ const Contacts = () => {
               </div>
               <div className='flex gap-2 mt-3'>
                 <BsTelephone className='text-[20px]' />
+                
                 <div>
                   <h6 className='!font-bold text-[#2f3134] w-[215px]'>Телефон:</h6>
                   <h6 className='hover:text-[#186fd4]'>8 (8782) 28-42-72</h6>
                 </div>
               </div>
+              
               <div className='flex gap-2 mt-4'>
                 <MdOutlineMailOutline className='text-[20px]'/>
                 <div>
@@ -191,7 +193,7 @@ const Contacts = () => {
                 Ваше имя <span className="text-red-500">*</span>
               </label>
             
-              <CustomInput placeholder={"Введите ваше имя"} className={"h-[40px]"} type="text" />
+              <CustomInput regex={/^[A-Za-z]{3,}( [A-Za-z]{3,})?$/} placeholder={"Введите ваше имя"} className={"h-[40px]"} type="text" />
             </div>
 
             <div>
@@ -216,7 +218,7 @@ const Contacts = () => {
             <label className="block mb-1 text-[14px] font-medium text-gray-700">
               Текст сообщения <span className="text-red-500">*</span>
             </label>
-            <CustomTextarea placeholder="Введите ваш вопрос" rows={4} />
+            <CustomTextarea rows={4} regex={/^.{10,}$/} placeholder="Введите ваш вопрос"/>
           </div>
 
           {/* Submit + Checkbox */}
