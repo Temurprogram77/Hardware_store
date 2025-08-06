@@ -145,6 +145,7 @@ const CatalogCard = () => {
                     )}
                   </div>
 
+
                   <div className="flex items-center md:gap-2 gap-1">
                     <div
                       onClick={() => toggleHeart(item)}

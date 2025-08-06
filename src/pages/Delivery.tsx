@@ -106,14 +106,14 @@ const Delivery = () => {
 
             {/* chap tugma */}
               <button
-                ref={nextRef}
+                ref={prevRef }
                 className="absolute top-1/2 -left-4 md:-left-6 transform -translate-y-1/2 bg-white px-2 py-2 rounded-full shadow z-10">
                   <img src={left} alt="left" className="w-4 h-4 md:w-5 md:h-5" />
               </button>
 
               {/* ung tugma */}
               <button
-                ref={prevRef}
+                ref={nextRef }
                 className="absolute top-1/2 -right-4 md:-right-6 transform -translate-y-1/2 bg-white px-2 py-2 rounded-full shadow z-10">
                   <img src={right} alt="right" className="w-4 h-4 md:w-5 md:h-5" />
               </button>
