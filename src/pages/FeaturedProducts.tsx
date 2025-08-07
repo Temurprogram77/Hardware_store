@@ -49,7 +49,7 @@ const CheckboxItem: React.FC<CheckboxItemProps> = ({
     <span className="text-[13px] !font-medium">{label}</span>
   </label>
 );
-const FeaturedProducts = () => {
+const CatalogCard = () => {
   const { likedItems, toggleHeart } = useHeart();
   const { comparedItems, toggleCompare } = useCompare();
   return (
@@ -257,4 +257,4 @@ const FeaturedProducts = () => {
   );
 };
 
-export default FeaturedProducts;
+export default CatalogCard;
