@@ -51,7 +51,7 @@ const CheckboxItem: React.FC<CheckboxItemProps> = ({
 );
 const CatalogCard = () => {
   const { likedItems, toggleHeart } = useHeart();
-  const { comparedItems, toggleCompare } = useCompare();
+  const { comparedItems, toggleCompare} = useCompare();
   return (
     <div>
       <div className="flex flex-col">
