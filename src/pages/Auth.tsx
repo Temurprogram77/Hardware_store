@@ -17,12 +17,21 @@ const AuthPage: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    setEmailError(false);
-    setPasswordError(false);
-    setErrorMessage("");
+  const storedAccountString = localStorage.getItem("accounts");
 
-    const storedAccountString = localStorage.getItem("accounts");
+  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailValue(e.target.value)
+    setEmailError(true)
+    setErrorMessage("Noto'g'ri email!");
+  }
+  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordValue(e.target.value)
+    setPasswordError(true)
+    setErrorMessage("Password noto'gri!")
+  }
+
+  const handleSubmit = () => {
+
 
     if (storedAccountString) {
       const storedAccount = JSON.parse(storedAccountString);
@@ -35,7 +44,6 @@ const AuthPage: React.FC = () => {
       } else {
         setEmailError(true);
         setPasswordError(true);
-        setErrorMessage("Noto'g'ri email yoki parol xato!");
       }
     } else {
       setEmailError(true);
@@ -61,7 +69,7 @@ const AuthPage: React.FC = () => {
                     className={`lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !mb-2.5 !-mt-2 ${emailError ? '!border-red-500' : ''}`}
                     placeholder="Введите данные для авторизации"
                     value={emailValue}
-                    onChange={(e) => setEmailValue(e.target.value)}
+                    onChange={handleChangeEmail}
                     onFocus={() => setEmailError(false)}
                   />
                 </div>
@@ -72,7 +80,7 @@ const AuthPage: React.FC = () => {
                     className={`lg:!w-[460px] xl:!w-full max-sm:!w-full md:w-full !h-[55px] !text-lg !-mt-2 ${passwordError ? '!border-red-500' : ''}`}
                     placeholder="Введите пароль"
                     value={passwordValue}
-                    onChange={(e) => setPasswordValue(e.target.value)}
+                    onChange={handleChangePassword}
                     onFocus={() => setPasswordError(false)}
                   />
                 </div>
