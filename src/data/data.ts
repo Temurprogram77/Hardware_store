@@ -5,6 +5,7 @@ interface ProductItem {
   image: string;
   item: string;
   title: string;
+  price: number;
   oldMoney: string;
   newMoney: string;
   sale: string;
@@ -269,6 +270,7 @@ const { mapCard1, mapCard2, newsImage1, newsImage2, newsImage3, newsImage4, } = 
 export let data: ProductItem[] = [
   {
     id: 1,
+    price: 100,
     image: dataImage,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -278,6 +280,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 2,
+    price: 100,
     image: dataImage1,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -287,6 +290,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 3,
+    price: 100,
     image: dataImage2,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -296,6 +300,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 4,
+    price: 100,
     image: dataImage3,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -305,6 +310,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 5,
+    price: 100,
     image: dataImage4,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -314,6 +320,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 6,
+    price: 100,
     image: dataImage5,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -323,6 +330,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 7,
+    price: 100,
     image: dataImage6,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -332,6 +340,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 8,
+    price: 100,
     image: dataImage7,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -341,6 +350,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 9,
+    price: 100,
     image: dataImage8,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -350,6 +360,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 10,
+    price: 100,
     image: dataImage9,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -359,6 +370,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 11,
+    price: 100,
     image: dataImage10,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -368,6 +380,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 12,
+    price: 100,
     image: dataImage11,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -377,6 +390,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 13,
+    price: 100,
     image: dataImage12,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -386,6 +400,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 14,
+    price: 100,
     image: dataImage13,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -395,6 +410,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 15,
+    price: 100,
     image: dataImage14,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -404,6 +420,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 16,
+    price: 100,
     image: dataImage15,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -413,6 +430,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 17,
+    price: 100,
     image: dataImage16,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -422,6 +440,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 18,
+    price: 100,
     image: dataImage17,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -431,6 +450,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 19,
+    price: 100,
     image: dataImage18,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -440,6 +460,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 20,
+    price: 100,
     image: dataImage19,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -449,6 +470,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 21,
+    price: 100,
     image: dataImage20,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -458,6 +480,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 22,
+    price: 100,
     image: dataImage21,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -467,6 +490,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 23,
+    price: 100,
     image: dataImage22,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -476,6 +500,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 24,
+    price: 100,
     image: dataImage23,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -485,6 +510,7 @@ export let data: ProductItem[] = [
   },
   {
     id: 25,
+    price: 100,
     image: dataImage24,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -497,6 +523,7 @@ export let data: ProductItem[] = [
 export const cardData: ProductItem[] = [
   {
     id: 1,
+    price: 100,
     image: dataImage,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -507,6 +534,7 @@ export const cardData: ProductItem[] = [
   },
   {
     id: 2,
+    price: 100,
     image: dataImage1,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -517,6 +545,7 @@ export const cardData: ProductItem[] = [
   },
   {
     id: 3,
+    price: 100,
     image: dataImage2,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -527,6 +556,7 @@ export const cardData: ProductItem[] = [
   },
   {
     id: 4,
+    price: 100,
     image: dataImage3,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",
@@ -537,6 +567,7 @@ export const cardData: ProductItem[] = [
   },
   {
     id: 5,
+    price: 100,
     image: dataImage4,
     item: "Артикул: XJ89YHGO",
     title: "Перфоратор универсальный Wander X645-46 GF 1450W",

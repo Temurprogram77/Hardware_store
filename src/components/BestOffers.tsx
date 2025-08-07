@@ -10,21 +10,13 @@ import { FaCheck } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 
 const { cartt, compare } = images;
-
-const staticCategories = [
-  "Все товары",
-  "Инструменты",
-  "Сантехника",
-  "Для дома",
-  "Для сада",
-];
-
 interface Product {
   id: number | string;
   title: string;
   image: string;
   item: string;
-  type: string;
+  type?: string;
+  price: number;
   oldMoney: string;
   newMoney: string;
   sale: string;
@@ -37,14 +29,23 @@ const BestOffers: React.FC = () => {
   const { comparedItems, toggleCompare } = useCompare();
   const { likedItems, toggleHeart } = useHeart();
   const categories: string[] = useMemo(() => {
-    const allTypes = cardData.map((item) => item.type);
+    const allTypes = cardData.map((item) => item.type ?? "");
     return ["Все", ...Array.from(new Set(allTypes))];
   }, []);
 
   const filteredData: Product[] =
-    activeCategory === "Все"
-      ? cardData
-      : cardData.filter((item) => item.type === activeCategory);
+  activeCategory === "Все"
+    ? cardData.map((item) => ({
+        ...item,
+        price: item.price ?? 0,
+      }))
+    : cardData
+        .filter((item) => item.type === activeCategory)
+        .map((item) => ({
+          ...item,
+          price: item.price ?? 0,
+        }));
+
 
   return (
     <div className="max-w-[1460px] 2xl:mx-auto mx-3 my-10">
@@ -109,7 +110,7 @@ const BestOffers: React.FC = () => {
 
               <div className="mt-3 md:gap-0 gap-1 flex items-center justify-between">
                 <div
-                  onClick={() => addToCart(item)}
+                  onClick={() => addToCart({ ...item, id: Number(item.id) })}
                   className={` flex gap-3 duration-200 w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md 
     ${
       isInCart
@@ -129,7 +130,12 @@ const BestOffers: React.FC = () => {
 
                 <div className="flex items-center md:gap-2 gap-1">
                   <div
-                    onClick={() => toggleHeart(item)}
+                    onClick={() =>
+                      toggleHeart({
+                        ...item,
+                        id: String(item.id),
+                      })
+                    }
                     className="hover:border-[#186FD4] flex items-center duration-500 border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
                   >
                     <span
