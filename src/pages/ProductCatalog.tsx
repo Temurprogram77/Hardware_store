@@ -165,12 +165,16 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                     {children}
                   </div>
                 )}
-                renderThumb={({ props }) => (
-                  <div
-                    {...props}
-                    className="w-5 h-5 bg-white border-3 border-[#186FD4] rounded-full shadow-md focus:outline-none"
-                  />
-                )}
+                renderThumb={({ props }) => {
+                  const { key, ...rest } = props;
+                  return (
+                    <div
+                      key={key}
+                      {...rest}
+                      className="w-5 h-5 bg-white border-3 border-[#186FD4] rounded-full shadow-md focus:outline-none"
+                    />
+                  );
+                }}
               />
               <div className="mt-4 text-center">
                 Qiymat: {values[0]} - {values[1]}
