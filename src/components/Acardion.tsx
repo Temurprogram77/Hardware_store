@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
@@ -8,12 +8,10 @@ interface Review {
   answer: string;
 }
 
-interface Props {
-  quiz: Review;
-}
+interface Props extends Review {}
 
-const Acardion: React.FC<Props> = ({ quiz }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Acardion: React.FC<{ quiz: Props }> = ({ quiz }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const toggleAccordion = () => setIsOpen(prev => !prev);
 
@@ -29,7 +27,7 @@ const Acardion: React.FC<Props> = ({ quiz }) => {
           initial={false}
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-400 text-blue-200 text-xl"
+          className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-500 text-xl"
         >
           {isOpen ? <FaMinus /> : <FaPlus />}
         </motion.div>

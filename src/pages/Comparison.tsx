@@ -1,23 +1,50 @@
 import { Breadcrumb, Button } from "antd";
 import { Link } from "react-router-dom";
 import { images } from "../assets/images";
-import { useCompare } from "../context/CompareContext";
 import { data } from "../data/data";
-import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import {
+  HeartFilled,
+  HeartOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 import { useHeart } from "../context/HeartClickedContext";
+import { useEffect, useState } from "react";
 
-const { cartt } = images;
+const { cartt, ciziq } = images;
 
 const Comparison = () => {
-  const { comparedItems } = useCompare();
+  const [comparedItems, setComparedItems] = useState<{ [id: number]: boolean }>(
+    () => {
+      const stored = localStorage.getItem("comparedItems");
+      return stored ? JSON.parse(stored) : {};
+    }
+  );
+
   const { likedItems, toggleHeart } = useHeart();
 
-  // Faqat true bo'lgan id'lar
+  useEffect(() => {
+    localStorage.setItem("comparedItems", JSON.stringify(comparedItems));
+  }, [comparedItems]);
+
+  const toggleCompare = (id: number) => {
+    setComparedItems((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const removeCompare = (id: number) => {
+    setComparedItems((prev) => {
+      const updated = { ...prev };
+      delete updated[id];
+      return updated;
+    });
+  };
+
   const selectedIds = Object.keys(comparedItems)
-    .filter((id) => comparedItems[id])
+    .filter((id) => comparedItems[+id])
     .map(Number);
 
-  // data.ts dan filter
   const selectedProducts = data.filter((product) =>
     selectedIds.includes(product.id)
   );
@@ -41,7 +68,18 @@ const Comparison = () => {
       {hasItems ? (
         <div className="w-full md:px-0 px-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
           {selectedProducts.map((item) => (
-            <div key={item.id} className="cursor-pointer p-4 rounded shadow">
+            <div
+              key={item.id}
+              className="cursor-pointer p-4 rounded shadow relative"
+            >
+              <button
+                onClick={() => removeCompare(item.id)}
+                className="absolute right-2 top-2 text-red-500 hover:text-red-700"
+                title="Удалить из сравнения"
+              >
+                <DeleteOutlined />
+              </button>
+
               <Link to={`/product/${item.id}`}>
                 <img
                   src={item.image}
@@ -75,16 +113,15 @@ const Comparison = () => {
                   <img src={cartt} alt="cart" className="sm:block hidden" />
                   <span>Купить</span>
                 </div>
+
                 <div className="flex items-center md:gap-2 gap-1">
                   <div
-                    onClick={() => toggleHeart(item.id.toString())}
-                    className="border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
+                    onClick={() => toggleHeart(item)}
+                    className="border-2 px-2 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
                   >
                     <span
                       className={`${
-                        likedItems[item.id]
-                          ? "text-blue-500 animate-ping-short"
-                          : "text-gray-400"
+                        likedItems[item.id] ? "text-blue-500" : "text-gray-400"
                       }`}
                     >
                       {likedItems[item.id] ? (
@@ -102,7 +139,7 @@ const Comparison = () => {
       ) : (
         <div className="flex flex-col items-center justify-center mt-16 text-center">
           <div className="mb-6">
-            <img src={images.ciziq} alt="empty" />
+            <img src={ciziq} alt="empty" />
           </div>
           <p className="text-lg font-medium">Ваш список сравнения пуст</p>
           <p className="text-gray-600 mt-2">

@@ -11,7 +11,7 @@ interface Props {
 
 const CustomButton: React.FC<Props> = ({ type, className, text, children, onClick }) => {
   return (
-    <Button type={type} onClick={onClick} className={className}>{text}{children}</Button>
+    <Button type={type} onClick={onClick} htmlType="submit" className={className}>{text}{children}</Button>
   );
 };
 
