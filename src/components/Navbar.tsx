@@ -452,8 +452,6 @@ const Navbar: React.FC = () => {
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="full"
-                        height="full"
                         viewBox="0 0 5 8"
                         fill="#919AA3"
                       >

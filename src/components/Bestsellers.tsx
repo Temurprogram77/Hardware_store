@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { images } from "../assets/images";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { useCart } from "../context/CartContext";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaCheck } from "react-icons/fa";
 
 interface Product {
   id: number;
@@ -61,6 +63,8 @@ const Bestsellers: React.FC = () => {
 
       <div className="flex items-center flex-wrap gap-4 mt-5">
         {filteredData.map((item) => {
+          const isCompared = comparedItems[item.id];
+
           const isInCart = cartItems.some(
             (cartItem) => cartItem.id === item.id
           );
@@ -102,7 +106,7 @@ const Bestsellers: React.FC = () => {
               <div className="mt-3 md:gap-0 gap-1 flex items-center justify-between">
                 <div
                   onClick={() => addToCart(item)}
-                  className={`flex gap-3 duration-200 w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md 
+                  className={` flex gap-3 duration-200 w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md 
     ${
       isInCart
         ? "bg-gray-400 cursor-not-allowed"
@@ -121,34 +125,54 @@ const Bestsellers: React.FC = () => {
 
                 <div className="flex items-center md:gap-2 gap-1">
                   <div
-                    onClick={() => toggleHeart(item.id.toString())}
-                    className="border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
+                    onClick={() => toggleHeart(item)}
+                    className="hover:border-[#186FD4] flex items-center duration-500 border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
                   >
                     <span
-                      className={`${
-                        likedItems[item.id]
+                      className={`h-[17px] ${
+                        likedItems
                           ? "text-blue-500 animate-ping-short"
                           : "text-gray-400"
                       }`}
                     >
                       {likedItems[item.id] ? (
-                        <HeartFilled />
+                        <HeartFilled size={24} />
                       ) : (
-                        <HeartOutlined />
+                        <HeartOutlined size={24} />
                       )}
                     </span>
                   </div>
 
-                  <div
+                  <motion.div
                     onClick={() => toggleCompare(item.id.toString())}
-                    className="border-2 px-2 md:py-2.5 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
+                    className="hover:border-[#186FD4] duration-500 border-2 px-2 md:py-2 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
+                    whileTap={{ scale: 0.9 }}
                   >
-                    <img
-                      src={compare}
-                      className="w-[24px] h-[18px]"
-                      alt="compare"
-                    />
-                  </div>
+                    <AnimatePresence mode="wait">
+                      {isCompared ? (
+                        <motion.div
+                          key="checked"
+                          initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                          exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+                          transition={{ duration: 0.1 }}
+                        >
+                          <FaCheck className="text-blue-600 w-[20px] h-[18px]" />
+                        </motion.div>
+                      ) : (
+                        <motion.img
+                          key="compare"
+                          src={compare}
+                          alt="compare"
+                          initial={{ opacity: 0, scale: 0.5, rotate: 90 }}
+                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                          exit={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                          transition={{ duration: 0.3 }}
+                          className="w-[20px] h-[18px]"
+                        />
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
                 </div>
               </div>
             </div>

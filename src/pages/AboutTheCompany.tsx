@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { images } from "../assets/images";
 import NewsCards from "../components/NewsCards";
+import Names from "../components/ui/Names";
 
 const { aboutImage1, Vector10, Vector9, Vector8, Vector7 } = images;
 
@@ -69,9 +70,7 @@ const AboutTheCompany = () => {
       <div className="bg-[#F9FAFB] relative">
         <div className="max-w-[1460px] relative z-2 2xl:mx-auto mx-3 py-5">
           <div className="lg:w-1/2 w-full">
-            <div className="flex text-[13px] !font-medium gap-2">
-              <Link to="/">Стройоптторг</Link> / <Link to="">О компании</Link>
-            </div>
+            <Names link="/about" name="О компании" />
             <h2 className="text-[27px] !font-semibold">О компании</h2>
             <p className="text-[13px] leading-5">
               «Стройоптторг» - крупнейшая оптово-розничная компания по продаже

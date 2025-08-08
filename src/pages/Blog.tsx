@@ -46,12 +46,12 @@ const Blog = () => {
               <div className='flex flex-wrap gap-[14px] justify-center items-center'>
                   {data2.map((item, index) => (
                     <div className='cursor-pointer' key={index}>
-                      <div className="bg-white hover:shadow-xl group transition-shadow duration-700 rounded-lg w-[370px] overflow-hidden">
+                      <div className="bg-white hover:shadow-xl  transition-shadow duration-700 rounded-lg w-[370px] overflow-hidden">
                         <div className='overflow-hidden w-[370px] h-[200px] '>
                           <img 
                             src={item.img}
                             alt={`News ${index + 1}`}
-                            className=" h-[200px] w-[370px] rounded-b-[0px] object-cover transition-transform duration-500 group-hover:scale-110"
+                            className=" h-[200px] w-[370px] rounded-b-[0px] object-cover transition-transform duration-500 "
                           />
                         </div>
                         <div className="p-4">

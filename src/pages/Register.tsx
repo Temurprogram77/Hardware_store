@@ -117,8 +117,6 @@ const Register = () => {
 
     localStorage.setItem("accounts", JSON.stringify(formData));
 
-
-
     setEmail("");
     setPhone("");
     setFullName("");
@@ -128,6 +126,7 @@ const Register = () => {
 
     navigate('/auth');
   };
+
 
   return (
     <main className="mt-4 mb-10 px-3">
