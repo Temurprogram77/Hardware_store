@@ -332,3 +332,4 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
 };
 
 export default ProductCatalog;
+  
