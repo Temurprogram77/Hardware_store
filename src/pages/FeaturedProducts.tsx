@@ -1,7 +1,7 @@
 import React from "react";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { data } from "../data/data";
-import { Link } from "react-router-dom";
+import { Link } from "../link/links";
 import { useHeart } from "../context/HeartClickedContext";
 import { images } from "../assets/images";
 import { useCompare } from "../context/CompareContext";

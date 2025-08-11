@@ -1,8 +1,8 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "../link/links";
 import {data} from "../data/data";
 import { images } from "../assets/images";
 import { useState } from "react";
-import { Image } from "antd";
+import { Image } from "../link/antLink";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { useHeart } from "../context/HeartClickedContext";
 

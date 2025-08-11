@@ -2,11 +2,11 @@ import React, { useMemo, useState } from "react";
 import { cardData } from "../data/data";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
-import { Link } from "react-router-dom";
+import { Link } from "../link/links";
 import { images } from "../assets/images";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { useCart } from "../context/CartContext";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "../link/motionLink";
 import { FaCheck } from "react-icons/fa";
 
 interface Product {

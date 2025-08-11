@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link } from "../link/links";
 import { images } from "../assets/images";
 import { useModal } from "../context/ModalContext";
 import { useSidebar } from "../context/SideBarContext";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "../link/motionLink";
 import { useState } from "react";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
