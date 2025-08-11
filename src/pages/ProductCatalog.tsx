@@ -317,10 +317,6 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
           </div>
         </div>
 
-        {/* <div className="md:hidden mx-3 border border-[#0000001d] py-3 rounded-md max-w-full flex items-center gap-3 justify-center">
-          <HiMenu size={30} />
-          Показать фильтры
-        </div> */}
         <div className="flex flex-col">
           <CatalogCard />
         </div>
