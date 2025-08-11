@@ -110,7 +110,7 @@ const Contacts = () => {
                 
                 <div>
                   <h6 className='!font-bold text-[#2f3134] w-[215px]'>Телефон:</h6>
-                  <h6 className='hover:text-[#186fd4]'>8 (8782) 28-42-72</h6>
+                  <h6 className='hover:text-[#186fd4] md:cursor-pointer'>8 (8782) 28-42-72</h6>
                 </div>
               </div>
               
