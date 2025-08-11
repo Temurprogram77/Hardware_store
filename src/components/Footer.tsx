@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
+            <h4 className="font-semibold mb-3 invisible sm:visible">  </h4>
             <ul className="space-y-1 flex flex-col gap-2">
               <li>
                 <a href="#">Карта сайта</a>
@@ -124,7 +124,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
+            <h4 className="font-semibold mb-3 invisible sm:visible"></h4>
             <ul className="space-y-1 flex flex-col gap-2">
               <li>
                 <a href="#">
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="lg:block hidden">
-            <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
+            <h4 className="font-semibold mb-3 invisible sm:visible"></h4>
             <ul className="space-y-1">
               <li>
                 <a href="#">Общестроительные материалы</a>

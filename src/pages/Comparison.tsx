@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import { useHeart } from "../context/HeartClickedContext";
 import { useEffect, useState } from "react";
+import Names from "../components/ui/Names";
 
 const { cartt, ciziq } = images;
 
@@ -53,17 +54,8 @@ const Comparison = () => {
 
   return (
     <div className="max-w-[1460px] mx-auto my-5">
-      <div className="mb-6">
-        <Breadcrumb>
-          <Breadcrumb.Item className="cursor-pointer hover:text-blue-500">
-            <Link className="hover:text-blue-500" to={"/"}>
-              Стройоптторг
-            </Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>Сравнение</Breadcrumb.Item>
-        </Breadcrumb>
-        <h2 className="text-2xl md:text-3xl font-bold mt-2">Сравнение</h2>
-      </div>
+        <Names link="/about" name="О компании" />
+<h2 className="text-[27px] !font-semibold">Сравнение</h2>
 
       {hasItems ? (
         <div className="w-full md:px-0 px-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
