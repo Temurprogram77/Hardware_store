@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import  Names  from '../components/ui/Names';
-import { Form } from 'antd';
+import { Form } from '../link/antLink';
 import CustomInput from "../components/ui/CustomInput";
 import CustomButton from "../components/ui/CustomButton";
 import CustomCheckbox from "../components/ui/CustomCheckbox";

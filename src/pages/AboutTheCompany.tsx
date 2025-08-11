@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { images } from "../assets/images";
 import NewsCards from "../components/NewsCards";
 import Names from "../components/ui/Names";
