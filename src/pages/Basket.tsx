@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { images } from "../assets/images";
 import debounce from "lodash.debounce";
 import Names from "../components/ui/Names";
+
 interface BasketItem {
   id: string;
   title: string;
@@ -285,7 +286,7 @@ const Basket: React.FC = () => {
                 onClick={handleClick}
                 className="block w-full py-3 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 transition"
               >
-                Покупать
+                <span className="text-white">Покупать</span>
               </button>
             </div>
           </div>
