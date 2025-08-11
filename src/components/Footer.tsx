@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "antd";
+import { Input } from "../link/antLink";
 import { IoSend } from "react-icons/io5";
 import { images } from "../assets/images";
 import ModalComponent from "./ModalComponent";

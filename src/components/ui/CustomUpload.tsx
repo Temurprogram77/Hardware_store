@@ -1,7 +1,7 @@
 import React from 'react';
-import { Upload, message } from 'antd';
+import { Upload, message } from '../../link/antLink';
 import { UploadOutlined } from '@ant-design/icons';
-import type { UploadProps } from 'antd';
+import type { UploadProps } from '../../link/antLink';
 
 interface Props {
   regex?: RegExp; // Fayl nomini tekshirish uchun

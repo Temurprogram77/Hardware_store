@@ -1,4 +1,4 @@
-import { Form} from "antd";
+import { Form} from "../link/antLink";
 import CustomButton from "./ui/CustomButton";
 import CustomInput from "./ui/CustomInput";
 import CustomTextarea from "./ui/CustomTextarea";

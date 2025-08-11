@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link } from "../link/links";
 import { images } from "../assets/images";
 import { useModal } from "../context/ModalContext";
 import { useSidebar } from "../context/SideBarContext";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "../link/motionLink";
 import { useState } from "react";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
@@ -398,7 +398,7 @@ const Navbar: React.FC = () => {
                             key={i}
                             className="text-[15px] hover:text-[#186fd4] duration-300 cursor-pointer py-3"
                           >
-                            <Link to="/catalog">
+                            <Link to="/catalog" onClick={toggleSidebar}>
                               {Array.isArray(child)
                                 ? child.join(", ")
                                 : typeof child === "object" && "obj" in child

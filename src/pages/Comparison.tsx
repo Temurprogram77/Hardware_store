@@ -1,5 +1,5 @@
-import { Breadcrumb, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Breadcrumb, Button } from "../link/antLink";
+import { Link } from "../link/links";
 import { images } from "../assets/images";
 import { data } from "../data/data";
 import {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CustomPhoneInput, { phoneRegex } from "./ui/CustomINputPhone";
-import { motion } from "framer-motion";
+import { motion } from "../link/motionLink";
 import { useModal } from "../context/ModalContext";
 import { images } from "../assets/images";
 

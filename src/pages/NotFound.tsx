@@ -1,7 +1,8 @@
-import { useNavigate, Link } from "react-router-dom";
-import { Button } from 'antd';
+import { useNavigate } from "react-router-dom";
+import { Link } from "../link/links";
+import { Button } from '../link/antLink';
 import {images} from "../assets/images";
-import { Breadcrumb } from 'antd';
+import { Breadcrumb } from '../link/antLink';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();

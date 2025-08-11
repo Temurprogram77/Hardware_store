@@ -2,8 +2,8 @@ import React from "react";
 
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { data } from "../data/data";
-import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "../link/motionLink";
+import { Link } from "../link/links";
 import { useHeart } from "../context/HeartClickedContext";
 import { images } from "../assets/images";
 import { useCompare } from "../context/CompareContext";

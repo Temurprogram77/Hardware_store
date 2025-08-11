@@ -5,7 +5,7 @@ import React, {
   useState
 } from 'react';
 
-import { Input } from 'antd';
+import { Input } from '../../link/antLink';
 
 const { TextArea } = Input;
 
