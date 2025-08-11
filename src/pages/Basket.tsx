@@ -167,9 +167,9 @@ const Basket: React.FC = () => {
             На странице <span className="font-semibold">"Каталог"</span> вы
             найдете много интересных товаров.
           </p>
-          <Button type="primary" className="w-[200px] h-[50px] mt-4">
-            <Link to="/catalog">ПЕРЕЙТИ В КАТАЛОГ</Link>
-          </Button>
+          
+            <Link to="/catalog"><Button type="primary" className="w-[200px] h-[50px] mt-4">ПЕРЕЙТИ В КАТАЛОГ</Button></Link>
+          
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
