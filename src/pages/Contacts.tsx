@@ -207,9 +207,9 @@ const Contacts = () => {
               onFocus={() => setPhoneError(null)}
               onBlur={() => handleBlur("phone")}
               placeholder="+998 () ___--__"
-              className={`h-[40px] bg-white rounded-md text-[12px]  text-[#2c333d] outline-none placeholder:text-[#] border-[1px] border-[#d9d9d9] lg:w-full 
+              className={`h-[40px] bg-white md:pl-3 rounded-md text-[12px]  text-[#2c333d] outline-none placeholder:text-[#] border-[1px] border-[#d9d9d9] lg:w-full 
               ${phoneError ? "!border-red-500" : ""}`}
-            /> 
+            />
             </div>
           </div>
 
