@@ -1,6 +1,5 @@
 import React from "react";
 import { useModal } from "../context/ModalContext";
-import { images } from "../assets/images";
 
 const Modal: React.FC = () => {
   const { isOpen, closeModal } = useModal();

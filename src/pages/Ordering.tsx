@@ -5,8 +5,8 @@ import {
   Input,
   Checkbox,
   Button,
-} from 'antd';
-import { Link } from 'react-router-dom';
+} from '../link/antLink';
+import { Link } from "../link/links";
 import { images } from '../assets/images';
 
 const { Option } = Select;

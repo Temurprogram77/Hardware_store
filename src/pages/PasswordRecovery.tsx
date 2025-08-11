@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Breadcrumb, Button, Input, Space, Typography } from "antd";
-import { Link } from "react-router-dom";
+import { Breadcrumb, Button, Input, Space, Typography } from "../link/antLink";
+import { Link } from "../link/links";
 import type { FC } from 'react';
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

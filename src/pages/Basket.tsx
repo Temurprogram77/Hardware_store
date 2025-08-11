@@ -1,9 +1,9 @@
-import { Breadcrumb, Button, Input, message } from "antd";
-import { Link } from "react-router-dom";
+import { Breadcrumb, Button, Input, message } from "../link/antLink";
+import { Link } from "../link/links";
 import { useState, useEffect, useCallback } from "react";
 import { images } from "../assets/images";
 import debounce from "lodash.debounce";
-
+import Names from "../components/ui/Names";
 interface BasketItem {
   id: string;
   title: string;
@@ -138,20 +138,8 @@ const Basket: React.FC = () => {
 )}
 
 
-      <div className="mb-6">
-        <Breadcrumb>
-          <Breadcrumb.Item>
-            <Link className="hover:text-blue-500" to="/">
-              Стройоптторг
-            </Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>Корзина товаров</Breadcrumb.Item>
-        </Breadcrumb>
-        <h2 className="text-2xl sm:text-3xl font-bold mt-2">
-          Корзина товаров
-        </h2>
-      </div>
-
+      <Names link="/about" name="О компании" />
+<h2 className="text-[27px] !font-semibold">Корзина товаров</h2>
       {basketItems.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-16 text-center">
           <div className="mb-6">
@@ -167,9 +155,12 @@ const Basket: React.FC = () => {
             На странице <span className="font-semibold">"Каталог"</span> вы
             найдете много интересных товаров.
           </p>
-          <Button type="primary" className="w-[200px] h-[50px] mt-4">
-            <Link to="/catalog">ПЕРЕЙТИ В КАТАЛОГ</Link>
-          </Button>
+          
+         <Link to="/catalog">
+          <Button type="primary" className="w-[200px] !h-[50px] mt-4">
+            ПЕРЕЙТИ В КАТАЛОГ
+          </Button></Link>
+          
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -1,6 +1,6 @@
 import {data} from "../data/data";
 import { images } from "../assets/images";
-import { Link } from "react-router-dom";
+import { Link } from "../link/links";
 import { Range } from "react-range";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi"

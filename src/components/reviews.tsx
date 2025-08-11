@@ -1,4 +1,4 @@
-import { List, Card, Image } from "antd";
+import { List, Card, Image } from "../link/antLink";
 
 interface Review {
   name: string;

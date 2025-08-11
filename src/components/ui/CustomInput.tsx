@@ -8,7 +8,7 @@ import React, {
 import {
   Input,
   type InputRef
-} from 'antd';
+} from '../../link/antLink';
 
 interface Props {
   type: string;

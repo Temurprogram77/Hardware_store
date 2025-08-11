@@ -1,5 +1,5 @@
 import React, { type ReactNode } from 'react';
-import { Checkbox } from 'antd';
+import { Checkbox } from '../../link/antLink';
 
 interface Props {
   name: string
