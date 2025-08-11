@@ -1,56 +1,58 @@
 import { useState, useEffect } from "react"
-import { CgPassword } from "react-icons/cg"
-import { FaRegHeart, FaRegUserCircle } from "react-icons/fa"
-import { GoLocation } from "react-icons/go"
-import { IoExitOutline } from "react-icons/io5"
-import { RiMenuFold2Fill } from "react-icons/ri"
-import { TbUserEdit } from "react-icons/tb"
-import { TfiMenuAlt } from "react-icons/tfi"
 import { useNavigate } from "react-router-dom"
 import Names from "../components/ui/Names"
-// import IzmenetProfel from "../components/IzmenitProfel"
+import {
+    ExitOutlineIcon,
+    FaHeartIcon,
+    LocationIcon,
+    MenuAlticon,
+    MenuFold2FillIcon,
+    PasswordIcon,
+    UserCircleIcon,
+    UserEditIcon
+} from "../assets/icons/Icons"
 
 const menuItems = [
     {
         label: 'Мой аккаунт',
-        icon: <FaRegUserCircle />,
+        icon: <FaHeartIcon />,
         content: [
-            { label: 'Изменить профиль', icon: <TbUserEdit /> },
-            { label: 'Мои заказы', icon: <TfiMenuAlt /> },
-            { label: 'Адрес доставки', icon: <GoLocation /> },
-            { label: 'Избранные товары', icon: <FaRegHeart /> },
-            { label: 'Сменить пароль', icon: <CgPassword /> },
-            { label: 'Выйти из аккаунта', icon: <IoExitOutline /> },
+            { label: 'Изменить профиль', icon: <UserEditIcon /> },
+            { label: 'Мои заказы', icon: <MenuAlticon /> },
+            { label: 'Адрес доставки', icon: <LocationIcon /> },
+            { label: 'Избранные товары', icon: <UserCircleIcon /> },
+            { label: 'Сменить пароль', icon: <PasswordIcon /> },
+            { label: 'Выйти из аккаунта', icon: <ExitOutlineIcon /> },
         ]
     },
     {
         label: 'Изменить профиль',
-        icon: <TbUserEdit />,
+        icon: <UserEditIcon />,
         content: []
     },
     {
         label: 'Мои заказы',
-        icon: <RiMenuFold2Fill />,
+        icon: <MenuFold2FillIcon />,
         content: []
     },
     {
         label: 'Адрес доставки',
-        icon: <GoLocation />,
+        icon: <LocationIcon />,
         content: []
     },
     {
         label: 'Избранные товары',
-        icon: <FaRegHeart />,
+        icon: <FaHeartIcon />,
         content: []
     },
     {
         label: 'Сменить пароль',
-        icon: <CgPassword />,
+        icon: <PasswordIcon />,
         content: []
     },
     {
         label: 'Выйти из аккаунта',
-        icon: <IoExitOutline />,
+        icon: <ExitOutlineIcon />,
         content: []
     },
 ];

@@ -398,7 +398,7 @@ const Navbar: React.FC = () => {
                             key={i}
                             className="text-[15px] hover:text-[#186fd4] duration-300 cursor-pointer py-3"
                           >
-                            <Link to="/catalog">
+                            <Link to="/catalog" onClick={toggleSidebar}>
                               {Array.isArray(child)
                                 ? child.join(", ")
                                 : typeof child === "object" && "obj" in child
@@ -452,8 +452,6 @@ const Navbar: React.FC = () => {
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="full"
-                        height="full"
                         viewBox="0 0 5 8"
                         fill="#919AA3"
                       >

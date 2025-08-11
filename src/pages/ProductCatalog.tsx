@@ -122,7 +122,7 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
 
   return (
     <div className="max-w-[1460px] mx-auto my-5">
-      <div className="mx-3">
+      <div className="m-0">
         <Names link="/catalog" name="Каталог" />
       </div>
       <div className="flex flex-col lg:flex-row gap-6">
@@ -137,7 +137,7 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
               />
               <input
                 className="border-[#DFE0E2] border px-3 py-3 outline-none rounded-md w-[45%]"
-                type="number"
+                type="number"   
                 placeholder={`${values[1]}`}
               />
             </div>
@@ -165,18 +165,21 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                     {children}
                   </div>
                 )}
-                renderThumb={({ props }) => (
-                  <div
-                    {...props}
-                    className="w-5 h-5 bg-white border-3 border-[#186FD4] rounded-full shadow-md focus:outline-none"
-                  />
-                )}
+                renderThumb={({ props }) => {
+                  const { key, ...rest } = props;
+                  return (
+                    <div
+                      key={key}
+                      {...rest}
+                      className="w-5 h-5 bg-white border-3 border-[#186FD4] rounded-full shadow-md focus:outline-none"
+                    />
+                  );
+                }}
               />
               <div className="mt-4 text-center">
                 Qiymat: {values[0]} - {values[1]}
               </div>
             </div>
-
             {/* Brand Checkboxes */}
             <h3 className="text-[20px] !font-semibold">Бренд</h3>
             <div className="flex flex-col gap-4 mt-4">
@@ -209,7 +212,6 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                 Показать все
               </h2>
             </div>
-
             {/* Diameter Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Диаметр</h3>
             <div className="flex flex-col gap-4 mt-4">
@@ -242,7 +244,6 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                 Показать все
               </h2>
             </div>
-
             {/* Disk Diameter Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Диаметр диска</h3>
             <div className="flex flex-col gap-4 mt-4">
@@ -260,7 +261,6 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                 Показать все
               </h2>
             </div>
-
             {/* Material Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Материал</h3>
             <div className="flex flex-col gap-4 mt-4">
@@ -273,7 +273,6 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                 Показать все
               </h2>
             </div>
-
             {/* Material (duplicate section) Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Материал</h3>
             <div className="flex flex-col gap-4 mt-4">
@@ -296,7 +295,6 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
                 Показать все
               </h2>
             </div>
-
             {/* Air Flow Checkboxes */}
             <h3 className="text-[20px] !mt-8 !font-semibold">Расход воздуха</h3>
             <div className="flex flex-col gap-4 mt-4">
@@ -319,10 +317,6 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
           </div>
         </div>
 
-        {/* <div className="md:hidden mx-3 border border-[#0000001d] py-3 rounded-md max-w-full flex items-center gap-3 justify-center">
-          <HiMenu size={30} />
-          Показать фильтры
-        </div> */}
         <div className="flex flex-col">
           <CatalogCard />
         </div>
@@ -332,3 +326,4 @@ const ProductCatalog = ({ item }: { item: { id: string } }) => {
 };
 
 export default ProductCatalog;
+  

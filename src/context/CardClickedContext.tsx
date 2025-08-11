@@ -33,7 +33,7 @@ export const CardClickedProvider = ({ children }: { children: ReactNode }) => {
     setCartItems((prev) => {
       const updated = { ...prev };
       if (updated[item.id]) {
-        delete updated[item.id]; // agar bor bo‘lsa, olib tashlaymiz (toggle)
+        delete updated[item.id]; 
       } else {
         updated[item.id] = item; // aks holda qo‘shamiz
       }
