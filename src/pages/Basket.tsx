@@ -2,7 +2,7 @@ import { Breadcrumb, Button, Input, message } from "antd";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { images } from "../assets/images";
-import debounce from "lodash.debounce";
+// import debounce from "lodash.debounce";
 
 interface BasketItem {
   id: string;
