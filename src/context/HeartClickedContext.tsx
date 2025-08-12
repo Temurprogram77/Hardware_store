@@ -1,10 +1,10 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 type ItemType = {
   id: string;
   title: string;
   image: string;
-  price: number;
+  price?: number;
   oldPrice?: number;
   discount?: number;
   isNew?: boolean;

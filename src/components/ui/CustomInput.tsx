@@ -1,6 +1,5 @@
 import React, {
   type FocusEventHandler,
-  type Ref,
   forwardRef,
   useState
 } from 'react';

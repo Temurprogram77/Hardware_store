@@ -34,10 +34,6 @@ const Navbar: React.FC = () => {
   const handleItemClick = (index: number) => {
     setActiveIndex((prev) => (prev === index ? null : index));
   };
-
-  const likedCountt = Object.keys(likedItems).filter(
-    (id) => likedItems[id]
-  ).length;
   const comparedCount = Object.keys(comparedItems).filter(
     (id) => comparedItems[id]
   ).length;

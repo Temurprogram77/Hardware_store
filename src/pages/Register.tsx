@@ -159,7 +159,7 @@ const Register = () => {
                       <Label text='Номер телефона' required />
                       <CustomPhoneInput
                         value={phone}
-                        onChange={setPhone}
+                        onValueChange={setPhone}
                         onFocus={() => setPhoneError(null)}
                         onBlur={() => handleBlur("phone")}
                         placeholder='+998 (__) ___-__-__'

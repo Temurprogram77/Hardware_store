@@ -1,19 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 
 import { images } from "../assets/images";
 import { useEffect, useState, useRef } from "react";
 
 const {
-  slider1,
-  slider1Tablet,
-  slider1Mobile,
-  slider2,
-  slider2Tablet,
-  slider2Mobile,
   arrowRight,
 } = images;
 

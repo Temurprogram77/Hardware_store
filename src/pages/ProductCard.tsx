@@ -5,8 +5,9 @@ import { useState } from "react";
 import { Image } from "../link/antLink";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { useHeart } from "../context/HeartClickedContext";
+import { useParams } from "react-router-dom";
 
-const { Vector10, Vector9, Vector8, Vector7, heart, compare } = images;
+const { Vector10, Vector9, Vector8, Vector7, compare } = images;
 
 const ProductCard = () => {
   const { id } = useParams<{ id: string }>();
@@ -100,7 +101,7 @@ const ProductCard = () => {
                   <div className="flex justify-between mt-3">
                     <div className="flex items-center gap-2">
                       <div
-                        onClick={toggleHeart}
+                        onClick={()=>toggleHeart}
                         className="rounded-md py-2 px-2 border border-black"
                       >
                         <span

@@ -1,4 +1,4 @@
-import { Breadcrumb, Button } from "../link/antLink";
+import { Button } from "../link/antLink";
 import { Link } from "../link/links";
 import { images } from "../assets/images";
 import { data } from "../data/data";
@@ -26,13 +26,6 @@ const Comparison = () => {
   useEffect(() => {
     localStorage.setItem("comparedItems", JSON.stringify(comparedItems));
   }, [comparedItems]);
-
-  const toggleCompare = (id: number) => {
-    setComparedItems((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
 
   const removeCompare = (id: number) => {
     setComparedItems((prev) => {
@@ -108,7 +101,7 @@ const Comparison = () => {
 
                 <div className="flex items-center md:gap-2 gap-1">
                   <div
-                    onClick={() => toggleHeart(item)}
+                    onClick={() => toggleHeart({ ...item, id: String(item.id) })}
                     className="border-2 px-2 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
                   >
                     <span

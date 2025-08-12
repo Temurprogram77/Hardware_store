@@ -1,5 +1,3 @@
-import React from "react";
-
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { data } from "../data/data";
 import { motion, AnimatePresence } from "../link/motionLink";
@@ -11,51 +9,10 @@ import { FaCheck } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 const { cartt, compare, arrow } = images;
 
-type CheckboxItemProps = {
-  label: string;
-  checked: boolean;
-  onChange: () => void;
-};
-
-const CheckboxItem: React.FC<CheckboxItemProps> = ({
-  label,
-  checked,
-  onChange,
-}) => (
-  <label className="cursor-pointer inline-flex items-center gap-2 select-none">
-    <input
-      type="checkbox"
-      checked={checked}
-      onChange={onChange}
-      className="sr-only"
-    />
-    <div
-      className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all duration-200 ${
-        checked ? "bg-blue-600 border-blue-600" : "bg-white border-gray-400"
-      }`}
-    >
-      {checked && (
-        <svg
-          className="w-3 h-3 text-white"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 5.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
-            clipRule="evenodd"
-          />
-        </svg>
-      )}
-    </div>
-    <span className="text-[13px] !font-medium">{label}</span>
-  </label>
-);
-
 const CatalogCard = () => {
   const { addToCart, cartItems } = useCart();
   const { likedItems, toggleHeart } = useHeart();
-  const { comparedItems, toggleCompare, stateCLick } = useCompare();
+  const { comparedItems, toggleCompare } = useCompare();
   return (
     <div>
       <div className="flex flex-col">
@@ -148,7 +105,7 @@ const CatalogCard = () => {
 
                   <div className="flex items-center md:gap-2 gap-1">
                     <div
-                      onClick={() => toggleHeart(item)}
+                      onClick={() => toggleHeart({ ...item, id: String(item.id) })}
                       className="hover:border-[#186FD4] flex items-center duration-500 border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
                     >
                       <span

@@ -62,7 +62,7 @@ const ModalComponent = () => {
             </label>
             <CustomPhoneInput
               value={phone}
-              onChange={setPhone}
+              onChange={(e) => setPhone(e.target.value)}
               onFocus={() => setPhoneError(null)}
               onBlur={() => handleBlur("phone")}
               placeholder="+998 (__) ___-__-__"

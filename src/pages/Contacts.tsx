@@ -203,7 +203,7 @@ const Contacts = () => {
               
               <CustomPhoneInput
               value={phone}
-              onChange={setPhone}
+              onValueChange={setPhone}
               onFocus={() => setPhoneError(null)}
               onBlur={() => handleBlur("phone")}
               placeholder="+998 () ___--__"

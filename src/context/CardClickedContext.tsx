@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 type ItemType = {
-  id: string;
+  id: string | number;
   title: string;
   image: string;
   newMoney: string;
