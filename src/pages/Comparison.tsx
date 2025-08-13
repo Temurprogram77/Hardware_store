@@ -46,7 +46,7 @@ const Comparison = () => {
   const hasItems = selectedProducts.length > 0;
 
   return (
-    <div className="max-w-[1460px] mx-auto my-5">
+    <div className="max-w-[1460px] mx-auto mt-5 mb-30">
         <Names link="/about" name="О компании" />
 <h2 className="text-[27px] !font-semibold">Сравнение</h2>
 
