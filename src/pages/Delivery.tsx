@@ -23,7 +23,7 @@ const Delivery = () => {
 
   return (
     <div className='flex justify-center items-center md:mb-8'>
-      <div className="md:pr-4 md:pl-4 md:mt-4 w-[1485px] max-md:w-[355px] mt-5">
+      <div className="md:pr-4 md:pl-4 mt-5 w-[1490px] max-md:w-[355px]">
       {/* Link */}
       <Names name='Доставка' link='/delivery' />
 
@@ -42,18 +42,18 @@ const Delivery = () => {
             </ul>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[18.5px]'>Отгрузка товара возможна, только после поступления звонка от менеджера о его готовности к выдаче.</p>
             <p className='text-[#2c333d] text-[20px] leading-7 !font-bold md:text-[16px]'>2. Быстрая доставка по Карачаево- Черкесской республике.</p>
-            <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px] max-md:w-[365px]'><span className='!font-bold text-[18px] md:text-[15px] text-[#1e1e1e]'>ООО «Стройоптторг»</span> предлагает быструю и выгодную доставку по г.Черкесску и регионам Карачаево-Черкесской республики.</p>
+            <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px] !w-[320px] max-md:w-[365px]'><span className='!font-bold text-[18px] md:text-[15px] text-[#1e1e1e]'>ООО «Стройоптторг»</span> предлагает быструю и выгодную доставку по г.Черкесску и регионам Карачаево-Черкесской республики.</p>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[18.5px]'>На отправку интернет-заказов собственным транспортом компании, действует скидка -25%.Доставка товаров весом до 20 кг. возможна через сервис «Яндекс Такси» согласно тарифу перевозчика.</p>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]'>Мы доставляем заказы с 8:00 до 18:00. Время и день согласовывается с менеджером при оформлении заказа.</p>
             <p className='text-[#1e1e1e] font-sans text-[18px] leading-7 !font-bold md:text-[15px]'>Правила доставки интернет-заказов:</p>
-            <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[18.5px] max-md:w-[365px]'>Доставка интернет – заказов осуществляется после полной оплаты (включая стоимость услуги за доставку) на сайте любым удобным для вас способом.</p>
+            <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[18.5px] !w-[320px] max-md:w-[365px]'>Доставка интернет – заказов осуществляется после полной оплаты (включая стоимость услуги за доставку) на сайте любым удобным для вас способом.</p>
             <ul className='relative left-8 flex gap-5 flex-col w-[300px] md:w-full'>
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Производится доставка только после подтверждения о готовности получить товар. В день доставки просим оставаться на связи в согласованное время по указанному в заказе номеру телефона.</li>
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>При доставке просьба обеспечить свободный подъезд к планируемому месту разгрузки.</li>
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Выгрузка и подъем товара на этаж не входят в стоимость доставки.</li>
               <li className='list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]'>Прием товара с доставкой определяется по внешнему виду, комплектации, отсутствию механических повреждений в момент доставки.</li>
             </ul>
-            <div className='bg-[#f9fafb] md:h-[45px] flex items-center md:w-[990px] w-[387px] relative md:left-[3px] left-[-15px] p-3'>
+            <div className='bg-[#f9fafb] md:h-[45px] flex items-center md:w-[990px] !w-[347px] relative md:left-[3px] left-[0px] p-3'>
               <p className='text-[#003b73] relative top-[7px] md:left-[17px]  md:top-2.5 font-sans text-[18px]  leading-7 !font-bold md:text-[15px]'>После приема товара претензии покупателя, касающиеся комплектации и механических повреждений товара, не принимаются.</p>
             </div>
             <p className='md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]'>Если у Вас возникнут вопросы по качеству или количеству товара, Вы можете обратиться за разъяснениями по номеру телефона +7(8782)-28-42-72.</p>
@@ -107,14 +107,14 @@ const Delivery = () => {
             {/* chap tugma */}
               <button
                 ref={prevRef }
-                className="absolute top-1/2 -left-4 md:-left-6 transform -translate-y-1/2 bg-white px-2 py-2 rounded-full shadow z-10">
+                className="absolute top-1/2 -left-0.5 md:-left-6 transform -translate-y-1/2 bg-white px-2 py-2 rounded-full shadow z-10">
                   <img src={left} alt="left" className="w-4 h-4 md:w-5 md:h-5" />
               </button>
 
               {/* ung tugma */}
               <button
                 ref={nextRef }
-                className="absolute top-1/2 -right-4 md:-right-6 transform -translate-y-1/2 bg-white px-2 py-2 rounded-full shadow z-10">
+                className="absolute top-1/2 -right-0.5 md:-right-6 transform -translate-y-1/2 bg-white px-2 py-2 rounded-full shadow z-10">
                   <img src={right} alt="right" className="w-4 h-4 md:w-5 md:h-5" />
               </button>
 
