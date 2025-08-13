@@ -121,7 +121,7 @@ const Basket: React.FC = () => {
   };
 
   return (
-    <div className="max-w-[1460px] mx-auto my-5 px-4 sm:px-6 relative">
+    <div className="max-w-[1460px] mx-auto mt-5 mb-30 relative">
 {showMsg && (
   <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-green-500/90 backdrop-blur-sm text-white px-6 py-3 rounded-xl shadow-lg z-50 flex items-center gap-2 animate-fadeSlide">
     <svg
