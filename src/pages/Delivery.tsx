@@ -23,7 +23,7 @@ const Delivery = () => {
 
   return (
     <div className='flex justify-center items-center md:mb-8'>
-      <div className="md:pr-4 md:pl-4 mt-5 w-[1490px] max-md:w-[355px]">
+      <div className="md:pr-4 md:pl-4 pl-[10px] overflow-x-hidden mt-5 w-[1490px] max-md:w-[355px]">
       {/* Link */}
       <Names name='Доставка' link='/delivery' />
 
