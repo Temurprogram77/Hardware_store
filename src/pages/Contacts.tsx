@@ -147,7 +147,7 @@ const Contacts = () => {
                   ))}
                 </div>
 
-              <div className='bg-[#f7f9fc] p-5 md:h-[230px] h-[265px] font-sans'>
+              <div className='bg-[#f7f9fc] p-5 pl-[-1px] md:h-[230px] h-[265px] font-sans'>
                 <h1 className='font-semibold md:text-[16px] text-[20px]'>Реквизиты:</h1>
                 <p className='md:text-xs  md:w-[300px] leading-6'>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "СТРОЙОПТТОРГ"ИНН 0901051787КПП 090101001369000, <span>Карачаево-Черкесская республика, город Черкесск, Октябрьская улица, 301р/с 40702810360000102415 в Ставропольское отделение №5230 ПАО Сбербанк, БИК 040702615</span></p>
               </div>
@@ -186,7 +186,7 @@ const Contacts = () => {
 
         {/* Form */}
 
-        <form className="text-left space-y-6">
+        <form className="text-left space-y-6 p-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block mb-1 text-[14px] font-medium text-gray-700">
@@ -207,7 +207,7 @@ const Contacts = () => {
               onFocus={() => setPhoneError(null)}
               onBlur={() => handleBlur("phone")}
               placeholder="+998 () ___--__"
-              className={`h-[40px] bg-white md:pl-3 rounded-md text-[12px]  text-[#2c333d] outline-none placeholder:text-[#] border-[1px] border-[#d9d9d9] lg:w-full 
+              className={`h-[40px] bg-white md:pl-3 p-3 w-[317px] rounded-md text-[12px]  text-[#2c333d] outline-none placeholder:text-[#] border-[1px] border-[#d9d9d9] lg:w-full 
               ${phoneError ? "!border-red-500" : ""}`}
             />
             </div>
@@ -224,7 +224,7 @@ const Contacts = () => {
           {/* Submit + Checkbox */}
           <div className="flex flex-col md:flex-row md:items-start items-center justify-between gap-4">
           <label className="flex gap-6 relative md:left-0 left-[7px] items-start md:items-center text-sm text-gray-700 space-x-2">
-              <div className="w-[350px]">
+              <div className="w-[320px] md:w-[350px]">
               <CustomCheckbox name="Согласен с обработкой персональных данных в соответствии с" />
               </div>
             </label>
