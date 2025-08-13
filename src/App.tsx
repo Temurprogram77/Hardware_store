@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import SmsIconSwitcher from "./components/SmsPart";
 import Loader from "./components/Loader";
 import { useEffect, useState } from "react";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -36,6 +37,7 @@ const App = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         {routes.map(({ path, element }) => (
