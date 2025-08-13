@@ -3,6 +3,7 @@ import { Link } from "../link/links";
 import { Button } from '../link/antLink';
 import {images} from "../assets/images";
 import { Breadcrumb } from '../link/antLink';
+import Names from "../components/ui/Names";
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
@@ -10,20 +11,11 @@ const NotFoundPage = () => {
   return (
    
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4 text-center sm:p-12">
-<div className="absolute top-0 left-0 p-4 sm:p-10 mt-40 sm:mt-60 md:mt-40 lg:mt-24">
-  <Breadcrumb className="text-md mb-8">
-    <Breadcrumb.Item className="text-black">
-    <Link className="text-black" to={"/"}>Стройоптторг</Link>
-    </Breadcrumb.Item>
-    <Breadcrumb.Item className="text-gray-400 cursor-pointer">
-      Страница не найдена
-    </Breadcrumb.Item>
-  </Breadcrumb>
-
+ <Names link="/about" name="О компании" />
   <h2 className="text-3xl font-bold text-black sm:text-4xl">
     Страница не найдена
   </h2>
-</div>
+
 
       <div className="max-w-md w-full space-y-6">
 

@@ -1,4 +1,4 @@
-import { Button, Input, message } from "../link/antLink";
+import { Breadcrumb, Button, Input, message } from "../link/antLink";
 import { Link } from "../link/links";
 import { useState, useEffect, useCallback } from "react";
 import { images } from "../assets/images";
@@ -16,6 +16,7 @@ interface BasketItem {
   quantity: number;
 }
 
+// Promo kodlar
 const VALID_PROMO_CODES: { [key: string]: number } = {
   DISCOUNT10: 10,
   SAVE20: 20,
@@ -144,7 +145,7 @@ const Basket: React.FC = () => {
         <div className="flex flex-col items-center justify-center mt-16 text-center">
           <div className="mb-6">
             <img
-              src={images.ciziq || "https://via.placeholder.com/150"}
+              src={images.cartempty || "https://via.placeholder.com/150"}
               alt="Empty cart"
               className="w-32 h-32"
             />
