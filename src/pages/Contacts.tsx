@@ -88,7 +88,7 @@ const Contacts = () => {
 
   return (
     <div className='flex justify-center items-center'>
-      <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
+      <div className="md:pr-4 md:pl-4 overflow-x-hidden md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
       {/* Link */}
         <Names name='Контакты' link='/contacts' />
             
