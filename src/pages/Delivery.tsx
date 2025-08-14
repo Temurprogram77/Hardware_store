@@ -1,11 +1,8 @@
 import Names from "../components/ui/Names";
 import Advertisement from "../components/Advertisement";
-import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Navigation } from "swiper/modules";
-import right from "../assets/right-arrow.svg";
-import left from "../assets/left-arrow.svg";
 import Rectangle from "../assets/Rectangle 48.png";
 import Rectangle2 from "../assets/Rectangle 49.png";
 import Rectangle3 from "../assets/Rectangle 50.png";
@@ -23,8 +20,6 @@ const images = [
 ];
 
 const Delivery = () => {
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div className="flex justify-center items-center md:mb-8">
