@@ -1,15 +1,15 @@
 import Names from "../components/ui/Names";
 import Advertisement from "../components/Advertisement";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
 import { Navigation } from "swiper/modules";
+import right from "../assets/right-arrow.svg";
+import left from "../assets/left-arrow.svg";
 import Rectangle from "../assets/Rectangle 48.png";
 import Rectangle2 from "../assets/Rectangle 49.png";
 import Rectangle3 from "../assets/Rectangle 50.png";
 import Rectangle4 from "../assets/Rectangle 51.png";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
 
 const images = [
   Rectangle,
@@ -23,10 +23,12 @@ const images = [
 ];
 
 const Delivery = () => {
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="md:pr-4 md:pl-4 md:mt-4 w-[1490px] max-md:w-[355px] mt-5">
+    <div className="flex justify-center items-center md:mb-8">
+      <div className="md:pr-4 md:pl-4 pl-[10px] overflow-x-hidden mt-5 w-[1490px] max-md:w-[355px]">
         {/* Link */}
         <Names name="Доставка" link="/delivery" />
 
@@ -73,7 +75,7 @@ const Delivery = () => {
             <p className="text-[#2c333d] text-[20px] leading-7 !font-bold md:text-[16px]">
               2. Быстрая доставка по Карачаево- Черкесской республике.
             </p>
-            <p className="md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px] max-md:w-[365px]">
+            <p className="md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px] !w-[320px] max-md:w-[365px]">
               <span className="!font-bold text-[18px] md:text-[15px] text-[#1e1e1e]">
                 ООО «Стройоптторг»
               </span>{" "}
@@ -92,7 +94,7 @@ const Delivery = () => {
             <p className="text-[#1e1e1e] font-sans text-[18px] leading-7 !font-bold md:text-[15px]">
               Правила доставки интернет-заказов:
             </p>
-            <p className="md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[18.5px] max-md:w-[365px]">
+            <p className="md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[18.5px] !w-[320px] max-md:w-[365px]">
               Доставка интернет – заказов осуществляется после полной оплаты
               (включая стоимость услуги за доставку) на сайте любым удобным для
               вас способом.
@@ -116,7 +118,7 @@ const Delivery = () => {
                 доставки.
               </li>
             </ul>
-            <div className="bg-[#f9fafb] md:h-[45px] flex items-center md:w-[990px] w-[387px] relative md:left-[3px] left-[-15px] p-3">
+            <div className="bg-[#f9fafb] md:h-[45px] flex items-center md:w-[990px] !w-[347px] relative md:left-[3px] left-[0px] p-3">
               <p className="text-[#003b73] relative top-[7px] md:left-[17px]  md:top-2.5 font-sans text-[18px]  leading-7 !font-bold md:text-[15px]">
                 После приема товара претензии покупателя, касающиеся
                 комплектации и механических повреждений товара, не принимаются.
@@ -168,8 +170,7 @@ const Delivery = () => {
           </div>
           <Advertisement />
         </div>
-
-        <div className="relative w-full max-w-[1460px] mt-10 mx-auto">
+        <div className="relative w-full max-w-[1460px] mt-10 mb-10 mx-auto">
           <Swiper
             modules={[Navigation]}
             navigation={true} // ✅ Default tugmalar
