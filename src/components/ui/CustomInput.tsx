@@ -1,6 +1,5 @@
 import React, {
   type FocusEventHandler,
-  type Ref,
   forwardRef,
   useState
 } from 'react';
@@ -8,7 +7,7 @@ import React, {
 import {
   Input,
   type InputRef
-} from 'antd';
+} from '../../link/antLink';
 
 interface Props {
   type: string;

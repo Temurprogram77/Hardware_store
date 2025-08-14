@@ -99,10 +99,11 @@ import ciziq from "./ciziq.svg"
 import mapCard1 from "./mapCard1.jpg"
 import buy from './buy.svg'
 import mapCard2 from "./mapCard2.jpg"
-
+import cartempty from "./cart-empty.svg"
 export const images = {
   heart2,
   Vector10,
+  cartempty,
   Vector9,
   Vector8,
   Vector7,

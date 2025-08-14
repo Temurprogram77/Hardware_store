@@ -1,25 +1,30 @@
 import React from "react";
-import { Input } from "antd";
+import { Input } from "../link/antLink";
 import { IoSend } from "react-icons/io5";
 import { images } from "../assets/images";
 import ModalComponent from "./ModalComponent";
 import { useModal } from "../context/ModalContext";
+import { Link } from "../link/links";
 
 const Footer: React.FC = () => {
-    const { modalOpenModal } = useModal();
+  const { modalOpenModal } = useModal();
   return (
     <footer className="bg-gray-100 text-gray-700 pt-10 px-4 sm:px-8 md:px-16">
       <div className="max-w-[1460px] mx-auto ">
         <div className="flex flex-wrap flex-col md:flex-row items-center justify-between max-w-[1460px] mx-auto py-4 md:py-6 border-b border-gray-200 gap-4 md:gap-0">
           <div className="flex items-center gap-8">
-            <img
-              src={images.logo2}
-              alt="Стройоптторг Logo"
-              className="sm:w-[150px] sm:h-[40px] h-[30px] md:w-auto md:h-auto object-contain"
-            />
-            <span className="sm:text-[15px] text-[13px] text-base font-semibold whitespace-nowrap">
-              ООО «Стройоптторг»
-            </span>
+            <Link to={"/"}>
+              <img
+                src={images.logo2}
+                alt="Стройоптторг Logo"
+                className="sm:w-[150px] sm:h-[40px] h-[30px] md:w-auto md:h-auto object-contain"
+              />
+            </Link>
+            <Link to={"/"}>
+              <span className="sm:text-[15px] text-[13px] text-base font-semibold whitespace-nowrap">
+                ООО «Стройоптторг»
+              </span>
+            </Link>
           </div>
 
           <div className="order-last md:order-none flex flex-col sm:flex-row gap-3 md:gap-40 text-sm text-gray-600 text-center md:text-left">
@@ -46,7 +51,10 @@ const Footer: React.FC = () => {
               Ежедневно, с 8:00 до 18:00
             </p>
           </div>
-          <div onClick={modalOpenModal} className="duration-200 px-10 hover:bg-[#ee0906] cursor-pointer hover:text-white py-2.5 text-[12px] uppercase font-semibold rounded-md border-2 border-[#EE0906]">
+          <div
+            onClick={modalOpenModal}
+            className="duration-200 px-10 hover:bg-[#ee0906] cursor-pointer hover:text-white py-2.5 text-[12px] uppercase font-semibold rounded-md border-2 border-[#EE0906]"
+          >
             Заказать звонок
           </div>
         </div>
@@ -82,7 +90,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
+            <h4 className="font-semibold mb-3 invisible sm:visible"> </h4>
             <ul className="space-y-1 flex flex-col gap-2">
               <li>
                 <a href="#">Карта сайта</a>
@@ -124,7 +132,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
+            <h4 className="font-semibold mb-3 invisible sm:visible"></h4>
             <ul className="space-y-1 flex flex-col gap-2">
               <li>
                 <a href="#">
@@ -141,7 +149,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="lg:block hidden">
-            <h4 className="font-semibold mb-3 invisible sm:visible">.</h4>
+            <h4 className="font-semibold mb-3 invisible sm:visible"></h4>
             <ul className="space-y-1">
               <li>
                 <a href="#">Общестроительные материалы</a>

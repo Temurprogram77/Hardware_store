@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Link } from "../link/links";
 import CustomPhoneInput, { phoneRegex } from '../components/ui/CustomINputPhone';
 import CustomInput from '../components/ui/CustomInput';
 import CustomCheckbox from '../components/ui/CustomCheckbox';
@@ -158,7 +159,7 @@ const Register = () => {
                       <Label text='Номер телефона' required />
                       <CustomPhoneInput
                         value={phone}
-                        onChange={setPhone}
+                        onValueChange={setPhone}
                         onFocus={() => setPhoneError(null)}
                         onBlur={() => handleBlur("phone")}
                         placeholder='+998 (__) ___-__-__'

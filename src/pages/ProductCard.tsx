@@ -1,12 +1,13 @@
-import { Link, useParams } from "react-router-dom";
 import {data} from "../data/data";
 import { images } from "../assets/images";
 import { useState } from "react";
-import { Image } from "antd";
+import { Image } from "../link/antLink";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { useHeart } from "../context/HeartClickedContext";
+import { useParams } from "../link/motionLink";
+import Names from "../components/ui/Names";
 
-const { Vector10, Vector9, Vector8, Vector7, heart, compare } = images;
+const { Vector10, Vector9, Vector8, Vector7, compare } = images;
 
 const ProductCard = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,11 +20,7 @@ const ProductCard = () => {
   }
   return (
     <div className="max-w-[1460px] mx-auto py-8">
-      <div className="text-[13px] !font-medium mb-6 flex flex-wrap items-center 2xl:mx-0 mx-3 gap-3">
-        <Link to={"/"}>Стройоптторг</Link> /{" "}
-        <Link to={"/catalog"}>Электроинструмент</Link> /{" "}
-        <Link to={""}>{product.title}</Link>
-      </div>
+      <Names name="Электроинструмент" link="/catalog" name2={product.title} link2="/product/"/>
       <div className="2xl:mx-0 mx-3">
         <h2 className="md:text-[22px] text-[20px] !font-semibold">
           Дрель-шуруповерт аккумуляторная MAKITA DF 347DWE14 В 1,5 А/ч
@@ -100,7 +97,7 @@ const ProductCard = () => {
                   <div className="flex justify-between mt-3">
                     <div className="flex items-center gap-2">
                       <div
-                        onClick={toggleHeart}
+                        onClick={()=>toggleHeart}
                         className="rounded-md py-2 px-2 border border-black"
                       >
                         <span

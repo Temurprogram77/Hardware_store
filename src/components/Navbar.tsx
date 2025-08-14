@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link } from "../link/links";
 import { images } from "../assets/images";
 import { useModal } from "../context/ModalContext";
 import { useSidebar } from "../context/SideBarContext";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "../link/motionLink";
+import { useEffect, useState } from "react";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
 import { sideBar } from "../data/data";
@@ -30,14 +30,29 @@ const Navbar: React.FC = () => {
   const { likedItems } = useHeart();
   const { comparedItems } = useCompare();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [rotate, setRotate] = useState(false);
+  {
+    useEffect(() => {
+      if (!isOpen) return;
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      };
+
+      document.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    }, [isOpen, closeModal]);
+  }
 
   const handleItemClick = (index: number) => {
     setActiveIndex((prev) => (prev === index ? null : index));
+    setRotate(!rotate);
   };
-
-  const likedCountt = Object.keys(likedItems).filter(
-    (id) => likedItems[id]
-  ).length;
   const comparedCount = Object.keys(comparedItems).filter(
     (id) => comparedItems[id]
   ).length;
@@ -149,63 +164,63 @@ const Navbar: React.FC = () => {
           >
             <img src={close} alt="close" />
           </div>
-          <Link to={"/deals"}>
+          <Link onClick={closeModal} to={"/deals"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 <img src={gift} className="w-[25px]" alt="gift" /> Все акции
               </p>
             </div>
           </Link>
-          <Link to={"/about"}>
+          <Link onClick={closeModal} to={"/about"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 О компании
               </p>
             </div>
           </Link>
-          <Link to={"/payment"}>
+          <Link onClick={closeModal} to={"/payment"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 Оплата
               </p>
             </div>
           </Link>
-          <Link to={"/delivery"}>
+          <Link onClick={closeModal} to={"/delivery"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 Доставка
               </p>
             </div>
           </Link>
-          <Link to={"/return"}>
+          <Link onClick={closeModal} to={"/return"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 Возврат
               </p>
             </div>
           </Link>
-          <Link to={"/reviews"}>
+          <Link onClick={closeModal} to={"/reviews"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 Отзывы
               </p>
             </div>
           </Link>
-          <Link to={"/faq"}>
+          <Link onClick={closeModal} to={"/faq"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 Вопрос-ответ
               </p>
             </div>
           </Link>
-          <Link to={"/blog"}>
+          <Link onClick={closeModal} to={"/blog"}>
             <div className="py-4 border-t border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 Новости
               </p>
             </div>
           </Link>
-          <Link to={"/contacts"}>
+          <Link onClick={closeModal} to={"/contacts"}>
             <div className="py-4 border-t border-b border-[#EBEEF0]">
               <p className="!m-0 flex items-center gap-3 hover:text-[#186fd4]">
                 Контакты
@@ -214,7 +229,13 @@ const Navbar: React.FC = () => {
           </Link>
           <div className="flex justify-between items-center my-6">
             <p className="!m-0">8 800 444 00 65</p>
-            <div className="py-2 px-4 rounded-sm font-semibold text-[#2A5E8D] bg-[#F2F6FC]">
+            <div
+              onClick={() => {
+                modalOpenModal();
+                closeModal();
+              }}
+              className="py-2 px-4 rounded-sm font-semibold text-[#2A5E8D] bg-[#F2F6FC]"
+            >
               Заказать звонок
             </div>
           </div>
@@ -290,14 +311,22 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
             <Link to="/deals">
               <div className="hidden sm:flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={gift} alt="gift" className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]" />
+                <img
+                  src={gift}
+                  alt="gift"
+                  className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]"
+                />
                 <p className="text-[12px] !m-0 font-medium">Все акции</p>
               </div>
             </Link>
 
             <Link to="/auth">
               <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={user} alt="user" className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]" />
+                <img
+                  src={user}
+                  alt="user"
+                  className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]"
+                />
                 <p className="hidden !m-0 sm:block text-[12px] font-medium">
                   Войти
                 </p>
@@ -346,7 +375,11 @@ const Navbar: React.FC = () => {
 
             <Link to="/basket">
               <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-[#186fd4] transition">
-                <img src={basket} alt="basket" className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]" />
+                <img
+                  src={basket}
+                  alt="basket"
+                  className="md:w-[24px] md:h-[18px] w-[30px] h-[25px]"
+                />
                 <p className="hidden !m-0 sm:block text-[12px] font-medium">
                   Корзина
                 </p>
@@ -426,61 +459,72 @@ const Navbar: React.FC = () => {
         ""
       )}
 
-      
-        <div className={`fixed z-20 top-0 -left-full ${sideBarIsOpen2 && "left-0"} py-8 w-[80%] bg-[#f9fafb] duration-200 opacity-100 visible`}>
-          <div className="max-w-full mx-auto">
-            <div
-              onClick={toggleSidebar2}
-              className="absolute w-[20px] z-[10000] top-3 right-3 cursor-pointer"
-            >
-              <img src={close} className="w-[30px]" alt="close" />
-            </div>
-            <div className="w-[100%] h-full rounded-md bg-white max-h-screen overflow-y-auto relative pb-8 pt-2">
-              {sideBar.map((item, index) => (
-                <div key={index} className="border-b border-[#0000002c]">
+      <div
+        className={`fixed z-20 top-0 -left-full ${
+          sideBarIsOpen2 && "left-0"
+        } py-8 w-[80%] bg-[#f9fafb] duration-200 opacity-100 visible`}
+      >
+        <div className="max-w-full mx-auto">
+          <div
+            onClick={toggleSidebar2}
+            className="absolute w-[20px] z-[10000] top-4 right-4 cursor-pointer"
+          >
+            <img src={close} className="w-[30px]" alt="close" />
+          </div>
+          <div className="w-[100%] h-full rounded-md bg-white max-h-screen overflow-y-auto relative pb-8 pt-4">
+            {sideBar.map((item, index) => (
+              <div key={index} className="border-b border-[#0000002c]">
+                <div
+                  onClick={() => handleItemClick(index)}
+                  className="cursor-pointer flex items-center justify-between py-5 px-6 hover:bg-[#186fd4] hover:text-white duration-300"
+                >
+                  <p className="!m-0 text-[12px] uppercase font-semibold">
+                    {item.name}
+                  </p>
                   <div
-                    onClick={() => handleItemClick(index)}
-                    className="cursor-pointer flex items-center justify-between py-5 px-6 hover:bg-[#186fd4] hover:text-white duration-300"
+                    className={`w-[10px] h-[10px] flex items-center ${
+                      rotate ? "rotate-90" : ""
+                    }`}
                   >
-                    <p className="!m-0 text-[12px] uppercase font-semibold">
-                      {item.name}
-                    </p>
-                    <div
-                      className={`w-[12px] h-[12px] flex items-center ${
-                        sideBarIsOpen2 ? "" : ""
-                      }`}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 5 8"
+                      fill="#919AA3"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 5 8"
-                        fill="#919AA3"
-                      >
-                        <path d="M4.35355 4.35355C4.54882 4.15829 4.54882 3.84171 4.35355 3.64645L1.17157 0.464466C0.976311 0.269204 0.659728 0.269204 0.464466 0.464466C0.269204 0.659728 0.269204 0.976311 0.464466 1.17157L3.29289 4L0.464466 6.82843C0.269204 7.02369 0.269204 7.34027 0.464466 7.53553C0.659728 7.7308 0.976311 7.7308 1.17157 7.53553L4.35355 4.35355ZM3 4.5H4V3.5H3V4.5Z"></path>
-                      </svg>
-                    </div>
+                      <path d="M4.35355 4.35355C4.54882 4.15829 4.54882 3.84171 4.35355 3.64645L1.17157 0.464466C0.976311 0.269204 0.659728 0.269204 0.464466 0.464466C0.269204 0.659728 0.269204 0.976311 0.464466 1.17157L3.29289 4L0.464466 6.82843C0.269204 7.02369 0.269204 7.34027 0.464466 7.53553C0.659728 7.7308 0.976311 7.7308 1.17157 7.53553L4.35355 4.35355ZM3 4.5H4V3.5H3V4.5Z"></path>
+                    </svg>
                   </div>
-
-                  {/* Dropdown content */}
-                  {activeIndex === index && (
-                    <div className="pl-5 pr-3 py-2 max-h-[300px] bg-[#dfdfdf99] overflow-y-auto transition-all duration-300">
-                      {item.obj?.map((child: any, i: number) => (
-                        <Link key={i} to="/catalog" className="w-full" onClick={()=>{handleItemClick(index);toggleSidebar2()}}>
-                          <p className="text-[15px] w-full hover:text-[#186fd4] cursor-pointer py-2">
-                            {Array.isArray(child)
-                              ? child.join(", ")
-                              : typeof child === "object" && "obj" in child
-                              ? child.obj.flat().join(", ")
-                              : String(child)}
-                          </p>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
                 </div>
-              ))}
-            </div>
+
+                {/* Dropdown content */}
+                {activeIndex === index && (
+                  <div className="pl-5 pr-3 py-2 max-h-[300px] bg-[#dfdfdf99] overflow-y-auto transition-all duration-300">
+                    {item.obj?.map((child: any, i: number) => (
+                      <Link
+                        key={i}
+                        to="/catalog"
+                        className="w-full"
+                        onClick={() => {
+                          handleItemClick(index);
+                          toggleSidebar2();
+                        }}
+                      >
+                        <p className="text-[15px] w-full hover:text-[#186fd4] cursor-pointer py-2">
+                          {Array.isArray(child)
+                            ? child.join(", ")
+                            : typeof child === "object" && "obj" in child
+                            ? child.obj.flat().join(", ")
+                            : String(child)}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
+      </div>
       <div className="max-w-[1460px] flex lg:hidden items-center gap-2 xl:mx-auto mx-3">
         <div
           onClick={toggleSidebar2}

@@ -1,38 +1,56 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CustomPhoneInput, { phoneRegex } from "./ui/CustomINputPhone";
-import { motion } from "framer-motion";
+import { motion } from "../link/motionLink";
 import { useModal } from "../context/ModalContext";
 import { images } from "../assets/images";
 
-const {
-  close,
-} = images;
-
+const { close } = images;
 
 const ModalComponent = () => {
-    const {
-        modalIsOpen,
-        modalCloseModal,
-      } = useModal();
+  const { modalIsOpen, modalCloseModal } = useModal();
   const [phone, setPhone] = useState<string>("");
   const [checked, setChecked] = useState(false);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+
   const handleBlur = (field: string) => {
-      switch (field) {
-        case "phone":
-          if (!phone || !phoneRegex.test(phone)) {
-            setPhoneError("Пожалуйста, введите действительный телефон!");
-          } else {
-            setPhoneError(null);
-          }
-          break;
-        default:
-          break;
+    switch (field) {
+      case "phone":
+        if (!phone || !phoneRegex.test(phone)) {
+          setPhoneError("Пожалуйста, введите действительный телефон!");
+        } else {
+          setPhoneError(null);
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    if (!modalIsOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        modalCloseModal();
       }
     };
+
+    const handleScroll = () => {
+      modalCloseModal();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [modalIsOpen, modalCloseModal]);
+
   return (
     <div>
-        {modalIsOpen ? (
+      {modalIsOpen && (
         <div className="overflow-y-scroll">
           <div
             onClick={modalCloseModal}
@@ -62,16 +80,16 @@ const ModalComponent = () => {
             </label>
             <CustomPhoneInput
               value={phone}
-              onChange={setPhone}
+              onChange={(e) => setPhone(e.target.value)}
               onFocus={() => setPhoneError(null)}
               onBlur={() => handleBlur("phone")}
               placeholder="+998 (__) ___-__-__"
               className={`px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full 
-${phoneError ? "!border-red-500" : ""}`}  
+${phoneError ? "!border-red-500" : ""}`}
             />
             <div className="flex items-start gap-3 my-4">
               <label className="cursor-pointer inline-block">
-                <input 
+                <input
                   type="checkbox"
                   className="hidden"
                   checked={checked}
@@ -79,7 +97,7 @@ ${phoneError ? "!border-red-500" : ""}`}
                 />
                 <motion.div
                   animate={{
-                    backgroundColor: checked ? "#3B82F6" : "#fff", // blue-500
+                    backgroundColor: checked ? "#3B82F6" : "#fff",
                     borderColor: checked ? "#3B82F6" : "#ccc",
                   }}
                   transition={{ duration: 0.2 }}
@@ -111,11 +129,9 @@ ${phoneError ? "!border-red-500" : ""}`}
             </div>
           </div>
         </div>
-      ) : (
-        ""
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ModalComponent
+export default ModalComponent;

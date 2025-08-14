@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Image } from "antd";
+import { Form, Image } from "../link/antLink";
 import rek1 from "../assets/rek1.png";
 import rek2 from "../assets/rek2.png";
 import CustomInput from "./ui/CustomInput";

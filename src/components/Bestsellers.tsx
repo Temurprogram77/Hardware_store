@@ -2,11 +2,11 @@ import React, { useMemo, useState } from "react";
 import { cardData } from "../data/data";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
-import { Link } from "react-router-dom";
+import { Link } from "../link/links";
 import { images } from "../assets/images";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { useCart } from "../context/CartContext";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "../link/motionLink";
 import { FaCheck } from "react-icons/fa";
 
 interface Product {
@@ -14,7 +14,7 @@ interface Product {
   item: string;
   title: string;
   image: string;
-  type: string;
+  type?: string;
   oldMoney: string;
   newMoney: string;
   sale: string;
@@ -30,7 +30,7 @@ const Bestsellers: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>("Все");
 
   const categories = useMemo<string[]>(() => {
-    const allTypes = cardData.map((item: Product) => item.type);
+    const allTypes = (cardData as Product[]).map(item => item.type ?? "");
     return ["Все", ...Array.from(new Set(allTypes))];
   }, []);
 
@@ -138,7 +138,7 @@ const Bestsellers: React.FC = () => {
                   {/* Like va Compare */}
                   <div className="flex items-center md:gap-2 gap-1">
                     <div
-                      onClick={() => toggleHeart(item)}
+                      onClick={() => toggleHeart({ ...item, id: String(item.id) })}
                       className="hover:border-[#186FD4] flex items-center duration-500 border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
                     >
                       <span

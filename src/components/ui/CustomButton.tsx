@@ -1,5 +1,5 @@
 import React, { type ReactNode } from 'react'
-import { Button } from 'antd'
+import { Button } from '../../link/antLink'
 
 interface Props {
   type: 'primary' | 'default' | 'dashed' | 'link' | 'text',

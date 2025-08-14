@@ -44,7 +44,7 @@ const CheckboxItem: React.FC<CheckboxItemProps> = ({
   </label>
 );
 
-const ProductCatalog = ({ item }: { item: { id: string } }) => {
+const ProductCatalog = ({}: { item: { id: string } }) => {
   const [values, setValues] = useState<number[]>([3000, 52500]);
   // const { likedItems, toggleHeart } = useHeart();
   // const { comparedItems, toggleCompare } = useCompare();

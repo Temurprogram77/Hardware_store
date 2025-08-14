@@ -15,13 +15,7 @@ const IzmenetProfel = () => {
             setFormData(parsed)
         }
     }, [])
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target
-        if (!formData) return
-        setFormData(prev => ({ ...prev!, [name]: value }))
-    }
-
+   
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         if (!formData) return

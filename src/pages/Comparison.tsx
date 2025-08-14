@@ -1,5 +1,5 @@
-import { Breadcrumb, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Button } from "../link/antLink";
+import { Link } from "../link/links";
 import { images } from "../assets/images";
 import { data } from "../data/data";
 import {
@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import { useHeart } from "../context/HeartClickedContext";
 import { useEffect, useState } from "react";
+import Names from "../components/ui/Names";
 
 const { cartt, ciziq } = images;
 
@@ -25,13 +26,6 @@ const Comparison = () => {
   useEffect(() => {
     localStorage.setItem("comparedItems", JSON.stringify(comparedItems));
   }, [comparedItems]);
-
-  const toggleCompare = (id: number) => {
-    setComparedItems((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
 
   const removeCompare = (id: number) => {
     setComparedItems((prev) => {
@@ -52,18 +46,9 @@ const Comparison = () => {
   const hasItems = selectedProducts.length > 0;
 
   return (
-    <div className="max-w-[1460px] mx-auto my-5">
-      <div className="mb-6">
-        <Breadcrumb>
-          <Breadcrumb.Item className="cursor-pointer hover:text-blue-500">
-            <Link className="hover:text-blue-500" to={"/"}>
-              Стройоптторг
-            </Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>Сравнение</Breadcrumb.Item>
-        </Breadcrumb>
-        <h2 className="text-2xl md:text-3xl font-bold mt-2">Сравнение</h2>
-      </div>
+    <div className="max-w-[1460px] mx-auto mt-5 mb-30">
+        <Names link="/about" name="О компании" />
+<h2 className="text-[27px] !font-semibold">Сравнение</h2>
 
       {hasItems ? (
         <div className="w-full md:px-0 px-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
@@ -116,7 +101,7 @@ const Comparison = () => {
 
                 <div className="flex items-center md:gap-2 gap-1">
                   <div
-                    onClick={() => toggleHeart(item)}
+                    onClick={() => toggleHeart({ ...item, id: String(item.id) })}
                     className="border-2 px-2 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
                   >
                     <span
@@ -147,9 +132,11 @@ const Comparison = () => {
             На странице <span className="font-semibold">"Каталог"</span> вы
             найдете много интересных товаров.
           </p>
+          <Link to="/catalog">
           <Button type="primary" className="w-[200px] !h-[50px] mt-4">
-            <Link to="/catalog">ПЕРЕЙТИ В КАТАЛОГ</Link>
-          </Button>
+            ПЕРЕЙТИ В КАТАЛОГ
+          </Button></Link>
+          
         </div>
       )}
     </div>

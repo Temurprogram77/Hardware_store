@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "../link/motionLink";
 import {
   FaWhatsapp,
   FaFacebookF,
@@ -26,6 +26,31 @@ const SmsIconSwitcher: React.FC = () => {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  // 🔹 ESCAPE va SCROLL hodisalari
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsModalOpen(false);
+        setOpen(false);
+      }
+    };
+
+    const handleScroll = () => {
+      setIsModalOpen(false);
+      setOpen(false);
+    };
+
+    if (isModalOpen || open) {
+      document.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isModalOpen, open]);
 
   const handleClick = () => {
     setOpen(!open);
@@ -77,23 +102,19 @@ const SmsIconSwitcher: React.FC = () => {
 
   return (
     <>
-      {/* Modal oynasi */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-className="fixed inset-0 bg-black/80 flex items-center justify-center z-[999]"
-
-
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-[999]"
           >
             <motion.div
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-             
             >
               <button
                 className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
@@ -103,7 +124,7 @@ className="fixed inset-0 bg-black/80 flex items-center justify-center z-[999]"
               </button>
 
               {/* Chat Widget */}
-              <div className="w-full shadow-xl rounded-lg overflow-hidden border border-gray-300 bg-white flex   flex-col">
+              <div className="w-full shadow-xl rounded-lg overflow-hidden border border-gray-300 bg-white flex flex-col">
                 {/* Header */}
                 <div className="bg-blue-600 text-white flex items-center justify-between px-4 py-3">
                   <h2 className="font-semibold text-sm">
@@ -124,9 +145,7 @@ className="fixed inset-0 bg-black/80 flex items-center justify-center z-[999]"
                     и готовы вам помочь!
                   </p>
 
-                  <div className="flex gap-6">
-                 
-                  </div>
+                  <div className="flex gap-6"></div>
                 </div>
 
                 {/* Input */}
@@ -247,4 +266,3 @@ className="fixed inset-0 bg-black/80 flex items-center justify-center z-[999]"
 };
 
 export default SmsIconSwitcher;
-  

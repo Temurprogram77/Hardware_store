@@ -66,7 +66,7 @@ const CardBgImages: React.FC = () => {
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
 
-          <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 text-black">
+          <div className="relative z-2 flex flex-col items-start justify-center h-full px-4 text-black">
             <p className="!mb-3 w-[130px] text-[19px] !font-medium">
               {item.title}
             </p>

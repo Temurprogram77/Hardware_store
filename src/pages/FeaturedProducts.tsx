@@ -1,4 +1,3 @@
-import React from "react";
 import CatalogCard from "../components/CatalogCard";
 import Names from "../components/ui/Names";
 const FeaturedProducts = () => {

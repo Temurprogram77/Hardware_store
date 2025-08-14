@@ -9,6 +9,7 @@ import { HeartClickedProvider } from "./context/HeartClickedContext.tsx";
 import { CompareProvider } from "./context/CompareContext.tsx";
 import { SidebarProvider2 } from "./context/SidebarContext2.tsx";
 import { CartProvider } from "./context/CartContext.tsx";
+import { LoaderProvider } from "./context/LoaderContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <>
@@ -18,7 +19,9 @@ createRoot(document.getElementById("root")!).render(
           <HeartClickedProvider>
             <CompareProvider>
               <CartProvider>
-                <App />
+                <LoaderProvider>
+                  <App />
+                </LoaderProvider>
               </CartProvider>
             </CompareProvider>
           </HeartClickedProvider>
