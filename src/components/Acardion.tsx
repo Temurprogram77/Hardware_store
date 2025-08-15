@@ -8,32 +8,34 @@ interface Review {
   answer: string;
 }
 
+
 interface Props extends Review {}
 
 const Acardion: React.FC<{ quiz: Props }> = ({ quiz }) => {
+
   const [isOpen, setIsOpen] = React.useState(false);
 
   const toggleAccordion = () => setIsOpen(prev => !prev);
 
+
   return (
     <div className="border-b border-gray-200 py-5">
-      {/* Header */}
       <div
         onClick={toggleAccordion}
         className="flex justify-between items-center cursor-pointer"
       >
-        <span className="text-sm font-medium text-gray-800">{quiz.quiz}</span>
+
+        <span className="text-sm w-[85%] font-medium text-gray-800">{quiz.quiz}</span>
         <motion.div
           initial={false}
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-500 text-xl"
+          className="w-[30px] h-[30px] flex items-center justify-center rounded-full bg-blue-100 text-blue-500 text-xl"
         >
           {isOpen ? <FaMinus /> : <FaPlus />}
         </motion.div>
       </div>
 
-      {/* Content */}
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div

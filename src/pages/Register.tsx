@@ -246,7 +246,7 @@ ${phoneError ? '!border-red-500' : ''}`}
 
               <div className="max-sm:mt-15">
                 <div className="flex items-center gap-5 max-sm:gap-3">
-                  <UserIcon className="text-red-600 font-normal !w-15 !h-15 md:w-10 md:h-10" />
+                  <UserIcon className="text-red-600 font-normal !w-10 !h-10 md:w-10" />
                   <h3 className="!font-bold text-2xl max-sm:text-lg md:text-xl">Уже есть аккаунт?</h3>
                 </div>
                 <div className="flex flex-col ml-18 mt-7 max-sm:mt-2">

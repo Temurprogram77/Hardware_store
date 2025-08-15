@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Link } from "../link/links";
 import { Button } from '../link/antLink';
 import {images} from "../assets/images";
-import { Breadcrumb } from '../link/antLink';
 import Names from "../components/ui/Names";
 
 const NotFoundPage = () => {
