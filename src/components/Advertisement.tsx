@@ -20,8 +20,6 @@ const Advertisement: React.FC = () => {
           <p className="text-center text-[#6A6F75] text-[14px]">
             Регулярные скидки и спецпредложения, a так же новости компании.
           </p>
-
-          {/* Email input */}
           <CustomInput
             className="h-[40px]"
             type="email"
