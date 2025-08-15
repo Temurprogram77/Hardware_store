@@ -55,7 +55,6 @@ const AuthPage: React.FC = () => {
 
   return (
     <main className="mb-10 mt-5 px-3">
-      <hr className="text-gray-200" />
       <div className="max-w-[1460px] mx-auto mt-2.5">
         <Names link="#" name="Авторизация" />
         <div className="mt-4 flex flex-col justify-center">
