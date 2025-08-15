@@ -109,12 +109,12 @@ const AuthPage: React.FC = () => {
               <CustomCheckbox name='Запомнить меня' />
             </div>
 
-            <div className='flex flex-col w-full mt-5'>
+            <div className='flex flex-col items-start md:w-[43%] w-full max-sm:mt-5'>
               <div className='flex gap-5 max-sm:gap-3 max-sm:flex'>
                 <UserIcon className='text-red-600 font-normal w-10 h-10' />
                 <h3 className='!font-bold text-2xl max-sm:text-lg max-sm:items-center max-sm:flex'>Еще нет аккаунта?</h3>
               </div>
-              <div className='flex flex-wrap flex-col ml-11 lg:ml-18 lg:mt-7 mt-3 md:mt-1'>
+              <div className='flex flex-wrap flex-col ml-11 lg:ml-18 mt-7 max-sm:mt-3 md:mt-1'>
                 <div className='flex items-center flex-wrap'>
                   <p className='flex flex-wrap text-sm leading-7 text-gray-600'>
                     <span className='font-bold text-sm'>Регистрация на сайте</span>

@@ -137,7 +137,7 @@ const Register = () => {
         <section>
           <div className="mt-4">
             <h2 className="!font-bold text-4xl">Регистрация</h2>
-            <div className="mt-10 border w-[100%] max-sm:w-full max-sm:flex-col rounded-lg py-8 max-sm:!py-4 px-10 border-gray-200 flex justify-between max-sm:px-4 md:p-5">
+            <div className="mt-10 border w-full flex-col lg:flex-row rounded-lg py-8 max-sm:!py-4 px-4 border-gray-200 flex justify-between lg:px-10 md:p-5">
               <div className="flex flex-col max-sm:mr-0 max-sm:w-full xl:mr-10">
                 <div className='flex flex-col gap-2 mb-2'>
                   <div className="xl:flex xl:gap-3">
@@ -244,13 +244,13 @@ ${phoneError ? '!border-red-500' : ''}`}
                 </div>
               </div>
 
-              <div className="max-sm:mt-15">
+              <div className="mt-15 lg:mt-0">
                 <div className="flex items-center gap-5 max-sm:gap-3">
                   <UserIcon className="text-red-600 font-normal !w-10 !h-10 md:w-10" />
                   <h3 className="!font-bold text-2xl max-sm:text-lg md:text-xl">Уже есть аккаунт?</h3>
                 </div>
-                <div className="flex flex-col ml-18 mt-7 max-sm:mt-2">
-                  <div className="flex flex-wrap items-center gap-1.5 w-fit">
+                <div className="flex flex-col ml-13 mt-2 lg:mt-7">
+                  <div className="flex flex-wrap items-center w-fit">
                     <p className="leading-7 text-sm text-gray-600">
                       Перейдите к <span className="font-bold">авторизации</span> если у вас уже есть зарегистрированный аккаунт.
                     </p>
