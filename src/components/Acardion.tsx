@@ -33,7 +33,6 @@ const Acardion: React.FC<{ quiz: Props }> = ({ quiz }) => {
         </motion.div>
       </div>
 
-      {/* Content */}
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
