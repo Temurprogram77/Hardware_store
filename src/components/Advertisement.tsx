@@ -8,7 +8,7 @@ import CustomCheckbox from "./ui/CustomCheckbox";
 
 const Advertisement: React.FC = () => {
   return (
-    <section className="flex flex-col w-[90%] md:w-[60%] lg:w-[30%] xl:w-[23%] gap-[3rem] mb-[3rem] mx-auto">
+    <section className="flex flex-col w-[100%] md:w-[60%] lg:w-[30%] xl:w-[23%] gap-[3rem] mb-[3rem] mx-auto">
       <Image src={rek1} preview={false} />
       <Image src={rek2} preview={false} />
 
