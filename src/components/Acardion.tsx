@@ -17,7 +17,6 @@ const Acardion: React.FC<{ quiz: Props }> = ({ quiz }) => {
 
   return (
     <div className="border-b border-gray-200 py-5">
-      {/* Header */}
       <div
         onClick={toggleAccordion}
         className="flex justify-between items-center cursor-pointer"
@@ -27,7 +26,7 @@ const Acardion: React.FC<{ quiz: Props }> = ({ quiz }) => {
           initial={false}
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-500 text-xl"
+          className="w-[30px] h-[30px] flex items-center justify-center rounded-full bg-blue-100 text-blue-500 text-xl"
         >
           {isOpen ? <FaMinus /> : <FaPlus />}
         </motion.div>
