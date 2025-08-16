@@ -1,4 +1,4 @@
-import { Breadcrumb, Button, Input, message } from "../link/antLink";
+import { Button, Input, message } from "../link/antLink";
 import { Link } from "../link/links";
 import { useState, useEffect, useCallback } from "react";
 import { images } from "../assets/images";
@@ -147,7 +147,7 @@ const Basket: React.FC = () => {
             <img
               src={images.cartempty || "https://via.placeholder.com/150"}
               alt="Empty cart"
-              className="w-32 h-32"
+              className="w-52 h-32"
             />
           </div>
           <p className="text-lg font-medium">В вашей корзине пусто</p>

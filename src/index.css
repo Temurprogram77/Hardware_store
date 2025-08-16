@@ -32,16 +32,6 @@
   font-size: 16px !important;
 }
 
-.swiper-button-next {
-  right: 0 !important;
-  transform: translateY(-50%) !important;
-}
-
-.swiper-button-prev {
-  left: 0 !important;
-  transform: translateY(-50%) !important;
-}
-
 .swiper-pagination-bullet {
   background-color: transparent !important;
   border: 3px solid #186fd4 !important;

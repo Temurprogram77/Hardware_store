@@ -46,100 +46,92 @@ const Comparison = () => {
   const hasItems = selectedProducts.length > 0;
 
   return (
-    <div className="max-w-[1460px] mx-auto mt-5 mb-30">
-        <Names link="/about" name="О компании" />
-<h2 className="text-[27px] !font-semibold">Сравнение</h2>
+<div className="max-w-[1460px] mx-auto mt-5 mb-30 px-3 md:px-0">
+  <Names link="/about" name="О компании" />
+  <h2 className="text-[22px] md:text-[27px] font-semibold mb-4">Сравнение</h2>
 
-      {hasItems ? (
-        <div className="w-full md:px-0 px-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-6 sm:gap-3 gap-2">
-          {selectedProducts.map((item) => (
-            <div
-              key={item.id}
-              className="cursor-pointer p-4 rounded shadow relative"
-            >
-              <button
-                onClick={() => removeCompare(item.id)}
-                className="absolute right-2 top-2 text-red-500 hover:text-red-700"
-                title="Удалить из сравнения"
-              >
-                <DeleteOutlined />
-              </button>
+  {hasItems ? (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
+      {selectedProducts.map((item) => (
+        <div
+          key={item.id}
+          className="cursor-pointer bg-white p-3 md:p-4 rounded shadow relative"
+        >
+          <button
+            onClick={() => removeCompare(item.id)}
+            className="absolute right-2 top-2 text-red-500 hover:text-red-700"
+            title="Удалить из сравнения"
+          >
+            <DeleteOutlined />
+          </button>
 
-              <Link to={`/product/${item.id}`}>
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-48 object-cover"
-                />
-              </Link>
-              <p className="text-xs text-gray-500 md:text-[12px] text-[10px]">
-                {item.item}
-              </p>
-              <Link to={`/product/${item.id}`}>
-                <h3 className="font-semibold md:text-[16px] text-[14px] hover:text-[#186FD4] duration-200">
-                  {item.title}
-                </h3>
-              </Link>
+          <Link to={`/product/${item.id}`}>
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-44 md:h-48 object-cover"
+            />
+          </Link>
 
-              <div className="flex items-center gap-2">
-                <span className="line-through text-gray-400 md:text-[13px] text-[10px]">
-                  {item.oldMoney}
-                </span>
-                <span className="text-[#003B73] font-bold md:text-[16px] text-[13px]">
-                  {item.newMoney}
-                </span>
-                <p className="!m-0 bg-[#1B9665] text-white pb-1 pt-1.5 px-2 text-[10px] font-semibold rounded-md">
-                  {item.sale}
-                </p>
-              </div>
+          <p className="text-xs text-gray-500 mt-1">{item.item}</p>
+          <Link to={`/product/${item.id}`}>
+            <h3 className="font-semibold text-sm md:text-base hover:text-[#186FD4] duration-200">
+              {item.title}
+            </h3>
+          </Link>
 
-              <div className="mt-3 md:gap-0 gap-1 flex items-center justify-between">
-                <div className="flex gap-3 hover:bg-[#000] duration-200 bg-[#186FD4] text-white w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md">
-                  <img src={cartt} alt="cart" className="sm:block hidden" />
-                  <span>Купить</span>
-                </div>
-
-                <div className="flex items-center md:gap-2 gap-1">
-                  <div
-                    onClick={() => toggleHeart({ ...item, id: String(item.id) })}
-                    className="border-2 px-2 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
-                  >
-                    <span
-                      className={`${
-                        likedItems[item.id] ? "text-blue-500" : "text-gray-400"
-                      }`}
-                    >
-                      {likedItems[item.id] ? (
-                        <HeartFilled />
-                      ) : (
-                        <HeartOutlined />
-                      )}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="flex flex-col items-center justify-center mt-16 text-center">
-          <div className="mb-6">
-            <img src={ciziq} alt="empty" />
+          <div className="flex items-center gap-2 mt-1">
+            <span className="line-through text-gray-400 text-xs">
+              {item.oldMoney}
+            </span>
+            <span className="text-[#003B73] font-bold text-sm md:text-base">
+              {item.newMoney}
+            </span>
+            <p className="bg-[#1B9665] text-white px-2 py-0.5 text-[10px] font-semibold rounded-md">
+              {item.sale}
+            </p>
           </div>
-          <p className="text-lg font-medium">Ваш список сравнения пуст</p>
-          <p className="text-gray-600 mt-2">
-            У вас пока нет товаров в списке сравнения. <br />
-            На странице <span className="font-semibold">"Каталог"</span> вы
-            найдете много интересных товаров.
-          </p>
-          <Link to="/catalog">
-          <Button type="primary" className="w-[200px] !h-[50px] mt-4">
-            ПЕРЕЙТИ В КАТАЛОГ
-          </Button></Link>
-          
+
+          <div className="mt-3 flex items-center justify-between">
+            <div className="flex items-center gap-2 bg-[#186FD4] hover:bg-black duration-200 text-white rounded-md px-3 md:px-5 py-2">
+              <img src={cartt} alt="cart" className="hidden sm:block" />
+              <span>Купить</span>
+            </div>
+
+            <div
+              onClick={() => toggleHeart({ ...item, id: String(item.id) })}
+              className="border-2 px-2 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
+            >
+              {likedItems[item.id] ? (
+                <HeartFilled className="text-blue-500" />
+              ) : (
+                <HeartOutlined className="text-gray-400" />
+              )}
+            </div>
+          </div>
         </div>
-      )}
+      ))}
     </div>
+  ) : (
+    <div className="flex flex-col items-center justify-center mt-16 text-center px-3">
+      <div className="mb-6">
+        <img src={ciziq} alt="empty" className="max-w-[200px] sm:max-w-none" />
+      </div>
+      <p className="text-base sm:text-lg font-medium">Ваш список сравнения пуст</p>
+      <p className="text-gray-600 mt-2 text-sm sm:text-base">
+        У вас пока нет товаров в списке сравнения. <br />
+        На странице <span className="font-semibold">"Каталог"</span> вы найдете много интересных товаров.
+      </p>
+      <Link to="/catalog">
+        <Button type="primary" className="w-[180px] sm:w-[200px] h-[45px] sm:!h-[50px] mt-4">
+          ПЕРЕЙТИ В КАТАЛОГ
+        </Button>
+      </Link>
+    </div>
+  )}
+</div>
+
+
   );
 };
 

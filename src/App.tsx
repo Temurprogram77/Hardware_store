@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import SmsIconSwitcher from "./components/SmsPart";
 import Loader from "./components/Loader";
 import { useEffect, useState } from "react";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
         ))}
       </Routes>
       <SmsIconSwitcher />
+      <ScrollToTopButton />
       <Footer />
     </Router>
   );
