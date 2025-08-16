@@ -158,11 +158,11 @@ const Contacts = () => {
 
           <section className="py-8 px-2 flex flex-col gap-5 mt-4">
             <h2 className="!font-bold md:text-[18px] text-[22px] mb-6">Работаем по регионам:</h2>
-            <div className="flex md:flex-row flex-col justify-between gap-[22px] overflow-x-auto">
+            <div className="flex md:flex-row flex-col justify-between md:gap-[22px] overflow-x-auto border-b border-[#e3e5e7]">
               {regions.map((region, index) => (
                 <div
                   key={index}
-                  className="min-w-[200px] md:w-[150px] md:!h-[150px] mb-[10px] flex flex-col justify-center md:mb-0 leading-3 md:border-r border-[#e3e5e7] last:border-r-0 pr-4 text-sm space-y-1 shrink-0">
+                  className="min-w-[200px] md:w-[150px] md:!h-[150px] h-[140px] mb-[10px] flex flex-col justify-center md:mb-0 leading-3 md:border-r border-t border-[#e3e5e7] last:border-r-0 pr-4  text-sm space-y-1 shrink-0">
                   <p className="font-semibold text-[#494d52] md:text-[15px] text-[17px]">{region.city}</p>
                   <p className="md:text-[15px] md:leading-5 text-[17px] text-[#494d52]">{region.address}</p>
                   <p className="font-bold  md:text-[15px] text-[17px] text-[#2f3134]">{region.phone}</p>
