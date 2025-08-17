@@ -45,7 +45,23 @@ const ProductCard = () => {
     : false;
 
   const [compared, setCompared] = useState(isCompared);
+const [imgWidth, setImgWidth] = useState(400);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 480) {
+        setImgWidth(300);
+      } else if (window.innerWidth <= 768) {
+        setImgWidth(360);
+      } else {
+        setImgWidth(400);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   useEffect(() => {
     setCompared(isCompared);
   }, [isCompared]);
@@ -54,14 +70,14 @@ const ProductCard = () => {
     return <div className="text-center text-red-500">Mahsulot topilmadi</div>;
   }
   return (
-    <div className="max-w-[1460px] mx-auto py-8">
+    <div className="max-w-[1460px] 2xl:mx-auto mx-3 py-8">
       <Names
         name="Электроинструмент"
         link="/catalog"
         name2={product.title}
         link2="/product/"
       />
-      <div className="2xl:mx-0 mx-3">
+      <div className="2xl:mx-0">
         <h2 className="md:text-[22px] text-[20px] !font-semibold">
           Дрель-шуруповерт аккумуляторная MAKITA DF 347DWE14 В 1,5 А/ч
         </h2>
@@ -72,36 +88,35 @@ const ProductCard = () => {
                 {imgData.map((item, index) => (
                   <div
                     key={index}
-                    className="cursor-pointer w-[80px] h-[60px] flex items-center justify-center"
+                    className="cursor-pointer md:w-[80px] w-[60px] h-[55px] md:h-[60px] flex items-center justify-center"
                     onClick={() => setSelectedImage(item.image)}
                   >
                     <img
                       src={item.image}
-                      className="w-[70px] h-[60px] rounded"
+                      className="md:w-[70px] w-[60px] h-[55px] md:h-[60px] rounded"
                       alt="img"
                     />
                   </div>
                 ))}
               </div>
 
-              {/* Asosiy rasm (animatsiyali) */}
               <motion.div
-                key={selectedImage} // Har yangi rasmda qayta animatsiya bo‘lishi uchun
+                key={selectedImage}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3 }}
                 className="2xl:w-[550px] flex items-center justify-center h-full mx-4"
               >
                 <Image
-                  src={selectedImage}
-                  alt="img"
-                  width={400}
-                  style={{ maxWidth: "1000px", borderRadius: "8px" }}
-                  preview={{
-                    mask: "Ko‘rish",
-                    style: { width: "1000px", maxWidth: "2000px" },
-                  }}
-                />
+      src={selectedImage}
+      alt="img"
+      width={imgWidth}
+      style={{ maxWidth: "1000px", borderRadius: "8px" }}
+      preview={{
+        mask: "Ko‘rish",
+        style: { width: "1000px", maxWidth: "2000px" },
+      }}
+    />
               </motion.div>
             </div>
             <div className="flex lg:flex-row flex-col-reverse md:w-auto w-full lg:gap-16 md:gap-10 gap-6">

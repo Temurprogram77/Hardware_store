@@ -142,9 +142,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
-
       <ModalComponent />
-
       <>
         <div
           onClick={closeModal}
@@ -155,7 +153,7 @@ const Navbar: React.FC = () => {
         <div
           className={`${
             isOpen ? "left-0" : "-left-full"
-          } duration-200 w-[90%] h-full p-4 bg-[#fff] fixed z-3 top-0`}
+          } overflow-y-scroll duration-200 w-[90%] h-full p-4 bg-[#fff] fixed z-3 top-0`}
         >
           <h2 className="text-[18px] !font-semibold">Меню</h2>
           <div
@@ -244,7 +242,6 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </>
-
       <div className="relative">
         <div className="flex flex-wrap items-center justify-between py-4 max-w-[1460px] 2xl:mx-auto mx-3 gap-4">
           <div className="flex-shrink-0">
@@ -449,7 +446,6 @@ const Navbar: React.FC = () => {
           </div>
         )}
       </div>
-
       {sideBarIsOpen2 ? (
         <div
           onClick={toggleSidebar2}
@@ -458,11 +454,10 @@ const Navbar: React.FC = () => {
       ) : (
         ""
       )}
-
       <div
         className={`fixed z-20 top-0 -left-full ${
           sideBarIsOpen2 && "left-0"
-        } py-8 w-[80%] bg-[#f9fafb] duration-200 opacity-100 visible`}
+        } py-8 w-[80%] bg-[#fff] duration-200 opacity-100 visible`}
       >
         <div className="max-w-full mx-auto">
           <div

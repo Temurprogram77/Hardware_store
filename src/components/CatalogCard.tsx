@@ -7,24 +7,28 @@ import { images } from "../assets/images";
 import { useCompare } from "../context/CompareContext";
 import { FaCheck } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
+import { Select } from "../link/antLink";
 const { cartt, compare, arrow } = images;
 
 const CatalogCard = () => {
   const { addToCart, cartItems } = useCart();
   const { likedItems, toggleHeart } = useHeart();
   const { comparedItems, toggleCompare } = useCompare();
+  const handleChange = (value: string) => {
+    console.log("Tanlangan qiymat:", value);
+  };
   return (
     <div>
       <div className="flex flex-col">
         <div className="flex justify-between items-center my-3">
           <div className="flex md:w-auto w-full md:m-0 mx-4 justify-between items-center gap-3">
             <p className="!m-0">Сортировка:</p>
-            <select
-              className="border-[#DFE0E2] border outline-none px-4 py-2.5 rounded-md"
-              id=""
-            >
-              <option value="">Цена по убыванию</option>
-            </select>
+            <Select
+              defaultValue="Choose"
+              style={{ width: 200 }}
+              onChange={handleChange}
+              options={[{ value: "a", label: "Цена по убыванию" }]}
+            />
           </div>
           <div className="md:flex 2xl:m-0 mx-4 hidden items-center gap-3">
             <p className="!m-0">Показывать по:</p>
@@ -51,11 +55,14 @@ const CatalogCard = () => {
 
             return (
               <div key={index} className="cursor-pointer p-4 rounded shadow">
-                <Link to={`/product/${item.id}`}>
+                <Link
+                  to={`/product/${item.id}`}
+                  className="flex justify-center"
+                >
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-50 mb-2"
+                    className="w-[80%] h-50 mb-2"
                   />
                 </Link>
                 <p className="text-xs text-gray-500 md:text-[12px] text-[10px]">
@@ -82,7 +89,7 @@ const CatalogCard = () => {
                 <div className="mt-3 md:gap-0 gap-1 flex items-center justify-between">
                   <div
                     onClick={() => addToCart(item)}
-                    className={` flex gap-3 duration-200 w-fit md:px-5 px-2 md:py-2.5 py-2 rounded-md 
+                    className={`md:w-auto w-[140px] text-center justify-center flex gap-3 duration-200 md:px-5 px-2 md:py-2.5 py-2 rounded-md 
     ${
       isInCart
         ? "bg-gray-400 cursor-not-allowed"
@@ -105,7 +112,9 @@ const CatalogCard = () => {
 
                   <div className="flex items-center md:gap-2 gap-1">
                     <div
-                      onClick={() => toggleHeart({ ...item, id: String(item.id) })}
+                      onClick={() =>
+                        toggleHeart({ ...item, id: String(item.id) })
+                      }
                       className="hover:border-[#186FD4] flex items-center duration-500 border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
                     >
                       <span

@@ -121,7 +121,7 @@ const Basket: React.FC = () => {
   };
 
   return (
-    <div className="max-w-[1460px] mx-auto mt-5 mb-30 relative">
+    <div className="max-w-[1460px] 2xl:mx-auto mx-3 mt-5 mb-30 relative">
 {showMsg && (
   <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-green-500/90 backdrop-blur-sm text-white px-6 py-3 rounded-xl shadow-lg z-50 flex items-center gap-2 animate-fadeSlide">
     <svg
@@ -147,7 +147,7 @@ const Basket: React.FC = () => {
             <img
               src={images.cartempty || "https://via.placeholder.com/150"}
               alt="Empty cart"
-              className="w-52 h-32"
+              className="w-40 h-32"
             />
           </div>
           <p className="text-lg font-medium">В вашей корзине пусто</p>

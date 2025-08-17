@@ -122,7 +122,7 @@ const ProductCatalog = ({}: { item: { id: string } }) => {
 
   return (
     <div className="max-w-[1460px] mx-auto my-5">
-      <div className="m-0">
+      <div className="m-0 mx-3 2xl:mx-0">
         <Names link="/catalog" name="Каталог" />
       </div>
       <div className="flex flex-col lg:flex-row gap-6">
