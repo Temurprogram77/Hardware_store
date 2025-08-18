@@ -80,12 +80,13 @@ const ModalComponent = () => {
             </label>
             <CustomPhoneInput
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onValueChange={(value: string) => setPhone(value)}
               onFocus={() => setPhoneError(null)}
               onBlur={() => handleBlur("phone")}
               placeholder="+998 (__) ___-__-__"
-              className={`px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] !font-medium text-[#2c333d] placeholder:text-[#2c333d] border-1 border-[#ebeef0] lg:w-full 
-${phoneError ? "!border-red-500" : ""}`}
+              className={`my-2 w-full px-3 py-4 rounded-md text-[12px] placeholder:text-[13px] font-medium text-[#2c333d] placeholder:text-[#2c333d] border border-[#ebeef0] ${
+                phoneError ? "!border-red-500" : ""
+              }`}
             />
 
             <div className="flex items-start gap-3 my-4">

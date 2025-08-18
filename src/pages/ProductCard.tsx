@@ -12,29 +12,13 @@ import { FaCheck } from "react-icons/fa";
 
 const { Vector10, Vector9, Vector8, Vector7, compare } = images;
 
-const imgData = [
-  {
-    image: data[0].image,
-  },
-  {
-    image: data[1].image,
-  },
-  {
-    image: data[2].image,
-  },
-  {
-    image: data[3].image,
-  },
-  {
-    image: data[4].image,
-  },
-];
+const imgData = data.slice(0, 5).map((item) => ({ image: item.image }));
 
 const ProductCard = () => {
   const { id } = useParams<{ id: string }>();
   const { likedItems, toggleHeart } = useHeart();
   const product = data.find((item) => item.id === Number(id));
-  const [part, setPart] = useState(true);
+  // const [part, setPart] = useState(true);
   const [selectedImage, setSelectedImage] = useState(product?.image);
   const { comparedItems, toggleCompare } = useCompare();
   if (!product) return null;
@@ -44,8 +28,7 @@ const ProductCard = () => {
     ? comparedItems.includes(productId)
     : false;
 
-  const [setCompared] = useState(isCompared);
-const [imgWidth, setImgWidth] = useState(400);
+  const [imgWidth, setImgWidth] = useState(400);
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,13 +45,11 @@ const [imgWidth, setImgWidth] = useState(400);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  useEffect(() => {
-    setCompared(isCompared);
-  }, [isCompared]);
 
   if (!product) {
     return <div className="text-center text-red-500">Mahsulot topilmadi</div>;
   }
+
   return (
     <div className="max-w-[1460px] 2xl:mx-auto mx-3 py-8">
       <Names
@@ -79,7 +60,7 @@ const [imgWidth, setImgWidth] = useState(400);
       />
       <div className="2xl:mx-0">
         <h2 className="md:text-[22px] text-[20px] !font-semibold">
-          Дрель-шуруповерт аккумуляторная MAKITA DF 347DWE14 В 1,5 А/ч
+          {product.title}
         </h2>
         <div className="flex justify-between">
           <div className="w-full md:flex-row flex-col flex justify-between items-center 2xl:gap-12 lg:gap-8 gap-4">
@@ -108,15 +89,15 @@ const [imgWidth, setImgWidth] = useState(400);
                 className="2xl:w-[550px] flex items-center justify-center h-full mx-4"
               >
                 <Image
-      src={selectedImage}
-      alt="img"
-      width={imgWidth}
-      style={{ maxWidth: "1000px", borderRadius: "8px" }}
-      preview={{
-        mask: "Ko‘rish",
-        style: { width: "1000px", maxWidth: "2000px" },
-      }}
-    />
+                  src={selectedImage}
+                  alt="img"
+                  width={imgWidth}
+                  style={{ maxWidth: "1000px", borderRadius: "8px" }}
+                  preview={{
+                    mask: "Ko‘rish",
+                    style: { width: "1000px", maxWidth: "2000px" },
+                  }}
+                />
               </motion.div>
             </div>
             <div className="flex lg:flex-row flex-col-reverse md:w-auto w-full lg:gap-16 md:gap-10 gap-6">
@@ -186,10 +167,7 @@ const [imgWidth, setImgWidth] = useState(400);
                     </div>
                     <div className="flex items-center gap-2">
                       <motion.div
-                        onClick={() => {
-                          toggleCompare(productId);
-                          setCompared((prev) => !prev); // darhol o‘zgartiramiz
-                        }}
+                        onClick={() => toggleCompare(productId)}
                         className="hover:border-[#186FD4] duration-500 border-2 px-2 md:py-2 py-2 rounded-md border-[#F3F4F5] cursor-pointer"
                         whileTap={{ scale: 0.9 }}
                       >
@@ -225,92 +203,6 @@ const [imgWidth, setImgWidth] = useState(400);
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="2xl:mx-0 mx-3 flex flex-col">
-        <div className="flex items-center gap-4 my-6">
-          <div
-            className={`cursor-pointer duration-200 text-[14px] font-semibold p-3 h-fit border-b-2 ${
-              part ? "border-[#EE0906]" : "text-gray-400 border-transparent"
-            }`}
-            onClick={() => setPart(!part)}
-          >
-            О товаре
-          </div>
-          <div
-            className={`cursor-pointer duration-200 text-[14px] font-semibold p-3 h-fit border-b-2 ${
-              part ? "border-transparent text-gray-400" : "border-[#EE0906]"
-            }`}
-            onClick={() => setPart(!part)}
-          >
-            Доставка и оплата
-          </div>
-        </div>
-        <div className="">
-          {part ? (
-            <div className="one">
-              <h2>О товаре «Вентилятор 100 Quiet»</h2>
-              <p>1200ВТ</p>
-              <h2>Похожие товары</h2>
-            </div>
-          ) : (
-            <div className="two">
-              <h2 className="text-[20px] !font-semibold !my-5">Доставка</h2>
-              <p>
-                Мы всегда готовы доставить приобретенный Вами товар в удобное
-                для Вас время. Стоимость доставки товаров определяется исходя из
-                веса, габаритов и удаленности до места назначения. Доставка
-                осуществляется до подъезда дома, офиса. Наш интернет-магазин
-                предлагает несколько вариантов получения товара:
-              </p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>Самовывоз
-                с территории компании.
-              </p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>Быстрая
-                доставка по Карачаево- Черкесской республике.
-              </p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>Доставка
-                транспортной компанией.
-              </p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>Почтой
-                России.
-              </p>
-              <h2 className="text-[20px] !font-semibold !my-5">Оплата</h2>
-              <p>Оплатить свои покупки вы можете:</p>
-              <p>– При заказе доставки:</p>
-              <p>Банковской картой с помощью платежной системы на сайте</p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>МИР
-              </p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>VISA
-                International
-              </p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>Mastercard
-                Worldwide
-              </p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>JCB
-              </p>
-              <p>Наличными водителю при получение заказа</p>
-              <p>– При самовывозе:</p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>Банковской
-                картой с помощью платежной системы на сайте или на кассе при
-                получении заказа.
-              </p>
-              <p className="!my-1 flex items-center gap-3 text-[13px]">
-                <span className="text-[20px] text-[#EE0906]"> •</span>Наличными
-                на кассе при получении заказа
-              </p>
-              <p>– Сервис «Покупай со сбером»</p>
-            </div>
-          )}
         </div>
       </div>
     </div>
