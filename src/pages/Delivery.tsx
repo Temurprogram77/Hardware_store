@@ -31,7 +31,7 @@ const Delivery = () => {
           Доставка
         </h1>
         <div className="block gap-4 md:flex">
-          <div className="flex flex-col gap-2.5 w-[95%] ">
+          <div className="flex flex-col gap-2.5 w-[95%] lg:w-[1000px]">
             <p className="md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]">
               Мы всегда готовы доставить приобретенный Вами товар в удобное для
               Вас время.
