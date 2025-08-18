@@ -44,7 +44,7 @@ const ProductCard = () => {
     ? comparedItems.includes(productId)
     : false;
 
-  const [compared, setCompared] = useState(isCompared);
+  const [setCompared] = useState(isCompared);
 const [imgWidth, setImgWidth] = useState(400);
 
   useEffect(() => {
