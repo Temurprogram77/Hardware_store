@@ -31,7 +31,7 @@ const Delivery = () => {
           Доставка
         </h1>
         <div className="block gap-4 md:flex">
-          <div className="flex flex-col gap-2.5 w-[95%] ">
+          <div className="flex flex-col gap-2.5 w-[95%] lg:w-[1000px]">
             <p className="md:text-[15px] text-[#1e1e1e] leading-6 font-sans text-[19px]">
               Мы всегда готовы доставить приобретенный Вами товар в удобное для
               Вас время.
@@ -113,7 +113,7 @@ const Delivery = () => {
                 доставки.
               </li>
             </ul>
-            <div className="bg-[#f9fafb] md:h-[45px] flex items-center md:w-[990px] !w-[347px] relative md:left-[3px] left-[0px] p-3">
+            <div className="bg-[#f9fafb] md:h-[45px] lg:h-[60px] flex items-center md:w-[990px] lg:!w-[1015px] !w-[347px] relative md:left-[3px] left-[0px] p-3">
               <p className="text-[#003b73] relative top-[7px] md:left-[17px]  md:top-2.5 font-sans text-[18px]  leading-7 !font-bold md:text-[15px]">
                 После приема товара претензии покупателя, касающиеся
                 комплектации и механических повреждений товара, не принимаются.
@@ -127,7 +127,7 @@ const Delivery = () => {
             <p className="text-[#2c333d] text-[21px] leading-7 !font-bold md:text-[16px]">
               3. Доставка транспортной компанией.
             </p>
-            <p className="md:text-[15px] text-[#1e1e1e] leading-7 font-sans text-[19px]">
+            <p className="md:text-[15px] lg:w-[990px] text-[#1e1e1e] leading-7 font-sans text-[19px]">
               Для доставки интернет-заказов по России, можно воспользоваться
               услугами транспортных компаний. Только после 100% оплаты и сбора
               заказа происходит доставка товаров. До терминала транспортных
