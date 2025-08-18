@@ -144,7 +144,7 @@ const ProductCatalog = ({}: { item: { id: string } }) => {
             <div className="w-full max-w-md mx-auto py-10">
               <Range
                 step={1}
-                min={0}
+                min={3000}
                 max={100000}
                 values={values}
                 onChange={(values) => setValues(values)}
