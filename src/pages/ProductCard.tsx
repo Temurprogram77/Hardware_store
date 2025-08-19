@@ -147,10 +147,10 @@ const ProductCard = () => {
                         onClick={() =>
                           toggleHeart({ ...product, id: String(product.id) })
                         }
-                        className="hover:border-[#186FD4] flex items-center duration-500 border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
+                        className="cursor-pointer hover:border-[#186FD4] flex items-center duration-500 border-2 px-2 py-2 rounded-md border-[#F3F4F5]"
                       >
                         <span
-                          className={`h-[17px] cursor-pointer ${
+                          className={`h-[17px] ${
                             likedItems
                               ? "text-blue-500 animate-ping-short"
                               : "text-gray-400"

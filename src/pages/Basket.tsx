@@ -1,4 +1,4 @@
-import { Button, Input, message } from "../link/antLink";
+import { Button, Image, Input, message } from "../link/antLink";
 import { Link } from "../link/links";
 import { useState, useEffect, useCallback } from "react";
 import { images } from "../assets/images";
@@ -62,7 +62,7 @@ const Basket: React.FC = () => {
 
   const handleClick = () => {
     setShowMsg(true);
-    setTimeout(() => setShowMsg(false), 2000); 
+    setTimeout(() => setShowMsg(false), 2000);
   };
 
   const parsePrice = (priceStr: string): number => {
@@ -122,25 +122,28 @@ const Basket: React.FC = () => {
 
   return (
     <div className="max-w-[1460px] 2xl:mx-auto mx-3 mt-5 mb-30 relative">
-{showMsg && (
-  <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-green-500/90 backdrop-blur-sm text-white px-6 py-3 rounded-xl shadow-lg z-50 flex items-center gap-2 animate-fadeSlide">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-5 h-5"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-    <span className="font-medium">Sotib olindi</span>
-  </div>
-)}
-
+      {showMsg && (
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-green-500/90 backdrop-blur-sm text-white px-6 py-3 rounded-xl shadow-lg z-50 flex items-center gap-2 animate-fadeSlide">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          <span className="font-medium">Sotib olindi</span>
+        </div>
+      )}
 
       <Names link="/about" name="О компании" />
-<h2 className="text-[27px] !font-semibold">Корзина товаров</h2>
+      <h2 className="text-[27px] !font-semibold">Корзина товаров</h2>
       {basketItems.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-16 text-center">
           <div className="mb-6">
@@ -156,12 +159,12 @@ const Basket: React.FC = () => {
             На странице <span className="font-semibold">"Каталог"</span> вы
             найдете много интересных товаров.
           </p>
-          
-         <Link to="/catalog">
-          <Button type="primary" className="w-[200px] !h-[50px] mt-4">
-            ПЕРЕЙТИ В КАТАЛОГ
-          </Button></Link>
-          
+
+          <Link to="/catalog">
+            <Button type="primary" className="w-[200px] !h-[50px] mt-4">
+              ПЕРЕЙТИ В КАТАЛОГ
+            </Button>
+          </Link>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -183,17 +186,17 @@ const Basket: React.FC = () => {
                     key={item.id}
                     className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 border-b text-sm"
                   >
-                    <div className="md:col-span-5 flex gap-3">
-                      <img
+                    <Link to={`/product/${item.id}`} className="md:col-span-5 flex gap-3">
+                      <Image
                         src={item.image || "https://via.placeholder.com/64"}
                         alt={item.title}
-                        className="w-16 h-16 object-cover rounded"
-                      />
+                        className="w-20 h-16 rounded"
+                      ></Image>
                       <div>
                         <p className="font-medium">{item.title}</p>
                         <p className="text-gray-500 text-xs">{item.item}</p>
                       </div>
-                    </div>
+                    </Link>
 
                     <div className="md:col-span-2 text-center">
                       {item.newMoney}
@@ -225,12 +228,12 @@ const Basket: React.FC = () => {
                     </div>
 
                     <div className="md:col-span-1 flex justify-end items-start">
-                      <button
-                        className="text-gray-400 hover:text-red-500"
+                      <div
+                        className="text-[20px] bg-[#74747449] w-[30px] h-[30px] cursor-pointer rounded-md flex justify-center items-center text-black hover:text-red-500"
                         onClick={() => removeItem(item.id)}
                       >
                         ✕
-                      </button>
+                      </div>
                     </div>
                   </div>
                 );
