@@ -25,13 +25,18 @@ const {
 } = images;
 
 const Navbar: React.FC = () => {
-  const [categories, setCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
 
   useEffect(() => {
     axios
-      .get("https://api/category/getAllCategorys")
-      .then((res) => setCategories(res.data))
-      .catch((err) => console.log("API xato:", err));
+      .get("http://144.91.98.115:8084/api/category/getAllCategorys")
+      .then((res) => {
+        console.log("API dan kelgan ma'lumot:", res.data);
+        setCategories(res.data);
+      })
+      .catch((err) => {
+        console.error("API xatolik:", err);
+      });
   }, []);
 
   const { modalOpenModal, openModal, closeModal, isOpen } = useModal();
@@ -396,28 +401,8 @@ const Navbar: React.FC = () => {
                       <div className="max-w-[1460px] mx-auto">
                         <div className="w-[330px] rounded-md bg-white">
                           <div className="relative">
-                            {categories.map((item, index) => (
-                              <div key={index} className="relative group">
-                                <Link to="/catalog">
-                                  <div
-                                    onClick={toggleSidebar}
-                                    className="overflow-hidden arrow-svg cursor-pointer flex items-center justify-between hover:fill-white hover:text-white border-b border-[#0000002c] py-5 px-5 hover:bg-[#186fd4]"
-                                  >
-                                    <p className="!m-0 text-[12px] uppercase font-semibold">
-                                      {item}
-                                    </p>
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      width="5"
-                                      height="8"
-                                      viewBox="0 0 5 8"
-                                      fill="#919AA3"
-                                    >
-                                      <path d="M4.35355 4.35355C4.54882 4.15829 4.54882 3.84171 4.35355 3.64645L1.17157 0.464466C0.976311 0.269204 0.659728 0.269204 0.464466 0.464466C0.269204 0.659728 0.269204 0.976311 0.464466 1.17157L3.29289 4L0.464466 6.82843C0.269204 7.02369 0.269204 7.34027 0.464466 7.53553C0.659728 7.7308 0.976311 7.7308 1.17157 7.53553L4.35355 4.35355ZM3 4.5H4V3.5H3V4.5Z"></path>
-                                    </svg>
-                                  </div>
-                                </Link>
-                              </div>
+                            {categories.map((cat) => (
+                              <span key={cat.id}>{cat.name}</span>
                             ))}
                           </div>
                         </div>
