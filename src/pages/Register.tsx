@@ -128,7 +128,6 @@ const Register = () => {
     navigate('/auth');
   };
 
-
   return (
     <main className="mt-4 mb-10 px-3">
       <hr className="text-gray-200" />
