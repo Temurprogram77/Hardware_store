@@ -22,7 +22,7 @@ const LandingStock = () => {
       <div className="w-full mt-8 items-center">
         <h1 className="font-bold text-[32px] md:text-[40px] lg:text-[48px]">{chegirma?.title}</h1>
     <div className="md:flex w-[100%] justify-between">
-      <div className="flex flex-col gap-[2rem] mb-[5rem] w-full pr-[2rem] md:w-[90%]">
+      <div className="flex flex-col gap-[2rem] mb-[5rem] w-full md:pr-[2rem] md:w-[90%]">
         <div className="gap-[2rem] flex w-full h-[50px]">
             <CustomButton type="default" text={aksiya.toUpperCase()} />
             <p className="mt-[2rem]">Действует до 1 октября 2023</p>

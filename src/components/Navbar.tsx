@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from "../link/motionLink";
 import { useEffect, useState } from "react";
 import { useHeart } from "../context/HeartClickedContext";
 import { useCompare } from "../context/CompareContext";
-import { sideBar } from "../data/data";
 import { useSidebar2 } from "../context/SidebarContext2";
 import ModalComponent from "./ModalComponent";
+import axios from "axios";
 
 const {
   Logo,
@@ -25,12 +25,23 @@ const {
 } = images;
 
 const Navbar: React.FC = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [categories, setCategories] = useState<any[]>([]);
+
+  useEffect(() => {
+  axios
+    .get("/api/category/getAllCategorys") // proxy orqali ishlaydi
+    .then((res) => {
+      console.log("API dan kelgan ma'lumot:", res.data);
+      setCategories(res.data);
+    })
+    .catch((err) => {
+      console.error("API xatolik:", err);
+    });
+}, []);
+
   const { modalOpenModal, openModal, closeModal, isOpen } = useModal();
   const { likedItems } = useHeart();
   const { comparedItems } = useCompare();
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [rotate, setRotate] = useState(false);
   {
     useEffect(() => {
       if (!isOpen) return;
@@ -48,11 +59,6 @@ const Navbar: React.FC = () => {
       };
     }, [isOpen, closeModal]);
   }
-
-  const handleItemClick = (index: number) => {
-    setActiveIndex((prev) => (prev === index ? null : index));
-    setRotate(!rotate);
-  };
   const comparedCount = Object.keys(comparedItems).filter(
     (id) => comparedItems[id]
   ).length;
@@ -389,57 +395,19 @@ const Navbar: React.FC = () => {
             <div className="max-w-[1460px] mx-auto">
               <div className="w-[330px] rounded-md bg-white">
                 <div className="relative">
-                  {sideBar.map((item, index) => (
-                    <div
-                      key={index}
-                      onMouseEnter={() => setHoveredIndex(index)}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                      className="relative group"
-                    >
-                      <Link to="/catalog">
-                        <div
-                          onClick={toggleSidebar}
-                          className="overflow-hidden arrow-svg cursor-pointer flex items-center justify-between hover:fill-white hover:text-white border-b border-[#0000002c] py-5 px-5 hover:bg-[#186fd4]"
-                        >
-                          <p className="!m-0 text-[12px] uppercase font-semibold">
-                            {item.name}
-                          </p>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="5"
-                            height="8"
-                            viewBox="0 0 5 8"
-                            fill="#919AA3"
-                          >
-                            <path d="M4.35355 4.35355C4.54882 4.15829 4.54882 3.84171 4.35355 3.64645L1.17157 0.464466C0.976311 0.269204 0.659728 0.269204 0.464466 0.464466C0.269204 0.659728 0.269204 0.976311 0.464466 1.17157L3.29289 4L0.464466 6.82843C0.269204 7.02369 0.269204 7.34027 0.464466 7.53553C0.659728 7.7308 0.976311 7.7308 1.17157 7.53553L4.35355 4.35355ZM3 4.5H4V3.5H3V4.5Z"></path>
-                          </svg>
+                  {sideBarIsOpen && (
+                    <div className="absolute z-20 top-full py-8 w-full bg-[#f9fafb] duration-200 opacity-100 visible">
+                      <div className="max-w-[1460px] mx-auto">
+                        <div className="w-[330px] rounded-md bg-white">
+                          <div className="relative">
+                            {categories.map((cat) => (
+                              <span key={cat.id}>{cat.name}</span>
+                            ))}
+                          </div>
                         </div>
-                      </Link>
-
-                      <div
-                        className={`absolute left-full top-0 ml-2 p-5 w-[350px] bg-white shadow-lg rounded-md z-20 transition-opacity duration-300 ${
-                          hoveredIndex === index
-                            ? "opacity-100 visible"
-                            : "opacity-0 invisible"
-                        }`}
-                      >
-                        {item.obj?.map((child, i) => (
-                          <p
-                            key={i}
-                            className="text-[15px] hover:text-[#186fd4] duration-300 cursor-pointer py-3"
-                          >
-                            <Link to="/catalog" onClick={toggleSidebar}>
-                              {Array.isArray(child)
-                                ? child.join(", ")
-                                : typeof child === "object" && "obj" in child
-                                ? child.obj.flat().join(", ")
-                                : String(child)}
-                            </Link>
-                          </p>
-                        ))}
                       </div>
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
@@ -454,7 +422,7 @@ const Navbar: React.FC = () => {
       ) : (
         ""
       )}
-      <div
+      {/* <div
         className={`fixed z-20 top-0 -left-full ${
           sideBarIsOpen2 && "left-0"
         } py-8 w-[80%] bg-[#fff] duration-200 opacity-100 visible`}
@@ -490,8 +458,6 @@ const Navbar: React.FC = () => {
                     </svg>
                   </div>
                 </div>
-
-                {/* Dropdown content */}
                 {activeIndex === index && (
                   <div className="pl-5 pr-3 py-2 max-h-[300px] bg-[#dfdfdf99] overflow-y-auto transition-all duration-300">
                     {item.obj?.map((child: any, i: number) => (
@@ -519,7 +485,7 @@ const Navbar: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="max-w-[1460px] flex lg:hidden items-center gap-2 xl:mx-auto mx-3">
         <div
           onClick={toggleSidebar2}
