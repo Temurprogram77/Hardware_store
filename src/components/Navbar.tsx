@@ -26,18 +26,17 @@ const {
 
 const Navbar: React.FC = () => {
   const [categories, setCategories] = useState<any[]>([]);
+  const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3NTU4NDczMzEsImV4cCI6MTc1NTkzMzczMX0.t-wFMNcjWWNqCidUmR_1fqgOjJeJj91O5NQxfOB7bdzPiCsUmXUkrE3HNu5YAQsB15Je6R72_3o7FGBNFHXurQ";
 
   useEffect(() => {
-  axios
-    .get("/api/category/getAllCategorys") // proxy orqali ishlaydi
-    .then((res) => {
-      console.log("API dan kelgan ma'lumot:", res.data);
-      setCategories(res.data);
-    })
-    .catch((err) => {
-      console.error("API xatolik:", err);
-    });
-}, []);
+    axios.get("/api/product/getAllProduct", {
+  headers: {
+    Authorization: `Bearer ${token}`, // Agar token kerak bo‘lsa
+  }
+})
+.then(res => console.log(res.data))
+.catch(err => console.error("API xato:", err));
+  }, []);
 
   const { modalOpenModal, openModal, closeModal, isOpen } = useModal();
   const { likedItems } = useHeart();
@@ -398,12 +397,21 @@ const Navbar: React.FC = () => {
                   {sideBarIsOpen && (
                     <div className="absolute z-20 top-full py-8 w-full bg-[#f9fafb] duration-200 opacity-100 visible">
                       <div className="max-w-[1460px] mx-auto">
-                        <div className="w-[330px] rounded-md bg-white">
-                          <div className="relative">
-                            {categories.map((cat) => (
-                              <span key={cat.id}>{cat.name}</span>
-                            ))}
-                          </div>
+                        <div className="w-[330px] rounded-md bg-white p-3">
+                          {categories.length > 0 ? (
+                            categories.map((cat) => (
+                              <div key={cat.id} className="py-2 border-b">
+                                <Link
+                                  to={`/catalog/${cat.id}`}
+                                  className="hover:text-[#186fd4]"
+                                >
+                                  {cat.name}
+                                </Link>
+                              </div>
+                            ))
+                          ) : (
+                            <p>Категориялар топилмади</p>
+                          )}
                         </div>
                       </div>
                     </div>
