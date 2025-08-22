@@ -28,16 +28,16 @@ const Navbar: React.FC = () => {
   const [categories, setCategories] = useState<any[]>([]);
 
   useEffect(() => {
-    axios
-      .get("http://144.91.98.115:8084/api/category/getAllCategorys")
-      .then((res) => {
-        console.log("API dan kelgan ma'lumot:", res.data);
-        setCategories(res.data);
-      })
-      .catch((err) => {
-        console.error("API xatolik:", err);
-      });
-  }, []);
+  axios
+    .get("/api/category/getAllCategorys") // proxy orqali ishlaydi
+    .then((res) => {
+      console.log("API dan kelgan ma'lumot:", res.data);
+      setCategories(res.data);
+    })
+    .catch((err) => {
+      console.error("API xatolik:", err);
+    });
+}, []);
 
   const { modalOpenModal, openModal, closeModal, isOpen } = useModal();
   const { likedItems } = useHeart();
@@ -395,7 +395,6 @@ const Navbar: React.FC = () => {
             <div className="max-w-[1460px] mx-auto">
               <div className="w-[330px] rounded-md bg-white">
                 <div className="relative">
-                  {/* Api */}
                   {sideBarIsOpen && (
                     <div className="absolute z-20 top-full py-8 w-full bg-[#f9fafb] duration-200 opacity-100 visible">
                       <div className="max-w-[1460px] mx-auto">
