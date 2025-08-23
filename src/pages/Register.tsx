@@ -1,10 +1,17 @@
 import { useState, type ChangeEvent, type FC } from 'react';
 import { Link } from "../link/links";
-import { Input, Checkbox, Button, Typography } from "../link/antLink";
-import Names from '../components/ui/Names';
+import {
+  Input,
+  Checkbox,
+  Button,
+  Typography,
+  Breadcrumb
+} from "../link/antLink";
 import UserIcon from '../components/UserIcon';
 import RightIcon from '../components/RightIcon';
 import axios from 'axios';
+import RegionSelect from '../components/RegionSelect';
+import Names from '../components/ui/Names';
 
 export const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -96,15 +103,9 @@ const Register: FC<PhoneNumberInputProps> = () => {
         'http://144.91.98.115:8084/auth/register',
         payload
       );
-
-      // ✅ API javobidan tokenni olamiz
-      const token = response.data.token; // API javobining tuzilishiga qarab `response.data.token` o'rniga boshqa nom bo'lishi mumkin.
-
-      // ✅ Tokenning yaroqlilik muddatini hisoblaymiz (hozirgi vaqt + 10 kun)
+      const token = response.data.token;
       const expiryDate = new Date();
       expiryDate.setDate(expiryDate.getDate() + 10);
-
-      // ✅ Token va uning muddatini bitta obyekt qilib localStoragega saqlaymiz
       localStorage.setItem('authData', JSON.stringify({
         token,
         expiry: expiryDate.toISOString(),
@@ -177,13 +178,10 @@ const Register: FC<PhoneNumberInputProps> = () => {
                       <Typography className='!font-mono !font-medium'>
                         Регион<span className='text-red-600'>*</span>:
                       </Typography>
-                      <Input
-                        name='region'
-                        type='text'
+                      <RegionSelect
+                      
                         value={formData.region}
-                        onChange={handleChange}
-                        className="w-full !h-[50px] !text-gray-800 placeholder:!text-gray-600 !text-[17px] md:!text-[16px] !font-mono"
-                        placeholder="Ваш регион"
+                        onChange={(value) => setFormData((prev) => ({ ...prev, region: value }))}
                       />
                     </div>
                     <div>
