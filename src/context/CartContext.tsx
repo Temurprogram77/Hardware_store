@@ -21,11 +21,21 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
+  const storedCart = localStorage.getItem("cart");
+  if (storedCart) {
+    try {
+      const parsed = JSON.parse(storedCart);
+      // Agar array bo'lmasa, arrayga o‘giramiz
+      if (Array.isArray(parsed)) {
+        setCartItems(parsed);
+      } else {
+        setCartItems([]);
+      }
+    } catch (err) {
+      setCartItems([]);
     }
-  }, []);
+  }
+}, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
