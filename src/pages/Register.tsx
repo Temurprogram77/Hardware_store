@@ -1,131 +1,124 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, type ChangeEvent, type FC } from 'react';
 import { Link } from "../link/links";
-import CustomPhoneInput, { phoneRegex } from '../components/ui/CustomINputPhone';
-import CustomInput from '../components/ui/CustomInput';
-import CustomCheckbox from '../components/ui/CustomCheckbox';
-import CustomButton from '../components/ui/CustomButton';
-import Label from '../components/ui/Label';
+import { Input, Checkbox, Button, Typography } from "../link/antLink";
 import Names from '../components/ui/Names';
 import UserIcon from '../components/UserIcon';
 import RightIcon from '../components/RightIcon';
+import axios from 'axios';
 
 export const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   fullName: /^[A-Za-zА-Яа-яЁё\s]{5,}$/,
   region: /^[A-Za-zА-Яа-яЁё\s-]{2,}$/,
-  password: /^(?=.*[a-z])(?=.*\d)[A-Za-z\d\W_]{6,}$/,
+  password: /^(?=.*[a-z])(?=.*\d)[A-Za-z\d\W_]{8,}$/,
 };
 
-const Register = () => {
-  const navigate = useNavigate();
+interface PhoneNumberInputProps { }
+const Register: FC<PhoneNumberInputProps> = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    phoneNumber: '',
+    fullName: '',
+    region: '',
+    password: '',
+    confirmPassword: '',
+    acceptedTerms: false,
+    acceptedPrivacy: false,
+  });
 
-  const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [fullName, setFullName] = useState<string>("");
-  const [region, setRegion] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<string>('');
 
-  const [emailError, setEmailError] = useState<string | null>(null);
-  const [phoneError, setPhoneError] = useState<string | null>(null);
-  const [fullNameError, setFullNameError] = useState<string | null>(null);
-  const [regionError, setRegionError] = useState<string | null>(null);
-  const [passwordError, setPasswordError] = useState<string | null>(null);
-  const [confirmPasswordError, setConfirmPasswordError] = useState<string | null>(null);
-  const [termsError, setTermsError] = useState<string | null>(null);
-  const [policyError, setPolicyError] = useState<string | null>(null);
-
-  const handleBlur = (field: string) => {
-    switch (field) {
-      case "email":
-        if (!email || !regex.email.test(email)) {
-          setEmailError("Пожалуйста, введите действительную почту!");
-        } else {
-          setEmailError(null);
-        }
-        break;
-      case "phone":
-        if (!phone || !phoneRegex.test(phone)) {
-          setPhoneError("Пожалуйста, введите действительный телефон!");
-        } else {
-          setPhoneError(null);
-        }
-        break;
-      case "fullName":
-        if (!fullName || !regex.fullName.test(fullName)) {
-          setFullNameError("Пожалуйста, введите ФИО!");
-        } else {
-          setFullNameError(null);
-        }
-        break;
-      case "region":
-        if (!region || !regex.region.test(region)) {
-          setRegionError("Поле регион не заполнено!");
-        } else {
-          setRegionError(null);
-        }
-        break;
-      case "password":
-        if (!password || password.length < 6) {
-          setPasswordError("Пароль должен состоять не менее, чем из 6 символов");
-        } else {
-          setPasswordError(null);
-        }
-        break;
-      case "confirmPassword":
-        if (password !== confirmPassword) {
-          setConfirmPasswordError("Пароли не совпадают");
-        } else {
-          setConfirmPasswordError(null);
-        }
-        break;
-      default:
-        break;
-    }
+  const handleChange = (e: any) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
-  const handleSubmit = () => {
-    setEmailError(null);
-    setPhoneError(null);
-    setFullNameError(null);
-    setRegionError(null);
-    setPasswordError(null);
-    setConfirmPasswordError(null);
-    setTermsError(null);
-    setPolicyError(null);
+  const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value;
+    const digitsOnly = rawValue.replace(/\D/g, '');
+    const localNumber = digitsOnly.substring(3);
+    let formattedNumber = `+998 ${localNumber}`;
+    if (localNumber.length > 9) {
+      formattedNumber = `+998 ${localNumber.slice(0, 9)}`;
+    }
+    setFormData(prevState => ({
+      ...prevState,
+      phoneNumber: formattedNumber,
+    }));
+  };
 
-    let hasError = false;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess('');
 
-    if (!email || !regex.email.test(email)) { setEmailError("Пожалуйста, введите действительную почту!"); hasError = true; }
-    if (!phone || !phoneRegex.test(phone)) { setPhoneError("Пожалуйста, введите действительный телефон!"); hasError = true; }
-    if (!fullName || !regex.fullName.test(fullName)) { setFullNameError("Пожалуйста, введите ФИО!"); hasError = true; }
-    if (!region || !regex.region.test(region)) { setRegionError("Поле регион не заполнено!"); hasError = true; }
-    if (!password || password.length < 6) { setPasswordError("Пароль должен состоять не менее, чем из 6 символов"); hasError = true; }
-    if (password !== confirmPassword) { setConfirmPasswordError("Пароли не совпадают"); hasError = true; }
-
-    if (hasError) {
+    if (formData.password !== formData.confirmPassword) {
+      setError('Parollar mos kelmadi.');
+      setLoading(false);
+      return;
+    }
+    if (!regex.email.test(formData.email) ||
+      !regex.fullName.test(formData.fullName) ||
+      !regex.region.test(formData.region) ||
+      !regex.password.test(formData.password)) {
+      setError('Iltimos, barcha maydonlarni toʻgʻri toʻldiring.');
+      setLoading(false);
+      return;
+    }
+    if (!formData.acceptedTerms || !formData.acceptedPrivacy) {
+      setError('Iltimos, shartlarga rozilik bildiring.');
+      setLoading(false);
+      return;
+    }
+    const cleanPhoneNumber = formData.phoneNumber.replace(/\D/g, '');
+    if (cleanPhoneNumber.length !== 12) {
+      setError("Iltimos, telefon raqamini to'liq kiriting.");
+      setLoading(false);
       return;
     }
 
-    const formData = {
-      email,
-      phone,
-      fullName,
-      region,
-      password,
+    const payload = {
+      fullName: formData.fullName,
+      email: formData.email,
+      phoneNumber: cleanPhoneNumber,
+      region: formData.region,
+      password: formData.password,
     };
 
-    localStorage.setItem("accounts", JSON.stringify(formData));
+    try {
+      const response = await axios.post(
+        'http://144.91.98.115:8084/auth/register',
+        payload
+      );
 
-    setEmail("");
-    setPhone("");
-    setFullName("");
-    setRegion("");
-    setPassword("");
-    setConfirmPassword("");
+      // ✅ API javobidan tokenni olamiz
+      const token = response.data.token; // API javobining tuzilishiga qarab `response.data.token` o'rniga boshqa nom bo'lishi mumkin.
 
-    navigate('/auth');
+      // ✅ Tokenning yaroqlilik muddatini hisoblaymiz (hozirgi vaqt + 10 kun)
+      const expiryDate = new Date();
+      expiryDate.setDate(expiryDate.getDate() + 10);
+
+      // ✅ Token va uning muddatini bitta obyekt qilib localStoragega saqlaymiz
+      localStorage.setItem('authData', JSON.stringify({
+        token,
+        expiry: expiryDate.toISOString(),
+      }));
+
+      setSuccess('Muvaffaqiyatli roʻyxatdan oʻtdingiz!');
+      console.log('API javobi:', response.data);
+
+    } catch (err: any) {
+      console.error('Xato:', err.response ? err.response.data : err.message);
+      setError('Roʻyxatdan oʻtishda xatolik yuz berdi. Iltimos, qaytadan urinib koʻring.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -136,135 +129,134 @@ const Register = () => {
         <section>
           <div className="mt-4">
             <h2 className="!font-bold text-4xl">Регистрация</h2>
-            <div className="mt-10 border w-full flex-col lg:flex-row rounded-lg py-8 max-sm:!py-4 px-4 border-gray-200 flex justify-between lg:px-10 md:p-5">
-              <div className="flex flex-col max-sm:mr-0 max-sm:w-full xl:mr-10">
-                <div className='flex flex-col gap-2 mb-2'>
-                  <div className="xl:flex xl:gap-3">
-                    <div className="max-sm:w-full flex flex-col gap-2">
-                      <Label text='Email ' required />
-                      <CustomInput
+            <form onSubmit={handleSubmit}>
+              <div className="mt-10 border w-full flex-col lg:flex-row rounded-lg py-8 max-sm:!py-4 px-4 border-gray-200 flex justify-between lg:px-10 md:p-5">
+                <div className="flex flex-col max-sm:mr-0 max-sm:w-full xl:mr-10">
+                  <div className='flex flex-col gap-3'>
+                    <div className="flex flex-col xl:flex-row !gap-3 mb-1">
+                      <div className="w-full flex flex-col">
+                        <Typography className='!font-mono !font-medium'>
+                          Email<span className='text-red-600'>*</span>:
+                        </Typography>
+                        <Input
+                          name='email'
+                          type='text'
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="!w-full xl:!w-[344.5px] !h-[50px] !text-gray-800 placeholder:!text-gray-600 !text-[17px] md:!text-[16px] !font-mono"
+                          placeholder='Введите ваш email адрес'
+                        />
+                      </div>
+                      <div className="w-full flex flex-col">
+                        <Typography className='!font-mono !font-medium'>
+                          Номер телефона<span className='text-red-600'>*</span>:
+                        </Typography>
+                        <Input
+                          name='phoneNumber'
+                          value={formData.phoneNumber}
+                          onChange={handlePhoneChange}
+                          placeholder='+998 (__) ___-__-__'
+                          className="!w-full xl:!w-[344.5px] !h-[50px] !text-gray-800 placeholder:!text-gray-600 !text-[17px] md:!text-[16px] !font-mono"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <Typography className='!font-mono !font-medium'>
+                        ФИО<span className='text-red-600'>*</span>:
+                      </Typography>
+                      <Input
+                        name='fullName'
                         type='text'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        onFocus={() => setEmailError(null)}
-                        onBlur={() => handleBlur("email")}
-                        className={`md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 
-                          ${emailError ? '!border-red-500' : ''}`}
-                        placeholder='Введите ваш email адрес'
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        className="w-full !h-[50px] !text-gray-800 placeholder:!text-gray-600 !text-[17px] md:!text-[16px] !font-mono"
+                        placeholder="Ваше полное имя"
                       />
-                      {emailError && <p className="text-red-600 text-sm mt-1">{emailError}</p>}
                     </div>
-                    <div className="max-sm:w-full flex flex-col gap-2">
-                      <Label text='Номер телефона' required />
-                      <CustomPhoneInput
-                        value={phone}
-                        onValueChange={setPhone}
-                        onFocus={() => setPhoneError(null)}
-                        onBlur={() => handleBlur("phone")}
-                        placeholder='+998 (__) ___-__-__'
-                        className={`flex flex-wrap border border-gray-200 pl-3 outline-none focus:border-blue-500 rounded-md md:!w-full max-sm:!w-full xl:!w-[330px] !h-[50px] !text-lg !mb-1 !-mt-2 transition-all 
-${phoneError ? '!border-red-500' : ''}`}
+                    <div>
+                      <Typography className='!font-mono !font-medium'>
+                        Регион<span className='text-red-600'>*</span>:
+                      </Typography>
+                      <Input
+                        name='region'
+                        type='text'
+                        value={formData.region}
+                        onChange={handleChange}
+                        className="w-full !h-[50px] !text-gray-800 placeholder:!text-gray-600 !text-[17px] md:!text-[16px] !font-mono"
+                        placeholder="Ваш регион"
                       />
-                      {phoneError && <p className="text-red-600 text-sm mt-1">{phoneError}</p>}
+                    </div>
+                    <div>
+                      <Typography className='!font-mono !font-medium'>
+                        Пароль<span className='text-red-600'>*</span>:
+                      </Typography>
+                      <Input.Password
+                        name='password'
+                        type='password'
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="w-full !h-[50px] !text-gray-800 !placeholder:!text-gray-600 !text-[17px] md:!text-[16px] !font-mono"
+                        placeholder="Введите пароль"
+                      />
+                    </div>
+                    <div>
+                      <Typography className='!font-mono !font-medium'>
+                        Подтвердите пароль <span className='text-red-600'>*</span>:
+                      </Typography>
+                      <Input.Password
+                        name='confirmPassword'
+                        type='password'
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                        className="w-full !h-[50px] !text-gray-800 !placeholder:!text-gray-600 !text-[17px] md:!text-[16px] !font-mono"
+                        placeholder="Введите пароль"
+                      />
                     </div>
                   </div>
-                  <Label text='ФИО ' required />
-                  <CustomInput
-                    type='text'
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    onFocus={() => setFullNameError(null)}
-                    onBlur={() => handleBlur("fullName")}
-                    className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
-                      ${fullNameError ? '!border-red-500' : ''}`}
-                    placeholder="Ваше полное имя"
-                  />
-                  {fullNameError && <p className="text-red-600 text-sm mt-1">{fullNameError}</p>}
-
-                  <Label text='Регион' required />
-                  <CustomInput
-                    type='text'
-                    value={region}
-                    onChange={(e) => setRegion(e.target.value)}
-                    onFocus={() => setRegionError(null)}
-                    onBlur={() => handleBlur("region")}
-                    className={`w-full !h-[55px] !text-lg !mb-1 !-mt-2 
-                      ${regionError ? '!border-red-500' : ''}`}
-                    placeholder="Ваш регион"
-                  />
-                  {regionError && <p className="text-red-600 text-sm mt-1">{regionError}</p>}
-
-                  <Label text='Пароль' required />
-                  <CustomInput
-                    type='password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    onFocus={() => setPasswordError(null)}
-                    onBlur={() => handleBlur("password")}
-                    className={`w-full !h-[55px] !text-lg !-mt-2 
-                      ${passwordError ? '!border-red-500' : ''}`}
-                    placeholder="Введите пароль"
-                  />
-                  {passwordError && <p className="text-red-600 text-sm mt-1">{passwordError}</p>}
-
-                  <Label text='Подтвердите пароль' required />
-                  <CustomInput
-                    type='password'
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    onFocus={() => setConfirmPasswordError(null)}
-                    onBlur={() => handleBlur("confirmPassword")}
-                    className={`w-full !h-[55px] !text-lg !-mt-2 
-                      ${confirmPasswordError ? '!border-red-500' : ''}`}
-                    placeholder="Введите пароль"
-                  />
-                  {confirmPasswordError && <p className="text-red-600 text-sm mt-1">{confirmPasswordError}</p>}
-                </div>
-                <div className="flex flex-col gap-2">
-                  <CustomCheckbox
-                    name='Согласен с условиями обслуживания'
-                  />
-                  {termsError && <p className="text-red-600 text-sm mt-1">{termsError}</p>}
-                  <CustomCheckbox
-                    name='Согласен с обработкой персональных данных в соответствии с политикой конфиденциальности'
-                  />
-                  {policyError && <p className="text-red-600 text-sm mt-1">{policyError}</p>}
-                </div>
-
-                <div className="w-full">
-                  <CustomButton
-                    onClick={handleSubmit}
-                    text=''
-                    type="primary"
-                    className="!mt-4 !w-full !h-[55px] !text-sm !font-bold !uppercase"
-                  >
-                    Зарегистрироваться
-                  </CustomButton>
-                </div>
-              </div>
-
-              <div className="mt-15 lg:mt-0">
-                <div className="flex items-center gap-5 max-sm:gap-3">
-                  <UserIcon className="text-red-600 font-normal !w-10 !h-10 md:w-10" />
-                  <h3 className="!font-bold text-2xl max-sm:text-lg md:text-xl">Уже есть аккаунт?</h3>
-                </div>
-                <div className="flex flex-col ml-13 mt-2 lg:mt-7">
-                  <div className="flex flex-wrap items-center w-fit">
-                    <p className="leading-7 text-sm text-gray-600">
-                      Перейдите к <span className="font-bold">авторизации</span> если у вас уже есть зарегистрированный аккаунт.
-                    </p>
+                  <div className="mt-3 flex flex-col gap-2">
+                    <Checkbox name='acceptedTerms' checked={formData.acceptedTerms} onChange={handleChange} className='!font-mono'>
+                      Согласен с условиями обслуживания
+                    </Checkbox>
+                    <Checkbox name='acceptedPrivacy' checked={formData.acceptedPrivacy} onChange={handleChange} className='!font-mono'>
+                      Согласен с обработкой персональных данных в соответствии с <Link to={"/privacy-policy"}>политикой конфиденциальности</Link>
+                    </Checkbox>
                   </div>
-                  <Link
-                    to={"/auth"}
-                    type="primary"
-                    className="!h-[60px] !bg-black text-white flex items-center justify-center rounded-sm xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
-                  >
-                    Авторизоваться
-                    <RightIcon size={30} />
-                  </Link>
+                  {error && <div className="text-red-600 mt-4">{error}</div>}
+                  {success && <div className="text-green-600 mt-4">{success}</div>}
+                  <div className="w-full">
+                    <Button
+                      type="primary"
+                      htmlType='submit'
+                      loading={loading}
+                      className="!mt-4 !w-full !h-[55px] !text-sm !font-bold !uppercase"
+                    >
+                      Зарегистрироваться
+                    </Button>
+                  </div>
+                </div>
+                <div className="mt-15 lg:mt-0">
+                  <div className="flex items-center gap-5 max-sm:gap-3">
+                    <UserIcon className="text-red-600 font-normal !w-10 !h-10 md:w-10" />
+                    <h3 className="!font-bold text-2xl max-sm:text-lg md:text-xl">Уже есть аккаунт?</h3>
+                  </div>
+                  <div className="flex flex-col ml-13 mt-2 lg:mt-7">
+                    <div className="flex flex-wrap items-center w-fit">
+                      <p className="leading-7 text-sm text-gray-600">
+                        Перейдите к <span className="font-bold">авторизации</span> если у вас уже есть зарегистрированный аккаунт.
+                      </p>
+                    </div>
+                    <Link
+                      to={"/auth"}
+                      type="primary"
+                      className="!h-[60px] !bg-black text-white flex items-center justify-center rounded-sm xl:w-3xs !text-sm !uppercase hover:!bg-orange-700"
+                    >
+                      Авторизоваться
+                      <RightIcon size={30} />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </section>
       </div>
