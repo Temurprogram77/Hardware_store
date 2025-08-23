@@ -5,7 +5,6 @@ import {
   Checkbox,
   Button,
   Typography,
-  Breadcrumb
 } from "../link/antLink";
 import UserIcon from '../components/UserIcon';
 import RightIcon from '../components/RightIcon';
@@ -105,7 +104,7 @@ const Register: FC<PhoneNumberInputProps> = () => {
       );
       const token = response.data.token;
       const expiryDate = new Date();
-      expiryDate.setDate(expiryDate.getDate() + 10);
+      expiryDate.setDate(expiryDate.getDate() + 1);
       localStorage.setItem('authData', JSON.stringify({
         token,
         expiry: expiryDate.toISOString(),
@@ -179,7 +178,6 @@ const Register: FC<PhoneNumberInputProps> = () => {
                         Регион<span className='text-red-600'>*</span>:
                       </Typography>
                       <RegionSelect
-                      
                         value={formData.region}
                         onChange={(value) => setFormData((prev) => ({ ...prev, region: value }))}
                       />
