@@ -145,6 +145,7 @@ const Register: FC<PhoneNumberInputProps> = () => {
                           onChange={handleChange}
                           className="!w-full xl:!w-[344.5px] !h-[50px] !text-gray-800 placeholder:!text-gray-600 !text-[17px] md:!text-[16px] !font-mono"
                           placeholder='Введите ваш email адрес'
+                          status=''
                         />
                       </div>
                       <div className="w-full flex flex-col">

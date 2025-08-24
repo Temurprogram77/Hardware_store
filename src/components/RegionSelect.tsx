@@ -29,8 +29,8 @@ const RegionSelect: FC<RegionSeletProps> = ({ value, onChange }) => {
 
     return (
         <Select
-            defaultValue={"1"}
-            placeholder="Ваш регион"
+            defaultValue={"Ваш регион"}
+            placeholder=""
             className="w-full !h-[50px] !text-gray-800 placeholder:!text-gray-600 !text-[17px] md:!text-[16px] !font-mono"
             value={value}
             onChange={onChange}
