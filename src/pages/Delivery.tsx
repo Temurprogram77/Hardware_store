@@ -95,7 +95,7 @@ const Delivery = () => {
               вас способом.
             </p>
             <ul className="relative left-8 flex gap-5 flex-col w-[300px] md:w-full">
-              <li className="list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1150px] leading-7 font-sans text-[17px] w-[320px]">
+              <li className="list-disc !hover:text-[#1e1e1e] marker:text-red-500 md:text-[14px] md:w-[1070px] leading-7 font-sans text-[17px] w-[320px]">
                 Производится доставка только после подтверждения о готовности
                 получить товар. В день доставки просим оставаться на связи в
                 согласованное время по указанному в заказе номеру телефона.
