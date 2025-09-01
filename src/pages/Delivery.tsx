@@ -168,7 +168,7 @@ const Delivery = () => {
         <div className="relative w-full max-w-[1460px] mt-10 mb-10 mx-auto">
           <Swiper
             modules={[Navigation]}
-            navigation={true} // ✅ Default tugmalar
+            navigation={true} // Default tugmalar
             spaceBetween={20}
             slidesPerView={4}
             slidesPerGroup={1}
