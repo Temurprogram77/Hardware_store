@@ -18,10 +18,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await Promise.all([
-          fetch("/api/data1"),
-          fetch("/api/data2"),
-        ]);
+        console.log("Loading")
       } catch (err) {
         console.error(err);
       } finally {
